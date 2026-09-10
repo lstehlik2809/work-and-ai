@@ -1,6 +1,8 @@
 # Work & AI
 
-Explore published relative AI exposure and employment projections for U.S. occupations. Search an English title, confirm the occupation, then view or compare up to three published results. This is an occupational reference, not an assessment of a person.
+Explore published relative AI exposure and employment projections for U.S. occupations. Search an English title, select skills, or describe your responsibilities, then confirm the occupation to view or compare up to three published results. This is an occupational reference, not an assessment of a person.
+
+The “Show top” control displays up to 1–10 matching occupations, defaulting to five. It applies to title, skills, and description results and updates existing suggestions immediately. Searches can return fewer than the requested number when fewer candidates meet the matching criteria; the comparison limit remains three occupations.
 
 [Open the app](https://lstehlik2809.github.io/work-and-ai/) · [Methodology](METHODOLOGY.md) · [Data sources](DATA_SOURCES.md) · [Verification](VERIFICATION.md)
 
@@ -67,6 +69,16 @@ Build-time CPU inference uses the same quantized ONNX weights, tokenizer, 256-to
 
 Matching fixtures, frozen hashes, development runs and the single held-out run are in `data/evaluation`. Labels are provisional authored examples, not independent expert ground truth. `npm run evaluate -- --split=dev` records a development run. The existing held-out file is deliberately write-once; do not delete it to tune repeatedly against the same labels. A future ranking change needs a new untouched evaluation set. The provenance-only correction is documented separately from frozen ranking results.
 
+The description-matching revision has a separate source-grounded development set. Run its real local encoder checks without changing historical reports:
+
+```sh
+npx tsx scripts/evaluate-description-matching.ts data/evaluation/matching-v2-development.json verification/local/matching-v2-development-result.json
+```
+
+With a production preview running, `node scripts/description-matching-browser-check.mjs` checks the original people-analytics example, two variants, and specialist selection in Chromium. It defaults to `http://127.0.0.1:4173/work-and-ai/`; set `TEST_URL` for another preview address. These authored checks measure specific regressions, not general occupational-matching accuracy.
+
+The [description-matching validation report](data/evaluation/matching-v2-validation.md) links all 42 cases and records paired results, four fresh occupational checks, and remaining errors. Run any fixture with the same evaluator command above; diagnostic sets intentionally exit nonzero for the disclosed misses.
+
 ## Browser verification
 
 Playwright 1.62.1 is a development dependency. With the production preview running, run `npx playwright install chromium` once and `npm run browser:check`. Set `TEST_URL` to the deployed app root (including its trailing slash) to repeat the same suite on Pages. `OUTPUT_DIR` defaults to ignored `verification/local`; inspected release artifacts live in `verification/release`. The script saves real CSV/PDF downloads, checks privacy and user flows, tests 390-pixel layout, and runs cold/revisit/failure diagnostics. A narrow viewport uses desktop hardware; it is not a physical-phone benchmark. PDF pages also require visual inspection.
@@ -82,3 +94,9 @@ After deployment, verify the actual site, share-link refresh and local WASM load
 ## Sources and rights
 
 The current snapshot combines BLS 2025–2035 projections/exposure (August 27, 2026) and O*NET 31.0. See [DATA_SOURCES.md](DATA_SOURCES.md) for attribution, CC BY 4.0 terms, modifications, mapping provenance and exceptions. Model/runtime assets have their own notices. No endorsement or scientific validation of this app is claimed.
+
+## Search by skills
+
+The second visible search option, **Find by skills**, is a third independent matching path alongside title lookup and optional responsibility matching. Select from 35 searchable, grouped O*NET skills; suggestions update locally, with the shared Show top control (1–10), source ratings, and occupation confirmation. No model is downloaded for this path. Skill selections are not saved to URLs or CSV exports. Technology skills and proficiency assessment are outside this version.
+
+The separate, hash-pinned O*NET 31.0 source pipeline uses `essential_skills.csv`, `transferable_skills.csv`, and `content_model_reference.csv`; it does not change the existing occupational or semantic corpus. Reproduce the committed compact artifact with `npm run skills:prepare`, verify it with `npm run validate:skills`, or deliberately reacquire the pinned raw files with `npm run skills:fetch`. Ordinary builds do not fetch data. Source hashes and acquisition timestamps are in `data/skills-source-manifest.json`. `npm test` includes raw hash and exact artifact reproduction checks. Run the focused production-browser checks with `npm run browser:skills` against the preview server (`TEST_URL` overrides its URL).

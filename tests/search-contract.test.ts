@@ -28,6 +28,22 @@ test('nonsense, vague responsibilities and unrelated questions cannot force cand
  assert.equal(engine.lexical('I work with people and solve problems.').state,'clarify');
  assert.equal(engine.title('engineer').state,'clarify');
 });
+
+test('literal title completion finds database occupations before broader alternate titles',()=>{
+ for(const q of ['database','database eng','DATABASE---ENG','database engineer']){
+  const out=engine.title(q);assert.equal(out.state,'candidates',q);
+  assert.deepEqual(out.candidates.map(c=>c.code).sort(),['15-1242','15-1243'],q);assertEvidence(out);
+ }
+ assert.equal(engine.title('database').exact,false);
+ assert.equal(engine.title('database engineer').exact,true);
+ const assistant=engine.title('nursing ass');assert.deepEqual(assistant.candidates.map(c=>c.code),['31-1131']);assertEvidence(assistant);
+});
+
+test('completion retains ambiguity and cannot bypass nonsense or fuzzy role safeguards',()=>{
+ for(const q of ['medical','database analyst','engineer']){const out=engine.title(q);assert.equal(out.state,'clarify',q);assert.deepEqual(out.candidates,[],q);}
+ for(const q of ['database qzxv','qzxv database','purple moon sandwich navigator','dental assistnt','dental technican'])assert.deepEqual(engine.title(q).candidates,[],q);
+ const corrected=engine.title('data scietist');assert.deepEqual(corrected.candidates.map(c=>c.code),['15-2051']);assertEvidence(corrected);
+});
 test('published statistics cannot influence lexical or hybrid ranking',()=>{
  const changed=structuredClone(snapshot);changed.occupations.forEach((o,i)=>{o.exposure=['Low','Moderate','High','Very high'][i%4] as typeof o.exposure;o.growth=1000-i;o.annualOpenings=i;});const alternate=new SearchEngine(changed,lexicon);
  for(const q of ['Accountants and auditors','electrcian','I install and repair electrical wiring and circuit breakers in buildings.']){

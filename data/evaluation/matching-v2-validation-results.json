@@ -1,0 +1,1539 @@
+{
+  "date": "2026-09-10T11:32:48.587Z",
+  "engineSha256": "cac4122b95f3b11cdc31e6dacc2052adc2d7d3ba56b12d0624b1a20555f10b9a",
+  "protectedFilesUnchanged": {
+    "data/evaluation/heldout.json": "f634d708728c1d82c9843c042a5b60d1c585055cf73e9bc9513620158a5ccda7",
+    "data/evaluation/heldout-results.json": "c3f7a6403ca5d63829c2c6b9b6f4698c67fb80c567c5f63f425ce7c064dbbb14",
+    "data/evaluation/dev.json": "97cd6dd9ade24c140b4e81d3c2c3fa2403eb84ad15284f7b1c912517f602422f",
+    "data/evaluation/freeze.json": "29fec3e40fd110935785ac79966fb3caa3b06270cadbe8b5a493805e2e3cf97d",
+    "public/data/occupations.json": "e30f18b0b1c48a26f983daf39d48752e0df8ad738bdb120962c67176532ded94",
+    "public/data/lexicon.json": "6955b5480713fb8648d567330f45095a8b218d299b4bec373dc09c04f44c5e6e",
+    "public/semantic/metadata.json": "e9b3615cbc627beae67a7a51088c0603322d970a806236c94a08976eeceb9e55",
+    "public/semantic/vectors.bin": "2b20c21dc0badd7a4c9cf7807748ee7cee1d2d0bcb669192e76f72df7298d516",
+    "src/semantic/config.json": "ea7276ef099fca5b78817447f4be0cf5b2c6897026f28d5e8eb42441d81f0c2b"
+  },
+  "provenance": "Source-grounded authored labels, not representative or independent expert validation. Fresh occupational cases were withheld until the final engine freeze; all earlier sets were exposed during development.",
+  "runs": {
+    "development": {
+      "status": "PASS",
+      "passed": 12,
+      "total": 12,
+      "engineSha256": "cac4122b95f3b11cdc31e6dacc2052adc2d7d3ba56b12d0624b1a20555f10b9a",
+      "fixturePath": "data/evaluation/matching-v2-development.json",
+      "fixtureSha256": "413cdf71472c4e6970720bbc8fe60639628546a766c3b3f29ef14e3cead69fe4",
+      "backend": "Pinned local Node CPU encoder; browser WASM verified separately",
+      "rows": [
+        {
+          "id": "U01",
+          "input": "I use data science, statistics, psychometrics, and behavioral science to understand people at work and improve organizational decisions. I design and analyze employee research, build predictive and diagnostic models, evaluate HR programs and interventions, and translate complex evidence into practical recommendations for leaders and People teams.",
+          "expectedLead": "15-2051",
+          "expectedRoles": {
+            "15-2051": "15-2051.00",
+            "19-3032": "19-3032.00"
+          },
+          "required": [
+            "15-2051",
+            "19-3032"
+          ],
+          "allowed": [
+            "15-2051",
+            "19-3032",
+            "15-2041",
+            "19-3022"
+          ],
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "15-2051",
+              "roleCode": "15-2051.00",
+              "excerpt": "Develop and implement a set of techniques or analytics applications to transform raw data into meaningful information using data-oriented programming languages and visualization software. Apply data mining, data modeling, natural language processing, and machine learning to extract and analyze information from large structured and unstructured datasets. Visualize, interpret, and report data findings. May create dynamic data reports.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            },
+            {
+              "code": "19-3032",
+              "roleCode": "19-3032.00",
+              "excerpt": "Apply principles of psychology to human resources, administration, management, sales, and marketing problems. Activities may include policy planning; employee testing and selection, training, and development; and organizational development and analysis. May work with management to organize the work setting to improve worker productivity.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "V01",
+          "input": "I use statistical programming and machine learning to analyze employee data, predict staff attrition, and report findings. I also develop psychological assessments for employee selection and evaluate their validity.",
+          "expectedLead": "15-2051",
+          "expectedRoles": {
+            "15-2051": "15-2051.00",
+            "19-3032": "19-3032.00"
+          },
+          "required": [
+            "15-2051",
+            "19-3032"
+          ],
+          "allowed": [
+            "15-2051",
+            "19-3032",
+            "15-2041"
+          ],
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "15-2051",
+              "roleCode": "15-2051.00",
+              "excerpt": "Develop and implement a set of techniques or analytics applications to transform raw data into meaningful information using data-oriented programming languages and visualization software. Apply data mining, data modeling, natural language processing, and machine learning to extract and analyze information from large structured and unstructured datasets. Visualize, interpret, and report data findings. May create dynamic data reports.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            },
+            {
+              "code": "19-3032",
+              "roleCode": "19-3032.00",
+              "excerpt": "Develop and implement employee selection or placement programs.",
+              "excerptKind": "task",
+              "taskId": "7560",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "V02",
+          "input": "I use statistical programming and machine learning to analyze employee data, predict staff attrition, and report findings. I also develop psychological assessments for employee selection and evaluate their validity. My projects include cleaning personnel records, combining numerical responses with written employee feedback, comparing research findings across departments, preparing visual explanations, and discussing the implications with human resources colleagues.",
+          "expectedLead": "15-2051",
+          "expectedRoles": {
+            "15-2051": "15-2051.00",
+            "19-3032": "19-3032.00"
+          },
+          "required": [
+            "15-2051",
+            "19-3032"
+          ],
+          "allowed": [
+            "15-2051",
+            "19-3032",
+            "15-2041"
+          ],
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "15-2051",
+              "roleCode": "15-2051.00",
+              "excerpt": "Develop and implement a set of techniques or analytics applications to transform raw data into meaningful information using data-oriented programming languages and visualization software. Apply data mining, data modeling, natural language processing, and machine learning to extract and analyze information from large structured and unstructured datasets. Visualize, interpret, and report data findings. May create dynamic data reports.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            },
+            {
+              "code": "19-3032",
+              "roleCode": "19-3032.00",
+              "excerpt": "Apply principles of psychology to human resources, administration, management, sales, and marketing problems. Activities may include policy planning; employee testing and selection, training, and development; and organizational development and analysis. May work with management to organize the work setting to improve worker productivity.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "V03",
+          "input": "I write programs to clean large structured and unstructured datasets, train machine learning models, select predictive features, and visualize the results for product teams.",
+          "expectedLead": "15-2051",
+          "expectedRoles": {
+            "15-2051": "15-2051.00"
+          },
+          "required": [
+            "15-2051"
+          ],
+          "allowed": [
+            "15-2051",
+            "15-2041"
+          ],
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "15-2051",
+              "roleCode": "15-2051.00",
+              "excerpt": "Develop and implement a set of techniques or analytics applications to transform raw data into meaningful information using data-oriented programming languages and visualization software. Apply data mining, data modeling, natural language processing, and machine learning to extract and analyze information from large structured and unstructured datasets. Visualize, interpret, and report data findings. May create dynamic data reports.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "V04",
+          "input": "I apply psychological research to employee selection and development. I analyze job requirements, design selection assessments, and evaluate whether training improves worker performance and job satisfaction.",
+          "expectedLead": "19-3032",
+          "expectedRoles": {
+            "19-3032": "19-3032.00"
+          },
+          "required": [
+            "19-3032"
+          ],
+          "allowed": [
+            "19-3032",
+            "13-1151",
+            "13-1071"
+          ],
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "19-3032",
+              "roleCode": "19-3032.00",
+              "excerpt": "Apply principles of psychology to human resources, administration, management, sales, and marketing problems. Activities may include policy planning; employee testing and selection, training, and development; and organizational development and analysis. May work with management to organize the work setting to improve worker productivity.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "V05",
+          "input": "I analyze business requirements for computer systems, review software capabilities, plan integration between applications, and test system changes with users to resolve processing problems.",
+          "expectedLead": "15-1211",
+          "expectedRoles": {
+            "15-1211": "15-1211.00"
+          },
+          "required": [
+            "15-1211"
+          ],
+          "allowed": [
+            "15-1211",
+            "15-1252",
+            "15-1253"
+          ],
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "15-1211",
+              "roleCode": "15-1211.00",
+              "excerpt": "Analyze science, engineering, business, and other data processing problems to develop and implement solutions to complex applications problems, system administration issues, or network concerns. Perform systems management and integration functions, improve existing computer systems, and review computer system capabilities, workflow, and schedule limitations. May analyze or recommend commercially available software.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            },
+            {
+              "code": "15-1252",
+              "roleCode": "15-1252.00",
+              "excerpt": "Research, design, and develop computer and network software or specialized utility programs. Analyze user needs and develop software solutions, applying principles and techniques of computer science, engineering, and mathematical analysis. Update software or enhance existing software capabilities. May work with computer hardware engineers to integrate hardware and software systems, and develop specifications and performance requirements. May maintain databases within an application area, working individually or coordinating database development as part of a team.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "V06",
+          "input": "I analyze search queries and website traffic, improve content for search engine visibility, and optimize online marketing campaigns to increase visitor engagement.",
+          "expectedLead": "13-1161",
+          "expectedRoles": {
+            "13-1161": "13-1161.01"
+          },
+          "required": [
+            "13-1161"
+          ],
+          "allowed": [
+            "13-1161"
+          ],
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "13-1161",
+              "roleCode": "13-1161.01",
+              "excerpt": "Employ search marketing tactics to increase visibility and engagement with content, products, or services in Internet-enabled devices or interfaces. Examine search query behaviors on general or specialty search engines or other Internet-based content. Analyze research, data, or technology to understand user intent and measure outcomes for ongoing optimization.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "V07",
+          "input": "I design questionnaires, test question wording, choose survey samples, and analyze survey responses with statistical software. I prepare tables and explain the results and limitations to clients.",
+          "allowed": [
+            "19-3022",
+            "15-2041",
+            "15-2051"
+          ],
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "19-3022",
+              "roleCode": "19-3022.00",
+              "excerpt": "Plan, develop, or conduct surveys. May analyze and interpret the meaning of survey data, determine survey objectives, or suggest or test question wording. Includes social scientists who primarily design questionnaires or supervise survey teams.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "V08",
+          "input": "I work with people, attend meetings, answer emails, and help solve problems.",
+          "expectedState": "clarify",
+          "allowed": [],
+          "state": "clarify",
+          "candidates": [],
+          "failures": []
+        },
+        {
+          "id": "E01",
+          "input": "I install and repair electrical wiring and circuit breakers in buildings.",
+          "expectedLead": "47-2111",
+          "allowed": [
+            "47-2111"
+          ],
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "47-2111",
+              "roleCode": "47-2111.00",
+              "excerpt": "Install, maintain, and repair electrical wiring, equipment, and fixtures. Ensure that work is in accordance with relevant codes. May install or service street lights, intercom systems, or electrical control systems.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "N01",
+          "input": "qzxv blorpt 739",
+          "allowed": [],
+          "state": "none",
+          "candidates": [],
+          "failures": []
+        },
+        {
+          "id": "N02",
+          "input": "What is the weather tomorrow?",
+          "allowed": [],
+          "state": "none",
+          "candidates": [],
+          "failures": []
+        }
+      ]
+    },
+    "exposed": {
+      "status": "PASS",
+      "passed": 4,
+      "total": 4,
+      "engineSha256": "cac4122b95f3b11cdc31e6dacc2052adc2d7d3ba56b12d0624b1a20555f10b9a",
+      "fixturePath": "data/evaluation/matching-v2-reserved.json",
+      "fixtureSha256": "7207cbd4787ef0eea4ea29062cb45982596fd653b70319c37c9005b6188bf2fc",
+      "backend": "Pinned local Node CPU encoder; browser WASM verified separately",
+      "rows": [
+        {
+          "id": "H-M1-01",
+          "input": "I join employee records with attitude surveys, use statistical programming to model workforce outcomes, and analyze open-ended comments with machine learning. I also test whether staff selection assessments measure the intended psychological traits and summarize what the findings mean for HR decisions.",
+          "expectedLead": "15-2051",
+          "expectedRoles": {
+            "15-2051": "15-2051.00",
+            "19-3032": "19-3032.00"
+          },
+          "required": [
+            "15-2051",
+            "19-3032"
+          ],
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "15-2051",
+              "roleCode": "15-2051.00",
+              "excerpt": "Develop and implement a set of techniques or analytics applications to transform raw data into meaningful information using data-oriented programming languages and visualization software. Apply data mining, data modeling, natural language processing, and machine learning to extract and analyze information from large structured and unstructured datasets. Visualize, interpret, and report data findings. May create dynamic data reports.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            },
+            {
+              "code": "19-3032",
+              "roleCode": "19-3032.00",
+              "excerpt": "Apply principles of psychology to human resources, administration, management, sales, and marketing problems. Activities may include policy planning; employee testing and selection, training, and development; and organizational development and analysis. May work with management to organize the work setting to improve worker productivity.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "H-M1-02",
+          "input": "My research examines motivation and performance at work. I develop employee selection tests, study the validity of psychological assessments, and evaluate training programs so organizations can improve how they select and develop staff.",
+          "expectedLead": "19-3032",
+          "expectedRoles": {
+            "19-3032": "19-3032.00"
+          },
+          "required": [
+            "19-3032"
+          ],
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "19-3032",
+              "roleCode": "19-3032.00",
+              "excerpt": "Apply principles of psychology to human resources, administration, management, sales, and marketing problems. Activities may include policy planning; employee testing and selection, training, and development; and organizational development and analysis. May work with management to organize the work setting to improve worker productivity.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            },
+            {
+              "code": "13-1151",
+              "roleCode": "13-1151.00",
+              "excerpt": "Design or conduct work-related training and development programs to improve individual skills or organizational performance. May analyze organizational training needs or evaluate training effectiveness.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "H-M1-03",
+          "input": "I review search engine queries and website engagement data, identify ways to improve organic search rankings, and test changes to online campaigns to attract relevant visitors.",
+          "expectedLead": "13-1161",
+          "expectedRoles": {
+            "13-1161": "13-1161.01"
+          },
+          "required": [
+            "13-1161"
+          ],
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "13-1161",
+              "roleCode": "13-1161.01",
+              "excerpt": "Employ search marketing tactics to increase visibility and engagement with content, products, or services in Internet-enabled devices or interfaces. Examine search query behaviors on general or specialty search engines or other Internet-based content. Analyze research, data, or technology to understand user intent and measure outcomes for ongoing optimization.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "H-M1-04",
+          "input": "The violet teapot dreams in triangles. Yesterday is a ribbon made from seven echoes.",
+          "allowed": [],
+          "state": "none",
+          "candidates": [],
+          "failures": []
+        }
+      ]
+    },
+    "replacement": {
+      "status": "PASS",
+      "passed": 4,
+      "total": 4,
+      "engineSha256": "cac4122b95f3b11cdc31e6dacc2052adc2d7d3ba56b12d0624b1a20555f10b9a",
+      "fixturePath": "data/evaluation/matching-v2-replacement-check.json",
+      "fixtureSha256": "86ae8e0d1320880a2cf2d1306ae4bd18a5a92f44adae9f53d8c60e8d48f3acd7",
+      "backend": "Pinned local Node CPU encoder; browser WASM verified separately",
+      "rows": [
+        {
+          "id": "H-M2-01",
+          "input": "I build predictive models from personnel datasets and analyze written staff feedback with natural language processing. Alongside this data analysis, I use psychological research to design employee selection tests and evaluate whether those assessments are valid measures of job-related characteristics.",
+          "expectedLead": "15-2051",
+          "expectedRoles": {
+            "15-2051": "15-2051.00",
+            "19-3032": "19-3032.00"
+          },
+          "required": [
+            "15-2051",
+            "19-3032"
+          ],
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "15-2051",
+              "roleCode": "15-2051.00",
+              "excerpt": "Develop and implement a set of techniques or analytics applications to transform raw data into meaningful information using data-oriented programming languages and visualization software. Apply data mining, data modeling, natural language processing, and machine learning to extract and analyze information from large structured and unstructured datasets. Visualize, interpret, and report data findings. May create dynamic data reports.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            },
+            {
+              "code": "19-3032",
+              "roleCode": "19-3032.00",
+              "excerpt": "Analyze job requirements and content to establish criteria for classification, selection, training, and other related personnel functions.",
+              "excerptKind": "task",
+              "taskId": "7561",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "H-M2-02",
+          "input": "I develop machine learning pipelines to extract information from large datasets, compare predictive models, and visualize findings. The inputs include numerical records and unstructured text, which I process with programming languages and natural language processing techniques.",
+          "expectedLead": "15-2051",
+          "expectedRoles": {
+            "15-2051": "15-2051.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "15-2051",
+              "roleCode": "15-2051.00",
+              "excerpt": "Develop and implement a set of techniques or analytics applications to transform raw data into meaningful information using data-oriented programming languages and visualization software. Apply data mining, data modeling, natural language processing, and machine learning to extract and analyze information from large structured and unstructured datasets. Visualize, interpret, and report data findings. May create dynamic data reports.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "H-M2-03",
+          "input": "I study how psychological characteristics relate to job performance, design employee assessment procedures, and evaluate selection and training programs. My recommendations help organizations improve staff development and the work environment.",
+          "expectedLead": "19-3032",
+          "expectedRoles": {
+            "19-3032": "19-3032.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "19-3032",
+              "roleCode": "19-3032.00",
+              "excerpt": "Apply principles of psychology to human resources, administration, management, sales, and marketing problems. Activities may include policy planning; employee testing and selection, training, and development; and organizational development and analysis. May work with management to organize the work setting to improve worker productivity.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            },
+            {
+              "code": "13-1151",
+              "roleCode": "13-1151.00",
+              "excerpt": "Design or conduct work-related training and development programs to improve individual skills or organizational performance. May analyze organizational training needs or evaluate training effectiveness.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "H-M2-04",
+          "input": "Could you tell me whether the museum is open next Sunday and how much an admission ticket costs?",
+          "allowed": [],
+          "state": "none",
+          "candidates": [],
+          "failures": []
+        }
+      ]
+    },
+    "auditBaseline": {
+      "status": "FAIL",
+      "passed": 11,
+      "total": 16,
+      "engineSha256": "2a113e27268582c320ac95ec6bee3776b93a6bb67496aaad9db3b0d72d6c762a",
+      "fixturePath": "data/evaluation/matching-v2-occupational-audit.json",
+      "fixtureSha256": "455fd139d2a39819b4d3ac491788ac5ad17fd8a8c04813c7527f55745771cbdb",
+      "backend": "Pinned local Node CPU encoder; browser WASM verified separately",
+      "rows": [
+        {
+          "id": "AUD-01",
+          "input": "I assess patients' health needs and plan their bedside care. I monitor vital signs and changes in symptoms, maintain medical records, and explain recovery and disease prevention to patients.",
+          "expectedLead": "29-1141",
+          "expectedRoles": {
+            "29-1141": "29-1141.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "31-1120",
+              "roleCode": "31-1121.00",
+              "excerpt": "Monitor the health status of an individual with disabilities or illness, and address their health-related needs, such as changing bandages, dressing wounds, or administering medication. Work is performed under the direction of offsite or intermittent onsite licensed nursing staff. Provide assistance with routine healthcare tasks or activities of daily living, such as feeding, bathing, toileting, or ambulation. May also help with tasks such as preparing meals, doing light housekeeping, and doing laundry depending on the patient's abilities.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": [
+            "lead 31-1120, expected 29-1141"
+          ]
+        },
+        {
+          "id": "AUD-02",
+          "input": "I remove deposits and stains from patients' teeth and examine their gums for signs of disease. I record oral health findings and teach patients how to improve brushing and prevent dental problems.",
+          "expectedLead": "29-1292",
+          "expectedRoles": {
+            "29-1292": "29-1292.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "29-1021",
+              "roleCode": "29-1021.00",
+              "excerpt": "Examine, diagnose, and treat diseases, injuries, and malformations of teeth and gums. May treat diseases of nerve, pulp, and other dental tissues affecting oral hygiene and retention of teeth. May fit dental appliances or provide preventive care.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            },
+            {
+              "code": "29-1292",
+              "roleCode": "29-1292.00",
+              "excerpt": "Administer oral hygiene care to patients. Assess patient oral hygiene problems or needs and maintain health records. Advise patients on oral health maintenance and disease prevention. May provide advanced care such as providing fluoride treatment or administering topical anesthesia.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": [
+            "lead 29-1021, expected 29-1292"
+          ]
+        },
+        {
+          "id": "AUD-03",
+          "input": "I teach reading, arithmetic, and social skills to a fourth-grade class. I prepare classroom activities, assess each child's progress, and establish routines that help students learn and behave cooperatively.",
+          "expectedLead": "25-2021",
+          "expectedRoles": {
+            "25-2021": "25-2021.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "25-2021",
+              "roleCode": "25-2021.00",
+              "excerpt": "Teach academic and social skills to students at the elementary school level.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            },
+            {
+              "code": "25-2057",
+              "roleCode": "25-2057.00",
+              "excerpt": "Teach academic, social, and life skills to middle school students with learning, emotional, or physical disabilities. Includes teachers who specialize and work with students who are blind or have visual impairments; students who are deaf or have hearing impairments; and students with intellectual disabilities.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-04",
+          "input": "I teach algebra and geometry to high school students through lessons, discussions, and demonstrations. I set learning objectives, prepare subject assignments, assess students' understanding, and manage classroom behavior.",
+          "expectedLead": "25-2031",
+          "expectedRoles": {
+            "25-2031": "25-2031.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "25-2031",
+              "roleCode": "25-2031.00",
+              "excerpt": "Teach one or more subjects to students at the secondary school level.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            },
+            {
+              "code": "25-2022",
+              "roleCode": "25-2022.00",
+              "excerpt": "Teach one or more subjects to students at the middle, intermediate, or junior high school level.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-05",
+          "input": "I fit and repair water pipes in buildings, cutting and threading sections to match the drawings. I assemble connections and pressure-test the installed pipework to locate leaks before it is used.",
+          "expectedLead": "47-2152",
+          "expectedRoles": {
+            "47-2152": "47-2152.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "47-2152",
+              "roleCode": "47-2152.00",
+              "excerpt": "Assemble, install, alter, and repair pipelines or pipe systems that carry water, steam, air, or other liquids or gases. May install heating and cooling equipment and mechanical control systems. Includes sprinkler fitters.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-06",
+          "input": "I install central air conditioning and repair heating and refrigeration equipment. I ask customers about malfunctions, test electrical components, replace defective parts, and check that the system cools or heats correctly.",
+          "expectedLead": "49-9021",
+          "expectedRoles": {
+            "49-9021": "49-9021.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "49-9021",
+              "roleCode": "49-9021.00",
+              "excerpt": "Install or repair heating, central air conditioning, HVAC, or refrigeration systems, including oil burners, hot-air furnaces, and heating stoves.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-07",
+          "input": "I design bridges and building structures, calculate load requirements and material stresses, and prepare construction specifications. I inspect project sites to check that the work follows the approved design.",
+          "expectedLead": "17-2051",
+          "expectedRoles": {
+            "17-2051": "17-2051.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "17-1011",
+              "roleCode": "17-1011.00",
+              "excerpt": "Prepare information regarding design, structure specifications, materials, color, equipment, estimated costs, or construction time.",
+              "excerptKind": "task",
+              "taskId": "130",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            },
+            {
+              "code": "47-4011",
+              "roleCode": "47-4011.00",
+              "excerpt": "Inspect bridges, dams, highways, buildings, wiring, plumbing, electrical circuits, sewers, heating systems, or foundations during and after construction for structural quality, general safety, or conformance to specifications and codes.",
+              "excerptKind": "task",
+              "taskId": "869",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            },
+            {
+              "code": "17-2051",
+              "roleCode": "17-2051.00",
+              "excerpt": "Compute load and grade requirements, water flow rates, or material stress factors to determine design specifications.",
+              "excerptKind": "task",
+              "taskId": "147",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            }
+          ],
+          "failures": [
+            "lead 17-1011, expected 17-2051"
+          ]
+        },
+        {
+          "id": "AUD-08",
+          "input": "I design industrial machines and tools from customer specifications. I interpret technical drawings, compare design feasibility and maintenance costs, and work with colleagues to resolve equipment malfunctions and operating problems.",
+          "expectedLead": "17-2141",
+          "expectedRoles": {
+            "17-2141": "17-2141.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "17-2141",
+              "roleCode": "17-2141.00",
+              "excerpt": "Research and analyze customer design proposals, specifications, manuals, or other data to evaluate the feasibility, cost, or maintenance requirements of designs or applications.",
+              "excerptKind": "task",
+              "taskId": "1413",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-09",
+          "input": "I examine accounting records, prepare financial statements, and audit statements produced by other teams. I investigate weaknesses in financial controls and write reports explaining the findings and recommended changes to management.",
+          "expectedLead": "13-2011",
+          "expectedRoles": {
+            "13-2011": "13-2011.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "13-2011",
+              "roleCode": "13-2011.00",
+              "excerpt": "Examine, analyze, and interpret accounting records to prepare financial statements, give advice, or audit and evaluate statements prepared by others. Install or advise on systems of recording costs or other financial and budgetary data.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-10",
+          "input": "I prepare soups, vegetables, and meat dishes in a restaurant kitchen. I season food according to recipes, stir and turn it while cooking, and check taste and doneness before serving.",
+          "expectedLead": "35-2014",
+          "expectedRoles": {
+            "35-2014": "35-2014.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "35-2014",
+              "roleCode": "35-2014.00",
+              "excerpt": "Prepare, season, and cook dishes such as soups, meats, vegetables, or desserts in restaurants. May order supplies, keep records and accounts, price items on menu, or plan menu.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-11",
+          "input": "I support lawyers by investigating case facts and researching statutes and previous court decisions. I prepare affidavits and other legal documents, organize case files, and assemble exhibits for trial.",
+          "expectedLead": "23-2011",
+          "expectedRoles": {
+            "23-2011": "23-2011.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "23-2011",
+              "roleCode": "23-2011.00",
+              "excerpt": "Assist lawyers by investigating facts, preparing legal documents, or researching legal precedent. Conduct research to support a legal proceeding, to formulate a defense, or to initiate legal action.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-12",
+          "input": "I schedule appointments, draft routine office correspondence, and organize paper and electronic files. I answer incoming calls, take messages, and find the documents colleagues need to respond to inquiries.",
+          "expectedLead": "43-6014",
+          "expectedRoles": {
+            "43-6014": "43-6014.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "43-6014",
+              "roleCode": "43-6014.00",
+              "excerpt": "Perform routine administrative functions such as drafting correspondence, scheduling appointments, organizing and maintaining paper and electronic files, or providing information to callers.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-13",
+          "input": "I analyze product delivery and supply chain processes to find avoidable delays and excess inventory. I recommend operational changes, monitor shipment tracing, and review invoicing and route activity.",
+          "expectedLead": "13-1081",
+          "expectedRoles": {
+            "13-1081": "13-1081.02"
+          },
+          "state": "none",
+          "candidates": [],
+          "failures": [
+            "lead undefined, expected 13-1081"
+          ]
+        },
+        {
+          "id": "AUD-14",
+          "input": "I check incoming merchandise against shipment records and record quantities, damage, and discrepancies. I prepare shipping documents and contact carriers to arrange collection and delivery of outgoing goods.",
+          "expectedLead": "43-5071",
+          "expectedRoles": {
+            "43-5071": "43-5071.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "43-5071",
+              "roleCode": "43-5071.00",
+              "excerpt": "Verify and maintain records on incoming and outgoing shipments involving inventory. Duties include verifying and recording incoming merchandise or material and arranging for the transportation of products. May prepare items for shipment.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-15",
+          "input": "I help people with their work and deal with different problems. Most days involve projects, meetings, and emails.",
+          "expectedState": "clarify",
+          "allowed": [],
+          "state": "none",
+          "candidates": [],
+          "failures": [
+            "state none, expected clarify"
+          ]
+        },
+        {
+          "id": "AUD-16",
+          "input": "Qelvorn zupthra nembixel. Vroshdak pelquim taznuf.",
+          "allowed": [],
+          "state": "none",
+          "candidates": [],
+          "failures": []
+        }
+      ]
+    },
+    "auditFinal": {
+      "status": "FAIL",
+      "passed": 11,
+      "total": 16,
+      "engineSha256": "cac4122b95f3b11cdc31e6dacc2052adc2d7d3ba56b12d0624b1a20555f10b9a",
+      "fixturePath": "data/evaluation/matching-v2-occupational-audit.json",
+      "fixtureSha256": "455fd139d2a39819b4d3ac491788ac5ad17fd8a8c04813c7527f55745771cbdb",
+      "backend": "Pinned local Node CPU encoder; browser WASM verified separately",
+      "rows": [
+        {
+          "id": "AUD-01",
+          "input": "I assess patients' health needs and plan their bedside care. I monitor vital signs and changes in symptoms, maintain medical records, and explain recovery and disease prevention to patients.",
+          "expectedLead": "29-1141",
+          "expectedRoles": {
+            "29-1141": "29-1141.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "31-1120",
+              "roleCode": "31-1122.00",
+              "excerpt": "Administer bedside or personal care, such as ambulation or personal hygiene assistance.",
+              "excerptKind": "task",
+              "taskId": "2370",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            }
+          ],
+          "failures": [
+            "lead 31-1120, expected 29-1141"
+          ]
+        },
+        {
+          "id": "AUD-02",
+          "input": "I remove deposits and stains from patients' teeth and examine their gums for signs of disease. I record oral health findings and teach patients how to improve brushing and prevent dental problems.",
+          "expectedLead": "29-1292",
+          "expectedRoles": {
+            "29-1292": "29-1292.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "29-1021",
+              "roleCode": "29-1021.00",
+              "excerpt": "Examine, diagnose, and treat diseases, injuries, and malformations of teeth and gums. May treat diseases of nerve, pulp, and other dental tissues affecting oral hygiene and retention of teeth. May fit dental appliances or provide preventive care.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            },
+            {
+              "code": "29-1292",
+              "roleCode": "29-1292.00",
+              "excerpt": "Clean calcareous deposits, accretions, and stains from teeth and beneath margins of gums, using dental instruments.",
+              "excerptKind": "task",
+              "taskId": "416",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            }
+          ],
+          "failures": [
+            "lead 29-1021, expected 29-1292"
+          ]
+        },
+        {
+          "id": "AUD-03",
+          "input": "I teach reading, arithmetic, and social skills to a fourth-grade class. I prepare classroom activities, assess each child's progress, and establish routines that help students learn and behave cooperatively.",
+          "expectedLead": "25-2021",
+          "expectedRoles": {
+            "25-2021": "25-2021.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "25-2021",
+              "roleCode": "25-2021.00",
+              "excerpt": "Teach academic and social skills to students at the elementary school level.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            },
+            {
+              "code": "25-2057",
+              "roleCode": "25-2057.00",
+              "excerpt": "Teach academic, social, and life skills to middle school students with learning, emotional, or physical disabilities. Includes teachers who specialize and work with students who are blind or have visual impairments; students who are deaf or have hearing impairments; and students with intellectual disabilities.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-04",
+          "input": "I teach algebra and geometry to high school students through lessons, discussions, and demonstrations. I set learning objectives, prepare subject assignments, assess students' understanding, and manage classroom behavior.",
+          "expectedLead": "25-2031",
+          "expectedRoles": {
+            "25-2031": "25-2031.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "25-2031",
+              "roleCode": "25-2031.00",
+              "excerpt": "Instruct through lectures, discussions, and demonstrations in one or more subjects, such as English, mathematics, or social studies.",
+              "excerptKind": "task",
+              "taskId": "6640",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            },
+            {
+              "code": "25-2022",
+              "roleCode": "25-2022.00",
+              "excerpt": "Teach one or more subjects to students at the middle, intermediate, or junior high school level.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-05",
+          "input": "I fit and repair water pipes in buildings, cutting and threading sections to match the drawings. I assemble connections and pressure-test the installed pipework to locate leaks before it is used.",
+          "expectedLead": "47-2152",
+          "expectedRoles": {
+            "47-2152": "47-2152.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "47-2152",
+              "roleCode": "47-2152.00",
+              "excerpt": "Inspect, examine, or test installed systems or pipe lines, using pressure gauge, hydrostatic testing, observation, or other methods.",
+              "excerptKind": "task",
+              "taskId": "23461",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            },
+            {
+              "code": "47-2011",
+              "roleCode": "47-2011.00",
+              "excerpt": "Examine boilers, pressure vessels, tanks, or vats to locate defects, such as leaks, weak spots, or defective sections, so that they can be repaired.",
+              "excerptKind": "task",
+              "taskId": "11438",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-06",
+          "input": "I install central air conditioning and repair heating and refrigeration equipment. I ask customers about malfunctions, test electrical components, replace defective parts, and check that the system cools or heats correctly.",
+          "expectedLead": "49-9021",
+          "expectedRoles": {
+            "49-9021": "49-9021.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "49-9021",
+              "roleCode": "49-9021.00",
+              "excerpt": "Install or repair heating, central air conditioning, HVAC, or refrigeration systems, including oil burners, hot-air furnaces, and heating stoves.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-07",
+          "input": "I design bridges and building structures, calculate load requirements and material stresses, and prepare construction specifications. I inspect project sites to check that the work follows the approved design.",
+          "expectedLead": "17-2051",
+          "expectedRoles": {
+            "17-2051": "17-2051.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "17-1011",
+              "roleCode": "17-1011.00",
+              "excerpt": "Prepare information regarding design, structure specifications, materials, color, equipment, estimated costs, or construction time.",
+              "excerptKind": "task",
+              "taskId": "130",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            },
+            {
+              "code": "47-4011",
+              "roleCode": "47-4011.00",
+              "excerpt": "Inspect bridges, dams, highways, buildings, wiring, plumbing, electrical circuits, sewers, heating systems, or foundations during and after construction for structural quality, general safety, or conformance to specifications and codes.",
+              "excerptKind": "task",
+              "taskId": "869",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            },
+            {
+              "code": "17-2051",
+              "roleCode": "17-2051.00",
+              "excerpt": "Perform engineering duties in planning, designing, and overseeing construction and maintenance of building structures and facilities, such as roads, railroads, airports, bridges, harbors, channels, dams, irrigation projects, pipelines, power plants, and water and sewage systems.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": [
+            "lead 17-1011, expected 17-2051"
+          ]
+        },
+        {
+          "id": "AUD-08",
+          "input": "I design industrial machines and tools from customer specifications. I interpret technical drawings, compare design feasibility and maintenance costs, and work with colleagues to resolve equipment malfunctions and operating problems.",
+          "expectedLead": "17-2141",
+          "expectedRoles": {
+            "17-2141": "17-2141.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "17-2141",
+              "roleCode": "17-2141.00",
+              "excerpt": "Research and analyze customer design proposals, specifications, manuals, or other data to evaluate the feasibility, cost, or maintenance requirements of designs or applications.",
+              "excerptKind": "task",
+              "taskId": "1413",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-09",
+          "input": "I examine accounting records, prepare financial statements, and audit statements produced by other teams. I investigate weaknesses in financial controls and write reports explaining the findings and recommended changes to management.",
+          "expectedLead": "13-2011",
+          "expectedRoles": {
+            "13-2011": "13-2011.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "13-2011",
+              "roleCode": "13-2011.00",
+              "excerpt": "Examine, analyze, and interpret accounting records to prepare financial statements, give advice, or audit and evaluate statements prepared by others. Install or advise on systems of recording costs or other financial and budgetary data.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-10",
+          "input": "I prepare soups, vegetables, and meat dishes in a restaurant kitchen. I season food according to recipes, stir and turn it while cooking, and check taste and doneness before serving.",
+          "expectedLead": "35-2014",
+          "expectedRoles": {
+            "35-2014": "35-2014.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "35-2014",
+              "roleCode": "35-2014.00",
+              "excerpt": "Prepare, season, and cook dishes such as soups, meats, vegetables, or desserts in restaurants. May order supplies, keep records and accounts, price items on menu, or plan menu.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            },
+            {
+              "code": "35-2011",
+              "roleCode": "35-2011.00",
+              "excerpt": "Prepare and cook food in a fast food restaurant with a limited menu. Duties of these cooks are limited to preparation of a few basic items and normally involve operating large-volume single-purpose cooking equipment.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-11",
+          "input": "I support lawyers by investigating case facts and researching statutes and previous court decisions. I prepare affidavits and other legal documents, organize case files, and assemble exhibits for trial.",
+          "expectedLead": "23-2011",
+          "expectedRoles": {
+            "23-2011": "23-2011.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "23-2011",
+              "roleCode": "23-2011.00",
+              "excerpt": "Assist lawyers by investigating facts, preparing legal documents, or researching legal precedent. Conduct research to support a legal proceeding, to formulate a defense, or to initiate legal action.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-12",
+          "input": "I schedule appointments, draft routine office correspondence, and organize paper and electronic files. I answer incoming calls, take messages, and find the documents colleagues need to respond to inquiries.",
+          "expectedLead": "43-6014",
+          "expectedRoles": {
+            "43-6014": "43-6014.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "43-6014",
+              "roleCode": "43-6014.00",
+              "excerpt": "Perform routine administrative functions such as drafting correspondence, scheduling appointments, organizing and maintaining paper and electronic files, or providing information to callers.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-13",
+          "input": "I analyze product delivery and supply chain processes to find avoidable delays and excess inventory. I recommend operational changes, monitor shipment tracing, and review invoicing and route activity.",
+          "expectedLead": "13-1081",
+          "expectedRoles": {
+            "13-1081": "13-1081.02"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "43-5061",
+              "roleCode": "43-5061.00",
+              "excerpt": "Coordinate and expedite the flow of work and materials within or between departments of an establishment according to production schedule. Duties include reviewing and distributing production, work, and shipment schedules; conferring with department supervisors to determine progress of work and completion dates; and compiling reports on progress of work, inventory levels, costs, and production problems.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            },
+            {
+              "code": "43-5071",
+              "roleCode": "43-5071.00",
+              "excerpt": "Verify and maintain records on incoming and outgoing shipments involving inventory. Duties include verifying and recording incoming merchandise or material and arranging for the transportation of products. May prepare items for shipment.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": [
+            "lead 43-5061, expected 13-1081"
+          ]
+        },
+        {
+          "id": "AUD-14",
+          "input": "I check incoming merchandise against shipment records and record quantities, damage, and discrepancies. I prepare shipping documents and contact carriers to arrange collection and delivery of outgoing goods.",
+          "expectedLead": "43-5071",
+          "expectedRoles": {
+            "43-5071": "43-5071.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "43-5071",
+              "roleCode": "43-5071.00",
+              "excerpt": "Verify and maintain records on incoming and outgoing shipments involving inventory. Duties include verifying and recording incoming merchandise or material and arranging for the transportation of products. May prepare items for shipment.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AUD-15",
+          "input": "I help people with their work and deal with different problems. Most days involve projects, meetings, and emails.",
+          "expectedState": "clarify",
+          "allowed": [],
+          "state": "none",
+          "candidates": [],
+          "failures": [
+            "state none, expected clarify"
+          ]
+        },
+        {
+          "id": "AUD-16",
+          "input": "Qelvorn zupthra nembixel. Vroshdak pelquim taznuf.",
+          "allowed": [],
+          "state": "none",
+          "candidates": [],
+          "failures": []
+        }
+      ]
+    },
+    "freshBaseline": {
+      "status": "FAIL",
+      "passed": 2,
+      "total": 4,
+      "engineSha256": "2a113e27268582c320ac95ec6bee3776b93a6bb67496aaad9db3b0d72d6c762a",
+      "fixturePath": "data/evaluation/matching-v2-fresh-occupational-audit.json",
+      "fixtureSha256": "bd6a4d5e047a5ac650289657b9e7f0d170f23dff54a9f7e0514db4e17e513305",
+      "backend": "Pinned local Node CPU encoder; browser WASM verified separately",
+      "rows": [
+        {
+          "id": "AF-01",
+          "input": "I examine pets to find the cause of illnesses and injuries, then prescribe medicines or perform surgery when needed. I also vaccinate animals and explain the treatment plan to their owners.",
+          "expectedLead": "29-1131",
+          "expectedRoles": {
+            "29-1131": "29-1131.00"
+          },
+          "state": "none",
+          "candidates": [],
+          "failures": [
+            "lead undefined, expected 29-1131"
+          ]
+        },
+        {
+          "id": "AF-02",
+          "input": "I cut, color, and shape clients' hair, choosing styles that suit their hair type and preferences. Between appointments I clean the workstation and sanitize scissors, combs, and other tools.",
+          "expectedLead": "39-5012",
+          "expectedRoles": {
+            "39-5012": "39-5012.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "39-5012",
+              "roleCode": "39-5012.00",
+              "excerpt": "Cut, trim and shape hair or hairpieces, based on customers' instructions, hair type, and facial features, using clippers, scissors, trimmers and razors.",
+              "excerptKind": "task",
+              "taskId": "636",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AF-03",
+          "input": "I convert spoken presentations and written documents between languages while preserving their meaning and tone. I resolve ambiguous expressions with the speakers or authors and keep confidential information private.",
+          "expectedLead": "27-3091",
+          "expectedRoles": {
+            "27-3091": "27-3091.00"
+          },
+          "state": "none",
+          "candidates": [],
+          "failures": [
+            "lead undefined, expected 27-3091"
+          ]
+        },
+        {
+          "id": "AF-04",
+          "input": "I diagnose faults in cars with computerized test equipment and inspect components to decide what needs repairing. After replacing or adjusting parts, I test-drive the vehicle and check that the repaired systems meet performance specifications.",
+          "expectedLead": "49-3023",
+          "expectedRoles": {
+            "49-3023": "49-3023.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "49-3023",
+              "roleCode": "49-3023.00",
+              "excerpt": "Test drive vehicles and test components and systems, using equipment such as infrared engine analyzers, compression gauges, and computerized diagnostic devices.",
+              "excerptKind": "task",
+              "taskId": "23522",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            }
+          ],
+          "failures": []
+        }
+      ]
+    },
+    "freshFinal": {
+      "status": "FAIL",
+      "passed": 3,
+      "total": 4,
+      "engineSha256": "cac4122b95f3b11cdc31e6dacc2052adc2d7d3ba56b12d0624b1a20555f10b9a",
+      "fixturePath": "data/evaluation/matching-v2-fresh-occupational-audit.json",
+      "fixtureSha256": "bd6a4d5e047a5ac650289657b9e7f0d170f23dff54a9f7e0514db4e17e513305",
+      "backend": "Pinned local Node CPU encoder; browser WASM verified separately",
+      "rows": [
+        {
+          "id": "AF-01",
+          "input": "I examine pets to find the cause of illnesses and injuries, then prescribe medicines or perform surgery when needed. I also vaccinate animals and explain the treatment plan to their owners.",
+          "expectedLead": "29-1131",
+          "expectedRoles": {
+            "29-1131": "29-1131.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "31-9096",
+              "roleCode": "31-9096.00",
+              "excerpt": "Feed, water, and examine pets and other nonfarm animals for signs of illness, disease, or injury in laboratories and animal hospitals and clinics. Clean and disinfect cages and work areas, and sterilize laboratory and surgical equipment. May provide routine postoperative care, administer medication orally or topically, or prepare samples for laboratory examination under the supervision of veterinary or laboratory animal technologists or technicians, veterinarians, or scientists.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            },
+            {
+              "code": "29-1131",
+              "roleCode": "29-1131.00",
+              "excerpt": "Diagnose, treat, or research diseases and injuries of animals. Includes veterinarians who conduct research and development, inspect livestock, or care for pets and companion animals.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": [
+            "lead 31-9096, expected 29-1131"
+          ]
+        },
+        {
+          "id": "AF-02",
+          "input": "I cut, color, and shape clients' hair, choosing styles that suit their hair type and preferences. Between appointments I clean the workstation and sanitize scissors, combs, and other tools.",
+          "expectedLead": "39-5012",
+          "expectedRoles": {
+            "39-5012": "39-5012.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "39-5012",
+              "roleCode": "39-5012.00",
+              "excerpt": "Keep work stations clean and sanitize tools, such as scissors and combs.",
+              "excerptKind": "task",
+              "taskId": "635",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            },
+            {
+              "code": "39-5011",
+              "roleCode": "39-5011.00",
+              "excerpt": "Cut and trim hair according to clients' instructions or current hairstyles, using clippers, combs, hand-held blow driers, and scissors.",
+              "excerptKind": "task",
+              "taskId": "8050",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AF-03",
+          "input": "I convert spoken presentations and written documents between languages while preserving their meaning and tone. I resolve ambiguous expressions with the speakers or authors and keep confidential information private.",
+          "expectedLead": "27-3091",
+          "expectedRoles": {
+            "27-3091": "27-3091.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "27-3091",
+              "roleCode": "27-3091.00",
+              "excerpt": "Identify and resolve conflicts related to the meanings of words, concepts, practices, or behaviors.",
+              "excerptKind": "task",
+              "taskId": "9327",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            }
+          ],
+          "failures": []
+        },
+        {
+          "id": "AF-04",
+          "input": "I diagnose faults in cars with computerized test equipment and inspect components to decide what needs repairing. After replacing or adjusting parts, I test-drive the vehicle and check that the repaired systems meet performance specifications.",
+          "expectedLead": "49-3023",
+          "expectedRoles": {
+            "49-3023": "49-3023.00"
+          },
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "49-3023",
+              "roleCode": "49-3023.00",
+              "excerpt": "Test drive vehicles and test components and systems, using equipment such as infrared engine analyzers, compression gauges, and computerized diagnostic devices.",
+              "excerptKind": "task",
+              "taskId": "23522",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            }
+          ],
+          "failures": []
+        }
+      ]
+    },
+    "boundaryBaseline": {
+      "status": "FAIL",
+      "passed": 0,
+      "total": 2,
+      "engineSha256": "2a113e27268582c320ac95ec6bee3776b93a6bb67496aaad9db3b0d72d6c762a",
+      "fixturePath": "data/evaluation/matching-v2-boundary.json",
+      "fixtureSha256": "bbbd00e8677f96ab7b871f4a2e56a24ca08dad5243196a0e74d0c8514ed50c0c",
+      "backend": "Pinned local Node CPU encoder; browser WASM verified separately",
+      "rows": [
+        {
+          "id": "V-B11",
+          "input": "I install and repair electrical wiring, circuit breakers, outlets, switches, fixtures, and conduits in buildings.",
+          "expectedLead": "47-2111",
+          "expectedRoles": {
+            "47-2111": "47-2111.00"
+          },
+          "required": [
+            "47-2111"
+          ],
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "49-2093",
+              "roleCode": "49-2093.00",
+              "excerpt": "Splice wires with knives or cutting pliers, and solder connections to fixtures, outlets, and equipment.",
+              "excerptKind": "task",
+              "taskId": "11729",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            },
+            {
+              "code": "49-2095",
+              "roleCode": "49-2095.00",
+              "excerpt": "Inspect, test, repair, or maintain electrical equipment in generating stations, substations, and in-service relays.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": [
+            "lead 49-2093, expected 47-2111",
+            "missing 47-2111"
+          ]
+        },
+        {
+          "id": "V-B12",
+          "input": "I install and repair electrical wiring, circuit breakers, outlets, switches, fixtures, and conduits in residential buildings.",
+          "expectedLead": "47-2111",
+          "expectedRoles": {
+            "47-2111": "47-2111.00"
+          },
+          "required": [
+            "47-2111"
+          ],
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "49-2093",
+              "roleCode": "49-2093.00",
+              "excerpt": "Splice wires with knives or cutting pliers, and solder connections to fixtures, outlets, and equipment.",
+              "excerptKind": "task",
+              "taskId": "11729",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            }
+          ],
+          "failures": [
+            "lead 49-2093, expected 47-2111",
+            "missing 47-2111"
+          ]
+        }
+      ]
+    },
+    "boundaryFinal": {
+      "status": "FAIL",
+      "passed": 0,
+      "total": 2,
+      "engineSha256": "cac4122b95f3b11cdc31e6dacc2052adc2d7d3ba56b12d0624b1a20555f10b9a",
+      "fixturePath": "data/evaluation/matching-v2-boundary.json",
+      "fixtureSha256": "bbbd00e8677f96ab7b871f4a2e56a24ca08dad5243196a0e74d0c8514ed50c0c",
+      "backend": "Pinned local Node CPU encoder; browser WASM verified separately",
+      "rows": [
+        {
+          "id": "V-B11",
+          "input": "I install and repair electrical wiring, circuit breakers, outlets, switches, fixtures, and conduits in buildings.",
+          "expectedLead": "47-2111",
+          "expectedRoles": {
+            "47-2111": "47-2111.00"
+          },
+          "required": [
+            "47-2111"
+          ],
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "49-2093",
+              "roleCode": "49-2093.00",
+              "excerpt": "Splice wires with knives or cutting pliers, and solder connections to fixtures, outlets, and equipment.",
+              "excerptKind": "task",
+              "taskId": "11729",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            },
+            {
+              "code": "49-2095",
+              "roleCode": "49-2095.00",
+              "excerpt": "Inspect, test, repair, or maintain electrical equipment in generating stations, substations, and in-service relays.",
+              "excerptKind": "description",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+            }
+          ],
+          "failures": [
+            "lead 49-2093, expected 47-2111",
+            "missing 47-2111"
+          ]
+        },
+        {
+          "id": "V-B12",
+          "input": "I install and repair electrical wiring, circuit breakers, outlets, switches, fixtures, and conduits in residential buildings.",
+          "expectedLead": "47-2111",
+          "expectedRoles": {
+            "47-2111": "47-2111.00"
+          },
+          "required": [
+            "47-2111"
+          ],
+          "state": "candidates",
+          "candidates": [
+            {
+              "code": "49-2093",
+              "roleCode": "49-2093.00",
+              "excerpt": "Splice wires with knives or cutting pliers, and solder connections to fixtures, outlets, and equipment.",
+              "excerptKind": "task",
+              "taskId": "11729",
+              "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+            }
+          ],
+          "failures": [
+            "lead 49-2093, expected 47-2111",
+            "missing 47-2111"
+          ]
+        }
+      ]
+    }
+  }
+}

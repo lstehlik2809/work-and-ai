@@ -2,7 +2,7 @@
 
 The runtime snapshot uses the BLS **2025–2035** projections and relative AI exposure categories, published **August 27, 2026**, with the **O*NET® 31.0 Database**. All 831 BLS directory line items are present. The exposure workbook also supplies growth and openings, so there is no redundant projections merge. Counts and years are read from the sources and checked, rather than treated as a fixed product requirement.
 
-Source URLs, actual retrieval timestamps, release identifiers, licenses, raw SHA-256 digests, stored digests and sizes are in [data/source-manifest.json](data/source-manifest.json). Three original XLSX files and four losslessly gzipped CSV files are committed under `data/raw`. Only successfully parsed downloads are included. Normal site builds use committed outputs and do not fetch sources.
+Source URLs, actual retrieval timestamps, release identifiers, licenses, raw SHA-256 digests, stored digests and sizes are in [data/source-manifest.json](data/source-manifest.json). That original manifest covers three XLSX files and four losslessly gzipped CSV files under `data/raw`. The separate [data/skills-source-manifest.json](data/skills-source-manifest.json) covers three additional gzipped O*NET CSV sources, with their own source URLs, retrieval timestamps, hashes, sizes, release and license. Only successfully parsed downloads are included. Normal site builds use committed outputs and do not fetch sources.
 
 | Input | Official source | Purpose |
 | --- | --- | --- |
@@ -13,6 +13,11 @@ Source URLs, actual retrieval timestamps, release identifiers, licenses, raw SHA
 | Job titles CSV | [O*NET job titles](https://www.onetcenter.org/dl_files/database/db_31_0_csv/job_titles.csv) | Full job titles and nonempty short titles |
 | Reported titles CSV | [O*NET reported titles](https://www.onetcenter.org/dl_files/database/db_31_0_csv/sample_of_reported_titles.csv) | Reported job titles |
 | Task statements CSV | [O*NET tasks](https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv) | Traceable Core task selection |
+| Essential Skills CSV | [O*NET essential skills](https://www.onetcenter.org/dl_files/database/db_31_0_csv/essential_skills.csv) | Importance ratings for 10 skills |
+| Transferable Skills CSV | [O*NET transferable skills](https://www.onetcenter.org/dl_files/database/db_31_0_csv/transferable_skills.csv) | Importance ratings for 25 skills |
+| Content Model Reference CSV | [O*NET content model reference](https://www.onetcenter.org/dl_files/database/db_31_0_csv/content_model_reference.csv) | Skill definitions and group names |
+
+The separate `public/data/skills.json` artifact covers 35 skills and 910 of the 996 mapped O*NET roles. The 86 roles without ratings are excluded from skills matching; suppressed and not-relevant ratings remain unavailable. `npm run skills:prepare` reproduces this artifact and `npm run validate:skills` checks its source hashes and exact reproduction. See [skill-selection methodology](METHODOLOGY.md#skill-selection-matching-onet-310) for scales, exclusions, ranking and attribution.
 
 `public/data/occupations.json` implements `Snapshot` in `src/domain/types.ts`; `public/data/lexicon.json` implements `Lexicon`. The release is `bls-2025-2035_onet-31.0`. `sourceRow` is the one-based physical row in the `AI Exposure Categories` worksheet. `source` and `mappingSource` are original download URLs. Role descriptions are verbatim at O*NET role granularity; each selected task retains its published ID and update date. The lexicon contains all official BLS titles and all available mapped O*NET official, job, short and reported titles, deduplicated only on the complete title–BLS code–O*NET code tuple: 59,752 tuples. Ambiguous titles deliberately retain their relationships.
 

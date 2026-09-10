@@ -1,0 +1,7 @@
+{
+ "provenance": "AS-09, independently proposed precise-duty pair straddling the 11/12 informative-term boundary. Parent approved stable Electricians lead; optional alternatives must be source supported.",
+ "cases": [
+  {"id":"V-B11","input":"I install and repair electrical wiring, circuit breakers, outlets, switches, fixtures, and conduits in buildings.","expectedLead":"47-2111","required":["47-2111"],"expectedRoles":{"47-2111":"47-2111.00"},"excluded":["15-2051","19-3032","13-1161"]},
+  {"id":"V-B12","input":"I install and repair electrical wiring, circuit breakers, outlets, switches, fixtures, and conduits in residential buildings.","expectedLead":"47-2111","required":["47-2111"],"expectedRoles":{"47-2111":"47-2111.00"},"excluded":["15-2051","19-3032","13-1161"]}
+ ]
+}

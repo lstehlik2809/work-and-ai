@@ -1,0 +1,50 @@
+import assert from 'node:assert/strict';
+import {mkdir,writeFile} from 'node:fs/promises';
+import {resolve} from 'node:path';
+import {chromium} from 'playwright';
+const base=process.env.TEST_URL||'http://127.0.0.1:4173/work-and-ai/';
+const out=resolve(process.env.OUTPUT_DIR||'verification/local/skills');
+const browser=await chromium.launch({headless:true});
+const page=await browser.newPage({viewport:{width:1280,height:900}});
+const report={base,date:new Date().toISOString(),checks:[],errors:[]};
+const requests=[];page.on('request',r=>requests.push(r.url()));page.on('pageerror',e=>report.errors.push(String(e)));
+const trigger=()=>page.getByRole('button',{name:'Find by skills',exact:true});
+const cards=()=>page.locator('.candidate');
+const codes=()=>cards().locator('.code').allTextContents();
+const select=async name=>{await page.getByRole('searchbox',{name:'Search skills',exact:true}).fill(name);await page.getByRole('checkbox',{name,exact:true}).check();};
+const tick=()=>page.waitForFunction(()=>document.querySelectorAll('.candidate').length>0);
+let releaseImport;
+try{
+ await page.goto(base);await page.getByRole('searchbox',{name:'Job title',exact:true}).fill('electrical');await tick();
+ assert(!requests.some(url=>/skills|\/models\/|\/semantic\/|\.wasm/.test(url)));
+ const order=await page.evaluate(()=>[document.querySelector('#job-title'),[...document.querySelectorAll('button')].find(e=>e.textContent==='Find by skills'),[...document.querySelectorAll('button')].find(e=>/describe your work/i.test(e.textContent))].map(e=>e.getBoundingClientRect().y));assert(order[0]<order[1]&&order[1]<order[2]);
+ await trigger().click();await page.getByRole('searchbox',{name:'Search skills',exact:true}).waitFor();assert.equal(await cards().count(),0);
+ await select('Equipment Maintenance');await select('Repairing');await tick();
+ assert.match(await cards().first().innerText(),/Aircraft Mechanics/);assert.match(await cards().first().innerText(),/Equipment Maintenance \(4.88\/5\)/);assert.match(await cards().first().innerText(),/Repairing \(4.88\/5\)/);
+ const five=await codes();assert.equal(five.length,5);const limit=page.getByRole('combobox',{name:'Show top'});await limit.selectOption('1');assert.deepEqual(await codes(),five.slice(0,1));await limit.selectOption('10');assert.equal(await cards().count(),10);assert.deepEqual((await codes()).slice(0,5),five);
+ await cards().first().click();assert.match(await page.locator('#occupation-heading').innerText(),/Aircraft mechanics/i);await page.getByRole('button',{name:'Add to comparison',exact:true}).click();
+ await page.getByRole('button',{name:'Close skills panel'}).click();assert.equal(await cards().count(),0);await trigger().click();await tick();assert.equal(await cards().count(),10);
+ await select('Programming');assert.match(await page.locator('#occupation-heading').innerText(),/Aircraft mechanics/i);assert.equal(await page.locator('.comparison thead th').count(),2);
+ report.checks.push('Title → skills → description order; lazy reference; mechanical source ratings; top 1/5/10 stable prefix; confirm, compare and reopen preserve state');
+ const [download]=await Promise.all([page.waitForEvent('download'),page.getByRole('button',{name:'Download CSV',exact:true}).click()]);let csv='';for await(const chunk of await download.createReadStream())csv+=chunk.toString();assert(!csv.includes('Programming'));await page.getByRole('button',{name:'Share public link',exact:true}).click();assert(!/Programming|Repairing|2\.B/.test(page.url()));
+ await page.getByRole('button',{name:'Clear skills',exact:true}).click();await page.waitForFunction(()=>document.querySelectorAll('.candidate').length===0);assert.equal(await cards().count(),0);assert.equal(await page.getByRole('checkbox',{checked:true}).count(),0);assert.match(await page.locator('#occupation-heading').innerText(),/Aircraft mechanics/i);
+ await page.getByRole('searchbox',{name:'Search skills',exact:true}).fill('qzxv');assert.match(await page.locator('.skill-options').innerText(),/No skills match/);await page.getByRole('searchbox',{name:'Search skills',exact:true}).fill('');
+ await page.setViewportSize({width:390,height:844});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert((await page.locator('.skill-options').boundingBox()).height<=282);await page.locator('.skills-panel').scrollIntoViewIfNeeded();await mkdir(out,{recursive:true});await page.screenshot({path:resolve(out,'mobile.png')});
+ assert(!requests.some(url=>/\/models\/|\/runtime\/|\/semantic\/|\/assets\/(?:worker|client)-|\.wasm/.test(url)));
+ report.checks.push('Skill-only flow downloads no semantic assets; input privacy in share/CSV; clear and filter-empty state; 390px bounded skill list without horizontal overflow');
+ await page.clock.install();await page.clock.pauseAt(new Date());await page.getByRole('searchbox',{name:'Job title',exact:true}).fill('nurse');await trigger().click();await select('Repairing');await page.clock.runFor(250);await tick();assert.match(await cards().first().innerText(),/O\*NET importance/);assert.doesNotMatch(await cards().first().innerText(),/^Registered Nurses/);await page.clock.resume();
+ await page.getByRole('button',{name:/describe your work/i}).click();await page.getByRole('textbox',{name:'A few specific responsibilities, in English'}).fill('I maintain databases and manage backups.');
+ let seenImport;const seen=new Promise(resolve=>seenImport=resolve),release=new Promise(resolve=>releaseImport=resolve);await page.route(/\/assets\/client-[^/]+\.js/,async route=>{seenImport();await release;await route.continue();});
+ await page.getByRole('button',{name:'Search by meaning',exact:true}).click();await Promise.race([seen,new Promise((_,reject)=>setTimeout(()=>reject(Error('import missing')),10000))]);await trigger().click();releaseImport();await page.waitForLoadState('networkidle');await tick();assert.match(await cards().first().innerText(),/O\*NET importance/);assert(!requests.some(url=>/\/models\/|\/runtime\/|\/assets\/worker-/.test(url)));
+ await page.getByRole('button',{name:'Clear results',exact:true}).click();assert.equal(await cards().count(),0);assert.equal(await page.locator('#occupation-heading').count(),0);assert.equal(await page.locator('.comparison thead th').count(),2);await trigger().click();assert.equal(await page.getByRole('checkbox',{checked:true}).count(),0);
+ report.checks.push('Delayed title and semantic import cannot replace skill results; global reset clears skills and confirmation while retaining comparison');
+ // A fresh page tests failure and retry without borrowing the successful cached reference.
+ let attempts=0;await page.route('**/data/skills.json',route=>++attempts===1?route.fulfill({status:503,body:'Unavailable'}):route.continue());await page.goto(base);await trigger().click();await page.getByRole('button',{name:'Retry skills reference',exact:true}).waitFor();assert.equal(await cards().count(),0);
+ await page.getByRole('searchbox',{name:'Job title',exact:true}).fill('registered nurse');await tick();assert.match(await cards().first().innerText(),/Registered Nurses/);await trigger().click();await page.getByRole('searchbox',{name:'Search skills',exact:true}).waitFor();await select('Programming');await tick();assert.equal(attempts,2);
+ // Explicit retry button path as well as reopen retry.
+ await page.unroute('**/data/skills.json');attempts=0;await page.route('**/data/skills.json',route=>++attempts===1?route.fulfill({status:503,body:'Unavailable'}):route.continue());await page.goto(base);await trigger().click();await page.getByRole('button',{name:'Retry skills reference',exact:true}).click();await select('Programming');await tick();assert.equal(attempts,2);
+ report.checks.push('503 reference failure leaves title usable; reopening and explicit Retry both recover');
+ await page.unroute('**/data/skills.json');let sourceSeen,releaseSource;const sourceRequested=new Promise(resolve=>sourceSeen=resolve),sourceReleased=new Promise(resolve=>releaseSource=resolve);await page.route('**/data/skills.json',async route=>{sourceSeen();await sourceReleased;await route.continue();});await page.goto(base);await trigger().click();await sourceRequested;await page.getByRole('button',{name:'Close skills panel'}).click();releaseSource();await page.waitForLoadState('networkidle');assert.equal(await page.locator('#skills-panel').count(),0);assert.equal(await cards().count(),0);await trigger().click();await select('Programming');await tick();assert.match(await cards().first().innerText(),/Computer Programmers/);
+ report.checks.push('Closing during delayed reference load stays closed without late results; reopening uses loaded reference successfully');
+ assert.deepEqual(report.errors,[]);report.status='PASS';console.log(JSON.stringify(report));
+}finally{releaseImport?.();await mkdir(out,{recursive:true});await writeFile(resolve(out,'report.json'),JSON.stringify(report,null,2)+'\n');await browser.close();}

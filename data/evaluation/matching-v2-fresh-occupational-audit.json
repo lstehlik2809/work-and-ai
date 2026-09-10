@@ -1,0 +1,33 @@
+{
+  "provenance": "Four independent source-grounded occupational audit cases prepared before final correction freeze. Provisional authored labels, not expert ground truth. Compare baseline and final outputs without tuning against these cases; preserve first-run results and disclose misses. Apply the parent-approved blocking threshold of two or more paired regressions. Existing acceptance requirements remain unchanged.",
+  "cases": [
+    {
+      "id": "AF-01",
+      "input": "I examine pets to find the cause of illnesses and injuries, then prescribe medicines or perform surgery when needed. I also vaccinate animals and explain the treatment plan to their owners.",
+      "expectedLead": "29-1131",
+      "expectedRoles": {"29-1131": "29-1131.00"},
+      "rationale": "Veterinarians: committed role description covers diagnosing and treating animal diseases and injuries. Tasks 4106, 4107 and 4108 cover examination, prescribed medication or surgery, and vaccination."
+    },
+    {
+      "id": "AF-02",
+      "input": "I cut, color, and shape clients' hair, choosing styles that suit their hair type and preferences. Between appointments I clean the workstation and sanitize scissors, combs, and other tools.",
+      "expectedLead": "39-5012",
+      "expectedRoles": {"39-5012": "39-5012.00"},
+      "rationale": "Hairdressers, Hairstylists, and Cosmetologists: committed description covers cutting, coloring and styling hair. Tasks 635, 636 and 637 cover sanitation, shaping hair according to client characteristics, and recommending styles."
+    },
+    {
+      "id": "AF-03",
+      "input": "I convert spoken presentations and written documents between languages while preserving their meaning and tone. I resolve ambiguous expressions with the speakers or authors and keep confidential information private.",
+      "expectedLead": "27-3091",
+      "expectedRoles": {"27-3091": "27-3091.00"},
+      "rationale": "Interpreters and Translators: committed description covers spoken interpretation and written translation. Tasks 9326, 9327 and 9328 cover confidentiality, resolving meaning conflicts, and preserving message content, context and style."
+    },
+    {
+      "id": "AF-04",
+      "input": "I diagnose faults in cars with computerized test equipment and inspect components to decide what needs repairing. After replacing or adjusting parts, I test-drive the vehicle and check that the repaired systems meet performance specifications.",
+      "expectedLead": "49-3023",
+      "expectedRoles": {"49-3023": "49-3023.00"},
+      "rationale": "Automotive Service Technicians and Mechanics: committed description covers diagnosing, adjusting and repairing vehicles. Tasks 23522, 23523 and 23524 cover computerized diagnosis, inspection, test driving and checking repaired systems against performance specifications."
+    }
+  ]
+}

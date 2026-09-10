@@ -18,7 +18,11 @@
     "data:prepare": "python scripts/data/prepare.py",
     "semantic:build": "node scripts/semantic/build.mjs",
     "evaluate": "tsx scripts/evaluate.ts",
-    "browser:check": "node scripts/browser-check.mjs"
+    "browser:check": "node scripts/browser-check.mjs",
+    "skills:prepare": "node scripts/data/skills.mjs",
+    "skills:fetch": "node scripts/data/skills.mjs --fetch",
+    "validate:skills": "node scripts/data/skills.mjs --check",
+    "browser:skills": "node scripts/skills-browser-check.mjs"
   },
   "dependencies": {
     "@huggingface/transformers": "4.2.0",

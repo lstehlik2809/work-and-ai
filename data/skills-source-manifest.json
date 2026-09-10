@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "release": "O*NET 31.0",
+  "license": "CC BY 4.0",
+  "files": [
+    {
+      "id": "essential_skills",
+      "path": "data/raw/skills-essential_skills.csv.gz",
+      "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/essential_skills.csv",
+      "sha256": "68c4d31d8c55077238395dca40cc4e6d32e6a608b5474bb8264b1f98ae415bd7",
+      "storedSha256": "1a90f9e4bb1a944dd0d6a7c24e2cbfed047d34995f619f8702f4e9d8e2504bfa",
+      "bytes": 2328135,
+      "storedBytes": 125548,
+      "retrieved": "2026-09-10T12:22:56.746Z"
+    },
+    {
+      "id": "transferable_skills",
+      "path": "data/raw/skills-transferable_skills.csv.gz",
+      "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/transferable_skills.csv",
+      "sha256": "f17d0419e818a3bf2f55076510c76c4aef01cc8f5aee2670d2f44f6f44ac60f7",
+      "storedSha256": "5d00d154a450d3a167a2d8d14a3e9f13f64cb7070823fd6cee55de7c2a3ca69e",
+      "bytes": 6081245,
+      "storedBytes": 316636,
+      "retrieved": "2026-09-10T12:23:25.741Z"
+    },
+    {
+      "id": "content_model_reference",
+      "path": "data/raw/skills-content_model_reference.csv.gz",
+      "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/content_model_reference.csv",
+      "sha256": "370033744006dbd5df048431d42a402f6741a00a229b6d0f4e4f4249b6399c04",
+      "storedSha256": "ecb3c038f889edfc3150cbd16f872d84375c5d67d5aaf6d5cfb52ab0fa91f76d",
+      "bytes": 235856,
+      "storedBytes": 60397,
+      "retrieved": "2026-09-10T12:23:27.479Z"
+    }
+  ]
+}

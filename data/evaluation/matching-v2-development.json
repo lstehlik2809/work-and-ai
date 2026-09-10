@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "provenance": "AS-M1 r1: independently authored, source-grounded development acceptance; provisional labels, not SME ground truth. U01 is the user-confirmed motivating example. Four fresh cases are reserved separately until implementation freeze.",
+  "cases": [
+    {
+      "id": "U01",
+      "input": "I use data science, statistics, psychometrics, and behavioral science to understand people at work and improve organizational decisions. I design and analyze employee research, build predictive and diagnostic models, evaluate HR programs and interventions, and translate complex evidence into practical recommendations for leaders and People teams.",
+      "expectedLead": "15-2051", "required": ["15-2051", "19-3032"],
+      "allowed": ["15-2051", "19-3032", "15-2041", "19-3022"],
+      "expectedRoles": {"15-2051": "15-2051.00", "19-3032": "19-3032.00"},
+      "rationale": "User-confirmed priority: data science with an organizational psychology component. Source DS task 21824 includes attrition models."
+    },
+    {
+      "id": "V01",
+      "input": "I use statistical programming and machine learning to analyze employee data, predict staff attrition, and report findings. I also develop psychological assessments for employee selection and evaluate their validity.",
+      "expectedLead": "15-2051", "required": ["15-2051", "19-3032"],
+      "allowed": ["15-2051", "19-3032", "15-2041"],
+      "expectedRoles": {"15-2051": "15-2051.00", "19-3032": "19-3032.00"}
+    },
+    {
+      "id": "V02",
+      "input": "I use statistical programming and machine learning to analyze employee data, predict staff attrition, and report findings. I also develop psychological assessments for employee selection and evaluate their validity. My projects include cleaning personnel records, combining numerical responses with written employee feedback, comparing research findings across departments, preparing visual explanations, and discussing the implications with human resources colleagues.",
+      "expectedLead": "15-2051", "required": ["15-2051", "19-3032"],
+      "allowed": ["15-2051", "19-3032", "15-2041"],
+      "expectedRoles": {"15-2051": "15-2051.00", "19-3032": "19-3032.00"}
+    },
+    {
+      "id": "V03",
+      "input": "I write programs to clean large structured and unstructured datasets, train machine learning models, select predictive features, and visualize the results for product teams.",
+      "expectedLead": "15-2051", "required": ["15-2051"],
+      "allowed": ["15-2051", "15-2041"], "expectedRoles": {"15-2051": "15-2051.00"}
+    },
+    {
+      "id": "V04",
+      "input": "I apply psychological research to employee selection and development. I analyze job requirements, design selection assessments, and evaluate whether training improves worker performance and job satisfaction.",
+      "expectedLead": "19-3032", "required": ["19-3032"],
+      "allowed": ["19-3032", "13-1151", "13-1071"], "expectedRoles": {"19-3032": "19-3032.00"}
+    },
+    {
+      "id": "V05",
+      "input": "I analyze business requirements for computer systems, review software capabilities, plan integration between applications, and test system changes with users to resolve processing problems.",
+      "expectedLead": "15-1211", "required": ["15-1211"],
+      "allowed": ["15-1211", "15-1252", "15-1253"], "expectedRoles": {"15-1211": "15-1211.00"}
+    },
+    {
+      "id": "V06",
+      "input": "I analyze search queries and website traffic, improve content for search engine visibility, and optimize online marketing campaigns to increase visitor engagement.",
+      "expectedLead": "13-1161", "required": ["13-1161"], "allowed": ["13-1161"],
+      "expectedRoles": {"13-1161": "13-1161.01"}
+    },
+    {
+      "id": "V07",
+      "input": "I design questionnaires, test question wording, choose survey samples, and analyze survey responses with statistical software. I prepare tables and explain the results and limitations to clients.",
+      "leadAnyOf": ["19-3022", "15-2041"], "requiredAnyOf": ["19-3022", "15-2041"],
+      "allowed": ["19-3022", "15-2041", "15-2051"],
+      "excludedRoles": ["13-1161.01", "15-2041.01", "15-2051.02"]
+    },
+    {
+      "id": "V08",
+      "input": "I work with people, attend meetings, answer emails, and help solve problems.",
+      "expectedState": "clarify", "allowed": []
+    },
+    {
+      "id": "E01",
+      "input": "I install and repair electrical wiring and circuit breakers in buildings.",
+      "expectedLead": "47-2111", "allowed": ["47-2111"]
+    },
+    {"id": "N01", "input": "qzxv blorpt 739", "allowed": []},
+    {"id": "N02", "input": "What is the weather tomorrow?", "allowed": []}
+  ]
+}
