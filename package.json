@@ -27,7 +27,8 @@
     "ai-context:prepare": "node scripts/data/ai-context.mjs",
     "ai-context:fetch": "node scripts/data/ai-context.mjs --fetch",
     "validate:ai-context": "node scripts/data/ai-context.mjs --check",
-    "browser:ai-context": "node scripts/ai-context-browser-check.mjs"
+    "browser:ai-context": "node scripts/ai-context-browser-check.mjs",
+    "browser:map": "node scripts/occupation-map-browser-check.mjs"
   },
   "dependencies": {
     "@huggingface/transformers": "4.2.0",

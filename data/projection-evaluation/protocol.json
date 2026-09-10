@@ -1,0 +1,20 @@
+{
+  "id": "P-projection-v1-AS-PROJECTION-rev1",
+  "writtenBeforeRuns": true,
+  "profileSha256": "c88aacb2509cfe449f906e24446ede8b860c1ce0d08a6a715b3cb260835c5001",
+  "population": "All 772 occupations, equally weighted, all 35 binary important-skill indicators; no exposure or outlook inputs",
+  "n_neighbors": [15, 30, 60],
+  "min_dist": [0.1, 0.3, 0.5],
+  "seeds": [11, 29, 47],
+  "fixed": {"n_components": 2, "metric": "precomputed", "n_epochs": 500, "n_jobs": 1, "init": "spectral", "spread": 1.0, "learning_rate": 1.0, "local_connectivity": 1.0, "set_op_mix_ratio": 1.0, "repulsion_strength": 1.0, "negative_sample_rate": 5, "transform_seed": 42, "angular_rp_forest": false, "low_memory": true, "densmap": false, "unique": false},
+  "sourceMetric": "Exact binary Jaccard distance, two empty sets distance 0. Exclude self before selecting neighbors.",
+  "tieTolerance": 1e-12,
+  "recall": "For kth source distance t, L={d<t-tolerance}, T={abs(d-t)<=tolerance}, q=k-|L|. E is Euclidean displayed top-k, ties canonical code. R=(|E intersect L|+min(q,|E intersect T|))/k. Mean all rows at k=5,10,20; S is mean of these three recalls.",
+  "display": "UMAP isotropic scaling with bounding-box midpoint at (0.5,0.5), longest axis range 0.8; round to 8 decimals BEFORE evaluating. No forced separation. Baseline is existing PCA display including offsets, at its actual precision; raw PCA is supplemental.",
+  "qualification": "All three seeds successful; mean S >= PCA S + 0.02; mean recall >= PCA at each k; every seed S > PCA S.",
+  "selection": "Highest mean S among qualifying configurations; exact ties higher minimum seed S then prescribed n_neighbors/min_dist order. Ship seed 11. If none qualify, default PCA and ship highest-ranked fully successful UMAP configuration for optional comparison. No extra tuning.",
+  "stability": "Map displayed top-k neighbors to exact binary-profile identity. Pair overlap = sum_g min(countA(g),countB(g))/k, averaged equally across rows. Report every within-configuration seed pair and adjacent grid settings at seed 11, plus summaries.",
+  "diagnostics": "Report total/unique profiles, singleton-profile versus repeated-profile population recalls, empty/missing counts, source canonical top-k symmetrized graph components. These do not change selection.",
+  "reproduction": "One selected seed-11 confirmation rerun, outside selection; save and compare rounded coordinates exactly.",
+  "limits": "In-sample descriptive metric, not external occupational ground truth. Duplicate profiles may separate algorithmically. Global axes and distances are not interpretable. Do not select using appearance. No extra grid phase."
+}

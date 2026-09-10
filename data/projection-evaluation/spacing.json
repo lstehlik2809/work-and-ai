@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "plan": "P-spacing3",
+  "profileSha256": "c88aacb2509cfe449f906e24446ede8b860c1ce0d08a6a715b3cb260835c5001",
+  "artifactSha256": "4a656982d34f4ef6a278f4d72052629837aa7c043330fc5a061d5dcec8a6fc60",
+  "algorithm": {
+    "name": "deterministic bounded collision relaxation",
+    "normalizedUnitSvg": 600,
+    "iterations": 120,
+    "anchorStrength": 0.02,
+    "ordering": "ascending occupation code",
+    "coincidentDirection": "FNV-1a hash of canonical code pair",
+    "coordinateBounds": [
+      0,
+      1
+    ],
+    "displayOnly": true,
+    "exposureIndependent": true
+  },
+  "selectionCriteria": {
+    "minimumOverlapReduction": 0.4,
+    "minimumRecallScore": 0.4,
+    "preference": "smallest qualifying spacing and displacement cap"
+  },
+  "selected": {
+    "targetSvg": 10,
+    "maxShiftSvg": 12
+  },
+  "evaluation": {
+    "implementation": "scripts/projections/metrics.py",
+    "input": "data/projection-evaluation/input.json",
+    "overlap": "Intersecting circle pairs at zoom 1, using exposure radii 3/4.5/6/8 SVG units and 4.5 for unavailable.",
+    "recall": "Tie-aware skill-neighborhood recall, averaged over k=5,10,20.",
+    "timing": "Single Node.js v24.18.0 evaluation of each candidate; elapsedMs is indicative, not a performance gate."
+  },
+  "candidates": [
+    {
+      "target": 10,
+      "cap": 12,
+      "rawOverlaps": 3978,
+      "displayOverlaps": 1634,
+      "reduction": 0.5892408245349422,
+      "meanShift": 9.515345509171157,
+      "medianShift": 10.945341619584504,
+      "p95Shift": 12.000000000000014,
+      "maxShift": 12.000000000000039,
+      "elapsedMs": 306.0103999999999,
+      "evaluation": {
+        "recall": {
+          "5": 0.366839378238342,
+          "10": 0.4384715025906736,
+          "20": 0.4915155440414508
+        },
+        "score": 0.4322754749568221,
+        "groups": {
+          "singletonProfiles": {
+            "5": 0.32495164410058025,
+            "10": 0.39226305609284334,
+            "20": 0.4470986460348162
+          },
+          "repeatedProfiles": {
+            "5": 0.45176470588235296,
+            "10": 0.532156862745098,
+            "20": 0.5815686274509805
+          }
+        }
+      }
+    },
+    {
+      "target": 12,
+      "cap": 16,
+      "rawOverlaps": 3978,
+      "displayOverlaps": 1324,
+      "reduction": 0.6671694318753143,
+      "meanShift": 12.721027684025998,
+      "medianShift": 14.36987964602714,
+      "p95Shift": 16.000000000000014,
+      "maxShift": 16.00000000000004,
+      "elapsedMs": 296.2979,
+      "evaluation": {
+        "recall": {
+          "5": 0.3227979274611399,
+          "10": 0.4009067357512953,
+          "20": 0.4647020725388601
+        },
+        "score": 0.3961355785837651,
+        "groups": {
+          "singletonProfiles": {
+            "5": 0.28085106382978725,
+            "10": 0.35705996131528045,
+            "20": 0.4179883945841392
+          },
+          "repeatedProfiles": {
+            "5": 0.40784313725490196,
+            "10": 0.48980392156862745,
+            "20": 0.5594117647058824
+          }
+        }
+      }
+    },
+    {
+      "target": 14,
+      "cap": 20,
+      "rawOverlaps": 3978,
+      "displayOverlaps": 1109,
+      "reduction": 0.7212166918049271,
+      "meanShift": 15.9485516523155,
+      "medianShift": 17.702331707697827,
+      "p95Shift": 20.000000000000018,
+      "maxShift": 20.000000000000043,
+      "elapsedMs": 293.42729999999983,
+      "evaluation": {
+        "recall": {
+          "5": 0.27849740932642486,
+          "10": 0.35233160621761656,
+          "20": 0.4385362694300518
+        },
+        "score": 0.35645509499136446,
+        "groups": {
+          "singletonProfiles": {
+            "5": 0.24487427466150874,
+            "10": 0.3195357833655706,
+            "20": 0.3962282398452612
+          },
+          "repeatedProfiles": {
+            "5": 0.3466666666666667,
+            "10": 0.41882352941176476,
+            "20": 0.5243137254901961
+          }
+        }
+      }
+    }
+  ]
+}
