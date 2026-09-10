@@ -31,7 +31,7 @@ Normal builds use committed public data, vectors, and pinned model/runtime files
 
 Title search is available after the lexical data loads. “Describe your work” is optional. The model, runtime and index load only after “Search by meaning.” A dedicated worker uses single-thread WebAssembly without WebGPU or cross-origin isolation. Text, query vectors and ranking stay in the browser. Links contain only public BLS codes and a release identifier; CSV contains only published records and definitions. GitHub may retain static-file access logs.
 
-The pinned MiniLM q8 model alone is 22,972,370 bytes; the WASM runtime is 25,749,873 bytes. See the separate size and timing measurements in [VERIFICATION.md](VERIFICATION.md). Browser CacheStorage is best effort and keyed by revision-specific local paths. Eviction or private browsing can require another download. Missing storage falls back to uncached loading. Loading errors, a two-minute timeout, incompatible metadata, cancellation and superseded queries leave ordinary search and confirmed comparisons available. Inputs exceeding 256 tokenizer tokens are rejected explicitly; the UI also limits text to 1,000 characters.
+The pinned MiniLM q8 model alone is 22,972,370 bytes; the WASM runtime is 25,749,873 bytes. See the separate size and timing measurements in [VERIFICATION.md](VERIFICATION.md). The supported Transformers fetch hook bypasses the HTTP cache to avoid observed Chromium cache-writer races during overlapping discovery/loading; supported revision-keyed CacheStorage remains active. Browser CacheStorage is best effort and keyed by revision-specific local paths. Eviction or private browsing can require another download. Missing storage falls back to uncached loading. Loading errors, a two-minute timeout, incompatible metadata, cancellation and superseded queries leave ordinary search and confirmed comparisons available. Inputs exceeding 256 tokenizer tokens are rejected explicitly; the UI also limits text to 1,000 characters.
 
 ## Deliberate data and vector updates
 
@@ -66,6 +66,12 @@ The optional `--check` recomputes the corpus without replacing committed outputs
 Build-time CPU inference uses the same quantized ONNX weights, tokenizer, 256-token boundary, mean pooling, normalization and 384 dimensions as the browser. It writes one normalized centroid per canonical occupation and a first-passage ablation index. Review omitted fragments and coverage in `public/semantic/metadata.json`, inspect mapping exceptions, run all checks and browser QA, and obtain review before publishing.
 
 Matching fixtures, frozen hashes, development runs and the single held-out run are in `data/evaluation`. Labels are provisional authored examples, not independent expert ground truth. `npm run evaluate -- --split=dev` records a development run. The existing held-out file is deliberately write-once; do not delete it to tune repeatedly against the same labels. A future ranking change needs a new untouched evaluation set. The provenance-only correction is documented separately from frozen ranking results.
+
+## Browser verification
+
+Playwright 1.62.1 is a development dependency. With the production preview running, run `npx playwright install chromium` once and `npm run browser:check`. Set `TEST_URL` to the deployed app root (including its trailing slash) to repeat the same suite on Pages. `OUTPUT_DIR` defaults to ignored `verification/local`; inspected release artifacts live in `verification/release`. The script saves real CSV/PDF downloads, checks privacy and user flows, tests 390-pixel layout, and runs cold/revisit/failure diagnostics. A narrow viewport uses desktop hardware; it is not a physical-phone benchmark. PDF pages also require visual inspection.
+
+The stable `sharp` 0.35.4 override removes inherited image-library high-severity advisories; `adm-zip` 0.6.0 removes its allocation advisory. The latter still has an upstream moderate symlink-extraction advisory, confined here to the offline native-runtime installation dependency. The browser bundle contains neither package and accepts no uploaded archives or images. Do not apply an automatic force downgrade to the pinned encoder to hide audit output.
 
 ## Deployment
 

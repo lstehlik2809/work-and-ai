@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "files": {
+    "comparison.pdf": {
+      "pages": 1,
+      "sourcesAndPeriod": true,
+      "textLength": 1714
+    },
+    "single-occupation.pdf": {
+      "pages": 1,
+      "sourcesAndPeriod": true,
+      "textLength": 1723
+    }
+  }
+}

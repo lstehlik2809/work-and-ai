@@ -1,0 +1,954 @@
+{
+  "date": "2026-09-10T09:45:37.194Z",
+  "base": "http://127.0.0.1:4173/work-and-ai/",
+  "checks": [
+    "Initial ordinary app loads no semantic assets",
+    "Keyboard confirmation, specialist scope, compare limit, remove and re-add",
+    "Three-role public code/release share survives refresh",
+    "Actual browser CSV download saved with all three canonical occupations",
+    "Real Chromium PDF generated using production print stylesheet",
+    "Unavailable historical release disclosed",
+    "Rejected exact title releases constraint; meaning search preserves confirmed selection",
+    "Synthetic private sentinel absent from URLs, request bodies, logs and saved CSV; same-origin GETs only",
+    "390px real viewport, no page overflow, scrollable labelled table and usable removal",
+    "Fresh-context cold/warm worker, all faults, race and token boundaries",
+    "Actual repeat visit uses pinned model/runtime cache",
+    "Blocked model request preserves selection/comparison and ordinary search"
+  ],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/assets/app-C3tKA6vN.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/assets/styles-DEWxfV4U.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/assets/styles-XN7zUhvg.css",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/data/occupations.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/data/lexicon.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/assets/app-C3tKA6vN.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/assets/styles-DEWxfV4U.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/assets/styles-XN7zUhvg.css",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/data/occupations.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/data/lexicon.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/assets/app-C3tKA6vN.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/assets/styles-DEWxfV4U.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/assets/styles-XN7zUhvg.css",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/data/occupations.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/data/lexicon.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/assets/app-C3tKA6vN.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/assets/styles-DEWxfV4U.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/assets/styles-XN7zUhvg.css",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/data/occupations.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/data/lexicon.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/assets/client-CoT4dsfK.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/semantic/metadata.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/semantic/vectors.bin",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/data/occupations.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/config.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer_config.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/onnx/model_quantized.onnx",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer_config.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/onnx/model_quantized.onnx",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/onnx/model_quantized.onnx",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.wasm",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.mjs",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "blob:http://127.0.0.1:4173/faa2ea3a-63b5-423c-8b99-75bbc1016a6a",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/assets/app-C3tKA6vN.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/assets/styles-DEWxfV4U.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/assets/styles-XN7zUhvg.css",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/data/occupations.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "http://127.0.0.1:4173/work-and-ai/data/lexicon.json",
+      "method": "GET",
+      "body": null
+    }
+  ],
+  "errors": [],
+  "browser": "151.0.7922.34",
+  "diagnostics": {
+    "date": "2026-09-10T09:45:44.773Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+    "hardwareConcurrency": 12,
+    "viewport": [
+      1280,
+      900
+    ],
+    "initialRequests": [
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/diagnostics-B2YzZEwy.js",
+        "bytes": 6797,
+        "encoded": 6497,
+        "durationMs": 10.400000000372529
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/styles-DEWxfV4U.js",
+        "bytes": 264070,
+        "encoded": 263770,
+        "durationMs": 40
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/styles-XN7zUhvg.css",
+        "bytes": 8573,
+        "encoded": 8273,
+        "durationMs": 14
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/client-CoT4dsfK.js",
+        "bytes": 1792,
+        "encoded": 1492,
+        "durationMs": 13.800000000745058
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/data/occupations.json",
+        "bytes": 1339149,
+        "encoded": 1338849,
+        "durationMs": 34.60000000055879
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/data/lexicon.json",
+        "bytes": 4493243,
+        "encoded": 4492943,
+        "durationMs": 82.1000000005588
+      }
+    ],
+    "cacheBefore": [],
+    "real": {
+      "first": {
+        "initializationMs": 2148,
+        "queryMs": 111.09999999962747,
+        "totalMs": 2261.4000000003725
+      },
+      "warm": {
+        "initializationMs": 0,
+        "queryMs": 57.90000000037253,
+        "totalMs": 58.299999999813735
+      },
+      "workerRequests": [
+        {
+          "url": "http://127.0.0.1:4173/work-and-ai/semantic/metadata.json",
+          "transfer": 767356,
+          "encoded": 767056
+        },
+        {
+          "url": "http://127.0.0.1:4173/work-and-ai/semantic/vectors.bin",
+          "transfer": 1276716,
+          "encoded": 1276416
+        },
+        {
+          "url": "http://127.0.0.1:4173/work-and-ai/data/occupations.json",
+          "transfer": 300,
+          "encoded": 1338849
+        },
+        {
+          "url": "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/config.json",
+          "transfer": 950,
+          "encoded": 650
+        },
+        {
+          "url": "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer_config.json",
+          "transfer": 666,
+          "encoded": 366
+        },
+        {
+          "url": "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer.json",
+          "transfer": 711961,
+          "encoded": 711661
+        },
+        {
+          "url": "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer.json",
+          "transfer": 711961,
+          "encoded": 711661
+        },
+        {
+          "url": "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer_config.json",
+          "transfer": 666,
+          "encoded": 366
+        },
+        {
+          "url": "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/onnx/model_quantized.onnx",
+          "transfer": 22972670,
+          "encoded": 22972370
+        },
+        {
+          "url": "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer.json",
+          "transfer": 711961,
+          "encoded": 711661
+        },
+        {
+          "url": "http://127.0.0.1:4173/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.wasm",
+          "transfer": 25750173,
+          "encoded": 25749873
+        },
+        {
+          "url": "http://127.0.0.1:4173/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.mjs",
+          "transfer": 51707,
+          "encoded": 51407
+        }
+      ],
+      "firstTop": [
+        {
+          "code": "49-9051",
+          "score": 0.47765775566063434,
+          "excerpt": "Electrical power-line installers and repairers. Electrical Power-Line Installers and Repairers. Install or repair cables or wires used in electrical power or distribution systems. May erect poles and light or heavy duty transmission towers. Adhere to safety practices and procedures, such as checking equipment regularly and erecting barriers around work areas. Open switches or attach grounding devices to remove electrical hazards from disturbed or fallen lines or to facilitate repairs. Climb poles or use truck-mounted buckets to access equipment.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        },
+        {
+          "code": "49-2093",
+          "score": 0.47542012429558345,
+          "excerpt": "Electrical and electronics installers and repairers, transportation equipment. Electrical and Electronics Installers and Repairers, Transportation Equipment. Install, adjust, or maintain mobile electronics communication equipment, including sound, sonar, security, navigation, and surveillance systems on trains, watercraft, or other mobile equipment. Inspect and test electrical systems and equipment to locate and diagnose malfunctions, using visual inspections, testing devices, and computer software. Reassemble and test equipment after repairs. Splice wires with knives or cutting pliers, and solder connections to fixtures, outlets, and equipment.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        },
+        {
+          "code": "49-2095",
+          "score": 0.4744019369271838,
+          "excerpt": "Electrical and electronics repairers, powerhouse, substation, and relay. Electrical and Electronics Repairers, Powerhouse, Substation, and Relay. Inspect, test, repair, or maintain electrical equipment in generating stations, substations, and in-service relays. Inspect and test equipment and circuits to identify malfunctions or defects, using wiring diagrams and testing devices such as ohmmeters, voltmeters, or ammeters. Consult manuals, schematics, wiring diagrams, and engineering personnel to troubleshoot and solve equipment problems and to determine optimum equipment functioning. Notify facility personnel of equipment shutdowns.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        }
+      ],
+      "warmTop": [
+        {
+          "code": "29-1051",
+          "score": 0.6664009410828902,
+          "excerpt": "Pharmacists. Pharmacists. Dispense drugs prescribed by physicians and other health practitioners and provide information to patients about medications and their use. May advise physicians and other health practitioners on the selection, dosage, interactions, and side effects of medications. Review prescriptions to assure accuracy, to ascertain the needed ingredients, and to evaluate their suitability. Provide information and advice regarding drug interactions, side effects, dosage, and proper medication storage. Analyze prescribing trends to monitor patient compliance and to prevent excessive usage or harmful interactions.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        },
+        {
+          "code": "29-1171",
+          "score": 0.4779260461815898,
+          "excerpt": "Nurse practitioners. Nurse Practitioners. Diagnose and treat acute, episodic, or chronic illness, independently or as part of a healthcare team. May focus on health promotion and disease prevention. May order, perform, or interpret diagnostic tests such as lab work and x rays. May prescribe medication. Must be registered nurses who have specialized graduate education. Educate patients about self-management of acute or chronic illnesses, tailoring instructions to patients' individual circumstances. Schedule follow-up visits to monitor patients or evaluate health or illness care. Counsel patients about drug regimens and possible side effects or interactions with other substances, such as food supplements, over-the-counter (OTC) medications, or herbal remedies.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        },
+        {
+          "code": "31-9095",
+          "score": 0.44875714805771116,
+          "excerpt": "Pharmacy aides. Pharmacy Aides. Record drugs delivered to the pharmacy, store incoming merchandise, and inform the supervisor of stock needs. May operate cash register and accept prescriptions for filling. Accept prescriptions for filling, gathering and processing necessary information. Answer telephone inquiries, referring callers to pharmacist when necessary. Greet customers and help them locate merchandise.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        }
+      ]
+    },
+    "faults": [
+      {
+        "fault": "download",
+        "result": "rejected",
+        "message": "Error: Enhanced matching could not load or run. Check your connection and retry, or use ordinary title search."
+      },
+      {
+        "fault": "wasm",
+        "result": "rejected",
+        "message": "Error: Enhanced matching could not load or run. Check your connection and retry, or use ordinary title search."
+      },
+      {
+        "fault": "memory",
+        "result": "rejected",
+        "message": "Error: Enhanced matching could not load or run. Check your connection and retry, or use ordinary title search."
+      },
+      {
+        "fault": "mismatch",
+        "result": "rejected",
+        "message": "Error: The search model and index do not match. Ordinary title search is still available."
+      },
+      {
+        "fault": "hang",
+        "result": "rejected",
+        "message": "Error: Enhanced search timed out. You can retry or use ordinary title search."
+      },
+      {
+        "fault": "cache",
+        "result": "success",
+        "timings": {
+          "initializationMs": 2122.2999999998137,
+          "queryMs": 131.40000000037253,
+          "totalMs": 2257.0999999996275
+        }
+      }
+    ],
+    "race": [
+      "A cancelled",
+      "B cancelled",
+      "C resolved"
+    ],
+    "long": "Error: Please shorten your description. This model supports 256 tokens (word pieces); your text has 262. No text was discarded.",
+    "boundaries": [
+      {
+        "label": "256 tokens",
+        "result": "accepted"
+      },
+      {
+        "label": "257 tokens",
+        "result": "Error: Please shorten your description. This model supports 256 tokens (word pieces); your text has 257. No text was discarded."
+      },
+      {
+        "label": "Unicode long tail",
+        "result": "Error: Please shorten your description. This model supports 256 tokens (word pieces); your text has 368. No text was discarded."
+      }
+    ],
+    "cache": [
+      {
+        "key": "transformers-cache",
+        "entries": [
+          "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/config.json",
+          "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer_config.json",
+          "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer.json",
+          "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/onnx/model_quantized.onnx",
+          "http://127.0.0.1:4173/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.mjs",
+          "http://127.0.0.1:4173/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.wasm",
+          "http://127.0.0.1:4173/work-and-ai/unavailable-model/minilm/config.json",
+          "http://127.0.0.1:4173/work-and-ai/runtime/1.29.0/missing.wasm",
+          "http://127.0.0.1:4173/work-and-ai/runtime/1.29.0/missing.mjs"
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/diagnostics-B2YzZEwy.js",
+        "bytes": 6797,
+        "encoded": 6497,
+        "durationMs": 10.400000000372529
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/styles-DEWxfV4U.js",
+        "bytes": 264070,
+        "encoded": 263770,
+        "durationMs": 40
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/styles-XN7zUhvg.css",
+        "bytes": 8573,
+        "encoded": 8273,
+        "durationMs": 14
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/client-CoT4dsfK.js",
+        "bytes": 1792,
+        "encoded": 1492,
+        "durationMs": 13.800000000745058
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/data/occupations.json",
+        "bytes": 1339149,
+        "encoded": 1338849,
+        "durationMs": 34.60000000055879
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/data/lexicon.json",
+        "bytes": 4493243,
+        "encoded": 4492943,
+        "durationMs": 82.1000000005588
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 523476,
+        "encoded": 523176,
+        "durationMs": 29.600000000558794
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -7.2999999998137355
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -3.300000000745058
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -5.2000000001862645
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -3.199999999254942
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -3.2999999998137355
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -5.2999999998137355
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -7.900000000372529
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -7.7000000001862645
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -7.099999999627471
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -5.3999999994412065
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -8.599999999627471
+      }
+    ]
+  },
+  "revisit": {
+    "date": "2026-09-10T09:45:58.222Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+    "hardwareConcurrency": 12,
+    "viewport": [
+      1280,
+      900
+    ],
+    "initialRequests": [
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/diagnostics-B2YzZEwy.js",
+        "bytes": 300,
+        "encoded": 6497,
+        "durationMs": 4.1000000005587935
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/styles-DEWxfV4U.js",
+        "bytes": 300,
+        "encoded": 263770,
+        "durationMs": 6.5
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/client-CoT4dsfK.js",
+        "bytes": 300,
+        "encoded": 1492,
+        "durationMs": 6.1000000005587935
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/styles-XN7zUhvg.css",
+        "bytes": 300,
+        "encoded": 8273,
+        "durationMs": 7.5
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/data/occupations.json",
+        "bytes": 300,
+        "encoded": 1338849,
+        "durationMs": 9.5
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/data/lexicon.json",
+        "bytes": 300,
+        "encoded": 4492943,
+        "durationMs": 13.699999999254942
+      }
+    ],
+    "cacheBefore": [
+      {
+        "key": "transformers-cache",
+        "entries": [
+          "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/config.json",
+          "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer_config.json",
+          "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer.json",
+          "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/onnx/model_quantized.onnx",
+          "http://127.0.0.1:4173/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.mjs",
+          "http://127.0.0.1:4173/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.wasm",
+          "http://127.0.0.1:4173/work-and-ai/unavailable-model/minilm/config.json",
+          "http://127.0.0.1:4173/work-and-ai/runtime/1.29.0/missing.wasm",
+          "http://127.0.0.1:4173/work-and-ai/runtime/1.29.0/missing.mjs"
+        ]
+      }
+    ],
+    "real": {
+      "first": {
+        "initializationMs": 1042.2999999998137,
+        "queryMs": 127.3999999994412,
+        "totalMs": 1173.2999999998137
+      },
+      "warm": {
+        "initializationMs": 0,
+        "queryMs": 49.200000000186265,
+        "totalMs": 49.40000000037253
+      },
+      "workerRequests": [
+        {
+          "url": "http://127.0.0.1:4173/work-and-ai/semantic/metadata.json",
+          "transfer": 300,
+          "encoded": 767056
+        },
+        {
+          "url": "http://127.0.0.1:4173/work-and-ai/semantic/vectors.bin",
+          "transfer": 300,
+          "encoded": 1276416
+        },
+        {
+          "url": "http://127.0.0.1:4173/work-and-ai/data/occupations.json",
+          "transfer": 300,
+          "encoded": 1338849
+        }
+      ],
+      "firstTop": [
+        {
+          "code": "49-9051",
+          "score": 0.47765775566063434,
+          "excerpt": "Electrical power-line installers and repairers. Electrical Power-Line Installers and Repairers. Install or repair cables or wires used in electrical power or distribution systems. May erect poles and light or heavy duty transmission towers. Adhere to safety practices and procedures, such as checking equipment regularly and erecting barriers around work areas. Open switches or attach grounding devices to remove electrical hazards from disturbed or fallen lines or to facilitate repairs. Climb poles or use truck-mounted buckets to access equipment.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        },
+        {
+          "code": "49-2093",
+          "score": 0.47542012429558345,
+          "excerpt": "Electrical and electronics installers and repairers, transportation equipment. Electrical and Electronics Installers and Repairers, Transportation Equipment. Install, adjust, or maintain mobile electronics communication equipment, including sound, sonar, security, navigation, and surveillance systems on trains, watercraft, or other mobile equipment. Inspect and test electrical systems and equipment to locate and diagnose malfunctions, using visual inspections, testing devices, and computer software. Reassemble and test equipment after repairs. Splice wires with knives or cutting pliers, and solder connections to fixtures, outlets, and equipment.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        },
+        {
+          "code": "49-2095",
+          "score": 0.4744019369271838,
+          "excerpt": "Electrical and electronics repairers, powerhouse, substation, and relay. Electrical and Electronics Repairers, Powerhouse, Substation, and Relay. Inspect, test, repair, or maintain electrical equipment in generating stations, substations, and in-service relays. Inspect and test equipment and circuits to identify malfunctions or defects, using wiring diagrams and testing devices such as ohmmeters, voltmeters, or ammeters. Consult manuals, schematics, wiring diagrams, and engineering personnel to troubleshoot and solve equipment problems and to determine optimum equipment functioning. Notify facility personnel of equipment shutdowns.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        }
+      ],
+      "warmTop": [
+        {
+          "code": "29-1051",
+          "score": 0.6664009410828902,
+          "excerpt": "Pharmacists. Pharmacists. Dispense drugs prescribed by physicians and other health practitioners and provide information to patients about medications and their use. May advise physicians and other health practitioners on the selection, dosage, interactions, and side effects of medications. Review prescriptions to assure accuracy, to ascertain the needed ingredients, and to evaluate their suitability. Provide information and advice regarding drug interactions, side effects, dosage, and proper medication storage. Analyze prescribing trends to monitor patient compliance and to prevent excessive usage or harmful interactions.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        },
+        {
+          "code": "29-1171",
+          "score": 0.4779260461815898,
+          "excerpt": "Nurse practitioners. Nurse Practitioners. Diagnose and treat acute, episodic, or chronic illness, independently or as part of a healthcare team. May focus on health promotion and disease prevention. May order, perform, or interpret diagnostic tests such as lab work and x rays. May prescribe medication. Must be registered nurses who have specialized graduate education. Educate patients about self-management of acute or chronic illnesses, tailoring instructions to patients' individual circumstances. Schedule follow-up visits to monitor patients or evaluate health or illness care. Counsel patients about drug regimens and possible side effects or interactions with other substances, such as food supplements, over-the-counter (OTC) medications, or herbal remedies.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        },
+        {
+          "code": "31-9095",
+          "score": 0.44875714805771116,
+          "excerpt": "Pharmacy aides. Pharmacy Aides. Record drugs delivered to the pharmacy, store incoming merchandise, and inform the supervisor of stock needs. May operate cash register and accept prescriptions for filling. Accept prescriptions for filling, gathering and processing necessary information. Answer telephone inquiries, referring callers to pharmacist when necessary. Greet customers and help them locate merchandise.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        }
+      ]
+    },
+    "faults": [
+      {
+        "fault": "download",
+        "result": "rejected",
+        "message": "Error: Enhanced matching could not load or run. Check your connection and retry, or use ordinary title search."
+      },
+      {
+        "fault": "wasm",
+        "result": "rejected",
+        "message": "Error: Enhanced matching could not load or run. Check your connection and retry, or use ordinary title search."
+      },
+      {
+        "fault": "memory",
+        "result": "rejected",
+        "message": "Error: Enhanced matching could not load or run. Check your connection and retry, or use ordinary title search."
+      },
+      {
+        "fault": "mismatch",
+        "result": "rejected",
+        "message": "Error: The search model and index do not match. Ordinary title search is still available."
+      },
+      {
+        "fault": "hang",
+        "result": "rejected",
+        "message": "Error: Enhanced search timed out. You can retry or use ordinary title search."
+      },
+      {
+        "fault": "cache",
+        "result": "success",
+        "timings": {
+          "initializationMs": 1989.300000000745,
+          "queryMs": 113.6000000005588,
+          "totalMs": 2106.100000000559
+        }
+      }
+    ],
+    "race": [
+      "A cancelled",
+      "B cancelled",
+      "C resolved"
+    ],
+    "long": "Error: Please shorten your description. This model supports 256 tokens (word pieces); your text has 262. No text was discarded.",
+    "boundaries": [
+      {
+        "label": "256 tokens",
+        "result": "accepted"
+      },
+      {
+        "label": "257 tokens",
+        "result": "Error: Please shorten your description. This model supports 256 tokens (word pieces); your text has 257. No text was discarded."
+      },
+      {
+        "label": "Unicode long tail",
+        "result": "Error: Please shorten your description. This model supports 256 tokens (word pieces); your text has 368. No text was discarded."
+      }
+    ],
+    "cache": [
+      {
+        "key": "transformers-cache",
+        "entries": [
+          "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/config.json",
+          "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer_config.json",
+          "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer.json",
+          "http://127.0.0.1:4173/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/onnx/model_quantized.onnx",
+          "http://127.0.0.1:4173/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.mjs",
+          "http://127.0.0.1:4173/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.wasm",
+          "http://127.0.0.1:4173/work-and-ai/unavailable-model/minilm/config.json",
+          "http://127.0.0.1:4173/work-and-ai/runtime/1.29.0/missing.wasm",
+          "http://127.0.0.1:4173/work-and-ai/runtime/1.29.0/missing.mjs"
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/diagnostics-B2YzZEwy.js",
+        "bytes": 300,
+        "encoded": 6497,
+        "durationMs": 4.1000000005587935
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/styles-DEWxfV4U.js",
+        "bytes": 300,
+        "encoded": 263770,
+        "durationMs": 6.5
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/client-CoT4dsfK.js",
+        "bytes": 300,
+        "encoded": 1492,
+        "durationMs": 6.1000000005587935
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/styles-XN7zUhvg.css",
+        "bytes": 300,
+        "encoded": 8273,
+        "durationMs": 7.5
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/data/occupations.json",
+        "bytes": 300,
+        "encoded": 1338849,
+        "durationMs": 9.5
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/data/lexicon.json",
+        "bytes": 300,
+        "encoded": 4492943,
+        "durationMs": 13.699999999254942
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -3.5
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -9.5
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -2.900000000372529
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -5.400000000372529
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -2.6000000005587935
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -2.3999999994412065
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -3.099999999627471
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -3.7999999998137355
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -4.2999999998137355
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -5.5
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -4.8999999994412065
+      },
+      {
+        "url": "http://127.0.0.1:4173/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 300,
+        "encoded": 523176,
+        "durationMs": -9.600000000558794
+      }
+    ]
+  },
+  "status": "PASS",
+  "artifacts": {
+    "comparison.csv": {
+      "bytes": 1677,
+      "sha256": "b65dcbfae21610bf7e02e3a21c1ccdf2629f633309743cce50e428083c0f7698"
+    },
+    "privacy-comparison.csv": {
+      "bytes": 1677,
+      "sha256": "b65dcbfae21610bf7e02e3a21c1ccdf2629f633309743cce50e428083c0f7698"
+    },
+    "comparison.pdf": {
+      "bytes": 58256,
+      "sha256": "93adcfbfa26728581f1a19776680375e0988d0168497c7c3e799f98aea388eb7"
+    },
+    "desktop.png": {
+      "bytes": 190152,
+      "sha256": "af11d4a6ceaf191de40bac6572101e31c15ce7469186f0ef7824a2b35b4ff418"
+    },
+    "mobile.png": {
+      "bytes": 159577,
+      "sha256": "3bb7cd5065d81e1511a8bfe1a427d22ec054ed656086b7cfa4a312820165d4bb"
+    },
+    "single-occupation.pdf": {
+      "bytes": 69983,
+      "sha256": "00f702f8fa4aa794085eed8a85656e273285690241abc458888dc22805f2a862"
+    }
+  },
+  "printFollowup": "Final print-only spacing revision rendered afresh: comparison and single-occupation PDFs each one A4 landscape page; all content/sources inspected. Other browser behavior unchanged.",
+  "implementationHashes": {
+    "src/App.tsx": "460809a8e1c04100287fe35491873ec7af01ab7a142ad74640a9ceb86642a622",
+    "src/search/engine.ts": "a1bcd8a72fa00666dbd23e30377421ef95184d6034b1b102a9fb48b454b3d371",
+    "src/semantic/worker.ts": "1987510dfb7318cfe0dcb123f7e8cb77de0db6c7758e65afbca13ac420be5393",
+    "src/semantic/client.ts": "48cf56d3e9c92d1d2287775936ee8c690a8a1e63c59fba7154dbb306c61d4d30",
+    "src/print.css": "e6f58339677832cff177c1ced49da36eaf980b0642c7f9427a8641b7a99636c3",
+    "src/diagnostics.tsx": "4ef418d84d0343e190ce41024cde43e7213b0ad84ebf1b199261b2c040a11976",
+    "public/data/occupations.json": "e30f18b0b1c48a26f983daf39d48752e0df8ad738bdb120962c67176532ded94",
+    "public/semantic/metadata.json": "e9b3615cbc627beae67a7a51088c0603322d970a806236c94a08976eeceb9e55",
+    "public/semantic/vectors.bin": "2b20c21dc0badd7a4c9cf7807748ee7cee1d2d0bcb669192e76f72df7298d516"
+  }
+}

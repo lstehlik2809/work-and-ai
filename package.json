@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=24.0.0 <25" },
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "typecheck": "tsc --noEmit",
@@ -15,9 +17,27 @@
     "data:fetch": "node scripts/data/fetch.mjs",
     "data:prepare": "python scripts/data/prepare.py",
     "semantic:build": "node scripts/semantic/build.mjs",
-    "evaluate": "tsx scripts/evaluate.ts"
+    "evaluate": "tsx scripts/evaluate.ts",
+    "browser:check": "node scripts/browser-check.mjs"
   },
-  "dependencies": { "@huggingface/transformers": "4.2.0", "fuse.js": "7.1.0", "react": "19.3.0", "react-dom": "19.3.0" },
-  "devDependencies": { "@types/react": "^19.0.0", "@types/react-dom": "^19.0.0", "@types/node": "^24.0.0", "typescript": "^5.9.0", "tsx": "^4.20.0", "vite": "8.2.2" },
-  "overrides": { "onnxruntime-web": "1.29.0" }
+  "dependencies": {
+    "@huggingface/transformers": "4.2.0",
+    "fuse.js": "7.1.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "playwright": "1.62.1",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0",
+    "vite": "8.2.2"
+  },
+  "overrides": {
+    "onnxruntime-web": "1.29.0",
+    "sharp": "0.35.4",
+    "adm-zip": "0.6.0"
+  }
 }

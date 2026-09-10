@@ -16,6 +16,9 @@ scope.onmessage=async({data})=>{
    metadata=m;vectors=new Float32Array(v);
    // Transformers 4.2 metadata discovery checks root-relative local paths.
    // Absolute HTTP local paths skip that branch when remote models are disabled.
+   // CacheStorage remains the persistent cache. Avoid HTTP-cache writer races
+   // when model discovery and loading overlap in Chromium.
+   env.fetch=(input,init)=>fetch(input,{...init,cache:'no-store'});
    env.allowLocalModels=true;env.allowRemoteModels=false;env.localModelPath=new URL(base+`models/${config.revision}/`).pathname;
    env.backends.onnx.wasm!.numThreads=1;
    const runtime=base+`runtime/${config.browserRuntime}/`;
