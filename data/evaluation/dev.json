@@ -1,0 +1,276 @@
+{
+  "schema": 1,
+  "split": "dev",
+  "frozen": "2026-09-10T08:40:23.824828+00:00",
+  "specification": "AS-WAI r2 / PM-WAI r1 / P-WAI r1, parent approval 2026-09-10",
+  "provenance": "Provisional authored labels; not SME ground truth. Complete ambiguity sets checked against source-reconciled lexicon before any evaluation. H20 means candidate for user confirmation, not a universal identity claim.",
+  "cases": [
+    {
+      "id": "D01",
+      "input": "Accountants and auditors",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "13-2011"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": [
+        "13-2011"
+      ]
+    },
+    {
+      "id": "D02",
+      "input": "SOFTWARE DEVELOPERS",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "15-1252"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": [
+        "15-1252"
+      ]
+    },
+    {
+      "id": "D03",
+      "input": "dental assistant",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "31-9091"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "D04",
+      "input": "dental hygienist",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "29-1292"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": [
+        "29-1292"
+      ]
+    },
+    {
+      "id": "D05",
+      "input": "electrcian",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "47-2111"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "D06",
+      "input": "Registered nurse",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "29-1141"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "D07",
+      "input": "human resources manager",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "11-3121"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "D08",
+      "input": "human resources assistant",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "43-4161"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "D09",
+      "input": "I reconcile financial accounts and prepare audited financial statements.",
+      "type": "responsibility",
+      "kind": "M",
+      "acceptable": [
+        "13-2011"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "D10",
+      "input": "I install and repair electrical wiring and circuit breakers in buildings.",
+      "type": "responsibility",
+      "kind": "M",
+      "acceptable": [
+        "47-2111"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "D11",
+      "input": "I dispense prescribed medicines and advise patients about their safe use.",
+      "type": "responsibility",
+      "kind": "M",
+      "acceptable": [
+        "29-1051"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "D12",
+      "input": "I design roads and bridges and review civil construction plans.",
+      "type": "responsibility",
+      "kind": "M",
+      "acceptable": [
+        "17-2051"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "D13",
+      "input": "business manager",
+      "type": "title",
+      "kind": "A",
+      "acceptable": [
+        "11-1021",
+        "11-3012",
+        "13-1011",
+        "43-1011"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": [
+        "11-1021",
+        "11-3012",
+        "13-1011",
+        "43-1011"
+      ]
+    },
+    {
+      "id": "D14",
+      "input": "research assistant",
+      "type": "title",
+      "kind": "A",
+      "acceptable": [
+        "15-2031",
+        "17-3029",
+        "19-4021",
+        "19-4061",
+        "19-4099",
+        "43-9111"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": [
+        "15-2031",
+        "17-3029",
+        "19-4021",
+        "19-4061",
+        "19-4099",
+        "43-9111"
+      ]
+    },
+    {
+      "id": "D15",
+      "input": "engineer",
+      "type": "title",
+      "kind": "C",
+      "acceptable": [],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": [
+        "13-1081",
+        "15-1241",
+        "15-1251",
+        "15-1299",
+        "17-2021",
+        "17-2031",
+        "17-2041",
+        "17-2051",
+        "17-2061",
+        "17-2071",
+        "17-2072",
+        "17-2081",
+        "17-2111",
+        "17-2112",
+        "17-2121",
+        "17-2141",
+        "17-2151",
+        "17-2161",
+        "17-2171",
+        "17-2199",
+        "17-3025",
+        "27-1021",
+        "51-8021",
+        "53-4011",
+        "53-4013",
+        "53-5031"
+      ]
+    },
+    {
+      "id": "D16",
+      "input": "I work with people and solve problems.",
+      "type": "responsibility",
+      "kind": "C",
+      "acceptable": [],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "D17",
+      "input": "qzxv blorpt 739",
+      "type": "title",
+      "kind": "N",
+      "acceptable": [],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "D18",
+      "input": "What is the weather tomorrow?",
+      "type": "title",
+      "kind": "N",
+      "acceptable": [],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "D19",
+      "input": "Chief Sustainability Officers",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "11-1011"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": [
+        "11-1011"
+      ]
+    },
+    {
+      "id": "D20",
+      "input": "medical assistant",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "31-9092"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    }
+  ]
+}

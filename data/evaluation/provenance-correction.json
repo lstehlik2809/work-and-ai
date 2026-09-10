@@ -1,0 +1,52 @@
+{
+  "issue": "F-SR01",
+  "status": "CORRECTED",
+  "correctedAt": "2026-09-10T08:52:35.779209+00:00",
+  "scope": "Excerpt provenance metadata only. No matching/ranking/filter changes; no model execution or heldout retuning.",
+  "historicalEngineSha256": "660f11d84f6aed371ec3046d562e4c1b260ee610f6d85df60b0ce159bb94547e",
+  "correctedEngineSha256": "a1bcd8a72fa00666dbd23e30377421ef95184d6034b1b102a9fb48b454b3d371",
+  "historicalHeldoutReportSha256": "c3f7a6403ca5d63829c2c6b9b6f4698c67fb80c567c5f63f425ce7c064dbbb14",
+  "historicalArtifacts": "Frozen fixtures, readiness, dev results and heldout result files retained unchanged; corrected engine is a provenance-only descendant.",
+  "changes": [
+    "Candidate excerptKind distinguishes description from task; taskId retained for task excerpts.",
+    "Task candidates use original task.source instead of role description source.",
+    "Description candidates retain role source and no task ID."
+  ],
+  "replay": {
+    "mode": "Replay stored heldout semanticRanks through current engine; no query encoder or new evaluation",
+    "queries": 20,
+    "outcomesCompared": 40,
+    "invariants": [
+      "baseline and hybrid candidate code ordering identical",
+      "state and exact flag identical",
+      "excerpt text identical"
+    ],
+    "sourceOracle": "Every returned candidate checked against its canonical occupation and O*NET role: description text/source or original task ID/text/source."
+  },
+  "H12": {
+    "lexical": {
+      "code": "53-6031",
+      "taskId": "10712"
+    },
+    "hybrid": {
+      "code": "41-2011",
+      "taskId": "2401"
+    },
+    "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv"
+  },
+  "checks": [
+    {
+      "command": "npx tsx --test tests/search-contract.test.ts",
+      "cwd": "D:\\_PROJECTS\\texts\\LinkedIn_Posts\\job_ai_impact",
+      "exitStatus": 0,
+      "result": "7/7 passed including complete alias corpus, all20 recorded replay, H12 actual receipts task source oracle"
+    },
+    {
+      "command": "npx tsc --noEmit",
+      "cwd": "D:\\_PROJECTS\\texts\\LinkedIn_Posts\\job_ai_impact",
+      "exitStatus": 0,
+      "result": "passed"
+    }
+  ],
+  "limits": "Parent owns UI labeling and independent review. Historical evaluation source fields preserve the original defect as evidence; consult corrected runtime metadata and this lineage record."
+}

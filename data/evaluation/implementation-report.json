@@ -1,0 +1,293 @@
+{
+  "status": "COMPLETE",
+  "assignment": "Search/export tests and frozen evaluation; not independent solution review or deployment",
+  "contract": "FULL PM-WAI r1 / P-WAI r1 / PR-WAI r1 PASS / parent-approved AS-WAI r2",
+  "resolvedIssues": [
+    {
+      "id": "F-AS01",
+      "owner": "SPECIFICATION",
+      "resolution": "Parent-approved AS r2 before freeze: complete source A sets; H20 source-supported PA candidate; both splits14M/10titles/4responsibilities"
+    }
+  ],
+  "changedFiles": [
+    "src/search/engine.ts",
+    "tests/search-contract.test.ts",
+    "tests/search-aggregation.test.ts",
+    "tests/export-state.test.ts",
+    "scripts/evaluate.ts"
+  ],
+  "fixtureAndResultFiles": "data/evaluation/*.json (primary-vectors.bin untouched)",
+  "fileHashes": {
+    "src/search/engine.ts": "660f11d84f6aed371ec3046d562e4c1b260ee610f6d85df60b0ce159bb94547e",
+    "tests/search-contract.test.ts": "e207973b90d95d23c99b17cc3592615485a84a97a3d475825b2fcace7152347d",
+    "tests/search-aggregation.test.ts": "ce4f58d90a5566b803d788b891d4879d82396b1b2a75e2791e93d0d44a2c7967",
+    "tests/export-state.test.ts": "ca3c2f3ffd037348e01f0e22eda1c494173f0f6b6c9d126ba42644c3365ccee3",
+    "scripts/evaluate.ts": "4c1f3984402d66305ca259c9572ab4b261c3390792bee894b79de2993ca21bbf"
+  },
+  "environment": {
+    "os": "Windows-10-10.0.26200-SP0",
+    "machine": "AMD64",
+    "python": "3.10.7",
+    "node": "24.18.0",
+    "encoder": "Transformers4.2.0/ONNX nativeCPU1.24.3; not browserWASM performance"
+  },
+  "verificationCommands": [
+    {
+      "command": "npx tsx --test tests/search-contract.test.ts tests/search-aggregation.test.ts tests/export-state.test.ts",
+      "cwd": "D:\\_PROJECTS\\texts\\LinkedIn_Posts\\job_ai_impact",
+      "started": "2026-09-10T08:45:33.421417+00:00",
+      "exitStatus": 0,
+      "stdout": "\u2714 all formula prefixes are inert while real numeric projections remain numeric (1.1388ms)\n\u2714 CSV round trip retains public fields, definitions, source, multiline quotes, zero and null (1.1044ms)\n\u2714 malicious public title is neutralized through complete export (0.2322ms)\n\u2714 share serializes only release and deduplicated maximum three codes (0.7511ms)\n\u2714 unknown codes are excluded and unavailable historical release is disclosed (0.5619ms)\n\u2714 production role selection is invariant to duplicate relationships and source ordering (14.3376ms)\n\u2714 production passage dedupe and normalized centroid cannot gain weight from representation duplication (0.681ms)\n\u2714 duplicated specialist relationships and passage order leave canonical lexical ranking unchanged (719.3138ms)\n\u2714 complete source aliases retain unique exact matches and ambiguity in both modes (1076.935ms)\n\u2714 normalization preserves role distinctions and source descriptions (588.4271ms)\n\u2714 nonsense, vague responsibilities and unrelated questions cannot force candidates (905.8431ms)\n\u2714 published statistics cannot influence lexical or hybrid ranking (737.7882ms)\n\u2714 repeated canonical semantic evidence does not change shortlist or add weight (3.8819ms)\n\u2139 tests 13\n\u2139 suites 0\n\u2139 pass 13\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 3973.1625\n",
+      "stderr": ""
+    },
+    {
+      "command": "npx tsc --noEmit",
+      "cwd": "D:\\_PROJECTS\\texts\\LinkedIn_Posts\\job_ai_impact",
+      "started": "2026-09-10T08:45:39.153620+00:00",
+      "exitStatus": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "evaluationCommands": [
+    {
+      "command": "npx tsx scripts/evaluate.ts --split=dev",
+      "cwd": "D:\\_PROJECTS\\texts\\LinkedIn_Posts\\job_ai_impact",
+      "exitStatus": 0,
+      "runs": [
+        "dev-results-1.json",
+        "dev-results-2.json",
+        "dev-results-3.json"
+      ],
+      "note": "Dev1 report identifies initial material regression despite runner then returning0; runner now returns1 for material regression/hard failures. Dev2/3 clear."
+    },
+    {
+      "command": "npx tsx scripts/evaluate.ts --split=heldout",
+      "cwd": "D:\\_PROJECTS\\texts\\LinkedIn_Posts\\job_ai_impact",
+      "exitStatus": 0,
+      "run": "heldout-results.json",
+      "executed": "2026-09-10T08:44:19.548Z",
+      "count": 1
+    }
+  ],
+  "traceability": {
+    "AS08": "Full source-reconciled normalized alias corpus, exact preservation both modes, ambiguity, normalized role distinctions; frozen evaluation",
+    "AS09": "Production aggregation helper duplicate2x/10x and order invariance; lexical duplicate relationship test; actual single-passage ablation and source-role/passage groups",
+    "AS12": "Metrics permutation and canonical evidence duplicate invariance; actual q8 encoder dev/heldout raw ranks, sourced excerpts, suitability and RRF",
+    "AS13": "Independent CSV parse malicious prefixes, multiline quoting, source definitions/nullzero; code-only share, duplicate/max3, invalid/history warnings",
+    "AS15": "Frozen fixtures/corpus/engine hashes beforeheldout; raw top1/3 denominators/group/ablation outputs. Browser performance leftparent."
+  },
+  "heldoutSummary": {
+    "baseline": {
+      "queries": 20,
+      "matched": {
+        "top1": 10,
+        "top3": 11,
+        "denominator": 14
+      },
+      "titles": {
+        "top1": 10,
+        "top3": 10,
+        "denominator": 10
+      },
+      "responsibilities": {
+        "top1": 0,
+        "top3": 1,
+        "denominator": 4
+      },
+      "inappropriateCandidates": 5,
+      "allCandidates": 18,
+      "queriesWithInappropriate": 4,
+      "abstentions": 2,
+      "clarifications": 3,
+      "hardFailures": [],
+      "ACN": [
+        {
+          "id": "H13",
+          "kind": "A",
+          "state": "candidates",
+          "codes": [
+            "11-1021",
+            "41-1011"
+          ]
+        },
+        {
+          "id": "H14",
+          "kind": "A",
+          "state": "clarify",
+          "codes": []
+        },
+        {
+          "id": "H15",
+          "kind": "C",
+          "state": "clarify",
+          "codes": []
+        },
+        {
+          "id": "H16",
+          "kind": "C",
+          "state": "clarify",
+          "codes": []
+        },
+        {
+          "id": "H17",
+          "kind": "N",
+          "state": "none",
+          "codes": []
+        },
+        {
+          "id": "H18",
+          "kind": "N",
+          "state": "none",
+          "codes": []
+        }
+      ]
+    },
+    "hybrid": {
+      "queries": 20,
+      "matched": {
+        "top1": 12,
+        "top3": 13,
+        "denominator": 14
+      },
+      "titles": {
+        "top1": 10,
+        "top3": 10,
+        "denominator": 10
+      },
+      "responsibilities": {
+        "top1": 2,
+        "top3": 3,
+        "denominator": 4
+      },
+      "inappropriateCandidates": 4,
+      "allCandidates": 19,
+      "queriesWithInappropriate": 3,
+      "abstentions": 2,
+      "clarifications": 3,
+      "hardFailures": [],
+      "ACN": [
+        {
+          "id": "H13",
+          "kind": "A",
+          "state": "candidates",
+          "codes": [
+            "11-1021",
+            "41-1011"
+          ]
+        },
+        {
+          "id": "H14",
+          "kind": "A",
+          "state": "clarify",
+          "codes": []
+        },
+        {
+          "id": "H15",
+          "kind": "C",
+          "state": "clarify",
+          "codes": []
+        },
+        {
+          "id": "H16",
+          "kind": "C",
+          "state": "clarify",
+          "codes": []
+        },
+        {
+          "id": "H17",
+          "kind": "N",
+          "state": "none",
+          "codes": []
+        },
+        {
+          "id": "H18",
+          "kind": "N",
+          "state": "none",
+          "codes": []
+        }
+      ]
+    },
+    "primaryPassageAblation": {
+      "queries": 20,
+      "matched": {
+        "top1": 12,
+        "top3": 13,
+        "denominator": 14
+      },
+      "titles": {
+        "top1": 10,
+        "top3": 10,
+        "denominator": 10
+      },
+      "responsibilities": {
+        "top1": 2,
+        "top3": 3,
+        "denominator": 4
+      },
+      "inappropriateCandidates": 4,
+      "allCandidates": 19,
+      "queriesWithInappropriate": 3,
+      "abstentions": 2,
+      "clarifications": 3,
+      "hardFailures": [],
+      "ACN": [
+        {
+          "id": "H13",
+          "kind": "A",
+          "state": "candidates",
+          "codes": [
+            "11-1021",
+            "41-1011"
+          ]
+        },
+        {
+          "id": "H14",
+          "kind": "A",
+          "state": "clarify",
+          "codes": []
+        },
+        {
+          "id": "H15",
+          "kind": "C",
+          "state": "clarify",
+          "codes": []
+        },
+        {
+          "id": "H16",
+          "kind": "C",
+          "state": "clarify",
+          "codes": []
+        },
+        {
+          "id": "H17",
+          "kind": "N",
+          "state": "none",
+          "codes": []
+        },
+        {
+          "id": "H18",
+          "kind": "N",
+          "state": "none",
+          "codes": []
+        }
+      ]
+    }
+  },
+  "pairedLosses": {
+    "top1": [],
+    "top3": [],
+    "additionalInappropriateQueries": []
+  },
+  "materialRegression": false,
+  "limitations": [
+    "Provisional authored relevance labels, not SMEgroundtruth; small fixed corpus does not establish general superiority.",
+    "H09 security-guard responsibilities yield security supervisors and miss33-9032.",
+    "H10 industrialtruck operator ranks before intended heavytruck driver; correct occupation second.",
+    "H11 correctplumber plus two inappropriate alternatives.",
+    "Hybrid heldout responsibility top1 only2/4,top3 3/4; user confirmation remains necessary.",
+    "Browser runtime/network/selection/print/deployment checks remainparent-owned and UNVERIFIED by assignment."
+  ],
+  "deviations": "No material plan deviation; source-driven specification correction routed before dependent work; no heldout tuning.",
+  "workspace": "No Git or package changes; onlyassigned files touched; shared parent changes preserved."
+}

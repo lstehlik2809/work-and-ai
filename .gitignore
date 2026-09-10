@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.cache/
+*.log
+.env*
+verification/local/
+BRIEF.md

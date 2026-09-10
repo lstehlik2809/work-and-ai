@@ -1,0 +1,251 @@
+{
+  "schema": 1,
+  "split": "heldout",
+  "frozen": "2026-09-10T08:40:23.824828+00:00",
+  "specification": "AS-WAI r2 / PM-WAI r1 / P-WAI r1, parent approval 2026-09-10",
+  "provenance": "Provisional authored labels; not SME ground truth. Complete ambiguity sets checked against source-reconciled lexicon before any evaluation. H20 means candidate for user confirmation, not a universal identity claim.",
+  "cases": [
+    {
+      "id": "H01",
+      "input": "Mechanical engineers",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "17-2141"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": [
+        "17-2141"
+      ]
+    },
+    {
+      "id": "H02",
+      "input": "Mechanical engineering technologists and technicians",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "17-3027"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": [
+        "17-3027"
+      ]
+    },
+    {
+      "id": "H03",
+      "input": "physician assistant",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "29-1071"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "H04",
+      "input": "nursing assistant",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "31-1131"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": [
+        "31-1131"
+      ]
+    },
+    {
+      "id": "H05",
+      "input": "data scietist",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "15-2051"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "H06",
+      "input": "paralegall",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "23-2011"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "H07",
+      "input": "financial managers",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "11-3031"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": [
+        "11-3031"
+      ]
+    },
+    {
+      "id": "H08",
+      "input": "web developer",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "15-1254"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": [
+        "15-1254"
+      ]
+    },
+    {
+      "id": "H09",
+      "input": "I patrol buildings, check access credentials, and watch for security threats.",
+      "type": "responsibility",
+      "kind": "M",
+      "acceptable": [
+        "33-9032"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "H10",
+      "input": "I drive tractor-trailers to transport freight over long distances.",
+      "type": "responsibility",
+      "kind": "M",
+      "acceptable": [
+        "53-3032"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "H11",
+      "input": "I install and repair water pipes, drains, and plumbing fixtures.",
+      "type": "responsibility",
+      "kind": "M",
+      "acceptable": [
+        "47-2152"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "H12",
+      "input": "I scan purchases, collect customer payments, and give change at a checkout.",
+      "type": "responsibility",
+      "kind": "M",
+      "acceptable": [
+        "41-2011"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "H13",
+      "input": "department manager",
+      "type": "title",
+      "kind": "A",
+      "acceptable": [
+        "11-1021",
+        "41-1011"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": [
+        "11-1021",
+        "41-1011"
+      ]
+    },
+    {
+      "id": "H14",
+      "input": "analyst",
+      "type": "title",
+      "kind": "A",
+      "acceptable": [
+        "13-1051",
+        "13-2051",
+        "13-2054",
+        "13-2099",
+        "15-2051",
+        "33-3021"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": [
+        "13-1051",
+        "13-2051",
+        "13-2054",
+        "13-2099",
+        "15-2051",
+        "33-3021"
+      ]
+    },
+    {
+      "id": "H15",
+      "input": "specialist",
+      "type": "title",
+      "kind": "C",
+      "acceptable": [],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "H16",
+      "input": "I handle projects, emails, and meetings.",
+      "type": "responsibility",
+      "kind": "C",
+      "acceptable": [],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "H17",
+      "input": "purple moon sandwich navigator",
+      "type": "title",
+      "kind": "N",
+      "acceptable": [],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "H18",
+      "input": "Please tell me a joke about cats.",
+      "type": "title",
+      "kind": "N",
+      "acceptable": [],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": []
+    },
+    {
+      "id": "H19",
+      "input": "Industrial-organizational psychologists",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "19-3032"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": [
+        "19-3032"
+      ]
+    },
+    {
+      "id": "H20",
+      "input": "PA",
+      "type": "title",
+      "kind": "M",
+      "acceptable": [
+        "29-1071"
+      ],
+      "labelProvenance": "AS-WAI r2 parent-approved; provisional authored relevance labels; complete A source sets independently reconciled",
+      "sourceExactCodes": [
+        "29-1071"
+      ]
+    }
+  ]
+}

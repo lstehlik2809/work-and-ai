@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "frozen": "2026-09-10T08:40:23.824828+00:00",
+  "specification": "AS-WAI r2",
+  "fixtureHashes": {
+    "dev": "97cd6dd9ade24c140b4e81d3c2c3fa2403eb84ad15284f7b1c912517f602422f",
+    "heldout": "f634d708728c1d82c9843c042a5b60d1c585055cf73e9bc9513620158a5ccda7"
+  },
+  "initialEngineSha256": "f5809b48bd5fb080813fe29c011e64ab46a00e359f64056c40a1559e989bc377",
+  "corpusHashes": {
+    "public/data/occupations.json": "e30f18b0b1c48a26f983daf39d48752e0df8ad738bdb120962c67176532ded94",
+    "public/data/lexicon.json": "6955b5480713fb8648d567330f45095a8b218d299b4bec373dc09c04f44c5e6e"
+  },
+  "tuningPolicy": "Dev only. Freeze engine hash after dev readiness before exactly one heldout run. Material regression at >=2 paired top1 losses, >=2 top3 losses, or >=2 additional inappropriate queries. No retuning on heldout.",
+  "denominators": {
+    "dev": {
+      "M": 14,
+      "titles": 10,
+      "responsibilities": 4
+    },
+    "heldout": {
+      "M": 14,
+      "titles": 10,
+      "responsibilities": 4
+    }
+  }
+}

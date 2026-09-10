@@ -1,0 +1,37 @@
+{
+  "status": "READY",
+  "frozen": "2026-09-10T08:43:58.850580+00:00",
+  "engineSha256": "660f11d84f6aed371ec3046d562e4c1b260ee610f6d85df60b0ce159bb94547e",
+  "devReport": "data/evaluation/dev-results-3.json",
+  "devReportSha256": "73617e8044caff69d1ece72ab1b0fb2c284f6d55e9aa2b954e6c63c3379e8014",
+  "tests": "13/13 search/export/metamorphic tests passed; npx tsc --noEmit exit0",
+  "tuningHistory": [
+    {
+      "run": 1,
+      "finding": "Dev title inflections and spelling candidates lost; excessive added semantic candidates; duplicate lexical source representation changed BM25"
+    },
+    {
+      "run": 2,
+      "change": "Source-preserving full-title inflections, retain supported fuzzy title on same-input enhanced rerun, deduplicate lexical source roles/tasks, candidate lexical score support relative to lead >=0.82",
+      "result": "14/14 hybrid top1, no inappropriate candidates or paired losses"
+    },
+    {
+      "run": 3,
+      "change": "Deduplicate canonical semantic evidence retaining strongest score; metamorphic 2x/10x test",
+      "result": "Unchanged dev behavior, 13/13 targeted tests"
+    }
+  ],
+  "thresholds": {
+    "fuseMaximum": 0.24,
+    "fuseBestGap": 0.055,
+    "bm25Support": 2,
+    "lexicalCoverage": 0.4,
+    "lexicalLeadRatio": 0.82,
+    "semanticCosine": 0.38,
+    "hybridCoverage": 0.35,
+    "hybridLeadCosineGap": 0.055,
+    "hybridLexicalLeadRatio": 0.82,
+    "rrfK": 60
+  },
+  "limits": "Thresholds fitted only to small provisional development set; not universal suitability or calibrated probability."
+}

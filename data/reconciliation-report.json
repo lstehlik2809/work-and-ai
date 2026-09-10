@@ -1,0 +1,154 @@
+{
+  "status": "PASS",
+  "oracle": "independent direct openpyxl/csv reads; no prepare imports or generated reference",
+  "fullPopulation": 831,
+  "relations": 996,
+  "aliases": 59752,
+  "excludedSummaries": 281,
+  "unmappedOnet": 20,
+  "sourceSamples": [
+    {
+      "sheet": "AI Exposure Categories",
+      "code": "11-1011",
+      "title": "Chief executives",
+      "sourceRow": 3,
+      "exposure": "Very high",
+      "growth": 3.2,
+      "annualOpenings": 19100,
+      "startYear": 2025,
+      "endYear": 2035
+    },
+    {
+      "sheet": "AI Exposure Categories",
+      "code": "11-2011",
+      "title": "Advertising and promotions managers",
+      "sourceRow": 5,
+      "exposure": "Very high",
+      "growth": -3.7,
+      "annualOpenings": 2300,
+      "startYear": 2025,
+      "endYear": 2035
+    },
+    {
+      "sheet": "AI Exposure Categories",
+      "code": "13-2011",
+      "title": "Accountants and auditors",
+      "sourceRow": 58,
+      "exposure": "Very high",
+      "growth": 5,
+      "annualOpenings": 115300,
+      "startYear": 2025,
+      "endYear": 2035
+    },
+    {
+      "sheet": "AI Exposure Categories",
+      "code": "15-1252",
+      "title": "Software developers",
+      "sourceRow": 82,
+      "exposure": "Very high",
+      "growth": 10.2,
+      "annualOpenings": 95300,
+      "startYear": 2025,
+      "endYear": 2035
+    },
+    {
+      "sheet": "AI Exposure Categories",
+      "code": "17-2141",
+      "title": "Mechanical engineers",
+      "sourceRow": 110,
+      "exposure": "Very high",
+      "growth": 11.2,
+      "annualOpenings": 17800,
+      "startYear": 2025,
+      "endYear": 2035
+    },
+    {
+      "sheet": "AI Exposure Categories",
+      "code": "19-3032",
+      "title": "Industrial-organizational psychologists",
+      "sourceRow": 152,
+      "exposure": "Very high",
+      "growth": 6.5,
+      "annualOpenings": 300,
+      "startYear": 2025,
+      "endYear": 2035
+    },
+    {
+      "sheet": "AI Exposure Categories",
+      "code": "29-1141",
+      "title": "Registered nurses",
+      "sourceRow": 327,
+      "exposure": "High",
+      "growth": 5.6,
+      "annualOpenings": 180800,
+      "startYear": 2025,
+      "endYear": 2035
+    },
+    {
+      "sheet": "AI Exposure Categories",
+      "code": "31-9091",
+      "title": "Dental assistants",
+      "sourceRow": 387,
+      "exposure": "Low",
+      "growth": 7.4,
+      "annualOpenings": 53000,
+      "startYear": 2025,
+      "endYear": 2035
+    },
+    {
+      "sheet": "AI Exposure Categories",
+      "code": "41-2011",
+      "title": "Cashiers",
+      "sourceRow": 480,
+      "exposure": "High",
+      "growth": -6.5,
+      "annualOpenings": 521300,
+      "startYear": 2025,
+      "endYear": 2035
+    },
+    {
+      "sheet": "AI Exposure Categories",
+      "code": "43-4161",
+      "title": "Human resources assistants, except payroll and timekeeping",
+      "sourceRow": 525,
+      "exposure": "Very high",
+      "growth": -6.2,
+      "annualOpenings": 7900,
+      "startYear": 2025,
+      "endYear": 2035
+    },
+    {
+      "sheet": "AI Exposure Categories",
+      "code": "47-2111",
+      "title": "Electricians",
+      "sourceRow": 585,
+      "exposure": "Moderate",
+      "growth": 9.2,
+      "annualOpenings": 72700,
+      "startYear": 2025,
+      "endYear": 2035
+    },
+    {
+      "sheet": "AI Exposure Categories",
+      "code": "53-3032",
+      "title": "Heavy and tractor-trailer truck drivers",
+      "sourceRow": 793,
+      "exposure": "Moderate",
+      "growth": 3.8,
+      "annualOpenings": 214500,
+      "startYear": 2025,
+      "endYear": 2035
+    },
+    {
+      "sheet": "AI Exposure Categories",
+      "code": "23-1021",
+      "title": "Administrative law judges, adjudicators, and hearing officers",
+      "sourceRow": 196,
+      "exposure": "Very high",
+      "growth": 0,
+      "annualOpenings": 500,
+      "startYear": 2025,
+      "endYear": 2035
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "date": "2026-09-10",
+  "browser": "Codex in-app browser; Chrome152 Windows; i7-9750H12logical processors",
+  "method": "Observed through browser UI and production diagnostics, summarized from displayed reports; not independently saved browser-download output",
+  "candidateHashes": {
+    "src/App.tsx": "460809a8e1c04100287fe35491873ec7af01ab7a142ad74640a9ceb86642a622",
+    "src/search/engine.ts": "a1bcd8a72fa00666dbd23e30377421ef95184d6034b1b102a9fb48b454b3d371",
+    "src/semantic/worker.ts": "2249e950ee8841edc4e7fae77853de0147f74c482ccc4648dc768716e0a04bc5",
+    "src/semantic/client.ts": "9cb6517a3ac1cd254233a107de06274b1145cc97c41d2a7c1f99b9741e8bd7a2",
+    "src/diagnostics.tsx": "4ef418d84d0343e190ce41024cde43e7213b0ad84ebf1b199261b2c040a11976",
+    "public/data/occupations.json": "e30f18b0b1c48a26f983daf39d48752e0df8ad738bdb120962c67176532ded94",
+    "public/semantic/metadata.json": "e9b3615cbc627beae67a7a51088c0603322d970a806236c94a08976eeceb9e55",
+    "public/semantic/vectors.bin": "2b20c21dc0badd7a4c9cf7807748ee7cee1d2d0bcb669192e76f72df7298d516"
+  },
+  "cold": {
+    "origin": "http://localhost:4173",
+    "observedAt": "2026-09-10T09:02:05.291Z",
+    "cacheBefore": [],
+    "viewport": [
+      1280,
+      720
+    ],
+    "initializationMs": 2215.6,
+    "firstQueryMs": 126.8,
+    "totalMs": 2344.9,
+    "warmQueryMs": 49.9,
+    "modelFullTransferBytes": 22972370,
+    "wasmFullTransferBytes": 25749873
+  },
+  "repeatVisit": {
+    "observedAt": "2026-09-10T08:56:51.695Z",
+    "viewport": [
+      390,
+      844
+    ],
+    "hardware": "same desktop; no mobileCPU ornetwork emulation",
+    "initializationMs": 883.5,
+    "warmQueryMs": 61.8,
+    "modelRuntimeTokenizerNetworkRequests": 0
+  },
+  "faults": {
+    "download": "rejected, ordinary nurse search and pharmacistcomparison survived",
+    "wasm": "rejected",
+    "memory": "injected error rejected",
+    "mismatch": "rejected",
+    "hang": "diagnostic500ms timeout rejected",
+    "cache": "success,947ms initialization"
+  },
+  "boundaries": {
+    "256tokens": "accepted",
+    "257tokens": "explicit rejection",
+    "262tokens": "explicit rejection",
+    "unicode368tokensWithDistinguishingTail": "explicit rejection"
+  },
+  "race": [
+    "A cancelled",
+    "B cancelled",
+    "C resolved"
+  ],
+  "privacy": {
+    "publicSyntheticMarker": "WAI_PRIVACY_SENTINEL_20260910",
+    "markerInRequestURLs": false,
+    "markerInBrowserLogs": false,
+    "nonLocalRequests": [],
+    "initialSemanticAssets": []
+  },
+  "ui": [
+    "ordinary search before worker",
+    "sustainability specialist broader BLS scope",
+    "confirmation via keyboard Enter",
+    "two-role comparison and code/release share refresh",
+    "explicit nurse rejection clears title and allows pharmacist suggestion",
+    "confirmed selection retained until newconfirmation",
+    "390px responsive layout inspected",
+    "1010px production printstylesheet preview threecolumns legible controls hidden"
+  ],
+  "unverified": [
+    "OS saved CSV artifact:in-appbrowser download event unavailable",
+    "paginated savedPDF:in-appbrowser no printdialog",
+    "physical mobilehardware",
+    "actualPages site pending"
+  ]
+}

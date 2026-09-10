@@ -1,0 +1,7 @@
+# Semantic model and runtime notices
+
+Model: [Xenova/all-MiniLM-L6-v2](https://huggingface.co/Xenova/all-MiniLM-L6-v2), immutable revision `751bff37182d3f1213fa05d7196b954e230abad9`. Base model: [sentence-transformers/all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2), by the sentence-transformers authors. The model card identifies Apache-2.0 licensing. The ONNX conversion/quantization and original configuration/tokenizer files are redistributed unchanged; app-created occupational vectors are derived from the attributed public source text. See [Apache-2.0](public/notices/Apache-2.0.txt).
+
+Transformers.js 4.2.0 is Apache-2.0. ONNX Runtime Web 1.29.0 is MIT: [runtime license](public/notices/ONNX-Runtime-LICENSE.txt) and [third-party notices](public/notices/ONNX-ThirdPartyNotices.txt). Locked npm packages retain their individual licenses. The offline CPU runtime is 1.24.3; the browser uses the separately pinned stable 1.29.0 runtime. A root-relative local model path is required for Transformers.js 4.2.0 metadata discovery with remote models disabled.
+
+`public/semantic/assets.json` records the exact revision, original URLs, byte counts and SHA-256 checksums of every served model/tokenizer/runtime asset. Browser downloads come from the same GitHub Pages origin as the app. Model outputs are used only for retrieval and never supply statistical values or personalized interpretations.

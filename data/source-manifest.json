@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    {
+      "id": "ai-exposure-categories.xlsx",
+      "path": "data/raw/ai-exposure-categories.xlsx",
+      "url": "https://www.bls.gov/emp/ind-occ-matrix/ai-exposure-categories.xlsx",
+      "retrieved": "2026-09-10T08:32:35.315Z",
+      "retrievalClock": "Node fetch response fully received UTC timestamp",
+      "sha256": "51f5779feea35b89d9c688970ebb9d2e03fca514b39a5100b66faa88abffb52b",
+      "storedSha256": "51f5779feea35b89d9c688970ebb9d2e03fca514b39a5100b66faa88abffb52b",
+      "bytes": 98102,
+      "storedBytes": 98102,
+      "release": "BLS 2025–2035, August 27, 2026",
+      "license": "U.S. government public data"
+    },
+    {
+      "id": "bls-directory.xlsx",
+      "path": "data/raw/bls-directory.xlsx",
+      "url": "https://www.bls.gov/emp/classifications-crosswalks/nem-occupational-coverage.xlsx",
+      "retrieved": "2026-09-10T08:32:35.756Z",
+      "retrievalClock": "Node fetch response fully received UTC timestamp",
+      "sha256": "005e13282247b2b5bfc957add9912c90bd6cac9fb136cabd0b44573d1cf41d26",
+      "storedSha256": "005e13282247b2b5bfc957add9912c90bd6cac9fb136cabd0b44573d1cf41d26",
+      "bytes": 59682,
+      "storedBytes": 59682,
+      "release": "BLS 2025–2035, August 27, 2026",
+      "license": "U.S. government public data"
+    },
+    {
+      "id": "bls-crosswalk.xlsx",
+      "path": "data/raw/bls-crosswalk.xlsx",
+      "url": "https://www.bls.gov/emp/classifications-crosswalks/nem-onet-to-soc-crosswalk.xlsx",
+      "retrieved": "2026-09-10T08:32:36.127Z",
+      "retrievalClock": "Node fetch response fully received UTC timestamp",
+      "sha256": "cf3c6e6cf1198f9896a0e280c7503f6cc2202be0660d5decff9c4562c78556e3",
+      "storedSha256": "cf3c6e6cf1198f9896a0e280c7503f6cc2202be0660d5decff9c4562c78556e3",
+      "bytes": 94441,
+      "storedBytes": 94441,
+      "release": "BLS 2025–2035, August 27, 2026",
+      "license": "U.S. government public data"
+    },
+    {
+      "id": "occupation_data.csv",
+      "path": "data/raw/occupation_data.csv.gz",
+      "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv",
+      "retrieved": "2026-09-10T08:32:38.031Z",
+      "retrievalClock": "Node fetch response fully received UTC timestamp",
+      "sha256": "a09eae1d6609686e44e05b7290993a1c8b523d8ca224bc0eedc194c855c3ee02",
+      "storedSha256": "38060fe29b22b02e3389bf907d6dab82bd12e03d66338cf7fe5dab2defabcea8",
+      "bytes": 268030,
+      "storedBytes": 78808,
+      "release": "O*NET 31.0",
+      "license": "CC BY 4.0"
+    },
+    {
+      "id": "job_titles.csv",
+      "path": "data/raw/job_titles.csv.gz",
+      "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/job_titles.csv",
+      "retrieved": "2026-09-10T08:32:51.184Z",
+      "retrievalClock": "Node fetch response fully received UTC timestamp",
+      "sha256": "75a3b46d6edc5996117c10c9ed488c9a06f7495d02969e9d12873ab14a21540c",
+      "storedSha256": "e7aed2127fdd2f240d9e073153592252a8c5cbcee3b3c162aba0ec8f30be9909",
+      "bytes": 4504432,
+      "storedBytes": 436683,
+      "release": "O*NET 31.0",
+      "license": "CC BY 4.0"
+    },
+    {
+      "id": "sample_of_reported_titles.csv",
+      "path": "data/raw/sample_of_reported_titles.csv.gz",
+      "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/sample_of_reported_titles.csv",
+      "retrieved": "2026-09-10T08:32:53.446Z",
+      "retrievalClock": "Node fetch response fully received UTC timestamp",
+      "sha256": "5d76040b7b0602ea217660648f8363e7980edd1870f96574a2eeaa6a822d2666",
+      "storedSha256": "b7526ad6726be8a40dec41913a48d36044ceaa29b1823af1d495363c9fc03c37",
+      "bytes": 601127,
+      "storedBytes": 73443,
+      "release": "O*NET 31.0",
+      "license": "CC BY 4.0"
+    },
+    {
+      "id": "task_statements.csv",
+      "path": "data/raw/task_statements.csv.gz",
+      "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+      "retrieved": "2026-09-10T08:33:17.400Z",
+      "retrievalClock": "Node fetch response fully received UTC timestamp",
+      "sha256": "4568e14d8db6f05551ad37e056e909b13ebae4a26bcb5ff915bb5f281d582c57",
+      "storedSha256": "17bfe3bd8fe940acfd8c6d6b65a8234c3a50bac614b0f32328941fcbaaf3accf",
+      "bytes": 3461375,
+      "storedBytes": 673227,
+      "release": "O*NET 31.0",
+      "license": "CC BY 4.0"
+    }
+  ]
+}
