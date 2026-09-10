@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "path": "data/raw/ai-context-occupation.xlsx",
+    "url": "https://www.bls.gov/emp/ind-occ-matrix/occupation.xlsx",
+    "page": "https://www.bls.gov/emp/tables/factors-affecting-occupational-utilization.htm",
+    "sha256": "a7d060f0576f7d4f5b829b9a0bb4a6c11a12766d159ebb0e07aab5bd2e7583c5",
+    "bytes": 413398,
+    "retrieved": "2026-09-10T12:53:54.154Z",
+    "release": "BLS 2025–2035",
+    "license": "U.S. government public data"
+  },
+  "intermediate": {
+    "path": "data/ai-context-table.json",
+    "sha256": "b88f04195c6c3d3dda47eafef551887aa919e85091eed78799263e4c50b00568",
+    "bytes": 305263
+  }
+}

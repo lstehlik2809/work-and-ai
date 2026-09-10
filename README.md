@@ -2,6 +2,8 @@
 
 Explore published relative AI exposure and employment projections for U.S. occupations. Search an English title, select skills, or describe your responsibilities, then confirm the occupation to view or compare up to three published results. This is an occupational reference, not an assessment of a person.
 
+Each confirmed result includes an explanation of its exposure category and the dates of the underlying evidence. Optional BLS AI outlook notes retain their industry scope and full source wording; they describe staffing-share projection assumptions, not the cause of the exposure rating or total job losses. A missing note does not establish that AI has no effect.
+
 The “Show top” control displays up to 1–10 matching occupations, defaulting to five. It applies to title, skills, and description results and updates existing suggestions immediately. Searches can return fewer than the requested number when fewer candidates meet the matching criteria; the comparison limit remains three occupations.
 
 [Open the app](https://lstehlik2809.github.io/work-and-ai/) · [Methodology](METHODOLOGY.md) · [Data sources](DATA_SOURCES.md) · [Verification](VERIFICATION.md)

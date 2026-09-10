@@ -22,3 +22,5 @@
   .comparison-note, .scope-note, .context { color: black !important; }
   .attribution { font-size: 8pt !important; }
 }
+
+@media print{.ai-outlook-context{max-width:none;margin:12px 0;padding-top:12px}.ai-outlook-context>h3,.ai-outlook-notes h4{break-after:avoid}.ai-outlook-notes li{break-inside:avoid;margin-bottom:12px}.ai-outlook-scope,.ai-outlook-absence,.ai-outlook-notes blockquote{font-size:9pt}.exposure-context .evidence-timeframe{font-size:9pt}}
