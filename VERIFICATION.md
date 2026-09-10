@@ -1,6 +1,6 @@
 # Verification record
 
-Status on September 10, 2026: implementation, local automated checks, saved CSV and paginated PDF verification passed; deployment verification is recorded below when completed. Matching evaluation remains provisional. Browser testing uses the Codex in-app browser, Chromium 152 on Windows, Intel Core i7-9750H with 12 logical processors. Narrow-viewport tests use desktop hardware, not a physical phone or mobile CPU/network emulation.
+Status on September 10, 2026: implementation, automated checks, saved CSV and paginated PDF verification, and the actual public GitHub Pages deployment passed. Matching evaluation remains provisional. Earlier browser testing used the Codex in-app browser, Chromium 152; final local and live tests used Playwright 1.62.1 / Chromium 151.0.7922.34 on Windows, Intel Core i7-9750H with 12 logical processors. Narrow-viewport tests use desktop hardware, not a physical phone or mobile CPU/network emulation.
 
 ## Automated and source checks
 
@@ -30,7 +30,7 @@ Byte counts below separate raw assets from local gzip estimates (Node zlib defau
 | Complete lexical vocabulary | 4,492,943 | 522,530 |
 | Semantic metadata | 767,056 | 183,636 |
 | Float32 index | 1,276,416 | 1,182,464 |
-| Lazy semantic worker JS | 523,128 | 149,537 |
+| Lazy semantic worker JS | 523,176 | 149,560 |
 | Quantized ONNX model | 22,972,370 | measured separately from initial JS |
 | Tokenizer and configuration files | 712,802 | measured separately from initial JS |
 | WASM runtime | 25,749,873 | 6,442,000 (Vite estimate) |
@@ -66,4 +66,14 @@ The entire print-style preview was visually inspected at a 1,010 CSS-pixel conte
 
 ## Deployment
 
-Pending actual workflow and Pages verification at the time this record was first written. Do not infer deployment success from the workflow file or local build.
+[Public repository](https://github.com/lstehlik2809/work-and-ai) · [Live application](https://lstehlik2809.github.io/work-and-ai/) · [Successful deployment workflow](https://github.com/lstehlik2809/work-and-ai/actions/runs/34463258584).
+
+The release-readiness-reviewed application commit is `243991e76d18b223f470d1c30b6c2bf4d2becbc5`. GitHub Actions installed locked dependencies, validated data/vectors/assets, typechecked, passed all 69 tests, built, and deployed this commit successfully. Subsequent documentation/evidence commits preserve the same application inputs. Pages uses the actual `/work-and-ai/` project subpath.
+
+The live headless suite completed all 12 scenario groups, including ordinary search before semantic loading, keyboard confirmation, specialist scope, comparison limits/removal, share refresh and old-release warning, rejected-title refinement, private-query network/export checks, a 390-pixel layout, cold/warm/revisit matching, and blocked-model fallback. [Raw live report](verification/pages/browser-report.json), [downloaded CSV](verification/pages/comparison.csv), [printed PDF](verification/pages/comparison.pdf), and desktop/mobile/print images are committed under `verification/pages`. The live CSV is byte-identical to the inspected local CSV. The live PDF has one A4 landscape page; extracted codes, periods and source URLs passed, and its rendered page was visually inspected for clipping and legibility.
+
+On this desktop and unthrottled Internet connection, fresh-context initialization was **85,015.8 ms**, first query **128.0 ms**, total **85,147.1 ms**. The warm query was **60.5 ms**. A repeat visit initialized in **1,020.9 ms** and queried in **137.9 ms**, with no model/runtime network transfer. These are single observations, not a speed guarantee or mobile measurement. The cold load was dominated by downloads.
+
+Cold worker Resource Timing reported **40,746,492 transfer bytes**, excluding the worker script and ordinary app loading. That inventory includes two reported model transfers and repeated tokenizer fetches during library discovery/loading. Each model response had **16,222,259 encoded body bytes** (22,972,370 raw); the WASM response had **6,487,814 encoded body bytes** (25,749,873 raw). Do not equate the unique raw asset inventory with actual wire transfer, or multiply this single observation into a bandwidth guarantee. Initial shared JS was **83,509 encoded body bytes** on Pages; the tiny app entry is additional. No semantic assets load for ordinary title search.
+
+The raw suite reports injected download/runtime/memory/mismatch/hang failures as clean rejections; races and all token boundaries also match expectations. Its cache-disabled diagnostic uses a **30-second test timeout**, which expired on both live runs. This recorded timeout is not counted as successful uncached inference. A separate [actual-app cache-disabled check](verification/pages/cache-unavailable-app.json), using the production **120-second timeout**, completed enhanced matching in **85,584 ms**; ordinary search worked before and afterwards, and the confirmed comparison survived. The reproducible targeted checker is [cache-check.mjs](verification/pages/cache-check.mjs). The browser runner's aggregate PASS does not itself assert every recorded fault outcome; these raw outcomes were inspected separately, with the longer actual-app check closing the cache-disabled case.

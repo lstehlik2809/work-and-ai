@@ -1,0 +1,899 @@
+{
+  "date": "2026-09-10T09:56:49.283Z",
+  "base": "https://lstehlik2809.github.io/work-and-ai/",
+  "checks": [
+    "Initial ordinary app loads no semantic assets",
+    "Keyboard confirmation, specialist scope, compare limit, remove and re-add",
+    "Three-role public code/release share survives refresh",
+    "Actual browser CSV download saved with all three canonical occupations",
+    "Real Chromium PDF generated using production print stylesheet",
+    "Unavailable historical release disclosed",
+    "Rejected exact title releases constraint; meaning search preserves confirmed selection",
+    "Synthetic private sentinel absent from URLs, request bodies, logs and saved CSV; same-origin GETs only",
+    "390px real viewport, no page overflow, scrollable labelled table and usable removal",
+    "Fresh-context cold/warm worker, all faults, race and token boundaries",
+    "Actual repeat visit uses pinned model/runtime cache",
+    "Blocked model request preserves selection/comparison and ordinary search"
+  ],
+  "requests": [
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/assets/app-Mw8-0g6d.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/assets/styles-B6YAsy3J.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/assets/styles-D5Ibqw2o.css",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/data/occupations.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/data/lexicon.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/assets/app-Mw8-0g6d.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/assets/styles-B6YAsy3J.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/assets/styles-D5Ibqw2o.css",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/data/occupations.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/data/lexicon.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/assets/app-Mw8-0g6d.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/assets/styles-B6YAsy3J.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/assets/styles-D5Ibqw2o.css",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/data/occupations.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/data/lexicon.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/assets/app-Mw8-0g6d.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/assets/styles-B6YAsy3J.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/assets/styles-D5Ibqw2o.css",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/data/occupations.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/data/lexicon.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/assets/client-D_cPyMLT.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/semantic/metadata.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/semantic/vectors.bin",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/data/occupations.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/config.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer_config.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/onnx/model_quantized.onnx",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer_config.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/onnx/model_quantized.onnx",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.wasm",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.mjs",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "blob:https://lstehlik2809.github.io/426d8bce-6765-47e2-9cfe-a5663d00bd53",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/assets/app-Mw8-0g6d.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/assets/styles-B6YAsy3J.js",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/assets/styles-D5Ibqw2o.css",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/data/occupations.json",
+      "method": "GET",
+      "body": null
+    },
+    {
+      "url": "https://lstehlik2809.github.io/work-and-ai/data/lexicon.json",
+      "method": "GET",
+      "body": null
+    }
+  ],
+  "errors": [],
+  "browser": "151.0.7922.34",
+  "diagnostics": {
+    "date": "2026-09-10T09:58:24.066Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+    "hardwareConcurrency": 12,
+    "viewport": [
+      1280,
+      900
+    ],
+    "initialRequests": [
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/diagnostics-xG4tVSV6.js",
+        "bytes": 2984,
+        "encoded": 2684,
+        "durationMs": 167.2999999988824
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/styles-B6YAsy3J.js",
+        "bytes": 83809,
+        "encoded": 83509,
+        "durationMs": 234
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/client-D_cPyMLT.js",
+        "bytes": 1042,
+        "encoded": 742,
+        "durationMs": 218
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/styles-D5Ibqw2o.css",
+        "bytes": 2858,
+        "encoded": 2558,
+        "durationMs": 164.89999999850988
+      }
+    ],
+    "cacheBefore": [],
+    "real": {
+      "first": {
+        "initializationMs": 85015.80000000075,
+        "queryMs": 128,
+        "totalMs": 85147.09999999963
+      },
+      "warm": {
+        "initializationMs": 0,
+        "queryMs": 60.5,
+        "totalMs": 60.80000000074506
+      },
+      "workerRequests": [
+        {
+          "url": "https://lstehlik2809.github.io/work-and-ai/semantic/metadata.json",
+          "transfer": 188109,
+          "encoded": 187809
+        },
+        {
+          "url": "https://lstehlik2809.github.io/work-and-ai/semantic/vectors.bin",
+          "transfer": 1183884,
+          "encoded": 1183584
+        },
+        {
+          "url": "https://lstehlik2809.github.io/work-and-ai/data/occupations.json",
+          "transfer": 0,
+          "encoded": 227953
+        },
+        {
+          "url": "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/config.json",
+          "transfer": 664,
+          "encoded": 364
+        },
+        {
+          "url": "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer_config.json",
+          "transfer": 519,
+          "encoded": 219
+        },
+        {
+          "url": "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/onnx/model_quantized.onnx",
+          "transfer": 16222559,
+          "encoded": 16222259
+        },
+        {
+          "url": "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer.json",
+          "transfer": 210232,
+          "encoded": 209932
+        },
+        {
+          "url": "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer.json",
+          "transfer": 210232,
+          "encoded": 209932
+        },
+        {
+          "url": "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer_config.json",
+          "transfer": 519,
+          "encoded": 219
+        },
+        {
+          "url": "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/onnx/model_quantized.onnx",
+          "transfer": 16222559,
+          "encoded": 16222259
+        },
+        {
+          "url": "https://lstehlik2809.github.io/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.wasm",
+          "transfer": 6488114,
+          "encoded": 6487814
+        },
+        {
+          "url": "https://lstehlik2809.github.io/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.mjs",
+          "transfer": 19101,
+          "encoded": 18801
+        }
+      ],
+      "firstTop": [
+        {
+          "code": "49-9051",
+          "score": 0.47765775566063434,
+          "excerpt": "Electrical power-line installers and repairers. Electrical Power-Line Installers and Repairers. Install or repair cables or wires used in electrical power or distribution systems. May erect poles and light or heavy duty transmission towers. Adhere to safety practices and procedures, such as checking equipment regularly and erecting barriers around work areas. Open switches or attach grounding devices to remove electrical hazards from disturbed or fallen lines or to facilitate repairs. Climb poles or use truck-mounted buckets to access equipment.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        },
+        {
+          "code": "49-2093",
+          "score": 0.47542012429558345,
+          "excerpt": "Electrical and electronics installers and repairers, transportation equipment. Electrical and Electronics Installers and Repairers, Transportation Equipment. Install, adjust, or maintain mobile electronics communication equipment, including sound, sonar, security, navigation, and surveillance systems on trains, watercraft, or other mobile equipment. Inspect and test electrical systems and equipment to locate and diagnose malfunctions, using visual inspections, testing devices, and computer software. Reassemble and test equipment after repairs. Splice wires with knives or cutting pliers, and solder connections to fixtures, outlets, and equipment.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        },
+        {
+          "code": "49-2095",
+          "score": 0.4744019369271838,
+          "excerpt": "Electrical and electronics repairers, powerhouse, substation, and relay. Electrical and Electronics Repairers, Powerhouse, Substation, and Relay. Inspect, test, repair, or maintain electrical equipment in generating stations, substations, and in-service relays. Inspect and test equipment and circuits to identify malfunctions or defects, using wiring diagrams and testing devices such as ohmmeters, voltmeters, or ammeters. Consult manuals, schematics, wiring diagrams, and engineering personnel to troubleshoot and solve equipment problems and to determine optimum equipment functioning. Notify facility personnel of equipment shutdowns.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        }
+      ],
+      "warmTop": [
+        {
+          "code": "29-1051",
+          "score": 0.6664009410828902,
+          "excerpt": "Pharmacists. Pharmacists. Dispense drugs prescribed by physicians and other health practitioners and provide information to patients about medications and their use. May advise physicians and other health practitioners on the selection, dosage, interactions, and side effects of medications. Review prescriptions to assure accuracy, to ascertain the needed ingredients, and to evaluate their suitability. Provide information and advice regarding drug interactions, side effects, dosage, and proper medication storage. Analyze prescribing trends to monitor patient compliance and to prevent excessive usage or harmful interactions.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        },
+        {
+          "code": "29-1171",
+          "score": 0.4779260461815898,
+          "excerpt": "Nurse practitioners. Nurse Practitioners. Diagnose and treat acute, episodic, or chronic illness, independently or as part of a healthcare team. May focus on health promotion and disease prevention. May order, perform, or interpret diagnostic tests such as lab work and x rays. May prescribe medication. Must be registered nurses who have specialized graduate education. Educate patients about self-management of acute or chronic illnesses, tailoring instructions to patients' individual circumstances. Schedule follow-up visits to monitor patients or evaluate health or illness care. Counsel patients about drug regimens and possible side effects or interactions with other substances, such as food supplements, over-the-counter (OTC) medications, or herbal remedies.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        },
+        {
+          "code": "31-9095",
+          "score": 0.44875714805771116,
+          "excerpt": "Pharmacy aides. Pharmacy Aides. Record drugs delivered to the pharmacy, store incoming merchandise, and inform the supervisor of stock needs. May operate cash register and accept prescriptions for filling. Accept prescriptions for filling, gathering and processing necessary information. Answer telephone inquiries, referring callers to pharmacist when necessary. Greet customers and help them locate merchandise.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        }
+      ]
+    },
+    "faults": [
+      {
+        "fault": "download",
+        "result": "rejected",
+        "message": "Error: Enhanced matching could not load or run. Check your connection and retry, or use ordinary title search."
+      },
+      {
+        "fault": "wasm",
+        "result": "rejected",
+        "message": "Error: Enhanced matching could not load or run. Check your connection and retry, or use ordinary title search."
+      },
+      {
+        "fault": "memory",
+        "result": "rejected",
+        "message": "Error: Enhanced matching could not load or run. Check your connection and retry, or use ordinary title search."
+      },
+      {
+        "fault": "mismatch",
+        "result": "rejected",
+        "message": "Error: The search model and index do not match. Ordinary title search is still available."
+      },
+      {
+        "fault": "hang",
+        "result": "rejected",
+        "message": "Error: Enhanced search timed out. You can retry or use ordinary title search."
+      },
+      {
+        "fault": "cache",
+        "result": "rejected",
+        "message": "Error: Enhanced search timed out. You can retry or use ordinary title search."
+      }
+    ],
+    "race": [
+      "A cancelled",
+      "B cancelled",
+      "C resolved"
+    ],
+    "long": "Error: Please shorten your description. This model supports 256 tokens (word pieces); your text has 262. No text was discarded.",
+    "boundaries": [
+      {
+        "label": "256 tokens",
+        "result": "accepted"
+      },
+      {
+        "label": "257 tokens",
+        "result": "Error: Please shorten your description. This model supports 256 tokens (word pieces); your text has 257. No text was discarded."
+      },
+      {
+        "label": "Unicode long tail",
+        "result": "Error: Please shorten your description. This model supports 256 tokens (word pieces); your text has 368. No text was discarded."
+      }
+    ],
+    "cache": [
+      {
+        "key": "transformers-cache",
+        "entries": [
+          "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/config.json",
+          "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer_config.json",
+          "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer.json",
+          "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/onnx/model_quantized.onnx",
+          "https://lstehlik2809.github.io/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.mjs",
+          "https://lstehlik2809.github.io/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.wasm"
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/diagnostics-xG4tVSV6.js",
+        "bytes": 2984,
+        "encoded": 2684,
+        "durationMs": 167.2999999988824
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/styles-B6YAsy3J.js",
+        "bytes": 83809,
+        "encoded": 83509,
+        "durationMs": 234
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/client-D_cPyMLT.js",
+        "bytes": 1042,
+        "encoded": 742,
+        "durationMs": 218
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/styles-D5Ibqw2o.css",
+        "bytes": 2858,
+        "encoded": 2558,
+        "durationMs": 164.89999999850988
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/data/occupations.json",
+        "bytes": 228253,
+        "encoded": 227953,
+        "durationMs": 222.90000000037253
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/data/lexicon.json",
+        "bytes": 527999,
+        "encoded": 527699,
+        "durationMs": 313.5
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 150994,
+        "encoded": 150694,
+        "durationMs": 5.900000000372529
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -5.700000001117587
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -3.800000000745058
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -13.300000000745058
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -2.199999999254942
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -2.099999999627471
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -2
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -7.799999998882413
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -5.199999999254942
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -8.700000001117587
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -4.200000001117587
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -7.900000000372529
+      }
+    ]
+  },
+  "revisit": {
+    "date": "2026-09-10T10:00:28.041Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+    "hardwareConcurrency": 12,
+    "viewport": [
+      1280,
+      900
+    ],
+    "initialRequests": [
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/diagnostics-xG4tVSV6.js",
+        "bytes": 0,
+        "encoded": 2684,
+        "durationMs": 0
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/styles-B6YAsy3J.js",
+        "bytes": 0,
+        "encoded": 83509,
+        "durationMs": 0
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/client-D_cPyMLT.js",
+        "bytes": 0,
+        "encoded": 742,
+        "durationMs": 0
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/styles-D5Ibqw2o.css",
+        "bytes": 0,
+        "encoded": 2558,
+        "durationMs": 0
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/data/occupations.json",
+        "bytes": 0,
+        "encoded": 227953,
+        "durationMs": 6.900000000372529
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/data/lexicon.json",
+        "bytes": 0,
+        "encoded": 527699,
+        "durationMs": 33.100000001490116
+      }
+    ],
+    "cacheBefore": [
+      {
+        "key": "transformers-cache",
+        "entries": [
+          "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/config.json",
+          "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer_config.json",
+          "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer.json",
+          "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/onnx/model_quantized.onnx",
+          "https://lstehlik2809.github.io/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.mjs",
+          "https://lstehlik2809.github.io/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.wasm"
+        ]
+      }
+    ],
+    "real": {
+      "first": {
+        "initializationMs": 1020.9000000003725,
+        "queryMs": 137.89999999850988,
+        "totalMs": 1161.2999999988824
+      },
+      "warm": {
+        "initializationMs": 0,
+        "queryMs": 84.09999999962747,
+        "totalMs": 84.40000000037253
+      },
+      "workerRequests": [
+        {
+          "url": "https://lstehlik2809.github.io/work-and-ai/semantic/metadata.json",
+          "transfer": 0,
+          "encoded": 187809
+        },
+        {
+          "url": "https://lstehlik2809.github.io/work-and-ai/semantic/vectors.bin",
+          "transfer": 0,
+          "encoded": 1183584
+        },
+        {
+          "url": "https://lstehlik2809.github.io/work-and-ai/data/occupations.json",
+          "transfer": 0,
+          "encoded": 227953
+        }
+      ],
+      "firstTop": [
+        {
+          "code": "49-9051",
+          "score": 0.47765775566063434,
+          "excerpt": "Electrical power-line installers and repairers. Electrical Power-Line Installers and Repairers. Install or repair cables or wires used in electrical power or distribution systems. May erect poles and light or heavy duty transmission towers. Adhere to safety practices and procedures, such as checking equipment regularly and erecting barriers around work areas. Open switches or attach grounding devices to remove electrical hazards from disturbed or fallen lines or to facilitate repairs. Climb poles or use truck-mounted buckets to access equipment.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        },
+        {
+          "code": "49-2093",
+          "score": 0.47542012429558345,
+          "excerpt": "Electrical and electronics installers and repairers, transportation equipment. Electrical and Electronics Installers and Repairers, Transportation Equipment. Install, adjust, or maintain mobile electronics communication equipment, including sound, sonar, security, navigation, and surveillance systems on trains, watercraft, or other mobile equipment. Inspect and test electrical systems and equipment to locate and diagnose malfunctions, using visual inspections, testing devices, and computer software. Reassemble and test equipment after repairs. Splice wires with knives or cutting pliers, and solder connections to fixtures, outlets, and equipment.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        },
+        {
+          "code": "49-2095",
+          "score": 0.4744019369271838,
+          "excerpt": "Electrical and electronics repairers, powerhouse, substation, and relay. Electrical and Electronics Repairers, Powerhouse, Substation, and Relay. Inspect, test, repair, or maintain electrical equipment in generating stations, substations, and in-service relays. Inspect and test equipment and circuits to identify malfunctions or defects, using wiring diagrams and testing devices such as ohmmeters, voltmeters, or ammeters. Consult manuals, schematics, wiring diagrams, and engineering personnel to troubleshoot and solve equipment problems and to determine optimum equipment functioning. Notify facility personnel of equipment shutdowns.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        }
+      ],
+      "warmTop": [
+        {
+          "code": "29-1051",
+          "score": 0.6664009410828902,
+          "excerpt": "Pharmacists. Pharmacists. Dispense drugs prescribed by physicians and other health practitioners and provide information to patients about medications and their use. May advise physicians and other health practitioners on the selection, dosage, interactions, and side effects of medications. Review prescriptions to assure accuracy, to ascertain the needed ingredients, and to evaluate their suitability. Provide information and advice regarding drug interactions, side effects, dosage, and proper medication storage. Analyze prescribing trends to monitor patient compliance and to prevent excessive usage or harmful interactions.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        },
+        {
+          "code": "29-1171",
+          "score": 0.4779260461815898,
+          "excerpt": "Nurse practitioners. Nurse Practitioners. Diagnose and treat acute, episodic, or chronic illness, independently or as part of a healthcare team. May focus on health promotion and disease prevention. May order, perform, or interpret diagnostic tests such as lab work and x rays. May prescribe medication. Must be registered nurses who have specialized graduate education. Educate patients about self-management of acute or chronic illnesses, tailoring instructions to patients' individual circumstances. Schedule follow-up visits to monitor patients or evaluate health or illness care. Counsel patients about drug regimens and possible side effects or interactions with other substances, such as food supplements, over-the-counter (OTC) medications, or herbal remedies.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        },
+        {
+          "code": "31-9095",
+          "score": 0.44875714805771116,
+          "excerpt": "Pharmacy aides. Pharmacy Aides. Record drugs delivered to the pharmacy, store incoming merchandise, and inform the supervisor of stock needs. May operate cash register and accept prescriptions for filling. Accept prescriptions for filling, gathering and processing necessary information. Answer telephone inquiries, referring callers to pharmacist when necessary. Greet customers and help them locate merchandise.",
+          "source": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv"
+        }
+      ]
+    },
+    "faults": [
+      {
+        "fault": "download",
+        "result": "rejected",
+        "message": "Error: Enhanced matching could not load or run. Check your connection and retry, or use ordinary title search."
+      },
+      {
+        "fault": "wasm",
+        "result": "rejected",
+        "message": "Error: Enhanced matching could not load or run. Check your connection and retry, or use ordinary title search."
+      },
+      {
+        "fault": "memory",
+        "result": "rejected",
+        "message": "Error: Enhanced matching could not load or run. Check your connection and retry, or use ordinary title search."
+      },
+      {
+        "fault": "mismatch",
+        "result": "rejected",
+        "message": "Error: The search model and index do not match. Ordinary title search is still available."
+      },
+      {
+        "fault": "hang",
+        "result": "rejected",
+        "message": "Error: Enhanced search timed out. You can retry or use ordinary title search."
+      },
+      {
+        "fault": "cache",
+        "result": "rejected",
+        "message": "Error: Enhanced search timed out. You can retry or use ordinary title search."
+      }
+    ],
+    "race": [
+      "A cancelled",
+      "B cancelled",
+      "C resolved"
+    ],
+    "long": "Error: Please shorten your description. This model supports 256 tokens (word pieces); your text has 262. No text was discarded.",
+    "boundaries": [
+      {
+        "label": "256 tokens",
+        "result": "accepted"
+      },
+      {
+        "label": "257 tokens",
+        "result": "Error: Please shorten your description. This model supports 256 tokens (word pieces); your text has 257. No text was discarded."
+      },
+      {
+        "label": "Unicode long tail",
+        "result": "Error: Please shorten your description. This model supports 256 tokens (word pieces); your text has 368. No text was discarded."
+      }
+    ],
+    "cache": [
+      {
+        "key": "transformers-cache",
+        "entries": [
+          "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/config.json",
+          "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer_config.json",
+          "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer.json",
+          "https://lstehlik2809.github.io/work-and-ai/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/onnx/model_quantized.onnx",
+          "https://lstehlik2809.github.io/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.mjs",
+          "https://lstehlik2809.github.io/work-and-ai/runtime/1.29.0/ort-wasm-simd-threaded.asyncify.wasm"
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/diagnostics-xG4tVSV6.js",
+        "bytes": 0,
+        "encoded": 2684,
+        "durationMs": 0
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/styles-B6YAsy3J.js",
+        "bytes": 0,
+        "encoded": 83509,
+        "durationMs": 0
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/client-D_cPyMLT.js",
+        "bytes": 0,
+        "encoded": 742,
+        "durationMs": 0
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/styles-D5Ibqw2o.css",
+        "bytes": 0,
+        "encoded": 2558,
+        "durationMs": 0
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/data/occupations.json",
+        "bytes": 0,
+        "encoded": 227953,
+        "durationMs": 6.900000000372529
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/data/lexicon.json",
+        "bytes": 0,
+        "encoded": 527699,
+        "durationMs": 33.100000001490116
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -3.199999999254942
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -6.299999998882413
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -3.199999999254942
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -6.400000000372529
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -2
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -4.300000000745058
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -2.199999999254942
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -7.299999998882413
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -5.299999998882413
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -6.400000000372529
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -3.899999998509884
+      },
+      {
+        "url": "https://lstehlik2809.github.io/work-and-ai/assets/worker-DRWVwf3g.js",
+        "bytes": 0,
+        "encoded": 150694,
+        "durationMs": -7.300000000745058
+      }
+    ]
+  },
+  "status": "PASS",
+  "artifacts": {
+    "comparison.csv": {
+      "bytes": 1677,
+      "sha256": "b65dcbfae21610bf7e02e3a21c1ccdf2629f633309743cce50e428083c0f7698"
+    },
+    "privacy-comparison.csv": {
+      "bytes": 1677,
+      "sha256": "b65dcbfae21610bf7e02e3a21c1ccdf2629f633309743cce50e428083c0f7698"
+    },
+    "comparison.pdf": {
+      "bytes": 58265,
+      "sha256": "0dce0fa90f175f209c67885cec378d343e6b79e26d0a006de5e93db623615924"
+    },
+    "desktop.png": {
+      "bytes": 190152,
+      "sha256": "af11d4a6ceaf191de40bac6572101e31c15ce7469186f0ef7824a2b35b4ff418"
+    },
+    "mobile.png": {
+      "bytes": 159577,
+      "sha256": "3bb7cd5065d81e1511a8bfe1a427d22ec054ed656086b7cfa4a312820165d4bb"
+    }
+  }
+}

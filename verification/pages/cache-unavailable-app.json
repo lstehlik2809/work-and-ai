@@ -1,0 +1,17 @@
+{
+  "date": "2026-09-10T10:05:43.633Z",
+  "base": "https://lstehlik2809.github.io/work-and-ai/",
+  "browser": "151.0.7922.34",
+  "fault": "cache",
+  "timeoutMs": 120000,
+  "checks": [
+    "Ordinary search and confirmation work before meaning search with cache unavailable",
+    "Real app finishes enhanced matching with CacheStorage unavailable using production timeout",
+    "Ordinary search and existing comparison remain usable afterwards"
+  ],
+  "elapsedMs": 85584,
+  "statusText": [
+    "Enhanced matching finished. Confirm a suggestion against the source description."
+  ],
+  "status": "PASS"
+}

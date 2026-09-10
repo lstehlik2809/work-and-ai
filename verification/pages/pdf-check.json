@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "pages": 1,
+  "canonicalCodes": [
+    "29-1141",
+    "11-1011",
+    "29-1051"
+  ],
+  "projectionPeriod": "2025-2035",
+  "sourceURLsPresent": true,
+  "visualReview": "Poppler rendering inspected; table, definitions and sources legible, no clipping"
+}

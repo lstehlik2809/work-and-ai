@@ -1,0 +1,98 @@
+{
+  "date": "2026-09-10T10:08:27.834Z",
+  "base": "https://lstehlik2809.github.io/work-and-ai/",
+  "applicationCommit": "243991e76d18b223f470d1c30b6c2bf4d2becbc5",
+  "workflow": "https://github.com/lstehlik2809/work-and-ai/actions/runs/34463258584",
+  "workflowConclusion": "success",
+  "liveFiles": [
+    {
+      "file": "index.html",
+      "bytes": 657,
+      "sha256": "7daae0d201d91d99b7267bc953da923f4996a2bfe8ca523a558ccb098fd8c263",
+      "matchesProductionBuild": true
+    },
+    {
+      "file": "assets/app-Mw8-0g6d.js",
+      "bytes": 200,
+      "sha256": "2824edd0f6ed545f30568120ccca6f26f0e548310b5fa3a5b5e3974ab1e115f1",
+      "matchesProductionBuild": true
+    },
+    {
+      "file": "assets/styles-B6YAsy3J.js",
+      "bytes": 263770,
+      "sha256": "429bfce87a32b380e825fee9eccdf2a1bba2626b41bcdbb6418de1433faf8709",
+      "matchesProductionBuild": true
+    },
+    {
+      "file": "assets/styles-D5Ibqw2o.css",
+      "bytes": 8377,
+      "sha256": "fc3835509bae1fb873eeef892cd4b1ed4b57c383eba6dd2d1dc5d0d168b0ca41",
+      "matchesProductionBuild": true
+    },
+    {
+      "file": "assets/worker-DRWVwf3g.js",
+      "bytes": 523176,
+      "sha256": "fce3485517cf0606ae82e886a6b25a326d4f5a9fd862b4edb809c18c006ff28c",
+      "matchesProductionBuild": true
+    },
+    {
+      "file": "data/occupations.json",
+      "bytes": 1338849,
+      "sha256": "e30f18b0b1c48a26f983daf39d48752e0df8ad738bdb120962c67176532ded94",
+      "matchesProductionBuild": true
+    },
+    {
+      "file": "data/lexicon.json",
+      "bytes": 4492943,
+      "sha256": "6955b5480713fb8648d567330f45095a8b218d299b4bec373dc09c04f44c5e6e",
+      "matchesProductionBuild": true
+    },
+    {
+      "file": "semantic/metadata.json",
+      "bytes": 767056,
+      "sha256": "e9b3615cbc627beae67a7a51088c0603322d970a806236c94a08976eeceb9e55",
+      "matchesProductionBuild": true
+    },
+    {
+      "file": "semantic/vectors.bin",
+      "bytes": 1276416,
+      "sha256": "2b20c21dc0badd7a4c9cf7807748ee7cee1d2d0bcb669192e76f72df7298d516",
+      "matchesProductionBuild": true
+    }
+  ],
+  "artifacts": {
+    "browser-report.json": {
+      "bytes": 37377,
+      "sha256": "821bfbdb5c4db5162de315734780952254540fd68e4432ef38bbefc2a3b7262f"
+    },
+    "comparison.csv": {
+      "bytes": 1677,
+      "sha256": "b65dcbfae21610bf7e02e3a21c1ccdf2629f633309743cce50e428083c0f7698"
+    },
+    "privacy-comparison.csv": {
+      "bytes": 1677,
+      "sha256": "b65dcbfae21610bf7e02e3a21c1ccdf2629f633309743cce50e428083c0f7698"
+    },
+    "comparison.pdf": {
+      "bytes": 58265,
+      "sha256": "0dce0fa90f175f209c67885cec378d343e6b79e26d0a006de5e93db623615924"
+    },
+    "desktop.png": {
+      "bytes": 190152,
+      "sha256": "af11d4a6ceaf191de40bac6572101e31c15ce7469186f0ef7824a2b35b4ff418"
+    },
+    "mobile.png": {
+      "bytes": 159577,
+      "sha256": "3bb7cd5065d81e1511a8bfe1a427d22ec054ed656086b7cfa4a312820165d4bb"
+    },
+    "print-1.png": {
+      "bytes": 112855,
+      "sha256": "55001e121fde6e1e152ae59d8a0e8a2ca241167ae853644faaae147a9d87b242"
+    },
+    "cache-unavailable-app.json": {
+      "bytes": 601,
+      "sha256": "789bf9897388040fc8cebdb3d6d335c270760c22efeb5025ef314e9f8558c6a8"
+    }
+  },
+  "status": "PASS"
+}
