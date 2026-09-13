@@ -29,13 +29,13 @@ scope.onmessage=async({data})=>{
    if(fault==='wasm'){env.backends.onnx.wasm!.wasmPaths={mjs:runtime+'missing.mjs',wasm:runtime+'missing.wasm'};}
    if(fault==='memory')throw Error('Simulated memory allocation failure');
    status('Loading the search model on your device…');
-   encoder=await pipeline('feature-extraction',config.localName,{dtype:'q8',device:'wasm',progress_callback:(p:any)=>{if(p.status==='progress'&&p.file?.endsWith('.onnx'))status(`Downloading the search model: ${Math.round(p.progress??0)}%`);}});
+   encoder=await pipeline('feature-extraction',config.localName,{dtype:config.dtype as 'q8',device:'wasm',progress_callback:(p:any)=>{if(p.status==='progress'&&p.file?.endsWith('.onnx'))status(`Downloading the search model: ${Math.round(p.progress??0)}%`);}});
    initialized=performance.now()-start;
   }
   const tokens=encoder.tokenizer(text).input_ids.size;
   if(tokens>config.maxTokens)throw Error(`Please shorten your description. This model supports ${config.maxTokens} tokens (word pieces); your text has ${tokens}. No text was discarded.`);
   status('Matching your description against occupational references…');
-  const begin=performance.now();const output=await encoder(text,{pooling:'mean',normalize:true});
+  const begin=performance.now();const output=await encoder(text,{pooling:config.pooling as 'mean',normalize:config.normalize});
   if(output.dims[1]!==config.dimensions||!output.data.every(Number.isFinite)||Math.abs(Math.hypot(...output.data)-1)>0.001)throw Error('The query encoder is incompatible with the index.');
   const evidence=metadata.rows.map((r:any,i:number)=>{let score=0;for(let d=0;d<config.dimensions;d++)score+=output.data[d]*vectors![i*config.dimensions+d];return {code:r.code,score,excerpt:r.passages[0].text,source:r.passages[0].source};}).sort((a:any,b:any)=>b.score-a.score);
   const resources=performance.getEntriesByType('resource').map(e=>{const r=e as PerformanceResourceTiming;return{url:r.name,transfer:r.transferSize,encoded:r.encodedBodySize};});

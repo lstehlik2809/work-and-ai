@@ -5,3 +5,6 @@ dist/
 .env*
 verification/local/
 BRIEF.md
+
+/public/models/**/onnx/
+*.download-*

@@ -13,7 +13,9 @@ interface Case {
  leadAnyOf?:string[]; requiredAnyOf?:string[]; excludedRoles?:string[];
  rationale?:string;
 }
-const [fixturePath,destination,enginePath='src/search/engine.ts']=process.argv.slice(2);
+const [fixturePath,destination,enginePath='src/search/engine.ts',limitArgument]=process.argv.slice(2);
+const resultLimit=limitArgument===undefined?undefined:Number(limitArgument);
+if(resultLimit!==undefined&&(!Number.isInteger(resultLimit)||resultLimit<1||resultLimit>10))throw Error('Result limit must be an integer from 1 to 10');
 if(!fixturePath||!destination)throw Error('Usage: npx tsx scripts/evaluate-description-matching.ts FIXTURES.json REPORT.json [ENGINE.ts]');
 if(!destination.replaceAll('\\','/').startsWith('verification/local/'))throw Error('Write reports under verification/local/; historical evaluations are immutable.');
 const read=(path:string)=>JSON.parse(readFileSync(path,'utf8'));
@@ -40,7 +42,7 @@ for(const fixture of fixtures.cases){
   let score=0;for(let d=0;d<config.dimensions;d++)score+=Number(encoded.data[d])*vectors[i*config.dimensions+d];
   return{code:row.code,score};
  }).sort((a:SemanticEvidence,b:SemanticEvidence)=>b.score-a.score||a.code.localeCompare(b.code));
- const outcome=engine.hybrid('',fixture.input,evidence),codes=outcome.candidates.map(c=>c.code);
+ const outcome=engine.hybrid('',fixture.input,evidence,resultLimit),codes=outcome.candidates.map(c=>c.code);
  const failures:string[]=[];
  if(fixture.expectedState&&outcome.state!==fixture.expectedState)failures.push(`state ${outcome.state}, expected ${fixture.expectedState}`);
  if(fixture.expectedLead&&codes[0]!==fixture.expectedLead)failures.push(`lead ${codes[0]}, expected ${fixture.expectedLead}`);
@@ -51,7 +53,7 @@ for(const fixture of fixtures.cases){
   if(fixture.allowed&&!fixture.allowed.includes(code))failures.push(`unexpected ${code}`);
   if(fixture.excluded?.includes(code))failures.push(`excluded ${code}`);
  }
- if(codes.length>3||new Set(codes).size!==codes.length)failures.push('invalid canonical shortlist');
+ if(codes.length>(resultLimit??3)||new Set(codes).size!==codes.length)failures.push('invalid canonical shortlist');
  for(const candidate of outcome.candidates){
   const occupation=snapshot.occupations.find(o=>o.code===candidate.code);
   const role=occupation?.roles.find(r=>r.code===candidate.roleCode);
@@ -60,7 +62,7 @@ for(const fixture of fixtures.cases){
   if(fixture.expectedRoles?.[candidate.code]&&fixture.expectedRoles[candidate.code]!==candidate.roleCode)failures.push(`role ${candidate.roleCode}, expected ${fixture.expectedRoles[candidate.code]}`);
   if(candidate.roleCode&&fixture.excludedRoles?.includes(candidate.roleCode))failures.push(`excluded role ${candidate.roleCode}`);
  }
- rows.push({fixture,tokens,outcome,failures,semanticRanks:evidence,lexicalRanks:engine.bm25(fixture.input).map(({code,score,support,coverage})=>({code,score,support,coverage}))});
+ rows.push({fixture,tokens,outcome,failures,resultLimit:resultLimit??'historical default',prefixes:Array.from({length:10},(_,i)=>({limit:i+1,candidates:engine.hybrid('',fixture.input,evidence,i+1).candidates})),semanticRanks:evidence,lexicalRanks:engine.bm25(fixture.input).map(({code,score,support,coverage})=>({code,score,support,coverage}))});
  console.log(JSON.stringify({id:fixture.id,candidates:outcome.candidates.map(c=>({code:c.code,role:c.roleCode})),failures}));
 }
 const failures=rows.filter(r=>r.failures.length);

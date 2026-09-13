@@ -1,0 +1,17 @@
+.occupation-skill-preview{display:block;margin-top:10px;font-size:.78rem;line-height:1.6;color:var(--blue)}
+.occupation-skill-more{color:var(--muted)}
+.occupation-skills{margin-top:24px;padding-top:20px;border-top:1px solid var(--rule)}
+.occupation-skills h3{color:var(--blue);margin-bottom:6px}
+.occupation-skills h3>span{font-weight:400;color:var(--muted)}
+.occupation-skills>.hint{margin:0 0 14px;max-width:760px}
+.occupation-skill-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px;list-style:none;padding:0;margin:0}
+.occupation-skill-list li{padding:10px 0;border-top:1px solid var(--rule);min-width:0}
+.occupation-skill-list li>div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:.82rem}
+.occupation-skill-rating{flex-shrink:0;color:var(--blue);font-variant-numeric:tabular-nums}
+.occupation-skill-rating>span{color:var(--muted)}
+.occupation-skill-list p{font-size:.74rem;line-height:1.6;color:var(--muted);margin:5px 0 0}
+.occupation-skills-details{margin-top:10px}
+.occupation-skills-details>summary{padding:10px 0;min-height:44px}
+.occupation-skills-details[open]>.occupation-skill-list{margin-top:8px}
+@media(max-width:680px){.occupation-skill-list{grid-template-columns:1fr;gap:4px}}
+@media print{.occupation-skill-list li{break-inside:avoid}}

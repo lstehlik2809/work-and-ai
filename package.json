@@ -22,13 +22,19 @@
     "skills:prepare": "node scripts/data/skills.mjs",
     "skills:fetch": "node scripts/data/skills.mjs --fetch",
     "validate:skills": "node scripts/data/skills.mjs --check",
+    "patterns:prepare": "tsx scripts/data/skill-patterns.ts",
+    "validate:patterns": "tsx scripts/data/skill-patterns.ts --check",
+    "browser:improvements": "node scripts/improvements-browser-check.mjs",
     "browser:skills": "node scripts/skills-browser-check.mjs",
     "ai-context:extract": "python scripts/data/extract-ai-context.py",
     "ai-context:prepare": "node scripts/data/ai-context.mjs",
     "ai-context:fetch": "node scripts/data/ai-context.mjs --fetch",
     "validate:ai-context": "node scripts/data/ai-context.mjs --check",
     "browser:ai-context": "node scripts/ai-context-browser-check.mjs",
-    "browser:map": "node scripts/occupation-map-browser-check.mjs"
+    "browser:map": "node scripts/occupation-map-browser-check.mjs",
+    "semantic:fetch": "node scripts/semantic/assets.mjs --fetch",
+    "browser:mpnet": "node scripts/mpnet-browser-check.mjs",
+    "prebuild": "node scripts/semantic/assets.mjs"
   },
   "dependencies": {
     "@huggingface/transformers": "4.2.0",

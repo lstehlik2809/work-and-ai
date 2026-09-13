@@ -1,4 +1,5 @@
 import Fuse from 'fuse.js';
+import editorialTitles from './editorial-titles.json';
 import type { Alias, Candidate, Lexicon, SearchOutcome, SemanticEvidence, Snapshot } from '../domain/types';
 export const normalize=(text:string)=>text.toLowerCase().normalize('NFKC').replace(/&/g,' and ').replace(/[^a-z0-9]+/g,' ').trim().replace(/\s+/g,' ');
 const inflect=(text:string)=>normalize(text).split(' ').map(t=>t.length>4&&t.endsWith('s')?t.slice(0,-1):t).join(' ');
@@ -33,6 +34,8 @@ export class SearchEngine {
   const aliases=this.exact.get(key);if(aliases){const unique=[...new Map(aliases.map(a=>[a.code,a])).values()];if(unique.length>ambiguityLimit)return clarify(true);return outcome(unique.slice(0,limit).map(a=>this.candidate(a)),true);}
   if(key.length<3||broad.has(key))return clarify();
   const inflected=this.inflections.get(inflect(key));if(inflected){const unique=[...new Map(inflected.map(a=>[a.code,a])).values()];return unique.length>ambiguityLimit?clarify():outcome(unique.slice(0,limit).map(a=>this.candidate(a)));}
+  const editorial=editorialTitles.find(entry=>normalize(entry.term)===key&&entry.release===this.snapshot.release.id);
+  if(editorial){const candidates=new Map<string,Candidate>();for(const roleCode of editorial.candidateRoleCodes){const o=this.snapshot.occupations.find(o=>o.roles.some(r=>r.code===roleCode));if(o&&!candidates.has(o.code))candidates.set(o.code,{...this.candidate({title:editorial.term,code:o.code,onetCode:roleCode}),editorial:true,reason:'Editorial discovery term: compare these published role descriptions; this is not an official title mapping.'});}return outcome([...candidates.values()].slice(0,limit));}
   if(terms(key).length===0)return clarify();
   if(key.split(' ').length>7)return this.lexical(query,maxResults);
   // Literal title tokens are completion, not spelling correction. Prefer published

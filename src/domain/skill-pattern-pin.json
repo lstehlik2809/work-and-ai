@@ -1,0 +1,42 @@
+{
+  "sha256": "9af7ec1269c78955bff555fd96f6aa55b49f4b24af478d39532ad04b6627565e",
+  "release": "bls-2025-2035_onet-31.0",
+  "sourceHashes": {
+    "occupations": "e30f18b0b1c48a26f983daf39d48752e0df8ad738bdb120962c67176532ded94",
+    "skills": "1ce29954e4b207b354a3902fdd3ca6b454da76db1acdc16221fd0ae96a9d8215"
+  },
+  "sourceObjectHashes": {
+    "occupations": "7ba9cca86fa3ebed61393e155426db18e06729f243cb956eeb6d38b6bfa257f9",
+    "skills": "c9357abf7ec49142529cd1b3ee9e65017cb0f112c26887bac9b10aec03f8390b"
+  },
+  "generationCodeHash": "5ee0134a37c2f6144bbc242d1f335736374ef3e3bb369e68ee8c6d67bea28455",
+  "variantIds": [
+    "mean-2.5",
+    "mean-3",
+    "mean-3.5",
+    "max-3",
+    "coverage-28",
+    "omit-11",
+    "omit-13",
+    "omit-15",
+    "omit-17",
+    "omit-19",
+    "omit-21",
+    "omit-23",
+    "omit-25",
+    "omit-27",
+    "omit-29",
+    "omit-31",
+    "omit-33",
+    "omit-35",
+    "omit-37",
+    "omit-39",
+    "omit-41",
+    "omit-43",
+    "omit-45",
+    "omit-47",
+    "omit-49",
+    "omit-51",
+    "omit-53"
+  ]
+}

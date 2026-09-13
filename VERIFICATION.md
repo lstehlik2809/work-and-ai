@@ -1,3 +1,7 @@
+# Current development candidate — 13 September 2026
+
+MPNet integration and the accumulated improvements are documented in [MPNet implementation verification](verification/mpnet-implementation.md). Release is not approved: mixed-role limitations remain and fresh validation is unavailable. The measurements below are historical and must not be interpreted as MPNet browser results.
+
 # Verification record
 
 ## Local search revision, September 10, 2026

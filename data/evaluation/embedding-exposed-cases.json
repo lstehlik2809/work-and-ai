@@ -1,0 +1,1372 @@
+{
+  "release": "bls-2025-2035_onet-31.0",
+  "provenance": "Independently authored by test_acceptance_designer; parent serialization preserves inputs, labels, split and critical flags; source review before outputs. Not human expert validation. Hit sets are not exhaustive whitelists.",
+  "cases": [
+    {
+      "id": "BA-D01",
+      "split": "dev",
+      "kind": "specific",
+      "input": "I examine financial statements for reporting errors, investigate discrepancies in the accounts, and write reports explaining my audit findings.",
+      "acceptableLeadCodes": [
+        "13-2011"
+      ],
+      "acceptableTop5Codes": [
+        "13-2011"
+      ],
+      "source": [
+        {
+          "roleCode": "13-2011.00",
+          "taskIds": [
+            "21514",
+            "21516",
+            "21505"
+          ]
+        }
+      ],
+      "rationale": "Financial-statement examination and audit findings support Accountants and Auditors.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "13"
+    },
+    {
+      "id": "BA-D02",
+      "split": "dev",
+      "kind": "specific",
+      "input": "I turn users' requirements into software designs, assess whether changes fit our time and cost limits, and modify application interfaces to improve performance.",
+      "acceptableLeadCodes": [
+        "15-1252"
+      ],
+      "acceptableTop5Codes": [
+        "15-1252"
+      ],
+      "source": [
+        {
+          "roleCode": "15-1252.00",
+          "taskIds": [
+            "21662",
+            "21670"
+          ]
+        }
+      ],
+      "rationale": "Requirements, design feasibility and modification support Software Developers.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "15"
+    },
+    {
+      "id": "BA-D03",
+      "split": "dev",
+      "kind": "specific",
+      "input": "I take responsibility for the engineering design of bridges and drainage structures, calculate loads and water flow, and set the design specifications used for construction.",
+      "acceptableLeadCodes": [
+        "17-2051"
+      ],
+      "acceptableTop5Codes": [
+        "17-2051"
+      ],
+      "source": [
+        {
+          "roleCode": "17-2051.00",
+          "taskIds": [
+            "147",
+            "20491"
+          ]
+        },
+        {
+          "roleCode": "17-3022.00",
+          "officialTitle": "Civil Engineering Technologists and Technicians"
+        }
+      ],
+      "rationale": "Design responsibility supports Civil Engineers; technician profile works under engineering staff direction.",
+      "explicitlyInappropriateCodes": [
+        "17-3022"
+      ],
+      "critical": true,
+      "abstain": false,
+      "family": "17"
+    },
+    {
+      "id": "BA-D04",
+      "split": "dev",
+      "kind": "specific",
+      "input": "I develop new chemical analysis methods and use spectroscopy to establish the composition and reactions of compounds, then write technical specifications for the methods.",
+      "acceptableLeadCodes": [
+        "19-2031"
+      ],
+      "acceptableTop5Codes": [
+        "19-2031"
+      ],
+      "source": [
+        {
+          "roleCode": "19-2031.00",
+          "taskIds": [
+            "1506",
+            "1505",
+            "1511"
+          ]
+        }
+      ],
+      "rationale": "Developing analytical methods and characterizing compounds support Chemists.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "19"
+    },
+    {
+      "id": "BA-D05",
+      "split": "dev",
+      "kind": "specific",
+      "input": "I support attorneys by investigating the facts of cases, assembling exhibits for trial, and preparing affidavits and other legal documents.",
+      "acceptableLeadCodes": [
+        "23-2011"
+      ],
+      "acceptableTop5Codes": [
+        "23-2011"
+      ],
+      "source": [
+        {
+          "roleCode": "23-2011.00",
+          "taskIds": [
+            "21062",
+            "18492",
+            "18491"
+          ]
+        }
+      ],
+      "rationale": "Attorney support and trial documents support Paralegals and Legal Assistants.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "23"
+    },
+    {
+      "id": "BA-D06",
+      "split": "dev",
+      "kind": "specific",
+      "input": "I create company logos and packaging graphics, choose the arrangement of images and lettering, and prepare the finished digital files for printing.",
+      "acceptableLeadCodes": [
+        "27-1024"
+      ],
+      "acceptableTop5Codes": [
+        "27-1024"
+      ],
+      "source": [
+        {
+          "roleCode": "27-1024.00",
+          "taskIds": [
+            "306",
+            "300",
+            "23970"
+          ],
+          "officialTitle": "Graphic Designers"
+        }
+      ],
+      "rationale": "Commercial graphics, typography and print preparation support Graphic Designers.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "27"
+    },
+    {
+      "id": "BA-D07",
+      "split": "dev",
+      "kind": "specific",
+      "input": "I assess whether prescriptions are appropriate, advise patients about doses and harmful drug interactions, and consult with clinicians on the effectiveness of medication regimens.",
+      "acceptableLeadCodes": [
+        "29-1051"
+      ],
+      "acceptableTop5Codes": [
+        "29-1051"
+      ],
+      "source": [
+        {
+          "roleCode": "29-1051.00",
+          "taskIds": [
+            "1808",
+            "1809",
+            "1815"
+          ]
+        },
+        {
+          "roleCode": "29-2052.00",
+          "officialTitle": "Pharmacy Technicians"
+        }
+      ],
+      "rationale": "Medication suitability and clinical advice support Pharmacists; technicians prepare medication under direction.",
+      "explicitlyInappropriateCodes": [
+        "29-2052"
+      ],
+      "critical": true,
+      "abstain": false,
+      "family": "29"
+    },
+    {
+      "id": "BA-D08",
+      "split": "dev",
+      "kind": "specific",
+      "input": "I direct the kitchen's cooks, show them how dishes should be prepared and presented, order food supplies, and ensure the team follows sanitation standards.",
+      "acceptableLeadCodes": [
+        "35-1011"
+      ],
+      "acceptableTop5Codes": [
+        "35-1011"
+      ],
+      "source": [
+        {
+          "roleCode": "35-1011.00",
+          "taskIds": [
+            "11135",
+            "11132",
+            "11131",
+            "11129"
+          ]
+        },
+        {
+          "roleCode": "35-2021.00",
+          "officialTitle": "Food Preparation Workers"
+        }
+      ],
+      "rationale": "Directing cooks supports Chefs and Head Cooks; food preparation workers assist kitchen staff.",
+      "explicitlyInappropriateCodes": [
+        "35-2021"
+      ],
+      "critical": true,
+      "abstain": false,
+      "family": "35"
+    },
+    {
+      "id": "BA-D09",
+      "split": "dev",
+      "kind": "specific",
+      "input": "At an animal shelter I feed and exercise the animals, disinfect their living areas, and record changes in their condition and food intake.",
+      "acceptableLeadCodes": [
+        "39-2021"
+      ],
+      "acceptableTop5Codes": [
+        "39-2021"
+      ],
+      "source": [
+        {
+          "roleCode": "39-2021.00",
+          "taskIds": [
+            "5072",
+            "5080",
+            "20132",
+            "5078"
+          ]
+        }
+      ],
+      "rationale": "Shelter feeding, exercise, sanitation and care records support Animal Caretakers.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "39"
+    },
+    {
+      "id": "BA-D10",
+      "split": "dev",
+      "kind": "specific",
+      "input": "I answer routine questions about our products, enter or cancel customer orders, record complaints, and check whether the requested account changes resolved the problem.",
+      "acceptableLeadCodes": [
+        "43-4051"
+      ],
+      "acceptableTop5Codes": [
+        "43-4051"
+      ],
+      "source": [
+        {
+          "roleCode": "43-4051.00",
+          "taskIds": [
+            "18565",
+            "2578",
+            "2580"
+          ]
+        }
+      ],
+      "rationale": "Product inquiries, orders and complaint resolution support Customer Service Representatives.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "43"
+    },
+    {
+      "id": "BA-D11",
+      "split": "dev",
+      "kind": "specific",
+      "input": "I service passenger vehicles by checking their mechanical systems, replacing worn brakes, doing oil changes and tune-ups, and testing the repaired systems against the manufacturer's specifications.",
+      "acceptableLeadCodes": [
+        "49-3023"
+      ],
+      "acceptableTop5Codes": [
+        "49-3023"
+      ],
+      "source": [
+        {
+          "roleCode": "49-3023.00",
+          "taskIds": [
+            "23534",
+            "23525",
+            "23533",
+            "23524"
+          ]
+        }
+      ],
+      "rationale": "Vehicle mechanical service and repair support Automotive Service Technicians and Mechanics.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "49"
+    },
+    {
+      "id": "BA-D12",
+      "split": "dev",
+      "kind": "specific",
+      "input": "I set up lathes and milling machines to make precision metal parts from drawings, calculate machining tolerances, and check the finished dimensions with micrometers.",
+      "acceptableLeadCodes": [
+        "51-4041"
+      ],
+      "acceptableTop5Codes": [
+        "51-4041"
+      ],
+      "source": [
+        {
+          "roleCode": "51-4041.00",
+          "taskIds": [
+            "20293",
+            "3094",
+            "20295",
+            "20292",
+            "3095"
+          ]
+        }
+      ],
+      "rationale": "Precision machining, setup and tolerance inspection support Machinists.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "51"
+    },
+    {
+      "id": "BA-R01",
+      "split": "reserved",
+      "kind": "specific",
+      "input": "I keep the business's financial records up to date by posting transactions in accounting software, checking entries and document codes, and recording cash and checks received.",
+      "acceptableLeadCodes": [
+        "43-3031"
+      ],
+      "acceptableTop5Codes": [
+        "43-3031"
+      ],
+      "source": [
+        {
+          "roleCode": "43-3031.00",
+          "taskIds": [
+            "2487",
+            "2486",
+            "2493",
+            "2500"
+          ]
+        }
+      ],
+      "rationale": "Routine transaction posting and verification support Bookkeeping, Accounting, and Auditing Clerks.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "43"
+    },
+    {
+      "id": "BA-R02",
+      "split": "reserved",
+      "kind": "specific",
+      "input": "I create test scenarios for application changes, run regression and negative tests, and document reproducible defects in a bug tracker for the developers to fix.",
+      "acceptableLeadCodes": [
+        "15-1253"
+      ],
+      "acceptableTop5Codes": [
+        "15-1253"
+      ],
+      "source": [
+        {
+          "roleCode": "15-1253.00",
+          "taskIds": [
+            "14638",
+            "14640",
+            "14641",
+            "14648"
+          ]
+        }
+      ],
+      "rationale": "Test design, execution and defect reporting support Software Quality Assurance Analysts and Testers.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "15"
+    },
+    {
+      "id": "BA-R03",
+      "split": "reserved",
+      "kind": "specific",
+      "input": "Under a civil engineer's direction, I turn project specifications into detailed dimensional drawings, calculate material quantities, and report field conditions to my supervisor.",
+      "acceptableLeadCodes": [
+        "17-3022"
+      ],
+      "acceptableTop5Codes": [
+        "17-3022"
+      ],
+      "source": [
+        {
+          "roleCode": "17-3022.00",
+          "taskIds": [
+            "1461",
+            "1462",
+            "1466"
+          ]
+        },
+        {
+          "roleCode": "17-2051.00",
+          "officialTitle": "Civil Engineers"
+        }
+      ],
+      "rationale": "Explicitly supervised technical support matches Civil Engineering Technologists and Technicians rather than design ownership.",
+      "explicitlyInappropriateCodes": [
+        "17-2051"
+      ],
+      "critical": true,
+      "abstain": false,
+      "family": "17"
+    },
+    {
+      "id": "BA-R04",
+      "split": "reserved",
+      "kind": "specific",
+      "input": "I assist laboratory scientists by preparing solutions from standard formulas, setting up chemical tests, cleaning the instruments, and compiling the test results for them.",
+      "acceptableLeadCodes": [
+        "19-4031"
+      ],
+      "acceptableTop5Codes": [
+        "19-4031"
+      ],
+      "source": [
+        {
+          "roleCode": "19-4031.00",
+          "taskIds": [
+            "1537",
+            "1540",
+            "1536",
+            "1541",
+            "1538"
+          ]
+        },
+        {
+          "roleCode": "19-2031.00",
+          "officialTitle": "Chemists"
+        }
+      ],
+      "rationale": "Explicit laboratory assistance and standardized procedures support Chemical Technicians.",
+      "explicitlyInappropriateCodes": [
+        "19-2031"
+      ],
+      "critical": true,
+      "abstain": false,
+      "family": "19"
+    },
+    {
+      "id": "BA-R05",
+      "split": "reserved",
+      "kind": "specific",
+      "input": "I assist a judge by researching decisions relevant to the court's cases, drafting judicial opinions, and preparing memoranda on the legal issues the judge needs to resolve.",
+      "acceptableLeadCodes": [
+        "23-1012"
+      ],
+      "acceptableTop5Codes": [
+        "23-1012"
+      ],
+      "source": [
+        {
+          "roleCode": "23-1012.00",
+          "taskIds": [
+            "19051",
+            "19047",
+            "19050",
+            "19046"
+          ]
+        }
+      ],
+      "rationale": "Research and opinion drafting for a judge support Judicial Law Clerks.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "23"
+    },
+    {
+      "id": "BA-R06",
+      "split": "reserved",
+      "kind": "specific",
+      "input": "I revise submitted articles to improve readability, correct spelling and syntax, verify dates and statistics, and help decide which story ideas suit our readers.",
+      "acceptableLeadCodes": [
+        "27-3041"
+      ],
+      "acceptableTop5Codes": [
+        "27-3041"
+      ],
+      "source": [
+        {
+          "roleCode": "27-3041.00",
+          "taskIds": [
+            "1776",
+            "1777",
+            "1780",
+            "1782"
+          ]
+        }
+      ],
+      "rationale": "Editing, fact checking and editorial selection support Editors.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "27"
+    },
+    {
+      "id": "BA-R07",
+      "split": "reserved",
+      "kind": "specific",
+      "input": "Under a pharmacist's direction, I count and label prescribed medications, enter prescription details into the computer, and refer customers' medication-advice questions to the pharmacist.",
+      "acceptableLeadCodes": [
+        "29-2052"
+      ],
+      "acceptableTop5Codes": [
+        "29-2052"
+      ],
+      "source": [
+        {
+          "roleCode": "29-2052.00",
+          "taskIds": [
+            "23924",
+            "1943"
+          ],
+          "officialTitle": "Pharmacy Technicians"
+        },
+        {
+          "roleCode": "29-1051.00",
+          "officialTitle": "Pharmacists"
+        }
+      ],
+      "rationale": "Technician description covers counting and labeling under direction; referral distinguishes clinical advice responsibility.",
+      "explicitlyInappropriateCodes": [
+        "29-1051"
+      ],
+      "critical": true,
+      "abstain": false,
+      "family": "29"
+    },
+    {
+      "id": "BA-R08",
+      "split": "reserved",
+      "kind": "specific",
+      "input": "I assist the cooks by weighing ingredients, getting supplies from storage, preparing cold foods, and cleaning and sanitizing the kitchen equipment.",
+      "acceptableLeadCodes": [
+        "35-2021"
+      ],
+      "acceptableTop5Codes": [
+        "35-2021"
+      ],
+      "source": [
+        {
+          "roleCode": "35-2021.00",
+          "taskIds": [
+            "2204",
+            "2203",
+            "2210",
+            "18728"
+          ],
+          "officialTitle": "Food Preparation Workers"
+        },
+        {
+          "roleCode": "35-1011.00",
+          "officialTitle": "Chefs and Head Cooks"
+        }
+      ],
+      "rationale": "Assisting cooks supports Food Preparation Workers; directing the kitchen is not described.",
+      "explicitlyInappropriateCodes": [
+        "35-1011"
+      ],
+      "critical": true,
+      "abstain": false,
+      "family": "35"
+    },
+    {
+      "id": "BA-R09",
+      "split": "reserved",
+      "kind": "specific",
+      "input": "I assess dogs' temperament and training potential, run obedience sessions, and condition them to respond reliably to spoken commands and signals.",
+      "acceptableLeadCodes": [
+        "39-2011"
+      ],
+      "acceptableTop5Codes": [
+        "39-2011"
+      ],
+      "source": [
+        {
+          "roleCode": "39-2011.00",
+          "taskIds": [
+            "7991",
+            "20593"
+          ],
+          "officialTitle": "Animal Trainers"
+        }
+      ],
+      "rationale": "Behavior conditioning, aptitude assessment and obedience support Animal Trainers.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "39"
+    },
+    {
+      "id": "BA-R10",
+      "split": "reserved",
+      "kind": "specific",
+      "input": "I build the daily schedule for service crews, send workers to customer locations, and relay work orders and updates by radio as field jobs progress.",
+      "acceptableLeadCodes": [
+        "43-5032"
+      ],
+      "acceptableTop5Codes": [
+        "43-5032"
+      ],
+      "source": [
+        {
+          "roleCode": "43-5032.00",
+          "taskIds": [
+            "2727",
+            "2723",
+            "2725"
+          ]
+        }
+      ],
+      "rationale": "Scheduling and directing field crews support Dispatchers, Except Police, Fire, and Ambulance.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "43"
+    },
+    {
+      "id": "BA-R11",
+      "split": "reserved",
+      "kind": "specific",
+      "input": "I restore damaged vehicle bodies by fitting replacement panels, smoothing the repaired surfaces, masking the windows and trim, and priming and repainting the bodywork.",
+      "acceptableLeadCodes": [
+        "49-3021"
+      ],
+      "acceptableTop5Codes": [
+        "49-3021"
+      ],
+      "source": [
+        {
+          "roleCode": "49-3021.00",
+          "taskIds": [
+            "2943",
+            "2933",
+            "2934",
+            "2938"
+          ]
+        }
+      ],
+      "rationale": "Vehicle panel repair and refinishing support Automotive Body and Related Repairers.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "49"
+    },
+    {
+      "id": "BA-R12",
+      "split": "reserved",
+      "kind": "specific",
+      "input": "I join metal components with arc-welding equipment, choose the appropriate torches and filler rods for the material, and check the welded workpieces for defects and dimensions.",
+      "acceptableLeadCodes": [
+        "51-4121"
+      ],
+      "acceptableTop5Codes": [
+        "51-4121"
+      ],
+      "source": [
+        {
+          "roleCode": "51-4121.00",
+          "taskIds": [
+            "23582",
+            "23585",
+            "23587",
+            "23584"
+          ]
+        }
+      ],
+      "rationale": "Welding, filler selection and inspection support Welders, Cutters, Solderers, and Brazers.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "51"
+    },
+    {
+      "id": "BA-D13",
+      "split": "dev",
+      "kind": "hybrid",
+      "input": "For our small publication I design the page graphics and typography, but I also rewrite articles for readability and verify facts before the pages go to print.",
+      "acceptableLeadCodes": [
+        "27-1024",
+        "27-3041"
+      ],
+      "acceptableTop5Codes": [
+        "27-1024",
+        "27-3041"
+      ],
+      "source": [
+        {
+          "roleCode": "27-1024.00",
+          "taskIds": [
+            "300",
+            "306",
+            "23970"
+          ]
+        },
+        {
+          "roleCode": "27-3041.00",
+          "taskIds": [
+            "1776",
+            "1780"
+          ]
+        }
+      ],
+      "rationale": "Graphic design and substantive editing are both plausible facets.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "27"
+    },
+    {
+      "id": "BA-D14",
+      "split": "dev",
+      "kind": "hybrid",
+      "input": "I modify application features to meet users' requirements and also design regression tests, investigate failures, and record reproducible software defects.",
+      "acceptableLeadCodes": [
+        "15-1252",
+        "15-1253"
+      ],
+      "acceptableTop5Codes": [
+        "15-1252",
+        "15-1253"
+      ],
+      "source": [
+        {
+          "roleCode": "15-1252.00",
+          "taskIds": [
+            "21662",
+            "21670"
+          ]
+        },
+        {
+          "roleCode": "15-1253.00",
+          "taskIds": [
+            "14640",
+            "14641"
+          ]
+        }
+      ],
+      "rationale": "Development and quality assurance are both explicit; no dominant role stated.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "15"
+    },
+    {
+      "id": "BA-D15",
+      "split": "dev",
+      "kind": "hybrid",
+      "input": "I handle customers' service questions and complaints, then arrange the daily jobs for our field crews and send them their assignments by phone.",
+      "acceptableLeadCodes": [
+        "43-4051",
+        "43-5032"
+      ],
+      "acceptableTop5Codes": [
+        "43-4051",
+        "43-5032"
+      ],
+      "source": [
+        {
+          "roleCode": "43-4051.00",
+          "taskIds": [
+            "18565",
+            "2578"
+          ]
+        },
+        {
+          "roleCode": "43-5032.00",
+          "taskIds": [
+            "2727",
+            "2723",
+            "2725"
+          ]
+        }
+      ],
+      "rationale": "Customer service and dispatch both appear.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "43"
+    },
+    {
+      "id": "BA-D16",
+      "split": "dev",
+      "kind": "hybrid",
+      "input": "At a boarding kennel I feed the dogs and keep their pens clean, and I also run obedience sessions to improve how they respond to commands.",
+      "acceptableLeadCodes": [
+        "39-2021",
+        "39-2011"
+      ],
+      "acceptableTop5Codes": [
+        "39-2021",
+        "39-2011"
+      ],
+      "source": [
+        {
+          "roleCode": "39-2021.00",
+          "taskIds": [
+            "5072",
+            "20132"
+          ]
+        },
+        {
+          "roleCode": "39-2011.00",
+          "taskIds": [
+            "20593"
+          ],
+          "officialTitle": "Animal Trainers"
+        }
+      ],
+      "rationale": "Animal care and behavior training are distinct supported facets.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "39"
+    },
+    {
+      "id": "BA-R13",
+      "split": "reserved",
+      "kind": "hybrid",
+      "input": "I run chromatography tests on chemical samples, prepare solutions, interpret the results, and check whether the tested material meets our quality standards.",
+      "acceptableLeadCodes": [
+        "19-2031",
+        "19-4031"
+      ],
+      "acceptableTop5Codes": [
+        "19-2031",
+        "19-4031"
+      ],
+      "source": [
+        {
+          "roleCode": "19-2031.00",
+          "taskIds": [
+            "1505",
+            "1513",
+            "18475"
+          ]
+        },
+        {
+          "roleCode": "19-4031.00",
+          "taskIds": [
+            "1536",
+            "1540",
+            "1538",
+            "1535"
+          ]
+        }
+      ],
+      "rationale": "These laboratory tasks occur in scientist and technician profiles; level unspecified.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "19"
+    },
+    {
+      "id": "BA-R14",
+      "split": "reserved",
+      "kind": "hybrid",
+      "input": "I post the company's transactions and verify account entries, and I also analyze the financial statements and investigate discrepancies before reporting the results.",
+      "acceptableLeadCodes": [
+        "13-2011",
+        "43-3031"
+      ],
+      "acceptableTop5Codes": [
+        "13-2011",
+        "43-3031"
+      ],
+      "source": [
+        {
+          "roleCode": "43-3031.00",
+          "taskIds": [
+            "2487",
+            "2486"
+          ]
+        },
+        {
+          "roleCode": "13-2011.00",
+          "taskIds": [
+            "21514",
+            "21516"
+          ]
+        }
+      ],
+      "rationale": "Bookkeeping and financial-statement analysis both present without dominance.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "13+43"
+    },
+    {
+      "id": "BA-R15",
+      "split": "reserved",
+      "kind": "hybrid",
+      "input": "In our fabrication shop I machine metal parts to the dimensions on drawings and then weld components together, checking the completed assemblies for defects.",
+      "acceptableLeadCodes": [
+        "51-4041",
+        "51-4121"
+      ],
+      "acceptableTop5Codes": [
+        "51-4041",
+        "51-4121"
+      ],
+      "source": [
+        {
+          "roleCode": "51-4041.00",
+          "taskIds": [
+            "3094",
+            "20295",
+            "3095"
+          ]
+        },
+        {
+          "roleCode": "51-4121.00",
+          "taskIds": [
+            "23582",
+            "23584"
+          ]
+        }
+      ],
+      "rationale": "Machining and welding are explicit facets.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "51"
+    },
+    {
+      "id": "BA-R16",
+      "split": "reserved",
+      "kind": "hybrid",
+      "input": "I research court decisions and statutes for active cases, analyze the legal issues, and prepare legal memoranda and other case documents.",
+      "acceptableLeadCodes": [
+        "23-2011",
+        "23-1012"
+      ],
+      "acceptableTop5Codes": [
+        "23-2011",
+        "23-1012"
+      ],
+      "source": [
+        {
+          "roleCode": "23-2011.00",
+          "taskIds": [
+            "21062",
+            "1636",
+            "23994"
+          ]
+        },
+        {
+          "roleCode": "23-1012.00",
+          "taskIds": [
+            "19051",
+            "19050"
+          ]
+        }
+      ],
+      "rationale": "Research and document preparation fit both; lawyer versus judge support unspecified.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "23"
+    },
+    {
+      "id": "BA-D17",
+      "split": "dev",
+      "kind": "vague",
+      "input": "I check how assignments are progressing and send updates when something changes.",
+      "acceptableLeadCodes": [],
+      "acceptableTop5Codes": [],
+      "source": [],
+      "rationale": "Generic coordination gives no field, distinctive output or level.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": true,
+      "family": ""
+    },
+    {
+      "id": "BA-D18",
+      "split": "dev",
+      "kind": "vague",
+      "input": "We use spreadsheets and a shared inbox to keep the day's work moving.",
+      "acceptableLeadCodes": [],
+      "acceptableTop5Codes": [],
+      "source": [],
+      "rationale": "Common tools do not identify occupational tasks.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": true,
+      "family": ""
+    },
+    {
+      "id": "BA-D19",
+      "split": "dev",
+      "kind": "vague",
+      "input": "qvrz nmlqx ztpk",
+      "acceptableLeadCodes": [],
+      "acceptableTop5Codes": [],
+      "source": [],
+      "rationale": "No interpretable occupational responsibility.",
+      "explicitlyInappropriateCodes": [],
+      "critical": true,
+      "abstain": true,
+      "family": ""
+    },
+    {
+      "id": "BA-D20",
+      "split": "dev",
+      "kind": "vague",
+      "input": "I wish the weekend lasted longer and the weather stayed pleasant.",
+      "acceptableLeadCodes": [],
+      "acceptableTop5Codes": [],
+      "source": [],
+      "rationale": "A personal wish contains no occupational work.",
+      "explicitlyInappropriateCodes": [],
+      "critical": true,
+      "abstain": true,
+      "family": ""
+    },
+    {
+      "id": "BA-R17",
+      "split": "reserved",
+      "kind": "vague",
+      "input": "I coordinate requests across several teams and keep everyone informed.",
+      "acceptableLeadCodes": [],
+      "acceptableTop5Codes": [],
+      "source": [],
+      "rationale": "Coordination omits field, substantive work and level.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": true,
+      "family": ""
+    },
+    {
+      "id": "BA-R18",
+      "split": "reserved",
+      "kind": "vague",
+      "input": "I review documents and decide which items need attention next.",
+      "acceptableLeadCodes": [],
+      "acceptableTop5Codes": [],
+      "source": [],
+      "rationale": "Unspecified documents and decisions shared across many profiles.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": true,
+      "family": ""
+    },
+    {
+      "id": "BA-R19",
+      "split": "reserved",
+      "kind": "vague",
+      "input": "The violet moon tastes like Tuesday.",
+      "acceptableLeadCodes": [],
+      "acceptableTop5Codes": [],
+      "source": [],
+      "rationale": "Surreal statement supplies no occupational responsibility.",
+      "explicitlyInappropriateCodes": [],
+      "critical": true,
+      "abstain": true,
+      "family": ""
+    },
+    {
+      "id": "BA-R20",
+      "split": "reserved",
+      "kind": "vague",
+      "input": "I am choosing where to go on my next vacation and want somewhere sunny.",
+      "acceptableLeadCodes": [],
+      "acceptableTop5Codes": [],
+      "source": [],
+      "rationale": "Personal vacation planning is not evidence of a travel occupation.",
+      "explicitlyInappropriateCodes": [],
+      "critical": true,
+      "abstain": true,
+      "family": ""
+    },
+    {
+      "id": "BA-D21",
+      "split": "dev",
+      "kind": "title",
+      "input": "DevOps Engineer",
+      "acceptableLeadCodes": [
+        "15-1252"
+      ],
+      "acceptableTop5Codes": [
+        "15-1252"
+      ],
+      "source": [
+        {
+          "roleCode": "15-1252.00",
+          "officialTitle": "DevOps Engineer (Development Operations Engineer)",
+          "shortTitle": "DevOps Engineer",
+          "titleFile": "job_titles.csv"
+        }
+      ],
+      "rationale": "Published short title for Software Developers.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "15"
+    },
+    {
+      "id": "BA-D22",
+      "split": "dev",
+      "kind": "title",
+      "input": "UX Designer",
+      "acceptableLeadCodes": [
+        "15-1253",
+        "15-1255"
+      ],
+      "acceptableTop5Codes": [
+        "15-1253",
+        "15-1255"
+      ],
+      "source": [
+        {
+          "roleCode": "15-1253.00",
+          "officialTitle": "User Experience Designer (UX Designer)",
+          "shortTitle": "UX Designer",
+          "titleFile": "job_titles.csv"
+        },
+        {
+          "roleCode": "15-1255.00",
+          "officialTitle": "UX Designer (User Experience Designer)",
+          "shortTitle": "UX Designer",
+          "titleFile": "job_titles.csv"
+        }
+      ],
+      "rationale": "Official short title assigned to both QA and digital interface design; preserve ambiguity.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "15"
+    },
+    {
+      "id": "BA-D23",
+      "split": "dev",
+      "kind": "title",
+      "input": "Product Manager",
+      "acceptableLeadCodes": [
+        "11-2021",
+        "27-1021"
+      ],
+      "acceptableTop5Codes": [
+        "11-2021",
+        "27-1021"
+      ],
+      "source": [
+        {
+          "roleCode": "11-2021.00",
+          "officialTitle": "Product Manager",
+          "titleFile": "job_titles.csv"
+        },
+        {
+          "roleCode": "27-1021.00",
+          "officialTitle": "Product Manager",
+          "titleFile": "job_titles.csv"
+        }
+      ],
+      "rationale": "Exact title for Marketing Managers and Commercial and Industrial Designers; field unresolved.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "11+27"
+    },
+    {
+      "id": "BA-D24",
+      "split": "dev",
+      "kind": "title",
+      "input": "BI Analyst",
+      "acceptableLeadCodes": [
+        "15-2051"
+      ],
+      "acceptableTop5Codes": [
+        "15-2051"
+      ],
+      "source": [
+        {
+          "roleCode": "15-2051.01",
+          "officialTitle": "Business Intelligence Analyst (BI Analyst)",
+          "shortTitle": "BI Analyst",
+          "titleFile": "job_titles.csv"
+        }
+      ],
+      "rationale": "Published short title identifies Business Intelligence Analysts under canonical Data Scientists.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "15"
+    },
+    {
+      "id": "BA-R21",
+      "split": "reserved",
+      "kind": "title",
+      "input": "Data Engineer",
+      "acceptableLeadCodes": [
+        "15-1242",
+        "15-1243",
+        "15-2041",
+        "15-2051"
+      ],
+      "acceptableTop5Codes": [
+        "15-1242",
+        "15-1243",
+        "15-2041",
+        "15-2051"
+      ],
+      "source": [
+        {
+          "roleCode": "15-1242.00",
+          "officialTitle": "Data Engineer",
+          "titleFile": "job_titles.csv"
+        },
+        {
+          "roleCode": "15-1243.00",
+          "officialTitle": "Data Engineer",
+          "titleFile": "job_titles.csv"
+        },
+        {
+          "roleCode": "15-2041.00",
+          "officialTitle": "Data Engineer",
+          "titleFile": "job_titles.csv"
+        },
+        {
+          "roleCode": "15-2051.00",
+          "officialTitle": "Data Engineer",
+          "titleFile": "job_titles.csv"
+        }
+      ],
+      "rationale": "Four official mappings; preserve ambiguity.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "15"
+    },
+    {
+      "id": "BA-R22",
+      "split": "reserved",
+      "kind": "title",
+      "input": "Compliance Analyst",
+      "acceptableLeadCodes": [
+        "13-1041",
+        "13-2011",
+        "13-2061",
+        "47-4011"
+      ],
+      "acceptableTop5Codes": [
+        "13-1041",
+        "13-2011",
+        "13-2061",
+        "47-4011"
+      ],
+      "source": [
+        {
+          "roleCode": "13-1041.00",
+          "officialTitle": "Compliance Analyst",
+          "titleFile": "job_titles.csv"
+        },
+        {
+          "roleCode": "13-1041.01",
+          "officialTitle": "Compliance Analyst",
+          "titleFile": "job_titles.csv"
+        },
+        {
+          "roleCode": "13-1041.04",
+          "officialTitle": "Compliance Analyst",
+          "titleFile": "job_titles.csv"
+        },
+        {
+          "roleCode": "13-2011.00",
+          "officialTitle": "Compliance Analyst",
+          "titleFile": "job_titles.csv"
+        },
+        {
+          "roleCode": "13-2061.00",
+          "officialTitle": "Compliance Analyst",
+          "titleFile": "job_titles.csv"
+        },
+        {
+          "roleCode": "47-4011.00",
+          "officialTitle": "Compliance Analyst",
+          "titleFile": "job_titles.csv"
+        }
+      ],
+      "rationale": "Six official roles collapse to four canonical occupations.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "13+47"
+    },
+    {
+      "id": "BA-R23",
+      "split": "reserved",
+      "kind": "title",
+      "input": "Scrum Master",
+      "acceptableLeadCodes": [
+        "15-1299"
+      ],
+      "acceptableTop5Codes": [
+        "15-1299"
+      ],
+      "source": [
+        {
+          "roleCode": "15-1299.09",
+          "officialTitle": "Scrum Master",
+          "titleFile": "job_titles.csv"
+        }
+      ],
+      "rationale": "Published IT Project Managers title within broader computer occupations; retain specialty scope.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "15"
+    },
+    {
+      "id": "BA-R24",
+      "split": "reserved",
+      "kind": "title",
+      "input": "Sustainability Specialist",
+      "acceptableLeadCodes": [
+        "13-1199"
+      ],
+      "acceptableTop5Codes": [
+        "13-1199"
+      ],
+      "source": [
+        {
+          "roleCode": "13-1199.05",
+          "officialTitle": "Sustainability Specialist",
+          "titleFile": "job_titles.csv"
+        }
+      ],
+      "rationale": "Published specialty within broader business operations; retain scope.",
+      "explicitlyInappropriateCodes": [],
+      "critical": false,
+      "abstain": false,
+      "family": "13"
+    }
+  ]
+}
+

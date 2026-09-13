@@ -1,0 +1,472 @@
+{
+  "cases": [
+    {
+      "id": "matching-v2-development:U01",
+      "input": "I use data science, statistics, psychometrics, and behavioral science to understand people at work and improve organizational decisions. I design and analyze employee research, build predictive and diagnostic models, evaluate HR programs and interventions, and translate complex evidence into practical recommendations for leaders and People teams.",
+      "expectedLead": "15-2051",
+      "required": [
+        "15-2051",
+        "19-3032"
+      ],
+      "allowed": [
+        "15-2051",
+        "19-3032",
+        "15-2041",
+        "19-3022"
+      ],
+      "expectedRoles": {
+        "15-2051": "15-2051.00",
+        "19-3032": "19-3032.00"
+      },
+      "rationale": "User-confirmed priority: data science with an organizational psychology component. Source DS task 21824 includes attrition models."
+    },
+    {
+      "id": "matching-v2-development:V01",
+      "input": "I use statistical programming and machine learning to analyze employee data, predict staff attrition, and report findings. I also develop psychological assessments for employee selection and evaluate their validity.",
+      "expectedLead": "15-2051",
+      "required": [
+        "15-2051",
+        "19-3032"
+      ],
+      "allowed": [
+        "15-2051",
+        "19-3032",
+        "15-2041"
+      ],
+      "expectedRoles": {
+        "15-2051": "15-2051.00",
+        "19-3032": "19-3032.00"
+      }
+    },
+    {
+      "id": "matching-v2-development:V02",
+      "input": "I use statistical programming and machine learning to analyze employee data, predict staff attrition, and report findings. I also develop psychological assessments for employee selection and evaluate their validity. My projects include cleaning personnel records, combining numerical responses with written employee feedback, comparing research findings across departments, preparing visual explanations, and discussing the implications with human resources colleagues.",
+      "expectedLead": "15-2051",
+      "required": [
+        "15-2051",
+        "19-3032"
+      ],
+      "allowed": [
+        "15-2051",
+        "19-3032",
+        "15-2041"
+      ],
+      "expectedRoles": {
+        "15-2051": "15-2051.00",
+        "19-3032": "19-3032.00"
+      }
+    },
+    {
+      "id": "matching-v2-development:V03",
+      "input": "I write programs to clean large structured and unstructured datasets, train machine learning models, select predictive features, and visualize the results for product teams.",
+      "expectedLead": "15-2051",
+      "required": [
+        "15-2051"
+      ],
+      "allowed": [
+        "15-2051",
+        "15-2041"
+      ],
+      "expectedRoles": {
+        "15-2051": "15-2051.00"
+      }
+    },
+    {
+      "id": "matching-v2-development:V04",
+      "input": "I apply psychological research to employee selection and development. I analyze job requirements, design selection assessments, and evaluate whether training improves worker performance and job satisfaction.",
+      "expectedLead": "19-3032",
+      "required": [
+        "19-3032"
+      ],
+      "allowed": [
+        "19-3032",
+        "13-1151",
+        "13-1071"
+      ],
+      "expectedRoles": {
+        "19-3032": "19-3032.00"
+      }
+    },
+    {
+      "id": "matching-v2-development:V05",
+      "input": "I analyze business requirements for computer systems, review software capabilities, plan integration between applications, and test system changes with users to resolve processing problems.",
+      "expectedLead": "15-1211",
+      "required": [
+        "15-1211"
+      ],
+      "allowed": [
+        "15-1211",
+        "15-1252",
+        "15-1253"
+      ],
+      "expectedRoles": {
+        "15-1211": "15-1211.00"
+      }
+    },
+    {
+      "id": "matching-v2-development:V06",
+      "input": "I analyze search queries and website traffic, improve content for search engine visibility, and optimize online marketing campaigns to increase visitor engagement.",
+      "expectedLead": "13-1161",
+      "required": [
+        "13-1161"
+      ],
+      "allowed": [
+        "13-1161"
+      ],
+      "expectedRoles": {
+        "13-1161": "13-1161.01"
+      }
+    },
+    {
+      "id": "matching-v2-development:V07",
+      "input": "I design questionnaires, test question wording, choose survey samples, and analyze survey responses with statistical software. I prepare tables and explain the results and limitations to clients.",
+      "leadAnyOf": [
+        "19-3022",
+        "15-2041"
+      ],
+      "requiredAnyOf": [
+        "19-3022",
+        "15-2041"
+      ],
+      "allowed": [
+        "19-3022",
+        "15-2041",
+        "15-2051"
+      ],
+      "excludedRoles": [
+        "13-1161.01",
+        "15-2041.01",
+        "15-2051.02"
+      ]
+    },
+    {
+      "id": "matching-v2-development:V08",
+      "input": "I work with people, attend meetings, answer emails, and help solve problems.",
+      "expectedState": "clarify",
+      "allowed": []
+    },
+    {
+      "id": "matching-v2-development:E01",
+      "input": "I install and repair electrical wiring and circuit breakers in buildings.",
+      "expectedLead": "47-2111",
+      "allowed": [
+        "47-2111"
+      ]
+    },
+    {
+      "id": "matching-v2-development:N01",
+      "input": "qzxv blorpt 739",
+      "allowed": []
+    },
+    {
+      "id": "matching-v2-development:N02",
+      "input": "What is the weather tomorrow?",
+      "allowed": []
+    },
+    {
+      "id": "matching-v2-occupational-audit:AUD-01",
+      "input": "I assess patients' health needs and plan their bedside care. I monitor vital signs and changes in symptoms, maintain medical records, and explain recovery and disease prevention to patients.",
+      "expectedLead": "29-1141",
+      "expectedRoles": {
+        "29-1141": "29-1141.00"
+      },
+      "rationale": "Registered Nurses: care assessment/planning, medical records, symptoms and vital signs (tasks1840,1841)."
+    },
+    {
+      "id": "matching-v2-occupational-audit:AUD-02",
+      "input": "I remove deposits and stains from patients' teeth and examine their gums for signs of disease. I record oral health findings and teach patients how to improve brushing and prevent dental problems.",
+      "expectedLead": "29-1292",
+      "expectedRoles": {
+        "29-1292": "29-1292.00"
+      },
+      "rationale": "Dental Hygienists: preventive oral care, cleaning, examining gums and charting (tasks416-418)."
+    },
+    {
+      "id": "matching-v2-occupational-audit:AUD-03",
+      "input": "I teach reading, arithmetic, and social skills to a fourth-grade class. I prepare classroom activities, assess each child's progress, and establish routines that help students learn and behave cooperatively.",
+      "expectedLead": "25-2021",
+      "expectedRoles": {
+        "25-2021": "25-2021.00"
+      },
+      "rationale": "Elementary School Teachers: elementary academic/social skills, behavior, evaluation and classroom preparation (tasks6535-6537)."
+    },
+    {
+      "id": "matching-v2-occupational-audit:AUD-04",
+      "input": "I teach algebra and geometry to high school students through lessons, discussions, and demonstrations. I set learning objectives, prepare subject assignments, assess students' understanding, and manage classroom behavior.",
+      "expectedLead": "25-2031",
+      "expectedRoles": {
+        "25-2031": "25-2031.00"
+      },
+      "rationale": "Secondary School Teachers: secondary subjects, mathematics instruction, objectives and classroom behavior (tasks6639-6641)."
+    },
+    {
+      "id": "matching-v2-occupational-audit:AUD-05",
+      "input": "I fit and repair water pipes in buildings, cutting and threading sections to match the drawings. I assemble connections and pressure-test the installed pipework to locate leaks before it is used.",
+      "expectedLead": "47-2152",
+      "expectedRoles": {
+        "47-2152": "47-2152.00"
+      },
+      "rationale": "Plumbers, Pipefitters and Steamfitters: pipe cutting, drawings and pressure testing (tasks23459-23461); no solar specialization."
+    },
+    {
+      "id": "matching-v2-occupational-audit:AUD-06",
+      "input": "I install central air conditioning and repair heating and refrigeration equipment. I ask customers about malfunctions, test electrical components, replace defective parts, and check that the system cools or heats correctly.",
+      "expectedLead": "49-9021",
+      "expectedRoles": {
+        "49-9021": "49-9021.00"
+      },
+      "rationale": "HVAC mechanics/installers: electrical testing, replacement and malfunction diagnosis (tasks23552-23554)."
+    },
+    {
+      "id": "matching-v2-occupational-audit:AUD-07",
+      "input": "I design bridges and building structures, calculate load requirements and material stresses, and prepare construction specifications. I inspect project sites to check that the work follows the approved design.",
+      "expectedLead": "17-2051",
+      "expectedRoles": {
+        "17-2051": "17-2051.00"
+      },
+      "rationale": "Civil Engineers: structures, bridges, load/stress calculations and inspection (tasks147,148); no traffic or wastewater specialization."
+    },
+    {
+      "id": "matching-v2-occupational-audit:AUD-08",
+      "input": "I design industrial machines and tools from customer specifications. I interpret technical drawings, compare design feasibility and maintenance costs, and work with colleagues to resolve equipment malfunctions and operating problems.",
+      "expectedLead": "17-2141",
+      "expectedRoles": {
+        "17-2141": "17-2141.00"
+      },
+      "rationale": "Mechanical Engineers: machines/tools, drawings, malfunctions and feasibility (tasks1411-1413); no automotive or fuel-cell specialization."
+    },
+    {
+      "id": "matching-v2-occupational-audit:AUD-09",
+      "input": "I examine accounting records, prepare financial statements, and audit statements produced by other teams. I investigate weaknesses in financial controls and write reports explaining the findings and recommended changes to management.",
+      "expectedLead": "13-2011",
+      "expectedRoles": {
+        "13-2011": "13-2011.00"
+      },
+      "rationale": "Accountants and Auditors: statements, auditing, reports and deficient controls (tasks21505-21507)."
+    },
+    {
+      "id": "matching-v2-occupational-audit:AUD-10",
+      "input": "I prepare soups, vegetables, and meat dishes in a restaurant kitchen. I season food according to recipes, stir and turn it while cooking, and check taste and doneness before serving.",
+      "expectedLead": "35-2014",
+      "expectedRoles": {
+        "35-2014": "35-2014.00"
+      },
+      "rationale": "Restaurant cooks: dishes, seasoning, stirring and checking doneness (tasks2169-2171); no supervision."
+    },
+    {
+      "id": "matching-v2-occupational-audit:AUD-11",
+      "input": "I support lawyers by investigating case facts and researching statutes and previous court decisions. I prepare affidavits and other legal documents, organize case files, and assemble exhibits for trial.",
+      "expectedLead": "23-2011",
+      "expectedRoles": {
+        "23-2011": "23-2011.00"
+      },
+      "rationale": "Paralegals/legal assistants: facts, precedent, affidavits and trial exhibits (tasks1636,18491,18492)."
+    },
+    {
+      "id": "matching-v2-occupational-audit:AUD-12",
+      "input": "I schedule appointments, draft routine office correspondence, and organize paper and electronic files. I answer incoming calls, take messages, and find the documents colleagues need to respond to inquiries.",
+      "expectedLead": "43-6014",
+      "expectedRoles": {
+        "43-6014": "43-6014.00"
+      },
+      "rationale": "Secretaries/admin assistants: appointments, files, calls/messages and locating correspondence (tasks2790,2793). Related office roles can be reasonable alternatives."
+    },
+    {
+      "id": "matching-v2-occupational-audit:AUD-13",
+      "input": "I analyze product delivery and supply chain processes to find avoidable delays and excess inventory. I recommend operational changes, monitor shipment tracing, and review invoicing and route activity.",
+      "expectedLead": "13-1081",
+      "expectedRoles": {
+        "13-1081": "13-1081.02"
+      },
+      "rationale": "Logistics Analysts: delivery/supply chain analysis, route activity, invoicing, shipment tracing and inventory reduction (task15881); not shipment clerking."
+    },
+    {
+      "id": "matching-v2-occupational-audit:AUD-14",
+      "input": "I check incoming merchandise against shipment records and record quantities, damage, and discrepancies. I prepare shipping documents and contact carriers to arrange collection and delivery of outgoing goods.",
+      "expectedLead": "43-5071",
+      "expectedRoles": {
+        "43-5071": "43-5071.00"
+      },
+      "rationale": "Shipping/receiving/inventory clerks: verification, documents, discrepancies and carrier arrangements (tasks4737,4739,4740)."
+    },
+    {
+      "id": "matching-v2-occupational-audit:AUD-15",
+      "input": "I help people with their work and deal with different problems. Most days involve projects, meetings, and emails.",
+      "expectedState": "clarify",
+      "allowed": [],
+      "rationale": "No occupational field or distinctive tasks; should request useful details without candidates."
+    },
+    {
+      "id": "matching-v2-occupational-audit:AUD-16",
+      "input": "Qelvorn zupthra nembixel. Vroshdak pelquim taznuf.",
+      "allowed": [],
+      "rationale": "Invented strings supply no occupational responsibilities; none or clarify acceptable."
+    },
+    {
+      "id": "matching-v2-fresh-occupational-audit:AF-01",
+      "input": "I examine pets to find the cause of illnesses and injuries, then prescribe medicines or perform surgery when needed. I also vaccinate animals and explain the treatment plan to their owners.",
+      "expectedLead": "29-1131",
+      "expectedRoles": {
+        "29-1131": "29-1131.00"
+      },
+      "rationale": "Veterinarians: committed role description covers diagnosing and treating animal diseases and injuries. Tasks 4106, 4107 and 4108 cover examination, prescribed medication or surgery, and vaccination."
+    },
+    {
+      "id": "matching-v2-fresh-occupational-audit:AF-02",
+      "input": "I cut, color, and shape clients' hair, choosing styles that suit their hair type and preferences. Between appointments I clean the workstation and sanitize scissors, combs, and other tools.",
+      "expectedLead": "39-5012",
+      "expectedRoles": {
+        "39-5012": "39-5012.00"
+      },
+      "rationale": "Hairdressers, Hairstylists, and Cosmetologists: committed description covers cutting, coloring and styling hair. Tasks 635, 636 and 637 cover sanitation, shaping hair according to client characteristics, and recommending styles."
+    },
+    {
+      "id": "matching-v2-fresh-occupational-audit:AF-03",
+      "input": "I convert spoken presentations and written documents between languages while preserving their meaning and tone. I resolve ambiguous expressions with the speakers or authors and keep confidential information private.",
+      "expectedLead": "27-3091",
+      "expectedRoles": {
+        "27-3091": "27-3091.00"
+      },
+      "rationale": "Interpreters and Translators: committed description covers spoken interpretation and written translation. Tasks 9326, 9327 and 9328 cover confidentiality, resolving meaning conflicts, and preserving message content, context and style."
+    },
+    {
+      "id": "matching-v2-fresh-occupational-audit:AF-04",
+      "input": "I diagnose faults in cars with computerized test equipment and inspect components to decide what needs repairing. After replacing or adjusting parts, I test-drive the vehicle and check that the repaired systems meet performance specifications.",
+      "expectedLead": "49-3023",
+      "expectedRoles": {
+        "49-3023": "49-3023.00"
+      },
+      "rationale": "Automotive Service Technicians and Mechanics: committed description covers diagnosing, adjusting and repairing vehicles. Tasks 23522, 23523 and 23524 cover computerized diagnosis, inspection, test driving and checking repaired systems against performance specifications."
+    },
+    {
+      "id": "matching-v2-replacement-check:H-M2-01",
+      "input": "I build predictive models from personnel datasets and analyze written staff feedback with natural language processing. Alongside this data analysis, I use psychological research to design employee selection tests and evaluate whether those assessments are valid measures of job-related characteristics.",
+      "expectedLead": "15-2051",
+      "required": [
+        "15-2051",
+        "19-3032"
+      ],
+      "excluded": [
+        "15-1211"
+      ],
+      "excludedRoles": [
+        "13-1161.01"
+      ],
+      "expectedRoles": {
+        "15-2051": "15-2051.00",
+        "19-3032": "19-3032.00"
+      },
+      "rationale": "DS covers models, NLP and datasets; IO covers psychological employee testing and selection."
+    },
+    {
+      "id": "matching-v2-replacement-check:H-M2-02",
+      "input": "I develop machine learning pipelines to extract information from large datasets, compare predictive models, and visualize findings. The inputs include numerical records and unstructured text, which I process with programming languages and natural language processing techniques.",
+      "expectedLead": "15-2051",
+      "excluded": [
+        "19-3032",
+        "13-1161"
+      ],
+      "expectedRoles": {
+        "15-2051": "15-2051.00"
+      },
+      "rationale": "Source DS definition covers programming, ML, NLP, structured/unstructured datasets and visualization; no psychology or marketing."
+    },
+    {
+      "id": "matching-v2-replacement-check:H-M2-03",
+      "input": "I study how psychological characteristics relate to job performance, design employee assessment procedures, and evaluate selection and training programs. My recommendations help organizations improve staff development and the work environment.",
+      "expectedLead": "19-3032",
+      "expectedRoles": {
+        "19-3032": "19-3032.00"
+      },
+      "rationale": "IO psychology covers employee testing, selection, training, development and work setting."
+    },
+    {
+      "id": "matching-v2-replacement-check:H-M2-04",
+      "input": "Could you tell me whether the museum is open next Sunday and how much an admission ticket costs?",
+      "allowed": [],
+      "rationale": "Visitor-information request, not occupational duties; zero candidates required."
+    },
+    {
+      "id": "matching-v2-reserved:H-M1-01",
+      "input": "I join employee records with attitude surveys, use statistical programming to model workforce outcomes, and analyze open-ended comments with machine learning. I also test whether staff selection assessments measure the intended psychological traits and summarize what the findings mean for HR decisions.",
+      "expectedLead": "15-2051",
+      "required": [
+        "15-2051",
+        "19-3032"
+      ],
+      "excluded": [
+        "15-1211"
+      ],
+      "excludedRoles": [
+        "13-1161.01"
+      ],
+      "expectedRoles": {
+        "15-2051": "15-2051.00",
+        "19-3032": "19-3032.00"
+      },
+      "rationale": "Data science covers programming, ML, structured/unstructured data and reporting; IO psychology covers employee psychological testing and selection. No system integration or search marketing is described."
+    },
+    {
+      "id": "matching-v2-reserved:H-M1-02",
+      "input": "My research examines motivation and performance at work. I develop employee selection tests, study the validity of psychological assessments, and evaluate training programs so organizations can improve how they select and develop staff.",
+      "expectedLead": "19-3032",
+      "required": [
+        "19-3032"
+      ],
+      "expectedRoles": {
+        "19-3032": "19-3032.00"
+      },
+      "rationale": "IO psychology explicitly covers employee testing, selection, training and development. Optional alternatives require source support."
+    },
+    {
+      "id": "matching-v2-reserved:H-M1-03",
+      "input": "I review search engine queries and website engagement data, identify ways to improve organic search rankings, and test changes to online campaigns to attract relevant visitors.",
+      "expectedLead": "13-1161",
+      "required": [
+        "13-1161"
+      ],
+      "expectedRoles": {
+        "13-1161": "13-1161.01"
+      },
+      "rationale": "Search Marketing Strategists covers search-query behavior, visibility, engagement, user intent and optimization."
+    },
+    {
+      "id": "matching-v2-reserved:H-M1-04",
+      "input": "The violet teapot dreams in triangles. Yesterday is a ribbon made from seven echoes.",
+      "allowed": [],
+      "rationale": "No occupational responsibilities are described. Either none or clarify is acceptable."
+    },
+    {
+      "id": "matching-v2-boundary:V-B11",
+      "input": "I install and repair electrical wiring, circuit breakers, outlets, switches, fixtures, and conduits in buildings.",
+      "expectedLead": "47-2111",
+      "required": [
+        "47-2111"
+      ],
+      "expectedRoles": {
+        "47-2111": "47-2111.00"
+      },
+      "excluded": [
+        "15-2051",
+        "19-3032",
+        "13-1161"
+      ]
+    },
+    {
+      "id": "matching-v2-boundary:V-B12",
+      "input": "I install and repair electrical wiring, circuit breakers, outlets, switches, fixtures, and conduits in residential buildings.",
+      "expectedLead": "47-2111",
+      "required": [
+        "47-2111"
+      ],
+      "expectedRoles": {
+        "47-2111": "47-2111.00"
+      },
+      "excluded": [
+        "15-2051",
+        "19-3032",
+        "13-1161"
+      ]
+    }
+  ]
+}

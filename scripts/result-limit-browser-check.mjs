@@ -27,15 +27,15 @@ try{
  await cards.first().click();
  await page.getByRole('button',{name:'Add to comparison',exact:true}).click();
  const confirmed=await page.locator('#occupation-heading').innerText();
- await page.getByRole('button',{name:/describe your work/i}).click();
+ await page.getByRole('button',{name:'Find by work description',exact:true}).click();
  const fixtures=JSON.parse(await readFile('data/evaluation/matching-v2-development.json','utf8'));
  await page.getByRole('textbox',{name:'A few specific responsibilities, in English'}).fill(fixtures.cases.find(f=>f.id==='U01').input);
- await page.getByRole('button',{name:'Search by meaning',exact:true}).click();
+ await page.getByRole('button',{name:'Find matches',exact:true}).click();
  await page.locator('.refine [role="status"]').filter({hasText:'Enhanced matching finished'}).waitFor({timeout:120000});
  assert.deepEqual((await codes()).map(text=>text.match(/\d{2}-\d{4}/)[0]),['15-2051','19-3032']);
  await limit.selectOption('1');assert.equal(await cards.count(),1);
  await limit.selectOption('10');assert.equal(await cards.count(),2);
- assert.match(await page.locator('.refine [role="status"]').innerText(),/Enhanced matching finished/);
+ assert.match(await page.locator('.refine > [role="status"]').innerText(),/Enhanced matching finished/);
  assert.equal(await page.locator('#occupation-heading').innerText(),confirmed);
  assert.equal(await page.locator('.comparison thead th').count(),2);
  report.checks.push('Description limit updates completed results immediately and preserves confirmed occupation/comparison');

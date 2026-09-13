@@ -15,9 +15,9 @@ const select=async name=>{await page.getByRole('searchbox',{name:'Search skills'
 const tick=()=>page.waitForFunction(()=>document.querySelectorAll('.candidate').length>0);
 let releaseImport;
 try{
- await page.goto(base);await page.getByRole('searchbox',{name:'Job title',exact:true}).fill('electrical');await tick();
- assert(!requests.some(url=>/skills|\/models\/|\/semantic\/|\.wasm/.test(url)));
- const order=await page.evaluate(()=>[document.querySelector('#job-title'),[...document.querySelectorAll('button')].find(e=>e.textContent==='Find by skills'),[...document.querySelectorAll('button')].find(e=>/describe your work/i.test(e.textContent))].map(e=>e.getBoundingClientRect().y));assert(order[0]<order[1]&&order[1]<order[2]);
+ await page.goto(base);await page.getByRole('searchbox',{name:'Job title',exact:true}).waitFor();assert(!requests.some(url=>/data\/skills\.json|\/models\/|\/semantic\/|\.wasm/.test(url)));await page.getByRole('searchbox',{name:'Job title',exact:true}).fill('electrical');await tick();
+ await page.locator('.occupation-skill-preview').first().waitFor();assert(requests.some(url=>/data\/skills\.json/.test(url)));assert(!requests.some(url=>/\/models\/|\/semantic\/|\.wasm/.test(url)));
+ const order=await page.evaluate(()=>[document.querySelector('#job-title'),[...document.querySelectorAll('button')].find(e=>e.textContent==='Find by skills'),[...document.querySelectorAll('button')].find(e=>e.textContent==='Find by work description')].map(e=>e.getBoundingClientRect().y));assert(order[0]<order[1]&&order[1]<order[2]);
  await trigger().click();await page.getByRole('searchbox',{name:'Search skills',exact:true}).waitFor();assert.equal(await cards().count(),0);
  await select('Equipment Maintenance');await select('Repairing');await tick();
  assert.match(await cards().first().innerText(),/Aircraft Mechanics/);assert.match(await cards().first().innerText(),/Equipment Maintenance \(4.88\/5\)/);assert.match(await cards().first().innerText(),/Repairing \(4.88\/5\)/);
@@ -33,7 +33,7 @@ try{
  assert(!requests.some(url=>/\/models\/|\/runtime\/|\/semantic\/|\/assets\/(?:worker|client)-|\.wasm/.test(url)));
  report.checks.push('Skill-only flow downloads no semantic assets; input privacy in share/CSV; clear and filter-empty state; 390px bounded skill list without horizontal overflow');
  await page.clock.install();await page.clock.pauseAt(new Date());await page.getByRole('searchbox',{name:'Job title',exact:true}).fill('nurse');await trigger().click();await select('Repairing');await page.clock.runFor(250);await tick();assert.match(await cards().first().innerText(),/O\*NET importance/);assert.doesNotMatch(await cards().first().innerText(),/^Registered Nurses/);await page.clock.resume();
- await page.getByRole('button',{name:/describe your work/i}).click();await page.getByRole('textbox',{name:'A few specific responsibilities, in English'}).fill('I maintain databases and manage backups.');
+ await page.getByRole('button',{name:'Find by work description',exact:true}).click();await page.getByRole('textbox',{name:'A few specific responsibilities, in English'}).fill('I maintain databases and manage backups.');
  let seenImport;const seen=new Promise(resolve=>seenImport=resolve),release=new Promise(resolve=>releaseImport=resolve);await page.route(/\/assets\/client-[^/]+\.js/,async route=>{seenImport();await release;await route.continue();});
  await page.getByRole('button',{name:'Search by meaning',exact:true}).click();await Promise.race([seen,new Promise((_,reject)=>setTimeout(()=>reject(Error('import missing')),10000))]);await trigger().click();releaseImport();await page.waitForLoadState('networkidle');await tick();assert.match(await cards().first().innerText(),/O\*NET importance/);assert(!requests.some(url=>/\/models\/|\/runtime\/|\/assets\/worker-/.test(url)));
  await page.getByRole('button',{name:'Clear results',exact:true}).click();assert.equal(await cards().count(),0);assert.equal(await page.locator('#occupation-heading').count(),0);assert.equal(await page.locator('.comparison thead th').count(),2);await trigger().click();assert.equal(await page.getByRole('checkbox',{checked:true}).count(),0);

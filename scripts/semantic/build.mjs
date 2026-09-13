@@ -2,37 +2,30 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { isDeepStrictEqual } from 'node:util';
 import { pipeline, env } from '@huggingface/transformers';
-import {selectRoles, normalizedCentroid} from './aggregation.mjs';
+import {normalizedCentroid} from './aggregation.mjs';
+import {loadCorpus} from './corpus.mjs';
 const config=JSON.parse(readFileSync('src/semantic/config.json'));
 const raw=readFileSync('public/data/occupations.json'), snapshot=JSON.parse(raw);
 if(process.argv.slice(2).some(arg=>arg!=='--check'))throw Error('Usage: node scripts/semantic/build.mjs [--check]');
+const corpus=loadCorpus(raw,config);
 const checkMode=process.argv.includes('--check'),started=new Date().toISOString();
 const committedPaths=['public/semantic/vectors.bin','data/evaluation/primary-vectors.bin','public/semantic/metadata.json'];
 const committed=checkMode?committedPaths.map(path=>({path,bytes:readFileSync(path)})):[];
 env.localModelPath=`./public/models/${config.revision}/`; env.allowRemoteModels=false; env.allowLocalModels=true;
-const encoder=await pipeline('feature-extraction',config.localName,{dtype:config.dtype,device:'cpu'});
+const encoder=await pipeline('feature-extraction',config.localName,{dtype:config.dtype,device:'cpu',session_options:{intraOpNumThreads:1,interOpNumThreads:1}});
 const tokenCount=text=>encoder.tokenizer(text).input_ids.size;
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const rows=[], vectors=[], primaryVectors=[];
 for(const occupation of snapshot.occupations){
- const roles=[...new Map(occupation.roles.map(r=>[r.code,r])).values()].sort((a,b)=>a.code.localeCompare(b.code));
- // Fixed upper bound; evenly spaced coverage, with the first source role retained.
- const selected=selectRoles(roles,config.maxPassages);
- const passages=[];
- for(const role of selected){
-  let text=`${occupation.title}. ${role.title}.`;
-  const sentences=role.description.match(/[^.!?]+[.!?]*/g)||[];
-  const fragments=[...sentences,...role.tasks.map(t=>t.text)];
-  let omitted=0;
-  for(const fragment of fragments){const next=`${text} ${fragment.trim()}`;if(tokenCount(next)<=config.maxTokens)text=next;else omitted++;}
-  if(!passages.some(p=>p.text===text))passages.push({text,onetCode:role.code,source:role.source,taskIds:role.tasks.filter(t=>text.includes(t.text)).map(t=>t.id),tokens:tokenCount(text),omittedFragments:omitted});
- }
- if(!passages.length)passages.push({text:occupation.title,onetCode:null,source:occupation.source,taskIds:[],tokens:tokenCount(occupation.title),omittedFragments:0});
+ const row=corpus.rows[rows.length];
+ const passages=row.passages.map(p=>({...p,tokens:tokenCount(p.text)}));
+ if(passages.some(p=>p.tokens>config.maxTokens))throw Error('Frozen passage exceeds encoder limit; no text was truncated');
  const output=await encoder(passages.map(p=>p.text),{pooling:config.pooling,normalize:true});
- if(output.dims[1]!==config.dimensions)throw Error('Encoder dimension mismatch');
+ if(output.dims[0]!==passages.length||output.dims[1]!==config.dimensions||!output.data.every(Number.isFinite))throw Error('Encoder dimension mismatch');
+ for(let i=0;i<passages.length;i++)if(Math.abs(Math.hypot(...output.data.slice(i*config.dimensions,(i+1)*config.dimensions))-1)>0.001)throw Error('Invalid normalized passage vector');
  const centroid=normalizedCentroid(passages.map((_,r)=>output.data.slice(r*config.dimensions,(r+1)*config.dimensions)));
  vectors.push(...centroid);primaryVectors.push(...output.data.slice(0,config.dimensions));
- rows.push({code:occupation.code,passages,sourceRoleCount:roles.length});
+ rows.push({code:occupation.code,passages,sourceRoleCount:row.sourceRoleCount});
  if(rows.length%100===0)console.log(`Encoded ${rows.length} occupations`);
 }
 const binary=Buffer.from(new Float32Array(vectors).buffer);

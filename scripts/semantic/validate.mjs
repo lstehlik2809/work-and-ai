@@ -1,3 +1,4 @@
+import{loadCorpus}from'./corpus.mjs';
 import{readFileSync}from'node:fs';import{createHash}from'node:crypto';import{pathToFileURL}from'node:url';
 export function validateSemantic(meta,bytes,snapshotBytes,expected){
  const hash=b=>createHash('sha256').update(b).digest('hex');
@@ -12,3 +13,5 @@ export function validateSemantic(meta,bytes,snapshotBytes,expected){
  return {valid:true,occupations:seen.size,dimensions:expected.dimensions,bytes:bytes.length};
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)console.log(JSON.stringify(validateSemantic(JSON.parse(readFileSync('public/semantic/metadata.json')),readFileSync('public/semantic/vectors.bin'),readFileSync('public/data/occupations.json'),JSON.parse(readFileSync('src/semantic/config.json')))));
+
+if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)loadCorpus(readFileSync('public/data/occupations.json'),JSON.parse(readFileSync('src/semantic/config.json')));

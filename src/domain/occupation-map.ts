@@ -139,3 +139,11 @@ export function nearestSkillNeighbors(selected: MapOccupation, nodes: MapOccupat
     .sort((a, b) => b.similarity - a.similarity || b.sharedSkills.length - a.sharedSkills.length || compareCode(a.node.occupation.code, b.node.occupation.code))
     .slice(0, Math.max(0, Math.floor(limit)));
 }
+export function continuousSkillSimilarity(a:MapOccupation,b:MapOccupation){
+  const differences=a.importance.flatMap((value,index)=>value!==null&&b.importance[index]!=null?[{index,left:value,right:b.importance[index]!,difference:Math.abs(value-b.importance[index]!)}]:[]);
+  const jointlyRated=differences.length;
+  return{jointlyRated,differences,similarity:jointlyRated>=20?1-differences.reduce((sum,r)=>sum+r.difference,0)/jointlyRated/4:null};
+}
+export function nearestContinuousNeighbors(selected:MapOccupation,nodes:MapOccupation[],limit=5){
+  return nodes.filter(node=>node.occupation.code!==selected.occupation.code).map(node=>({node,...sharedSkillSimilarity(selected,node),...continuousSkillSimilarity(selected,node)})).filter((r):r is typeof r&{similarity:number}=>r.similarity!==null).sort((a,b)=>b.similarity-a.similarity||b.jointlyRated-a.jointlyRated||compareCode(a.node.occupation.code,b.node.occupation.code)).slice(0,Math.max(0,Math.floor(limit)));
+}

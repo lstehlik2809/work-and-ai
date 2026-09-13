@@ -14,6 +14,7 @@ Use Node **24.18.0** and the committed lockfile.
 
 ```sh
 npm ci
+npm run semantic:fetch
 npm run dev
 ```
 
@@ -29,13 +30,17 @@ npm run build
 npm run preview
 ```
 
-Normal builds use committed public data, vectors, and pinned model/runtime files. They neither contact the upstream data services nor re-embed the corpus. React, TypeScript and Vite render a static site; Fuse.js and BM25 provide ordinary retrieval. No server, accounts, analytics, fonts, inference API, or generative interpretation service is used.
+Normal builds use committed public data and vectors plus prepared, pinned model/runtime files. The 110 MB MPNet weight exceeds GitHub’s regular blob limit and is ignored in Git; run `npm run semantic:fetch` after checkout. CI performs the same verified acquisition before building. They neither contact the upstream data services nor re-embed the corpus. React, TypeScript and Vite render a static site; Fuse.js and BM25 provide ordinary retrieval. No server, accounts, analytics, fonts, inference API, or generative interpretation service is used.
 
-## Optional meaning search
+## Development candidate status
 
-Title search is available after the lexical data loads. “Describe your work” is optional. The model, runtime and index load only after “Search by meaning.” A dedicated worker uses single-thread WebAssembly without WebGPU or cross-origin isolation. Text, query vectors and ranking stay in the browser. Links contain only public BLS codes and a release identifier; CSV contains only published records and definitions. GitHub may retain static-file access logs.
+The `codex/mpnet-app-improvements` branch implements the accumulated statistical/UI improvements and MPNet upgrade. **Release is not approved:** mixed-role matching remains limited, the machining/welding case loses its prior welding result, and the original fresh evaluation payload is unavailable. See [MPNet implementation verification](verification/mpnet-implementation.md) and the [model comparison](verification/embedding-model-comparison.md). Branch CI builds and checks the app; only `main` can deploy Pages.
 
-The pinned MiniLM q8 model alone is 22,972,370 bytes; the WASM runtime is 25,749,873 bytes. See the separate size and timing measurements in [VERIFICATION.md](VERIFICATION.md). The supported Transformers fetch hook bypasses the HTTP cache to avoid observed Chromium cache-writer races during overlapping discovery/loading; supported revision-keyed CacheStorage remains active. Browser CacheStorage is best effort and keyed by revision-specific local paths. Eviction or private browsing can require another download. Missing storage falls back to uncached loading. Loading errors, a two-minute timeout, incompatible metadata, cancellation and superseded queries leave ordinary search and confirmed comparisons available. Inputs exceeding 256 tokenizer tokens are rejected explicitly; the UI also limits text to 1,000 characters.
+## Description search
+
+Title search is available after the lexical data loads. “Describe your work” is optional. The model, runtime and index load only after “Find matches.” Original wording-only results appear while the model loads and remain available in a disclosure after success. “Search wording only” avoids loading the model. A dedicated worker uses single-thread WebAssembly without WebGPU or cross-origin isolation. Text, query vectors and ranking stay in the browser. Links contain only public BLS codes and a release identifier; CSV contains only published records and definitions. GitHub may retain static-file access logs.
+
+The pinned MPNet q8 model alone is 110,086,122 bytes; the WASM runtime is 25,749,873 bytes. See the separate size and timing measurements in [VERIFICATION.md](VERIFICATION.md). The supported Transformers fetch hook bypasses the HTTP cache to avoid observed Chromium cache-writer races during overlapping discovery/loading; supported revision-keyed CacheStorage remains active. Browser CacheStorage is best effort and keyed by revision-specific local paths. Eviction or private browsing can require another download. Missing storage falls back to uncached loading. Loading errors, a two-minute timeout, incompatible metadata, cancellation and superseded queries leave ordinary search and confirmed comparisons available. Inputs exceeding 384 tokenizer tokens are rejected explicitly; the UI also limits text to 1,000 characters.
 
 ## Deliberate data and vector updates
 
@@ -67,7 +72,7 @@ node scripts/semantic/build.mjs --check
 
 The optional `--check` recomputes the corpus without replacing committed outputs and checks exact reproduction.
 
-Build-time CPU inference uses the same quantized ONNX weights, tokenizer, 256-token boundary, mean pooling, normalization and 384 dimensions as the browser. It writes one normalized centroid per canonical occupation and a first-passage ablation index. Review omitted fragments and coverage in `public/semantic/metadata.json`, inspect mapping exceptions, run all checks and browser QA, and obtain review before publishing.
+Build-time CPU inference uses the same quantized ONNX weights, tokenizer, 384-token boundary, mean pooling, normalization and 768 dimensions as the browser. The build uses the exact 952 passages in `data/semantic-passages.json`, originally selected under MiniLM’s 256-token budget, rather than expanding source coverage when the encoder changes. The corpus is hash-pinned to the source snapshot and encoder configuration; a future source update requires deliberate corpus review and a new pin. It writes one normalized centroid per canonical occupation and a first-passage ablation index. Review omitted fragments and coverage in `public/semantic/metadata.json`, inspect mapping exceptions, run all checks and browser QA, and obtain review before publishing.
 
 Matching fixtures, frozen hashes, development runs and the single held-out run are in `data/evaluation`. Labels are provisional authored examples, not independent expert ground truth. `npm run evaluate -- --split=dev` records a development run. The existing held-out file is deliberately write-once; do not delete it to tune repeatedly against the same labels. A future ranking change needs a new untouched evaluation set. The provenance-only correction is documented separately from frozen ranking results.
 
@@ -114,3 +119,12 @@ Select an occupation to see its important skills and up to five exact Jaccard ma
 The map uses **UMAP**, with a small deterministic spacing adjustment to make crowded circles easier to distinguish. The adjustment is independent of exposure, runs once for the full population, and keeps each circle near its original position. Search, filters and zoom leave positions fixed; exact shared-skill connections still come from the underlying skill sets. The map offers a retry if its saved layout cannot load or fails validation.
 
 The original [UMAP/PCA comparison report](data/projection-evaluation/README.md) records all 27 runs, seed stability and reproduction commands. Its 52.7% UMAP versus 30.3% PCA neighborhood scores describe the original layouts before the added spacing adjustment; they are neither predictive accuracy nor AI exposure. PCA is retained only in the offline comparison code. Both projection and visual spacing are approximate, so cluster gaps, density and global distances should not be read quantitatively. See [METHODOLOGY.md](METHODOLOGY.md#occupation-map) for the full rules. Run `npx tsx --test tests/occupation-map*.test.ts` for focused checks and `npm run browser:map` against the production preview for interactive checks. UMAP fitting is offline and adds no browser dependency or model download.
+
+
+## Analysis controls and reproducibility
+
+Skill patterns start with absolute percentage-point differences and show rated/eligible coverage alongside important/rated counts. Open robustness checks for threshold, specialty aggregation, coverage and occupational-family alternatives; model probabilities remain in advanced details. Download all 35 skills or the complete sensitivity comparisons without exporting private filters. Confirmed occupations and comparisons offer a public reading brief.
+
+The map also offers continuous importance comparisons with at least 20 jointly rated skills; Jaccard remains the default and the layout stays fixed.
+
+Run `npm run patterns:prepare` after changing analysis generation or its pinned inputs, followed by `npm run validate:patterns`. CI validates data, skills, AI context, semantic assets and the analysis artifact, then runs tests, type checking, the production build and `npm run browser:improvements` in Chromium, Firefox and WebKit. That browser script starts its own production preview unless `TEST_URL` is supplied. `TEST_ENGINES` can select installed engines for local diagnosis; CI uses all three.

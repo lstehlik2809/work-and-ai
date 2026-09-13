@@ -1,50 +1,51 @@
 {
   "config": {
-    "model": "Xenova/all-MiniLM-L6-v2",
-    "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
-    "localName": "minilm",
+    "model": "Xenova/all-mpnet-base-v2",
+    "revision": "e086c5e0b3a57b0ce46dd6d9c0662948860b35f3",
+    "localName": "mpnet",
     "transformers": "4.2.0",
     "browserRuntime": "1.29.0",
     "buildRuntime": "1.24.3",
     "dtype": "q8",
     "pooling": "mean",
     "normalize": true,
-    "dimensions": 384,
-    "maxTokens": 256,
-    "preprocessing": "sourced-sentences-centroid-v1",
+    "dimensions": 768,
+    "maxTokens": 384,
+    "preprocessing": "frozen-sourced-passages-v2",
     "maxPassages": 3,
-    "mappingVersion": "BLS-NEM-ONET-2026-08-27"
+    "mappingVersion": "BLS-NEM-ONET-2026-08-27",
+    "corpusSha256": "6e9a2b431c56e29312b8a025fb47f1d4f8d2ff035123357d875c41dfa1dab028"
   },
   "files": [
     {
-      "path": "models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/config.json",
-      "source": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/config.json",
-      "bytes": 650,
-      "sha256": "7135149f7cffa1a573466c6e4d8423ed73b62fd2332c575bf738a0d033f70df7"
+      "path": "models/e086c5e0b3a57b0ce46dd6d9c0662948860b35f3/mpnet/config.json",
+      "source": "https://huggingface.co/Xenova/all-mpnet-base-v2/resolve/e086c5e0b3a57b0ce46dd6d9c0662948860b35f3/config.json",
+      "bytes": 591,
+      "sha256": "a783505a4e839b61700aa61d249d381d00addfb9cf3221359e2d30a6da6c6499"
     },
     {
-      "path": "models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer.json",
-      "source": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/tokenizer.json",
-      "bytes": 711661,
-      "sha256": "da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0"
+      "path": "models/e086c5e0b3a57b0ce46dd6d9c0662948860b35f3/mpnet/tokenizer.json",
+      "source": "https://huggingface.co/Xenova/all-mpnet-base-v2/resolve/e086c5e0b3a57b0ce46dd6d9c0662948860b35f3/tokenizer.json",
+      "bytes": 710944,
+      "sha256": "d00dad6f80b7eab804479a58634a58a50966366627f847e47848bac52873995d"
     },
     {
-      "path": "models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer_config.json",
-      "source": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/tokenizer_config.json",
-      "bytes": 366,
-      "sha256": "9261e7d79b44c8195c1cada2b453e55b00aeb81e907a6664974b4d7776172ab3"
+      "path": "models/e086c5e0b3a57b0ce46dd6d9c0662948860b35f3/mpnet/tokenizer_config.json",
+      "source": "https://huggingface.co/Xenova/all-mpnet-base-v2/resolve/e086c5e0b3a57b0ce46dd6d9c0662948860b35f3/tokenizer_config.json",
+      "bytes": 357,
+      "sha256": "3ea32220c2e21af4f0be95e2a43bdc8ac693f8c35c2255127ef680689b469461"
     },
     {
-      "path": "models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/special_tokens_map.json",
-      "source": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/special_tokens_map.json",
-      "bytes": 125,
-      "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3"
+      "path": "models/e086c5e0b3a57b0ce46dd6d9c0662948860b35f3/mpnet/special_tokens_map.json",
+      "source": "https://huggingface.co/Xenova/all-mpnet-base-v2/resolve/e086c5e0b3a57b0ce46dd6d9c0662948860b35f3/special_tokens_map.json",
+      "bytes": 280,
+      "sha256": "15a9b70f6a5defe4feac823a82e6412e5d5bfd8eab09d8dbcf5ac241f14a7756"
     },
     {
-      "path": "models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/onnx/model_quantized.onnx",
-      "source": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/onnx/model_quantized.onnx",
-      "bytes": 22972370,
-      "sha256": "afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1"
+      "path": "models/e086c5e0b3a57b0ce46dd6d9c0662948860b35f3/mpnet/onnx/model_quantized.onnx",
+      "source": "https://huggingface.co/Xenova/all-mpnet-base-v2/resolve/e086c5e0b3a57b0ce46dd6d9c0662948860b35f3/onnx/model_quantized.onnx",
+      "bytes": 110086122,
+      "sha256": "85844a045c06dad4a1512d7de76c13d4937fb0e1588b84a97543292d72f193c1"
     },
     {
       "path": "runtime/1.29.0/ort-wasm-simd-threaded.asyncify.mjs",

@@ -1,0 +1,41 @@
+import assert from 'node:assert/strict';
+import {mkdir,readFile,writeFile} from 'node:fs/promises';
+import {spawn} from 'node:child_process';
+import {chromium,firefox,webkit} from 'playwright';
+const base=process.env.TEST_URL||'http://127.0.0.1:4181/work-and-ai/';
+const server=process.env.TEST_URL?null:spawn(process.execPath,['node_modules/vite/bin/vite.js','preview','--host','127.0.0.1','--port','4181','--strictPort'],{stdio:'pipe',windowsHide:true});
+const out='verification/local/improvements-browser';await mkdir(out,{recursive:true});
+const report={status:'FAIL',engines:[]};
+try{
+ for(let i=0;i<100;i++){try{if((await fetch(base)).ok)break;}catch{}await new Promise(r=>setTimeout(r,100));}
+ for(const[name,type]of Object.entries({chromium,firefox,webkit}).filter(([name])=>!process.env.TEST_ENGINES||process.env.TEST_ENGINES.split(',').includes(name))){
+  const browser=await type.launch({headless:true});const result={name,version:browser.version(),checks:[],errors:[],requests:[]};report.engines.push(result);
+  try{
+   const page=await browser.newPage({viewport:{width:1440,height:1000},acceptDownloads:true});
+   page.on('pageerror',e=>result.errors.push(String(e)));page.on('request',r=>result.requests.push({url:r.url(),body:r.postData()}));
+   const tab=n=>page.getByRole('tab',{name:n,exact:true});
+   await page.goto(base);const title=page.getByRole('searchbox',{name:'Job title',exact:true});await title.fill('registered nurse');await page.locator('button.candidate').first().click();
+   assert.match(await page.locator('#occupation-heading').innerText(),/Registered nurses/i);
+   await page.getByRole('button',{name:'Add to comparison',exact:true}).click();
+   await title.fill('accountant');await page.locator('button.candidate').first().click();await page.getByRole('button',{name:'Add to comparison',exact:true}).click();
+   await title.fill('chief executive');await page.locator('button.candidate').first().click();await page.getByRole('button',{name:'Add to comparison',exact:true}).click();assert.equal(await page.locator('.comparison thead th').count(),4);
+   await title.fill('pharmacist');await page.locator('button.candidate').first().click();await page.getByRole('button',{name:'Add to comparison',exact:true}).click();assert.equal(await page.locator('.comparison thead th').count(),4);
+   const singleWait=page.waitForEvent('download');await page.getByRole('button',{name:'Download reading brief',exact:true}).click();const single=await readFile(await(await singleWait).path(),'utf8');assert.match(single,/Pharmacists/i);assert(!/Registered nurses/i.test(single));
+   const briefWait=page.waitForEvent('download');await page.getByRole('button',{name:'Download comparison brief',exact:true}).first().click();const brief=await readFile(await(await briefWait).path(),'utf8');assert.match(brief,/Registered nurses/i);assert.match(brief,/Accountants/i);assert.match(brief,/whole BLS occupation/);result.checks.push('manual confirmation, comparison and public reading brief');
+   await page.getByRole('button',{name:'Share comparison',exact:true}).click();const shared=page.url();assert(shared.includes('#'));await page.reload();await page.locator('.comparison').waitFor();assert.equal(await page.locator('.comparison thead th').count(),4);
+   if(name==='chromium'){await page.emulateMedia({media:'print'});assert.equal(await page.locator('.occupation').isVisible(),false);await page.pdf({path:`${out}/comparison.pdf`,preferCSSPageSize:true,printBackground:true});await page.emulateMedia({media:'screen'});}result.checks.push('maximum three, single versus comparison brief, public share reload and Chromium print');
+   await tab('Skill patterns').click();await page.locator('.patterns-table tbody tr').first().waitFor();assert.equal(await page.locator('.patterns-table tbody tr').count(),35);
+   const differences=await page.locator('.pattern-difference').allTextContents();const values=differences.map(x=>Math.abs(parseFloat(x)));assert(values.every((x,i)=>i===0||x<=values[i-1]));
+   assert.match(await page.locator('.patterns-table tbody').innerText(),/rated \/ eligible/);assert(!(await page.locator('.pattern-evidence summary').allTextContents()).some(x=>/%/.test(x)));
+   await page.getByRole('searchbox',{name:'Filter skills',exact:true}).fill('PRIVATE_FILTER_91');assert.equal(await page.locator('.patterns-table tbody tr').count(),0);
+   const exportWait=page.waitForEvent('download');await page.getByRole('button',{name:'Download all 35 skills',exact:true}).click();const csv=await readFile(await(await exportWait).path(),'utf8');assert.equal(csv.trim().split('\n').length,36);assert(!csv.includes('PRIVATE_FILTER_91'));
+   await page.getByRole('searchbox',{name:'Filter skills',exact:true}).fill('Programming');await page.locator('#patterns-baseline').selectOption('rest');await page.locator('#patterns-threshold').selectOption('3.5');await page.locator('.pattern-evidence summary').filter({hasText:'Robustness checks'}).click();await page.locator('.patterns-table tbody').getByText('mean-2.5',{exact:true}).waitFor();result.checks.push('absolute effect ordering, coverage, model disclosure, private-filter-independent export, robustness controls');
+   for(const width of[320,390,720]){await page.setViewportSize({width,height:900});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`page overflow at ${width}`);const region=page.locator('.patterns-table-scroll');await region.evaluate(e=>e.scrollLeft=e.scrollWidth);assert.equal(await page.locator('.patterns-table tbody th').first().evaluate(e=>getComputedStyle(e).position),'sticky');await page.screenshot({path:`${out}/${name}-${width}.png`,fullPage:true});}
+   await page.setViewportSize({width:1440,height:1000});await page.evaluate(()=>document.documentElement.style.zoom='2');assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await page.screenshot({path:`${out}/${name}-zoom200.png`,fullPage:true});await page.evaluate(()=>document.documentElement.style.zoom='1');result.checks.push('320/390 CSS pixels, 200% CSS zoom and confined table scrolling');
+   await tab('Occupation map').click();await page.getByTestId('map-node').first().click();await page.locator('#neighbor-method').waitFor();assert.equal(await page.locator('#neighbor-method').inputValue(),'jaccard');const coords=await page.getByTestId('map-node').evaluateAll(ns=>ns.map(n=>[n.getAttribute('cx'),n.getAttribute('cy')]));await page.locator('#neighbor-method').selectOption('continuous');assert.deepEqual(await page.getByTestId('map-node').evaluateAll(ns=>ns.map(n=>[n.getAttribute('cx'),n.getAttribute('cy')])),coords);assert.match(await page.getByTestId('map-neighbors').innerText(),/jointly rated skills/);result.checks.push('continuous comparison with fixed map positions');
+   assert(!result.requests.some(r=>/PRIVATE_FILTER_91/.test(r.url+(r.body||''))));assert(!result.requests.some(r=>/\.onnx|\.wasm|vectors\.bin/.test(r.url)));assert.equal(result.errors.length,0);
+   const failure=await browser.newPage();let corrupt=true;await failure.route('**/data/skill-patterns.json',async route=>{if(corrupt)await route.fulfill({status:200,contentType:'application/json',body:'{}'});else await route.continue();});await failure.goto(base);await failure.getByRole('tab',{name:'Skill patterns',exact:true}).click();await failure.getByRole('button',{name:'Retry skill analysis'}).waitFor();assert.equal(await failure.getByRole('button',{name:'Download all 35 skills',exact:true}).count(),0);await failure.getByRole('tab',{name:'Find an occupation',exact:true}).click();await failure.getByRole('searchbox',{name:'Job title',exact:true}).fill('nurse');await failure.locator('button.candidate').first().waitFor();await failure.getByRole('tab',{name:'Skill patterns',exact:true}).click();corrupt=false;await failure.getByRole('button',{name:'Retry skill analysis'}).click();await failure.locator('.patterns-table tbody tr').first().waitFor();result.checks.push('corrupt artifact isolated; search and retry recover');
+  }finally{await browser.close();}
+ }
+ report.status='PASS';
+}finally{server?.kill();await writeFile(`${out}/report.json`,JSON.stringify(report,null,2));console.log(JSON.stringify({...report,engines:report.engines.map(e=>({...e,requests:`${e.requests.length} captured in report`}))},null,2));}

@@ -1,4 +1,4 @@
-import {readFile,mkdir,writeFile} from 'node:fs/promises';
+import {readFile,mkdir,writeFile,rename,rm} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {dirname,resolve,sep} from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
@@ -32,6 +32,15 @@ export function validateAssetBytes(file,bytes){
  return true;
 }
 
+export async function installAsset(target,file,bytes){
+ validateAssetBytes(file,bytes);
+ try{validateAssetBytes(file,await readFile(target));return;}catch{}
+ await mkdir(dirname(target),{recursive:true});
+ const temporary=`${target}.download-${process.pid}`;
+ try{await writeFile(temporary,bytes,{flag:'wx'});await rename(temporary,target);}
+ finally{await rm(temporary,{force:true});}
+}
+
 export async function verifyAssets({fetchAssets=false}={}){
  const config=JSON.parse(await readFile(resolve(root,'src/semantic/config.json'),'utf8'));
  const manifest=JSON.parse(await readFile(resolve(root,'public/semantic/assets.json'),'utf8'));
@@ -54,7 +63,7 @@ export async function verifyAssets({fetchAssets=false}={}){
   for(const {file,bytes} of staged){
    const target=resolve(publicRoot,file.path);
    assert(target.startsWith(publicRoot+sep),'Asset destination escapes public directory');
-   await mkdir(dirname(target),{recursive:true});await writeFile(target,bytes);
+   await installAsset(target,file,bytes);
   }
  }
  let bytes=0;

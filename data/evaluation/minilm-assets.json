@@ -1,0 +1,62 @@
+{
+  "config": {
+    "model": "Xenova/all-MiniLM-L6-v2",
+    "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+    "localName": "minilm",
+    "transformers": "4.2.0",
+    "browserRuntime": "1.29.0",
+    "buildRuntime": "1.24.3",
+    "dtype": "q8",
+    "pooling": "mean",
+    "normalize": true,
+    "dimensions": 384,
+    "maxTokens": 256,
+    "preprocessing": "sourced-sentences-centroid-v1",
+    "maxPassages": 3,
+    "mappingVersion": "BLS-NEM-ONET-2026-08-27"
+  },
+  "files": [
+    {
+      "path": "models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/config.json",
+      "source": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/config.json",
+      "bytes": 650,
+      "sha256": "7135149f7cffa1a573466c6e4d8423ed73b62fd2332c575bf738a0d033f70df7"
+    },
+    {
+      "path": "models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer.json",
+      "source": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/tokenizer.json",
+      "bytes": 711661,
+      "sha256": "da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0"
+    },
+    {
+      "path": "models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer_config.json",
+      "source": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/tokenizer_config.json",
+      "bytes": 366,
+      "sha256": "9261e7d79b44c8195c1cada2b453e55b00aeb81e907a6664974b4d7776172ab3"
+    },
+    {
+      "path": "models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/special_tokens_map.json",
+      "source": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/special_tokens_map.json",
+      "bytes": 125,
+      "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3"
+    },
+    {
+      "path": "models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/onnx/model_quantized.onnx",
+      "source": "https://huggingface.co/Xenova/all-MiniLM-L6-v2/resolve/751bff37182d3f1213fa05d7196b954e230abad9/onnx/model_quantized.onnx",
+      "bytes": 22972370,
+      "sha256": "afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1"
+    },
+    {
+      "path": "runtime/1.29.0/ort-wasm-simd-threaded.asyncify.mjs",
+      "source": "https://www.npmjs.com/package/onnxruntime-web/v/1.29.0",
+      "bytes": 51407,
+      "sha256": "5d25483158d53d8f34d0e9c06a654d56c8dca4ebdf370ea0982ef11315a00e0e"
+    },
+    {
+      "path": "runtime/1.29.0/ort-wasm-simd-threaded.asyncify.wasm",
+      "source": "https://www.npmjs.com/package/onnxruntime-web/v/1.29.0",
+      "bytes": 25749873,
+      "sha256": "503d17cb7411b79781b9fad1cf0978f03cf06b050c7d399c730e914f473bf549"
+    }
+  ]
+}

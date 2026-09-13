@@ -1,0 +1,41 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+import {pipeline,env} from '@huggingface/transformers';
+import {SearchEngine} from '../src/search/engine';
+const read=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
+const hash=(p:string)=>createHash('sha256').update(readFileSync(p)).digest('hex');
+const destination=process.argv[2];
+if(!destination?.startsWith('verification/local/'))throw Error('Supply a new report under verification/local/; preserve historical reports.');
+const config=read('src/semantic/config.json'),meta=read('public/semantic/metadata.json');
+const fixture=read('data/evaluation/embedding-exposed-cases.json'),facets=read('data/evaluation/embedding-exposed-facets.json');
+const baseline=read('data/evaluation/minilm-exposed-baseline.json');
+const snapshot=read('public/data/occupations.json'),engine=new SearchEngine(snapshot,read('public/data/lexicon.json'));
+const files=['src/search/engine.ts','src/semantic/config.json','src/semantic/worker.ts','src/semantic/client.ts','src/state/useOccupationSearch.ts','src/components/OccupationSearch.tsx','scripts/semantic/build.mjs','scripts/semantic/aggregation.mjs','scripts/semantic/corpus.mjs','scripts/evaluate-mpnet.ts','public/semantic/metadata.json','public/semantic/vectors.bin','public/semantic/assets.json','public/data/occupations.json','public/data/lexicon.json','data/semantic-passages.json','data/evaluation/embedding-exposed-cases.json','data/evaluation/embedding-exposed-facets.json','data/evaluation/minilm-exposed-baseline.json'];
+const freeze={date:new Date().toISOString(),files:Object.fromEntries(files.map(p=>[p,hash(p)]))};
+writeFileSync(destination+'.freeze.json',JSON.stringify(freeze,null,2)+'\n');
+assert.deepEqual(config,meta.config);assert.equal(meta.vectorSha256,hash('public/semantic/vectors.bin'));
+const bytes=readFileSync('public/semantic/vectors.bin'),vectors=new Float32Array(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength));
+env.allowRemoteModels=false;env.localModelPath=`./public/models/${config.revision}/`;
+const encoder=await pipeline('feature-extraction',config.localName,{dtype:config.dtype,device:'cpu',session_options:{intraOpNumThreads:1,interOpNumThreads:1}});
+const rows=[];
+for(const f of fixture.cases){
+ const tokenCount=encoder.tokenizer(f.input).input_ids.size;assert(tokenCount<=config.maxTokens);
+ const output=await encoder(f.input,{pooling:config.pooling,normalize:true});assert.equal(output.dims[1],config.dimensions);
+ const evidence=meta.rows.map((r:any,i:number)=>{let score=0;for(let d=0;d<config.dimensions;d++)score+=Number(output.data[d])*vectors[i*config.dimensions+d];return {code:r.code,score};}).sort((a:any,b:any)=>b.score-a.score);
+ const result=f.kind==='title'?engine.title(f.input,10):engine.hybrid('',f.input,evidence,10);
+ for(const c of result.candidates){const o=snapshot.occupations.find((o:any)=>o.code===c.code),r=o?.roles.find((r:any)=>r.code===c.roleCode);assert(r);const text=c.excerptKind==='task'?r.tasks.find((t:any)=>t.id===c.taskId):r;assert(text);assert.equal(c.excerpt,c.excerptKind==='task'?text.text:text.description);assert.equal(c.source,text.source);}
+ const after=result.candidates.map(c=>c.code),before=baseline.cases.find((c:any)=>c.id===f.id).codes,acceptable=f.acceptableTop5Codes??f.acceptableLeadCodes??[],lead=f.acceptableLeadCodes??[],bad=f.explicitlyInappropriateCodes??[],required=facets.required[f.id]??[];
+ const prefixes=Array.from({length:10},(_,i)=>({limit:i+1,codes:after.slice(0,i+1),inappropriate:after.slice(0,i+1).filter(c=>bad.includes(c))}));
+ const added=prefixes.some(p=>p.inappropriate.some(c=>!before.slice(0,p.limit).includes(c)));
+ const lostLead=f.kind==='specific'&&lead.includes(before[0])&&!lead.includes(after[0]);
+ const lostAt5=f.kind!=='title'&&acceptable.length>0&&before.slice(0,5).some((c:string)=>acceptable.includes(c))&&!after.slice(0,5).some(c=>acceptable.includes(c));
+ const abstentionFailure=Boolean(f.abstain&&after.length);
+ rows.push({id:f.id,kind:f.kind,input:f.input,tokenCount,before,after,result,scores:Object.fromEntries(evidence.map((e:any)=>[e.code,e.score])),prefixes,leadCorrect:lead.includes(after[0]),acceptableAt5:after.slice(0,5).some(c=>acceptable.includes(c)),requiredFacets:required,allFacetsAt5:required.length?required.every((g:string[])=>g.some(c=>after.slice(0,5).includes(c))):null,lostLead,lostAt5,added,abstentionFailure,critical:Boolean(f.critical&&(lostLead||lostAt5||added||abstentionFailure&&!before.length))});
+}
+await encoder.dispose();
+for(const [p,h]of Object.entries(freeze.files))assert.equal(hash(p),h,'Candidate changed during evaluation');
+const specific=rows.filter(r=>r.kind==='specific'),multi=rows.filter(r=>r.requiredFacets.length),vague=rows.filter(r=>r.kind==='vague');
+const summary={specificLead:specific.filter(r=>r.leadCorrect).length,specificAt5:specific.filter(r=>r.acceptableAt5).length,specificTotal:specific.length,multiAt5:multi.filter(r=>r.allFacetsAt5).length,multiTotal:multi.length,vagueAbstained:vague.filter(r=>!r.after.length).length,vagueTotal:vague.length,lostLeads:rows.filter(r=>r.lostLead).map(r=>r.id),lostAt5:rows.filter(r=>r.lostAt5).map(r=>r.id),added:rows.filter(r=>r.added).map(r=>r.id),critical:rows.filter(r=>r.critical).map(r=>r.id)};
+const report={date:new Date().toISOString(),classification:'Actual MPNet application evaluation on 48 EXPOSED synthetic cases; not independent validation.',releaseStatus:'NOT APPROVED: mixed-role coverage remains limited; fresh48 unavailable and unverified.',runtime:process.version,backend:'Node CPU, one thread; browser evidence recorded separately',config,freeze,summary,rows};
+writeFileSync(destination,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(summary));

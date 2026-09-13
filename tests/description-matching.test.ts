@@ -24,10 +24,11 @@ function verifySources(out:SearchOutcome){
  }
 }
 
-test('development replay is bound to approved cases and pinned source/index metadata',()=>{
+// Recorded scores below are historical MiniLM replay evidence, not MPNet inference.
+test('historical MiniLM development replay is bound to approved cases and pinned source/index metadata',()=>{
  const hash=(path:string)=>createHash('sha256').update(readFileSync(path)).digest('hex');
  assert.equal(hash('data/evaluation/matching-v2-development.json'),recorded.fixtureSha256);
- assert.equal(hash('public/semantic/metadata.json'),recorded.metadataSha256);
+ assert.equal(hash('data/evaluation/minilm-metadata.json'),recorded.metadataSha256);
  assert.deepEqual(recorded.rows.map(r=>[r.id,r.input]),fixtures.map(f=>[f.id,f.input]));
 });
 function verifyExpected(fixture:Fixture,evidence:SemanticEvidence[]){
@@ -49,7 +50,7 @@ test('F-M1-SR01: exposed first-evaluation regressions preserve strong semantic s
  const fixtures:Fixture[]=read('data/evaluation/matching-v2-reserved.json').cases;
  const hash=(path:string)=>createHash('sha256').update(readFileSync(path)).digest('hex');
  assert.equal(hash('data/evaluation/matching-v2-reserved.json'),exposed.fixtureSha256);
- assert.equal(hash('public/semantic/metadata.json'),exposed.metadataSha256);
+ assert.equal(hash('data/evaluation/minilm-metadata.json'),exposed.metadataSha256);
  assert.deepEqual(exposed.rows.map(r=>[r.id,r.input]),fixtures.map(f=>[f.id,f.input]));
  for(const fixture of fixtures){
   const row=exposed.rows.find(r=>r.id===fixture.id)!;
@@ -85,7 +86,7 @@ test('M2: broad audit preserves every previously correct lead and does not inven
  const fixtures:Fixture[]=read('data/evaluation/matching-v2-occupational-audit.json').cases;
  const hash=(path:string)=>createHash('sha256').update(readFileSync(path)).digest('hex');
  assert.equal(hash('data/evaluation/matching-v2-occupational-audit.json'),audit.fixtureSha256);
- assert.equal(hash('public/semantic/metadata.json'),audit.metadataSha256);
+ assert.equal(hash('data/evaluation/minilm-metadata.json'),audit.metadataSha256);
  assert.deepEqual(audit.rows.map(r=>[r.id,r.input]),fixtures.map(f=>[f.id,f.input]));
  let preserved=0;
  for(const fixture of fixtures){
@@ -127,7 +128,7 @@ test('M2r3: exposed mixed-role fallback recovers a corroborated lexical primary 
  const fixtures:Fixture[]=read('data/evaluation/matching-v2-replacement-check.json').cases;
  const hash=(path:string)=>createHash('sha256').update(readFileSync(path)).digest('hex');
  assert.equal(hash('data/evaluation/matching-v2-replacement-check.json'),exposed.fixtureSha256);
- assert.equal(hash('public/semantic/metadata.json'),exposed.metadataSha256);
+ assert.equal(hash('data/evaluation/minilm-metadata.json'),exposed.metadataSha256);
  assert.deepEqual(exposed.rows.map(r=>[r.id,r.input]),fixtures.map(f=>[f.id,f.input]));
  for(const fixture of fixtures){
   const row=exposed.rows.find(r=>r.id===fixture.id)!;

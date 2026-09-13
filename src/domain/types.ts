@@ -6,6 +6,6 @@ export interface Release { id: string; bls: string; onet: string; retrieved: str
 export interface Snapshot { release: Release; occupations: Occupation[] }
 export interface Alias { title: string; code: string; onetCode: string | null }
 export interface Lexicon { release: string; aliases: Alias[] }
-export interface Candidate { code: string; roleCode?: string; excerpt?: string; excerptKind?: 'description' | 'task'; taskId?: string; source?: string; reason?: string }
+export interface Candidate { code: string; roleCode?: string; excerpt?: string; excerptKind?: 'description' | 'task'; taskId?: string; source?: string; reason?: string; editorial?: boolean }
 export interface SearchOutcome { state: 'candidates' | 'clarify' | 'none'; candidates: Candidate[]; message: string; exact: boolean }
 export interface SemanticEvidence { code: string; score: number; excerpt?: string; source?: string }

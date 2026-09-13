@@ -1,0 +1,13 @@
+{
+  "author": "/root/design_acceptance",
+  "classification": "Independent pre-score attestation of original exposed labels; not new reserved data",
+  "required": {
+    "BA-D13": [["27-1024"], ["27-3041"]],
+    "BA-D14": [["15-1252"], ["15-1253"]],
+    "BA-D15": [["43-4051"], ["43-5032"]],
+    "BA-D16": [["39-2021"], ["39-2011"]],
+    "BA-R14": [["13-2011"], ["43-3031"]],
+    "BA-R15": [["51-4041"], ["51-4121"]]
+  },
+  "ambiguousAlternatives": ["BA-R13", "BA-R16"]
+}

@@ -15,11 +15,11 @@ const report={base,date:new Date().toISOString(),status:'FAIL',checks:[],errors:
 page.on('pageerror',error=>report.errors.push(String(error)));
 try{
  await page.goto(base);
- await page.getByRole('button',{name:/describe your work/i}).click();
+ await page.getByRole('button',{name:'Find by work description',exact:true}).click();
  for(const id of ['U01','V02','H-M2-01','V06']){
   const fixture=fixtures.cases.find(f=>f.id===id);
   await page.getByRole('textbox',{name:'A few specific responsibilities, in English'}).fill(fixture.input);
-  await page.getByRole('button',{name:'Search by meaning',exact:true}).click();
+  await page.getByRole('button',{name:'Find matches',exact:true}).click();
   await page.locator('.refine [role="status"]').filter({hasText:'Enhanced matching finished'}).waitFor({timeout:120000});
   assert.equal(await page.getByRole('alert').count(),0);
   const cards=page.locator('.candidate');

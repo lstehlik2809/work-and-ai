@@ -14,7 +14,7 @@ page.on('request',request=>requests.push(request.url()));
 const check=name=>{checks.push(name);console.log(name);};
 const title=page.getByRole('searchbox',{name:'Job title'});
 const status=page.locator('.search-section [role="status"]').first();
-const describe=()=>page.getByRole('button',{name:/describe your work/i});
+const describe=()=>page.getByRole('button',{name:'Find by work description',exact:true});
 const close=()=>page.getByRole('button',{name:/close/i});
 const responsibilities=()=>page.getByRole('textbox',{name:'A few specific responsibilities, in English'});
 let releaseImport;
@@ -70,7 +70,7 @@ try{
  await page.route(/\/(?:assets\/client-[^/]+\.js|src\/semantic\/client\.ts)(?:\?|$)/,async route=>{
   importSeen();await release;await route.continue();
  });
- await page.getByRole('button',{name:'Search by meaning',exact:true}).click();
+ await page.getByRole('button',{name:'Find matches',exact:true}).click();
  await Promise.race([seen,new Promise((_,reject)=>setTimeout(()=>reject(Error('Dynamic import was not intercepted')),10000))]);
  await close().click();
  releaseImport();
@@ -96,7 +96,7 @@ try{
  await page.getByRole('button',{name:'Add to comparison',exact:true}).click();
  await describe().click();
  await responsibilities().fill('I maintain databases and manage database backups.');
- await page.getByRole('button',{name:'Search by meaning',exact:true}).click();
+ await page.getByRole('button',{name:'Find matches',exact:true}).click();
  await page.getByRole('button',{name:'Matching…',exact:true}).waitFor();
  await close().click();
  await title.fill('database');
@@ -109,7 +109,7 @@ try{
  assert.match(await page.locator('#occupation-heading').innerText(),/Registered nurses/i);
  await describe().click();
  assert.equal(await responsibilities().inputValue(),'I maintain databases and manage database backups.');
- assert.equal(await page.locator('.refine [role="status"]').innerText(),'');
+ assert.equal(await page.locator('.refine > [role="status"]').innerText(),'');
  check('Close cancels a running worker without late errors or changes to confirmed selection/comparison');
  assert.deepEqual(errors,[]);
 }finally{
