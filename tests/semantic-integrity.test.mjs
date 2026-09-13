@@ -1,3 +1,7 @@
+import {mkdtemp,readFile,writeFile,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {installAsset} from '../scripts/semantic/assets.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -35,3 +39,13 @@ test('asset manifest rejects unpinned source, changed config, duplicate inventor
  for(const mutation of [m=>{m.files[0].source=m.files[0].source.replace(config.revision,'main');},m=>{m.config.dtype='fp32';},m=>{m.files[1]=m.files[0];},m=>{m.files[0].path='../outside';},m=>{m.files.pop();},m=>{m.files[0].sha256='missing';}]){const m=json('public/semantic/assets.json');mutation(m);assert.throws(()=>validateAssetManifest(m,config));}
 });
 test('asset byte length and content hash are both checked',()=>{const f=json('public/semantic/assets.json').files[0],b=readFileSync('public/'+f.path);assert.equal(validateAssetBytes(f,b),true);assert.throws(()=>validateAssetBytes(f,b.subarray(1)),/byte length/);const corrupt=Buffer.from(b);corrupt[0]^=1;assert.throws(()=>validateAssetBytes(f,corrupt),/checksum/);});
+
+test('asset installation rejects incomplete/corrupt bytes without replacing good assets, then retry restores',async()=>{
+ const folder=await mkdtemp(join(tmpdir(),'work-ai-asset-')),target=join(folder,'model.onnx'),good=Buffer.from('pinned model bytes');
+ const entry={path:'model.onnx',bytes:good.length,sha256:hash(good)};
+ try{
+  await installAsset(target,entry,good);
+  for(const bad of [good.subarray(1),Buffer.alloc(good.length)]){await assert.rejects(()=>installAsset(target,entry,bad));assert.deepEqual(await readFile(target),good);}
+  await writeFile(target,'interrupted download');await installAsset(target,entry,good);assert.deepEqual(await readFile(target),good);
+ }finally{await rm(folder,{recursive:true,force:true});}
+});

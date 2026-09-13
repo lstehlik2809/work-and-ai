@@ -1,6 +1,6 @@
-# Current development candidate — 13 September 2026
+# Scoped improvements release — 13 September 2026
 
-MPNet integration and the accumulated improvements are documented in [MPNet implementation verification](verification/mpnet-implementation.md). Release is not approved: mixed-role limitations remain and fresh validation is unavailable. The measurements below are historical and must not be interpreted as MPNet browser results.
+This release preserves the prior live MiniLM search and publishes the verified statistics, comparison, export and usability improvements. See [release verification](verification/live-improvements.md). The [MPNet candidate](verification/mpnet-implementation.md) remains an unpublished experiment; its matching failures and incomplete fresh validation are preserved. The dated records below are historical.
 
 # Verification record
 

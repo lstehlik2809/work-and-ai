@@ -1,0 +1,2685 @@
+{
+  "baseline": "0b165d93b8bf8626b8b0935b4018d5e7d0258f58",
+  "files": {
+    "src/search/engine.ts": {
+      "bytes": 14514,
+      "sha256": "c3372c1c2426b8cdfc4692284ea897d23f27f13e2a4209a7a4a4c2a4ac0e1f95"
+    },
+    "src/semantic/config.json": {
+      "bytes": 400,
+      "sha256": "ea7276ef099fca5b78817447f4be0cf5b2c6897026f28d5e8eb42441d81f0c2b"
+    },
+    "public/semantic/metadata.json": {
+      "bytes": 767056,
+      "sha256": "e9b3615cbc627beae67a7a51088c0603322d970a806236c94a08976eeceb9e55"
+    },
+    "public/semantic/vectors.bin": {
+      "bytes": 1276416,
+      "sha256": "2b20c21dc0badd7a4c9cf7807748ee7cee1d2d0bcb669192e76f72df7298d516"
+    },
+    "public/semantic/assets.json": {
+      "bytes": 2735,
+      "sha256": "adb96b1b2098c7e4734090cbe4d625b24b8935de0fbec529ed21efadfe024e32"
+    },
+    "scripts/semantic/build.mjs": {
+      "bytes": 5752,
+      "sha256": "508318a063e3ef4100e2c1df1ae14555cef4aa1ca37f89f58720a3801a941ab3"
+    },
+    "scripts/semantic/validate.mjs": {
+      "bytes": 2043,
+      "sha256": "5e8a0c91f751238443b47d44695f81ba7dedbc2f92e681b2df3bc037ca9704dc"
+    },
+    "data/evaluation/primary-vectors.bin": {
+      "bytes": 1276416,
+      "sha256": "d4e4aa4309de9241cbcd6d1fcace92c9fd365b8f5517c8670542a2d91e992ff2"
+    },
+    "data/semantic-reproduction.json": {
+      "bytes": 2120,
+      "sha256": "c2f86850ea587efc869ff9b41c08fb9cf75b1ceb5d4ee6969c1aaeb9bed407bd"
+    },
+    "MODEL_NOTICES.md": {
+      "bytes": 1429,
+      "sha256": "539853e20929d02bab5946b686eff88126469ab2627010a22ca5645eaafd0aef"
+    },
+    "public/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/config.json": {
+      "bytes": 650,
+      "sha256": "7135149f7cffa1a573466c6e4d8423ed73b62fd2332c575bf738a0d033f70df7"
+    },
+    "public/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/onnx/model_quantized.onnx": {
+      "bytes": 22972370,
+      "sha256": "afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1"
+    },
+    "public/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/special_tokens_map.json": {
+      "bytes": 125,
+      "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3"
+    },
+    "public/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer.json": {
+      "bytes": 711661,
+      "sha256": "da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0"
+    },
+    "public/models/751bff37182d3f1213fa05d7196b954e230abad9/minilm/tokenizer_config.json": {
+      "bytes": 366,
+      "sha256": "9261e7d79b44c8195c1cada2b453e55b00aeb81e907a6664974b4d7776172ab3"
+    },
+    "public/data/occupations.json": {
+      "bytes": 1338849,
+      "sha256": "e30f18b0b1c48a26f983daf39d48752e0df8ad738bdb120962c67176532ded94"
+    },
+    "public/data/lexicon.json": {
+      "bytes": 4492943,
+      "sha256": "6955b5480713fb8648d567330f45095a8b218d299b4bec373dc09c04f44c5e6e"
+    },
+    "src/search/skills.ts": {
+      "bytes": 3848,
+      "sha256": "1b4ea333a63fda1fa6eba3504b4c80da01d4a55179e00e1eff3f397b75acdd0c"
+    },
+    "src/semantic/client.ts": {
+      "bytes": 2131,
+      "sha256": "48cf56d3e9c92d1d2287775936ee8c690a8a1e63c59fba7154dbb306c61d4d30"
+    },
+    "scripts/semantic/aggregation.mjs": {
+      "bytes": 798,
+      "sha256": "b407172adc99e6cfbb6e91db9b85b90cbd5989efbb235f5e18037eb295a33b49"
+    },
+    "package-lock.json": {
+      "bytes": 80652,
+      "sha256": "db17dbfa1f72a6abc00946bc0a37003360806bc74bbc63afc921dd62aa0be327"
+    }
+  },
+  "outcomes": {
+    "baseline": "0b165d93b8bf8626b8b0935b4018d5e7d0258f58",
+    "classification": "Preservation oracle from pinned live engine and recorded MiniLM scores; not new inference or accuracy validation.",
+    "rows": [
+      {
+        "fixture": "tests/fixtures/description-audit-regression-evidence.json",
+        "id": "AUD-01",
+        "input": "I assess patients' health needs and plan their bedside care. I monitor vital signs and changes in symptoms, maintain medical records, and explain recovery and disease prevention to patients.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "88d559860b9e12c4b34d491f03c3445cd2fbe6c55f6bed3f468f90a25441f061",
+            "lexical": "86aee60ddb5763d50af6d8cce5e0fc16b6f8a70bb306441e016fd2aee887af2b",
+            "title": "86aee60ddb5763d50af6d8cce5e0fc16b6f8a70bb306441e016fd2aee887af2b"
+          },
+          {
+            "limit": 2,
+            "hybrid": "88d559860b9e12c4b34d491f03c3445cd2fbe6c55f6bed3f468f90a25441f061",
+            "lexical": "89d5ded3c11aae28359b949cac645c5949f4f32a5a4bce871c3422acf823b22d",
+            "title": "89d5ded3c11aae28359b949cac645c5949f4f32a5a4bce871c3422acf823b22d"
+          },
+          {
+            "limit": 3,
+            "hybrid": "88d559860b9e12c4b34d491f03c3445cd2fbe6c55f6bed3f468f90a25441f061",
+            "lexical": "89d5ded3c11aae28359b949cac645c5949f4f32a5a4bce871c3422acf823b22d",
+            "title": "89d5ded3c11aae28359b949cac645c5949f4f32a5a4bce871c3422acf823b22d"
+          },
+          {
+            "limit": 4,
+            "hybrid": "88d559860b9e12c4b34d491f03c3445cd2fbe6c55f6bed3f468f90a25441f061",
+            "lexical": "89d5ded3c11aae28359b949cac645c5949f4f32a5a4bce871c3422acf823b22d",
+            "title": "89d5ded3c11aae28359b949cac645c5949f4f32a5a4bce871c3422acf823b22d"
+          },
+          {
+            "limit": 5,
+            "hybrid": "88d559860b9e12c4b34d491f03c3445cd2fbe6c55f6bed3f468f90a25441f061",
+            "lexical": "89d5ded3c11aae28359b949cac645c5949f4f32a5a4bce871c3422acf823b22d",
+            "title": "89d5ded3c11aae28359b949cac645c5949f4f32a5a4bce871c3422acf823b22d"
+          },
+          {
+            "limit": 6,
+            "hybrid": "88d559860b9e12c4b34d491f03c3445cd2fbe6c55f6bed3f468f90a25441f061",
+            "lexical": "89d5ded3c11aae28359b949cac645c5949f4f32a5a4bce871c3422acf823b22d",
+            "title": "89d5ded3c11aae28359b949cac645c5949f4f32a5a4bce871c3422acf823b22d"
+          },
+          {
+            "limit": 7,
+            "hybrid": "88d559860b9e12c4b34d491f03c3445cd2fbe6c55f6bed3f468f90a25441f061",
+            "lexical": "89d5ded3c11aae28359b949cac645c5949f4f32a5a4bce871c3422acf823b22d",
+            "title": "89d5ded3c11aae28359b949cac645c5949f4f32a5a4bce871c3422acf823b22d"
+          },
+          {
+            "limit": 8,
+            "hybrid": "88d559860b9e12c4b34d491f03c3445cd2fbe6c55f6bed3f468f90a25441f061",
+            "lexical": "89d5ded3c11aae28359b949cac645c5949f4f32a5a4bce871c3422acf823b22d",
+            "title": "89d5ded3c11aae28359b949cac645c5949f4f32a5a4bce871c3422acf823b22d"
+          },
+          {
+            "limit": 9,
+            "hybrid": "88d559860b9e12c4b34d491f03c3445cd2fbe6c55f6bed3f468f90a25441f061",
+            "lexical": "89d5ded3c11aae28359b949cac645c5949f4f32a5a4bce871c3422acf823b22d",
+            "title": "89d5ded3c11aae28359b949cac645c5949f4f32a5a4bce871c3422acf823b22d"
+          },
+          {
+            "limit": 10,
+            "hybrid": "88d559860b9e12c4b34d491f03c3445cd2fbe6c55f6bed3f468f90a25441f061",
+            "lexical": "89d5ded3c11aae28359b949cac645c5949f4f32a5a4bce871c3422acf823b22d",
+            "title": "89d5ded3c11aae28359b949cac645c5949f4f32a5a4bce871c3422acf823b22d"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-audit-regression-evidence.json",
+        "id": "AUD-02",
+        "input": "I remove deposits and stains from patients' teeth and examine their gums for signs of disease. I record oral health findings and teach patients how to improve brushing and prevent dental problems.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "313e5c01fc4d474bb1f13bf5e871a13d7be90607f69e9b7b848025be5f560342",
+            "lexical": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5",
+            "title": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5"
+          },
+          {
+            "limit": 2,
+            "hybrid": "2b35edb5daef59ebb8dd00b94bfa3d593b5a954ff8a030c1e15ee3d1c4954c1b",
+            "lexical": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5",
+            "title": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5"
+          },
+          {
+            "limit": 3,
+            "hybrid": "2b35edb5daef59ebb8dd00b94bfa3d593b5a954ff8a030c1e15ee3d1c4954c1b",
+            "lexical": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5",
+            "title": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5"
+          },
+          {
+            "limit": 4,
+            "hybrid": "2b35edb5daef59ebb8dd00b94bfa3d593b5a954ff8a030c1e15ee3d1c4954c1b",
+            "lexical": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5",
+            "title": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5"
+          },
+          {
+            "limit": 5,
+            "hybrid": "2b35edb5daef59ebb8dd00b94bfa3d593b5a954ff8a030c1e15ee3d1c4954c1b",
+            "lexical": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5",
+            "title": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5"
+          },
+          {
+            "limit": 6,
+            "hybrid": "2b35edb5daef59ebb8dd00b94bfa3d593b5a954ff8a030c1e15ee3d1c4954c1b",
+            "lexical": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5",
+            "title": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5"
+          },
+          {
+            "limit": 7,
+            "hybrid": "2b35edb5daef59ebb8dd00b94bfa3d593b5a954ff8a030c1e15ee3d1c4954c1b",
+            "lexical": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5",
+            "title": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5"
+          },
+          {
+            "limit": 8,
+            "hybrid": "2b35edb5daef59ebb8dd00b94bfa3d593b5a954ff8a030c1e15ee3d1c4954c1b",
+            "lexical": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5",
+            "title": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5"
+          },
+          {
+            "limit": 9,
+            "hybrid": "2b35edb5daef59ebb8dd00b94bfa3d593b5a954ff8a030c1e15ee3d1c4954c1b",
+            "lexical": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5",
+            "title": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5"
+          },
+          {
+            "limit": 10,
+            "hybrid": "2b35edb5daef59ebb8dd00b94bfa3d593b5a954ff8a030c1e15ee3d1c4954c1b",
+            "lexical": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5",
+            "title": "ae59ddfc62f45f52dc398bcf3831fda51b5782373f3534a0b24f5c57709020e5"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-audit-regression-evidence.json",
+        "id": "AUD-03",
+        "input": "I teach reading, arithmetic, and social skills to a fourth-grade class. I prepare classroom activities, assess each child's progress, and establish routines that help students learn and behave cooperatively.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "27cb585bb48b5d64ee6f19c8af4aab7c30daf190b784a987f2875c8fc40655ef",
+            "lexical": "27cb585bb48b5d64ee6f19c8af4aab7c30daf190b784a987f2875c8fc40655ef",
+            "title": "27cb585bb48b5d64ee6f19c8af4aab7c30daf190b784a987f2875c8fc40655ef"
+          },
+          {
+            "limit": 2,
+            "hybrid": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d",
+            "lexical": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d",
+            "title": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d"
+          },
+          {
+            "limit": 3,
+            "hybrid": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d",
+            "lexical": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d",
+            "title": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d"
+          },
+          {
+            "limit": 4,
+            "hybrid": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d",
+            "lexical": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d",
+            "title": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d"
+          },
+          {
+            "limit": 5,
+            "hybrid": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d",
+            "lexical": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d",
+            "title": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d"
+          },
+          {
+            "limit": 6,
+            "hybrid": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d",
+            "lexical": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d",
+            "title": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d"
+          },
+          {
+            "limit": 7,
+            "hybrid": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d",
+            "lexical": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d",
+            "title": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d"
+          },
+          {
+            "limit": 8,
+            "hybrid": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d",
+            "lexical": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d",
+            "title": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d"
+          },
+          {
+            "limit": 9,
+            "hybrid": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d",
+            "lexical": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d",
+            "title": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d"
+          },
+          {
+            "limit": 10,
+            "hybrid": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d",
+            "lexical": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d",
+            "title": "2aebfb5a9ac8af72427ec4a83e32c21433b4c93ec388de88263a51c522732b6d"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-audit-regression-evidence.json",
+        "id": "AUD-04",
+        "input": "I teach algebra and geometry to high school students through lessons, discussions, and demonstrations. I set learning objectives, prepare subject assignments, assess students' understanding, and manage classroom behavior.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "814f5939a6c31a6e4198d759b6c50acc7723cf4fc470ca384b808356e313d4c0",
+            "lexical": "8535078e817c4566df76e126577c44d7897f6b33672e1bc43b825bc734c99d57",
+            "title": "8535078e817c4566df76e126577c44d7897f6b33672e1bc43b825bc734c99d57"
+          },
+          {
+            "limit": 2,
+            "hybrid": "b171d3d5db32bf5d77abc20cedf0e7fa483cf3043d4d26c931492b85d43349e5",
+            "lexical": "1412591d78b445dfd797d41829791d99da1b1539dc82e16f2601fba9a66e3c0f",
+            "title": "1412591d78b445dfd797d41829791d99da1b1539dc82e16f2601fba9a66e3c0f"
+          },
+          {
+            "limit": 3,
+            "hybrid": "b171d3d5db32bf5d77abc20cedf0e7fa483cf3043d4d26c931492b85d43349e5",
+            "lexical": "1412591d78b445dfd797d41829791d99da1b1539dc82e16f2601fba9a66e3c0f",
+            "title": "1412591d78b445dfd797d41829791d99da1b1539dc82e16f2601fba9a66e3c0f"
+          },
+          {
+            "limit": 4,
+            "hybrid": "b171d3d5db32bf5d77abc20cedf0e7fa483cf3043d4d26c931492b85d43349e5",
+            "lexical": "1412591d78b445dfd797d41829791d99da1b1539dc82e16f2601fba9a66e3c0f",
+            "title": "1412591d78b445dfd797d41829791d99da1b1539dc82e16f2601fba9a66e3c0f"
+          },
+          {
+            "limit": 5,
+            "hybrid": "b171d3d5db32bf5d77abc20cedf0e7fa483cf3043d4d26c931492b85d43349e5",
+            "lexical": "1412591d78b445dfd797d41829791d99da1b1539dc82e16f2601fba9a66e3c0f",
+            "title": "1412591d78b445dfd797d41829791d99da1b1539dc82e16f2601fba9a66e3c0f"
+          },
+          {
+            "limit": 6,
+            "hybrid": "b171d3d5db32bf5d77abc20cedf0e7fa483cf3043d4d26c931492b85d43349e5",
+            "lexical": "1412591d78b445dfd797d41829791d99da1b1539dc82e16f2601fba9a66e3c0f",
+            "title": "1412591d78b445dfd797d41829791d99da1b1539dc82e16f2601fba9a66e3c0f"
+          },
+          {
+            "limit": 7,
+            "hybrid": "b171d3d5db32bf5d77abc20cedf0e7fa483cf3043d4d26c931492b85d43349e5",
+            "lexical": "1412591d78b445dfd797d41829791d99da1b1539dc82e16f2601fba9a66e3c0f",
+            "title": "1412591d78b445dfd797d41829791d99da1b1539dc82e16f2601fba9a66e3c0f"
+          },
+          {
+            "limit": 8,
+            "hybrid": "b171d3d5db32bf5d77abc20cedf0e7fa483cf3043d4d26c931492b85d43349e5",
+            "lexical": "1412591d78b445dfd797d41829791d99da1b1539dc82e16f2601fba9a66e3c0f",
+            "title": "1412591d78b445dfd797d41829791d99da1b1539dc82e16f2601fba9a66e3c0f"
+          },
+          {
+            "limit": 9,
+            "hybrid": "b171d3d5db32bf5d77abc20cedf0e7fa483cf3043d4d26c931492b85d43349e5",
+            "lexical": "1412591d78b445dfd797d41829791d99da1b1539dc82e16f2601fba9a66e3c0f",
+            "title": "1412591d78b445dfd797d41829791d99da1b1539dc82e16f2601fba9a66e3c0f"
+          },
+          {
+            "limit": 10,
+            "hybrid": "b171d3d5db32bf5d77abc20cedf0e7fa483cf3043d4d26c931492b85d43349e5",
+            "lexical": "1412591d78b445dfd797d41829791d99da1b1539dc82e16f2601fba9a66e3c0f",
+            "title": "1412591d78b445dfd797d41829791d99da1b1539dc82e16f2601fba9a66e3c0f"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-audit-regression-evidence.json",
+        "id": "AUD-05",
+        "input": "I fit and repair water pipes in buildings, cutting and threading sections to match the drawings. I assemble connections and pressure-test the installed pipework to locate leaks before it is used.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "dbd0f3f9fe6882e0afc25e7348a5108a29dcfdb9412552b4f5a1e0e6dd85e028",
+            "lexical": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c",
+            "title": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c"
+          },
+          {
+            "limit": 2,
+            "hybrid": "0e75c04a2383be0a472c35b534b6e52359f40971506a628e00b5ffcd59942fd7",
+            "lexical": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c",
+            "title": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c"
+          },
+          {
+            "limit": 3,
+            "hybrid": "7e96b045a1c5327c1c2780726a939b23f95f94e223f4346cefdbcceb157f6649",
+            "lexical": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c",
+            "title": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c"
+          },
+          {
+            "limit": 4,
+            "hybrid": "7e96b045a1c5327c1c2780726a939b23f95f94e223f4346cefdbcceb157f6649",
+            "lexical": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c",
+            "title": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c"
+          },
+          {
+            "limit": 5,
+            "hybrid": "7e96b045a1c5327c1c2780726a939b23f95f94e223f4346cefdbcceb157f6649",
+            "lexical": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c",
+            "title": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c"
+          },
+          {
+            "limit": 6,
+            "hybrid": "7e96b045a1c5327c1c2780726a939b23f95f94e223f4346cefdbcceb157f6649",
+            "lexical": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c",
+            "title": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c"
+          },
+          {
+            "limit": 7,
+            "hybrid": "7e96b045a1c5327c1c2780726a939b23f95f94e223f4346cefdbcceb157f6649",
+            "lexical": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c",
+            "title": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c"
+          },
+          {
+            "limit": 8,
+            "hybrid": "7e96b045a1c5327c1c2780726a939b23f95f94e223f4346cefdbcceb157f6649",
+            "lexical": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c",
+            "title": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c"
+          },
+          {
+            "limit": 9,
+            "hybrid": "7e96b045a1c5327c1c2780726a939b23f95f94e223f4346cefdbcceb157f6649",
+            "lexical": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c",
+            "title": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c"
+          },
+          {
+            "limit": 10,
+            "hybrid": "7e96b045a1c5327c1c2780726a939b23f95f94e223f4346cefdbcceb157f6649",
+            "lexical": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c",
+            "title": "a6ec2e492bbb77742bef6b211bac627c150d77afdaf2a1780e8291bfe1a5235c"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-audit-regression-evidence.json",
+        "id": "AUD-06",
+        "input": "I install central air conditioning and repair heating and refrigeration equipment. I ask customers about malfunctions, test electrical components, replace defective parts, and check that the system cools or heats correctly.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "lexical": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "title": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae"
+          },
+          {
+            "limit": 2,
+            "hybrid": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "lexical": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "title": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae"
+          },
+          {
+            "limit": 3,
+            "hybrid": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "lexical": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "title": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae"
+          },
+          {
+            "limit": 4,
+            "hybrid": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "lexical": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "title": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae"
+          },
+          {
+            "limit": 5,
+            "hybrid": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "lexical": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "title": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae"
+          },
+          {
+            "limit": 6,
+            "hybrid": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "lexical": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "title": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae"
+          },
+          {
+            "limit": 7,
+            "hybrid": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "lexical": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "title": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae"
+          },
+          {
+            "limit": 8,
+            "hybrid": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "lexical": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "title": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae"
+          },
+          {
+            "limit": 9,
+            "hybrid": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "lexical": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "title": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae"
+          },
+          {
+            "limit": 10,
+            "hybrid": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "lexical": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae",
+            "title": "32c79e39296f3f4f96fcfa83bf6ba1ef4e0f9ee1dd84b517bce120631a0ec1ae"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-audit-regression-evidence.json",
+        "id": "AUD-07",
+        "input": "I design bridges and building structures, calculate load requirements and material stresses, and prepare construction specifications. I inspect project sites to check that the work follows the approved design.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "bedd8e99d4d87a17f23c13108bf67de453533d044e8ca64232076588457655a3",
+            "lexical": "bedd8e99d4d87a17f23c13108bf67de453533d044e8ca64232076588457655a3",
+            "title": "bedd8e99d4d87a17f23c13108bf67de453533d044e8ca64232076588457655a3"
+          },
+          {
+            "limit": 2,
+            "hybrid": "67a5d6729ec73ccc19f1df8c91534d9556d037922e0f249e3a92091bafbc18da",
+            "lexical": "3c0ea8dffde7ac3e8bc071e7c871610c03c4f9b110518dacbefe829facefcbe0",
+            "title": "3c0ea8dffde7ac3e8bc071e7c871610c03c4f9b110518dacbefe829facefcbe0"
+          },
+          {
+            "limit": 3,
+            "hybrid": "0f97d2576d38fc506db4d49ab152815729bfaa3516d4598c681ad34ae3783296",
+            "lexical": "8b4353acf4fc41295b91955d3286c382fea00d5669fd79567e38a416171627d2",
+            "title": "8b4353acf4fc41295b91955d3286c382fea00d5669fd79567e38a416171627d2"
+          },
+          {
+            "limit": 4,
+            "hybrid": "a76d84f138a6d5d10487b96505121e1916304f57c0fca407ab7954e427e81ac3",
+            "lexical": "8b4353acf4fc41295b91955d3286c382fea00d5669fd79567e38a416171627d2",
+            "title": "8b4353acf4fc41295b91955d3286c382fea00d5669fd79567e38a416171627d2"
+          },
+          {
+            "limit": 5,
+            "hybrid": "a76d84f138a6d5d10487b96505121e1916304f57c0fca407ab7954e427e81ac3",
+            "lexical": "8b4353acf4fc41295b91955d3286c382fea00d5669fd79567e38a416171627d2",
+            "title": "8b4353acf4fc41295b91955d3286c382fea00d5669fd79567e38a416171627d2"
+          },
+          {
+            "limit": 6,
+            "hybrid": "a76d84f138a6d5d10487b96505121e1916304f57c0fca407ab7954e427e81ac3",
+            "lexical": "8b4353acf4fc41295b91955d3286c382fea00d5669fd79567e38a416171627d2",
+            "title": "8b4353acf4fc41295b91955d3286c382fea00d5669fd79567e38a416171627d2"
+          },
+          {
+            "limit": 7,
+            "hybrid": "a76d84f138a6d5d10487b96505121e1916304f57c0fca407ab7954e427e81ac3",
+            "lexical": "8b4353acf4fc41295b91955d3286c382fea00d5669fd79567e38a416171627d2",
+            "title": "8b4353acf4fc41295b91955d3286c382fea00d5669fd79567e38a416171627d2"
+          },
+          {
+            "limit": 8,
+            "hybrid": "a76d84f138a6d5d10487b96505121e1916304f57c0fca407ab7954e427e81ac3",
+            "lexical": "8b4353acf4fc41295b91955d3286c382fea00d5669fd79567e38a416171627d2",
+            "title": "8b4353acf4fc41295b91955d3286c382fea00d5669fd79567e38a416171627d2"
+          },
+          {
+            "limit": 9,
+            "hybrid": "a76d84f138a6d5d10487b96505121e1916304f57c0fca407ab7954e427e81ac3",
+            "lexical": "8b4353acf4fc41295b91955d3286c382fea00d5669fd79567e38a416171627d2",
+            "title": "8b4353acf4fc41295b91955d3286c382fea00d5669fd79567e38a416171627d2"
+          },
+          {
+            "limit": 10,
+            "hybrid": "a76d84f138a6d5d10487b96505121e1916304f57c0fca407ab7954e427e81ac3",
+            "lexical": "8b4353acf4fc41295b91955d3286c382fea00d5669fd79567e38a416171627d2",
+            "title": "8b4353acf4fc41295b91955d3286c382fea00d5669fd79567e38a416171627d2"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-audit-regression-evidence.json",
+        "id": "AUD-08",
+        "input": "I design industrial machines and tools from customer specifications. I interpret technical drawings, compare design feasibility and maintenance costs, and work with colleagues to resolve equipment malfunctions and operating problems.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "lexical": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "title": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288"
+          },
+          {
+            "limit": 2,
+            "hybrid": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "lexical": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "title": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288"
+          },
+          {
+            "limit": 3,
+            "hybrid": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "lexical": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "title": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288"
+          },
+          {
+            "limit": 4,
+            "hybrid": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "lexical": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "title": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288"
+          },
+          {
+            "limit": 5,
+            "hybrid": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "lexical": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "title": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288"
+          },
+          {
+            "limit": 6,
+            "hybrid": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "lexical": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "title": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288"
+          },
+          {
+            "limit": 7,
+            "hybrid": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "lexical": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "title": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288"
+          },
+          {
+            "limit": 8,
+            "hybrid": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "lexical": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "title": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288"
+          },
+          {
+            "limit": 9,
+            "hybrid": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "lexical": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "title": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288"
+          },
+          {
+            "limit": 10,
+            "hybrid": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "lexical": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288",
+            "title": "e8d3673f00381c6de7258fb91d14da9f9bffe802fccd4522fb82a0d583404288"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-audit-regression-evidence.json",
+        "id": "AUD-09",
+        "input": "I examine accounting records, prepare financial statements, and audit statements produced by other teams. I investigate weaknesses in financial controls and write reports explaining the findings and recommended changes to management.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "lexical": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "title": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82"
+          },
+          {
+            "limit": 2,
+            "hybrid": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "lexical": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "title": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82"
+          },
+          {
+            "limit": 3,
+            "hybrid": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "lexical": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "title": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82"
+          },
+          {
+            "limit": 4,
+            "hybrid": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "lexical": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "title": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82"
+          },
+          {
+            "limit": 5,
+            "hybrid": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "lexical": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "title": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82"
+          },
+          {
+            "limit": 6,
+            "hybrid": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "lexical": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "title": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82"
+          },
+          {
+            "limit": 7,
+            "hybrid": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "lexical": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "title": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82"
+          },
+          {
+            "limit": 8,
+            "hybrid": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "lexical": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "title": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82"
+          },
+          {
+            "limit": 9,
+            "hybrid": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "lexical": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "title": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82"
+          },
+          {
+            "limit": 10,
+            "hybrid": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "lexical": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82",
+            "title": "279ea5e5c6df1775e5c7a853a22044310b42e4a6739c77be0655402d0ddaba82"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-audit-regression-evidence.json",
+        "id": "AUD-10",
+        "input": "I prepare soups, vegetables, and meat dishes in a restaurant kitchen. I season food according to recipes, stir and turn it while cooking, and check taste and doneness before serving.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46",
+            "lexical": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46",
+            "title": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46"
+          },
+          {
+            "limit": 2,
+            "hybrid": "93908aa3b4e3223e8f277b0859f1fe3cff70ccfcc303c89f3adaf1bafdcc4c96",
+            "lexical": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46",
+            "title": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46"
+          },
+          {
+            "limit": 3,
+            "hybrid": "93908aa3b4e3223e8f277b0859f1fe3cff70ccfcc303c89f3adaf1bafdcc4c96",
+            "lexical": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46",
+            "title": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46"
+          },
+          {
+            "limit": 4,
+            "hybrid": "93908aa3b4e3223e8f277b0859f1fe3cff70ccfcc303c89f3adaf1bafdcc4c96",
+            "lexical": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46",
+            "title": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46"
+          },
+          {
+            "limit": 5,
+            "hybrid": "93908aa3b4e3223e8f277b0859f1fe3cff70ccfcc303c89f3adaf1bafdcc4c96",
+            "lexical": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46",
+            "title": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46"
+          },
+          {
+            "limit": 6,
+            "hybrid": "93908aa3b4e3223e8f277b0859f1fe3cff70ccfcc303c89f3adaf1bafdcc4c96",
+            "lexical": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46",
+            "title": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46"
+          },
+          {
+            "limit": 7,
+            "hybrid": "93908aa3b4e3223e8f277b0859f1fe3cff70ccfcc303c89f3adaf1bafdcc4c96",
+            "lexical": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46",
+            "title": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46"
+          },
+          {
+            "limit": 8,
+            "hybrid": "93908aa3b4e3223e8f277b0859f1fe3cff70ccfcc303c89f3adaf1bafdcc4c96",
+            "lexical": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46",
+            "title": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46"
+          },
+          {
+            "limit": 9,
+            "hybrid": "93908aa3b4e3223e8f277b0859f1fe3cff70ccfcc303c89f3adaf1bafdcc4c96",
+            "lexical": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46",
+            "title": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46"
+          },
+          {
+            "limit": 10,
+            "hybrid": "93908aa3b4e3223e8f277b0859f1fe3cff70ccfcc303c89f3adaf1bafdcc4c96",
+            "lexical": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46",
+            "title": "4540f8fdc5607f27ca9f79a0b4474e36b06dcb8508cdec7410255b2c0f450b46"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-audit-regression-evidence.json",
+        "id": "AUD-11",
+        "input": "I support lawyers by investigating case facts and researching statutes and previous court decisions. I prepare affidavits and other legal documents, organize case files, and assemble exhibits for trial.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "lexical": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "title": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f"
+          },
+          {
+            "limit": 2,
+            "hybrid": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "lexical": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "title": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f"
+          },
+          {
+            "limit": 3,
+            "hybrid": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "lexical": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "title": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f"
+          },
+          {
+            "limit": 4,
+            "hybrid": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "lexical": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "title": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f"
+          },
+          {
+            "limit": 5,
+            "hybrid": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "lexical": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "title": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f"
+          },
+          {
+            "limit": 6,
+            "hybrid": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "lexical": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "title": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f"
+          },
+          {
+            "limit": 7,
+            "hybrid": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "lexical": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "title": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f"
+          },
+          {
+            "limit": 8,
+            "hybrid": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "lexical": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "title": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f"
+          },
+          {
+            "limit": 9,
+            "hybrid": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "lexical": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "title": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f"
+          },
+          {
+            "limit": 10,
+            "hybrid": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "lexical": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f",
+            "title": "703c6935f3e519a40c7799f04ffd7b62b158272942dc443ec519df298b0eff3f"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-audit-regression-evidence.json",
+        "id": "AUD-12",
+        "input": "I schedule appointments, draft routine office correspondence, and organize paper and electronic files. I answer incoming calls, take messages, and find the documents colleagues need to respond to inquiries.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "lexical": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "title": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186"
+          },
+          {
+            "limit": 2,
+            "hybrid": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "lexical": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "title": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186"
+          },
+          {
+            "limit": 3,
+            "hybrid": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "lexical": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "title": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186"
+          },
+          {
+            "limit": 4,
+            "hybrid": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "lexical": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "title": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186"
+          },
+          {
+            "limit": 5,
+            "hybrid": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "lexical": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "title": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186"
+          },
+          {
+            "limit": 6,
+            "hybrid": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "lexical": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "title": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186"
+          },
+          {
+            "limit": 7,
+            "hybrid": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "lexical": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "title": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186"
+          },
+          {
+            "limit": 8,
+            "hybrid": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "lexical": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "title": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186"
+          },
+          {
+            "limit": 9,
+            "hybrid": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "lexical": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "title": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186"
+          },
+          {
+            "limit": 10,
+            "hybrid": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "lexical": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186",
+            "title": "a017d7d3f0ed66e3fe31e92eabb0f3f05fce121898aac96f54e05fc25002d186"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-audit-regression-evidence.json",
+        "id": "AUD-13",
+        "input": "I analyze product delivery and supply chain processes to find avoidable delays and excess inventory. I recommend operational changes, monitor shipment tracing, and review invoicing and route activity.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "2154d2f880aefea5fa0387882d0ed1b1fae45e1d29516b161fac178ae0ec19b7",
+            "lexical": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8",
+            "title": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8"
+          },
+          {
+            "limit": 2,
+            "hybrid": "692ebebc12206f5962b13cba295930dcc318ecb8249c2470bc47156bf59086f0",
+            "lexical": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8",
+            "title": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8"
+          },
+          {
+            "limit": 3,
+            "hybrid": "244795daae7a8c82fa4fe8355bb375a4771ccff26fccdabe7762c1e59bb0495f",
+            "lexical": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8",
+            "title": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8"
+          },
+          {
+            "limit": 4,
+            "hybrid": "244795daae7a8c82fa4fe8355bb375a4771ccff26fccdabe7762c1e59bb0495f",
+            "lexical": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8",
+            "title": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8"
+          },
+          {
+            "limit": 5,
+            "hybrid": "244795daae7a8c82fa4fe8355bb375a4771ccff26fccdabe7762c1e59bb0495f",
+            "lexical": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8",
+            "title": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8"
+          },
+          {
+            "limit": 6,
+            "hybrid": "244795daae7a8c82fa4fe8355bb375a4771ccff26fccdabe7762c1e59bb0495f",
+            "lexical": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8",
+            "title": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8"
+          },
+          {
+            "limit": 7,
+            "hybrid": "244795daae7a8c82fa4fe8355bb375a4771ccff26fccdabe7762c1e59bb0495f",
+            "lexical": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8",
+            "title": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8"
+          },
+          {
+            "limit": 8,
+            "hybrid": "244795daae7a8c82fa4fe8355bb375a4771ccff26fccdabe7762c1e59bb0495f",
+            "lexical": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8",
+            "title": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8"
+          },
+          {
+            "limit": 9,
+            "hybrid": "244795daae7a8c82fa4fe8355bb375a4771ccff26fccdabe7762c1e59bb0495f",
+            "lexical": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8",
+            "title": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8"
+          },
+          {
+            "limit": 10,
+            "hybrid": "244795daae7a8c82fa4fe8355bb375a4771ccff26fccdabe7762c1e59bb0495f",
+            "lexical": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8",
+            "title": "792543f3164148dda6b8a0bd2c86df2ac1ddbd1ab470d51ea1b758290053dab8"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-audit-regression-evidence.json",
+        "id": "AUD-14",
+        "input": "I check incoming merchandise against shipment records and record quantities, damage, and discrepancies. I prepare shipping documents and contact carriers to arrange collection and delivery of outgoing goods.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "lexical": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "title": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2"
+          },
+          {
+            "limit": 2,
+            "hybrid": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "lexical": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "title": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2"
+          },
+          {
+            "limit": 3,
+            "hybrid": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "lexical": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "title": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2"
+          },
+          {
+            "limit": 4,
+            "hybrid": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "lexical": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "title": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2"
+          },
+          {
+            "limit": 5,
+            "hybrid": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "lexical": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "title": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2"
+          },
+          {
+            "limit": 6,
+            "hybrid": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "lexical": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "title": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2"
+          },
+          {
+            "limit": 7,
+            "hybrid": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "lexical": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "title": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2"
+          },
+          {
+            "limit": 8,
+            "hybrid": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "lexical": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "title": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2"
+          },
+          {
+            "limit": 9,
+            "hybrid": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "lexical": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "title": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2"
+          },
+          {
+            "limit": 10,
+            "hybrid": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "lexical": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2",
+            "title": "a5c092c7c7b1b7b2fd608781061976354f34a5238cddb421b59ada03e6b970e2"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-audit-regression-evidence.json",
+        "id": "AUD-15",
+        "input": "I help people with their work and deal with different problems. Most days involve projects, meetings, and emails.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 2,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 3,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 4,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 5,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 6,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 7,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 8,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 9,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 10,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-audit-regression-evidence.json",
+        "id": "AUD-16",
+        "input": "Qelvorn zupthra nembixel. Vroshdak pelquim taznuf.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 2,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 3,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 4,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 5,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 6,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 7,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 8,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 9,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 10,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-exposed-regression-evidence.json",
+        "id": "H-M1-01",
+        "input": "I join employee records with attitude surveys, use statistical programming to model workforce outcomes, and analyze open-ended comments with machine learning. I also test whether staff selection assessments measure the intended psychological traits and summarize what the findings mean for HR decisions.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 2,
+            "hybrid": "4ec4e89bd7a7c664b3f2623e583a3f1a90c0dd618ccd5c5d9be0f365e2b05b95",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 3,
+            "hybrid": "728859562baeffee0b06c96e84ee51b71c4b1d8b259879e4dacc1b58f0dc7d5a",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 4,
+            "hybrid": "728859562baeffee0b06c96e84ee51b71c4b1d8b259879e4dacc1b58f0dc7d5a",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 5,
+            "hybrid": "728859562baeffee0b06c96e84ee51b71c4b1d8b259879e4dacc1b58f0dc7d5a",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 6,
+            "hybrid": "728859562baeffee0b06c96e84ee51b71c4b1d8b259879e4dacc1b58f0dc7d5a",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 7,
+            "hybrid": "728859562baeffee0b06c96e84ee51b71c4b1d8b259879e4dacc1b58f0dc7d5a",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 8,
+            "hybrid": "728859562baeffee0b06c96e84ee51b71c4b1d8b259879e4dacc1b58f0dc7d5a",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 9,
+            "hybrid": "728859562baeffee0b06c96e84ee51b71c4b1d8b259879e4dacc1b58f0dc7d5a",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 10,
+            "hybrid": "728859562baeffee0b06c96e84ee51b71c4b1d8b259879e4dacc1b58f0dc7d5a",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-exposed-regression-evidence.json",
+        "id": "H-M1-02",
+        "input": "My research examines motivation and performance at work. I develop employee selection tests, study the validity of psychological assessments, and evaluate training programs so organizations can improve how they select and develop staff.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "lexical": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e",
+            "title": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e"
+          },
+          {
+            "limit": 2,
+            "hybrid": "5e9de406e5d93ca2a3b1a8a10763d1be4c586407a01b9820f5280c694e366179",
+            "lexical": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e",
+            "title": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e"
+          },
+          {
+            "limit": 3,
+            "hybrid": "5e9de406e5d93ca2a3b1a8a10763d1be4c586407a01b9820f5280c694e366179",
+            "lexical": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e",
+            "title": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e"
+          },
+          {
+            "limit": 4,
+            "hybrid": "5e9de406e5d93ca2a3b1a8a10763d1be4c586407a01b9820f5280c694e366179",
+            "lexical": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e",
+            "title": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e"
+          },
+          {
+            "limit": 5,
+            "hybrid": "5e9de406e5d93ca2a3b1a8a10763d1be4c586407a01b9820f5280c694e366179",
+            "lexical": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e",
+            "title": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e"
+          },
+          {
+            "limit": 6,
+            "hybrid": "5e9de406e5d93ca2a3b1a8a10763d1be4c586407a01b9820f5280c694e366179",
+            "lexical": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e",
+            "title": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e"
+          },
+          {
+            "limit": 7,
+            "hybrid": "5e9de406e5d93ca2a3b1a8a10763d1be4c586407a01b9820f5280c694e366179",
+            "lexical": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e",
+            "title": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e"
+          },
+          {
+            "limit": 8,
+            "hybrid": "5e9de406e5d93ca2a3b1a8a10763d1be4c586407a01b9820f5280c694e366179",
+            "lexical": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e",
+            "title": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e"
+          },
+          {
+            "limit": 9,
+            "hybrid": "5e9de406e5d93ca2a3b1a8a10763d1be4c586407a01b9820f5280c694e366179",
+            "lexical": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e",
+            "title": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e"
+          },
+          {
+            "limit": 10,
+            "hybrid": "5e9de406e5d93ca2a3b1a8a10763d1be4c586407a01b9820f5280c694e366179",
+            "lexical": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e",
+            "title": "ad9bdb7027d079a4e077ce9401d5be57858e02317ccd992515f8a3e77be00b0e"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-exposed-regression-evidence.json",
+        "id": "H-M1-03",
+        "input": "I review search engine queries and website engagement data, identify ways to improve organic search rankings, and test changes to online campaigns to attract relevant visitors.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          },
+          {
+            "limit": 2,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          },
+          {
+            "limit": 3,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          },
+          {
+            "limit": 4,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          },
+          {
+            "limit": 5,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          },
+          {
+            "limit": 6,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          },
+          {
+            "limit": 7,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          },
+          {
+            "limit": 8,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          },
+          {
+            "limit": 9,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          },
+          {
+            "limit": 10,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-exposed-regression-evidence.json",
+        "id": "H-M1-04",
+        "input": "The violet teapot dreams in triangles. Yesterday is a ribbon made from seven echoes.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 2,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 3,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 4,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 5,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 6,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 7,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 8,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 9,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 10,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-replacement-regression-evidence.json",
+        "id": "H-M2-01",
+        "input": "I build predictive models from personnel datasets and analyze written staff feedback with natural language processing. Alongside this data analysis, I use psychological research to design employee selection tests and evaluate whether those assessments are valid measures of job-related characteristics.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8",
+            "title": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8"
+          },
+          {
+            "limit": 2,
+            "hybrid": "401f42ca6ec46afe9bd60eed1bb7556549001d112d82ef3ac839938e49e82b5f",
+            "lexical": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8",
+            "title": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8"
+          },
+          {
+            "limit": 3,
+            "hybrid": "401f42ca6ec46afe9bd60eed1bb7556549001d112d82ef3ac839938e49e82b5f",
+            "lexical": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8",
+            "title": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8"
+          },
+          {
+            "limit": 4,
+            "hybrid": "401f42ca6ec46afe9bd60eed1bb7556549001d112d82ef3ac839938e49e82b5f",
+            "lexical": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8",
+            "title": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8"
+          },
+          {
+            "limit": 5,
+            "hybrid": "401f42ca6ec46afe9bd60eed1bb7556549001d112d82ef3ac839938e49e82b5f",
+            "lexical": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8",
+            "title": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8"
+          },
+          {
+            "limit": 6,
+            "hybrid": "401f42ca6ec46afe9bd60eed1bb7556549001d112d82ef3ac839938e49e82b5f",
+            "lexical": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8",
+            "title": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8"
+          },
+          {
+            "limit": 7,
+            "hybrid": "401f42ca6ec46afe9bd60eed1bb7556549001d112d82ef3ac839938e49e82b5f",
+            "lexical": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8",
+            "title": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8"
+          },
+          {
+            "limit": 8,
+            "hybrid": "401f42ca6ec46afe9bd60eed1bb7556549001d112d82ef3ac839938e49e82b5f",
+            "lexical": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8",
+            "title": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8"
+          },
+          {
+            "limit": 9,
+            "hybrid": "401f42ca6ec46afe9bd60eed1bb7556549001d112d82ef3ac839938e49e82b5f",
+            "lexical": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8",
+            "title": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8"
+          },
+          {
+            "limit": 10,
+            "hybrid": "401f42ca6ec46afe9bd60eed1bb7556549001d112d82ef3ac839938e49e82b5f",
+            "lexical": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8",
+            "title": "d5c1edc7ed9223a060d4234c2cafdf6d5dcc9116a0a35590ff093f4cb7a544b8"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-replacement-regression-evidence.json",
+        "id": "H-M2-02",
+        "input": "I develop machine learning pipelines to extract information from large datasets, compare predictive models, and visualize findings. The inputs include numerical records and unstructured text, which I process with programming languages and natural language processing techniques.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 2,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 3,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 4,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 5,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 6,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 7,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 8,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 9,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 10,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-replacement-regression-evidence.json",
+        "id": "H-M2-03",
+        "input": "I study how psychological characteristics relate to job performance, design employee assessment procedures, and evaluate selection and training programs. My recommendations help organizations improve staff development and the work environment.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "lexical": "edf6a89e7f39b5523771809d2babd427496a8a8f6edfce6be802c0117eb202bf",
+            "title": "edf6a89e7f39b5523771809d2babd427496a8a8f6edfce6be802c0117eb202bf"
+          },
+          {
+            "limit": 2,
+            "hybrid": "5e9de406e5d93ca2a3b1a8a10763d1be4c586407a01b9820f5280c694e366179",
+            "lexical": "e65eb18984119ea8ed350baf15d594ad0fe9bcc2d4dd71fc57429506e87a6741",
+            "title": "e65eb18984119ea8ed350baf15d594ad0fe9bcc2d4dd71fc57429506e87a6741"
+          },
+          {
+            "limit": 3,
+            "hybrid": "5e9de406e5d93ca2a3b1a8a10763d1be4c586407a01b9820f5280c694e366179",
+            "lexical": "e65eb18984119ea8ed350baf15d594ad0fe9bcc2d4dd71fc57429506e87a6741",
+            "title": "e65eb18984119ea8ed350baf15d594ad0fe9bcc2d4dd71fc57429506e87a6741"
+          },
+          {
+            "limit": 4,
+            "hybrid": "5e9de406e5d93ca2a3b1a8a10763d1be4c586407a01b9820f5280c694e366179",
+            "lexical": "e65eb18984119ea8ed350baf15d594ad0fe9bcc2d4dd71fc57429506e87a6741",
+            "title": "e65eb18984119ea8ed350baf15d594ad0fe9bcc2d4dd71fc57429506e87a6741"
+          },
+          {
+            "limit": 5,
+            "hybrid": "5e9de406e5d93ca2a3b1a8a10763d1be4c586407a01b9820f5280c694e366179",
+            "lexical": "e65eb18984119ea8ed350baf15d594ad0fe9bcc2d4dd71fc57429506e87a6741",
+            "title": "e65eb18984119ea8ed350baf15d594ad0fe9bcc2d4dd71fc57429506e87a6741"
+          },
+          {
+            "limit": 6,
+            "hybrid": "5e9de406e5d93ca2a3b1a8a10763d1be4c586407a01b9820f5280c694e366179",
+            "lexical": "e65eb18984119ea8ed350baf15d594ad0fe9bcc2d4dd71fc57429506e87a6741",
+            "title": "e65eb18984119ea8ed350baf15d594ad0fe9bcc2d4dd71fc57429506e87a6741"
+          },
+          {
+            "limit": 7,
+            "hybrid": "5e9de406e5d93ca2a3b1a8a10763d1be4c586407a01b9820f5280c694e366179",
+            "lexical": "e65eb18984119ea8ed350baf15d594ad0fe9bcc2d4dd71fc57429506e87a6741",
+            "title": "e65eb18984119ea8ed350baf15d594ad0fe9bcc2d4dd71fc57429506e87a6741"
+          },
+          {
+            "limit": 8,
+            "hybrid": "5e9de406e5d93ca2a3b1a8a10763d1be4c586407a01b9820f5280c694e366179",
+            "lexical": "e65eb18984119ea8ed350baf15d594ad0fe9bcc2d4dd71fc57429506e87a6741",
+            "title": "e65eb18984119ea8ed350baf15d594ad0fe9bcc2d4dd71fc57429506e87a6741"
+          },
+          {
+            "limit": 9,
+            "hybrid": "5e9de406e5d93ca2a3b1a8a10763d1be4c586407a01b9820f5280c694e366179",
+            "lexical": "e65eb18984119ea8ed350baf15d594ad0fe9bcc2d4dd71fc57429506e87a6741",
+            "title": "e65eb18984119ea8ed350baf15d594ad0fe9bcc2d4dd71fc57429506e87a6741"
+          },
+          {
+            "limit": 10,
+            "hybrid": "5e9de406e5d93ca2a3b1a8a10763d1be4c586407a01b9820f5280c694e366179",
+            "lexical": "e65eb18984119ea8ed350baf15d594ad0fe9bcc2d4dd71fc57429506e87a6741",
+            "title": "e65eb18984119ea8ed350baf15d594ad0fe9bcc2d4dd71fc57429506e87a6741"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-replacement-regression-evidence.json",
+        "id": "H-M2-04",
+        "input": "Could you tell me whether the museum is open next Sunday and how much an admission ticket costs?",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 2,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 3,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 4,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 5,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 6,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 7,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 8,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 9,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 10,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-semantic-evidence.json",
+        "id": "U01",
+        "input": "I use data science, statistics, psychometrics, and behavioral science to understand people at work and improve organizational decisions. I design and analyze employee research, build predictive and diagnostic models, evaluate HR programs and interventions, and translate complex evidence into practical recommendations for leaders and People teams.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 2,
+            "hybrid": "4ec4e89bd7a7c664b3f2623e583a3f1a90c0dd618ccd5c5d9be0f365e2b05b95",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 3,
+            "hybrid": "4ec4e89bd7a7c664b3f2623e583a3f1a90c0dd618ccd5c5d9be0f365e2b05b95",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 4,
+            "hybrid": "4ec4e89bd7a7c664b3f2623e583a3f1a90c0dd618ccd5c5d9be0f365e2b05b95",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 5,
+            "hybrid": "4ec4e89bd7a7c664b3f2623e583a3f1a90c0dd618ccd5c5d9be0f365e2b05b95",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 6,
+            "hybrid": "4ec4e89bd7a7c664b3f2623e583a3f1a90c0dd618ccd5c5d9be0f365e2b05b95",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 7,
+            "hybrid": "4ec4e89bd7a7c664b3f2623e583a3f1a90c0dd618ccd5c5d9be0f365e2b05b95",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 8,
+            "hybrid": "4ec4e89bd7a7c664b3f2623e583a3f1a90c0dd618ccd5c5d9be0f365e2b05b95",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 9,
+            "hybrid": "4ec4e89bd7a7c664b3f2623e583a3f1a90c0dd618ccd5c5d9be0f365e2b05b95",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 10,
+            "hybrid": "4ec4e89bd7a7c664b3f2623e583a3f1a90c0dd618ccd5c5d9be0f365e2b05b95",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-semantic-evidence.json",
+        "id": "V01",
+        "input": "I use statistical programming and machine learning to analyze employee data, predict staff attrition, and report findings. I also develop psychological assessments for employee selection and evaluate their validity.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 2,
+            "hybrid": "7e341e45e8a593c76657a4cf15ed1d3cc0165274fc5e48f6bdb31d99cc9522a6",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 3,
+            "hybrid": "7e341e45e8a593c76657a4cf15ed1d3cc0165274fc5e48f6bdb31d99cc9522a6",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 4,
+            "hybrid": "7e341e45e8a593c76657a4cf15ed1d3cc0165274fc5e48f6bdb31d99cc9522a6",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 5,
+            "hybrid": "7e341e45e8a593c76657a4cf15ed1d3cc0165274fc5e48f6bdb31d99cc9522a6",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 6,
+            "hybrid": "7e341e45e8a593c76657a4cf15ed1d3cc0165274fc5e48f6bdb31d99cc9522a6",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 7,
+            "hybrid": "7e341e45e8a593c76657a4cf15ed1d3cc0165274fc5e48f6bdb31d99cc9522a6",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 8,
+            "hybrid": "7e341e45e8a593c76657a4cf15ed1d3cc0165274fc5e48f6bdb31d99cc9522a6",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 9,
+            "hybrid": "7e341e45e8a593c76657a4cf15ed1d3cc0165274fc5e48f6bdb31d99cc9522a6",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 10,
+            "hybrid": "7e341e45e8a593c76657a4cf15ed1d3cc0165274fc5e48f6bdb31d99cc9522a6",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-semantic-evidence.json",
+        "id": "V02",
+        "input": "I use statistical programming and machine learning to analyze employee data, predict staff attrition, and report findings. I also develop psychological assessments for employee selection and evaluate their validity. My projects include cleaning personnel records, combining numerical responses with written employee feedback, comparing research findings across departments, preparing visual explanations, and discussing the implications with human resources colleagues.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 2,
+            "hybrid": "4ec4e89bd7a7c664b3f2623e583a3f1a90c0dd618ccd5c5d9be0f365e2b05b95",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 3,
+            "hybrid": "4ec4e89bd7a7c664b3f2623e583a3f1a90c0dd618ccd5c5d9be0f365e2b05b95",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 4,
+            "hybrid": "4ec4e89bd7a7c664b3f2623e583a3f1a90c0dd618ccd5c5d9be0f365e2b05b95",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 5,
+            "hybrid": "4ec4e89bd7a7c664b3f2623e583a3f1a90c0dd618ccd5c5d9be0f365e2b05b95",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 6,
+            "hybrid": "4ec4e89bd7a7c664b3f2623e583a3f1a90c0dd618ccd5c5d9be0f365e2b05b95",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 7,
+            "hybrid": "4ec4e89bd7a7c664b3f2623e583a3f1a90c0dd618ccd5c5d9be0f365e2b05b95",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 8,
+            "hybrid": "4ec4e89bd7a7c664b3f2623e583a3f1a90c0dd618ccd5c5d9be0f365e2b05b95",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 9,
+            "hybrid": "4ec4e89bd7a7c664b3f2623e583a3f1a90c0dd618ccd5c5d9be0f365e2b05b95",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 10,
+            "hybrid": "4ec4e89bd7a7c664b3f2623e583a3f1a90c0dd618ccd5c5d9be0f365e2b05b95",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-semantic-evidence.json",
+        "id": "V03",
+        "input": "I write programs to clean large structured and unstructured datasets, train machine learning models, select predictive features, and visualize the results for product teams.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 2,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 3,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 4,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 5,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 6,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 7,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 8,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 9,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          },
+          {
+            "limit": 10,
+            "hybrid": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "lexical": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e",
+            "title": "9d59cd2fd469a4883bde57e34f0952d4e505e81ad016c02ab440c851c308ef9e"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-semantic-evidence.json",
+        "id": "V04",
+        "input": "I apply psychological research to employee selection and development. I analyze job requirements, design selection assessments, and evaluate whether training improves worker performance and job satisfaction.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "lexical": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "title": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b"
+          },
+          {
+            "limit": 2,
+            "hybrid": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "lexical": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "title": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b"
+          },
+          {
+            "limit": 3,
+            "hybrid": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "lexical": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "title": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b"
+          },
+          {
+            "limit": 4,
+            "hybrid": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "lexical": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "title": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b"
+          },
+          {
+            "limit": 5,
+            "hybrid": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "lexical": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "title": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b"
+          },
+          {
+            "limit": 6,
+            "hybrid": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "lexical": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "title": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b"
+          },
+          {
+            "limit": 7,
+            "hybrid": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "lexical": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "title": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b"
+          },
+          {
+            "limit": 8,
+            "hybrid": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "lexical": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "title": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b"
+          },
+          {
+            "limit": 9,
+            "hybrid": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "lexical": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "title": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b"
+          },
+          {
+            "limit": 10,
+            "hybrid": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "lexical": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b",
+            "title": "4948af4356a59c0d9a14ec3d6e3f8a0805707a90e2a5808d19bd0d938b97315b"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-semantic-evidence.json",
+        "id": "V05",
+        "input": "I analyze business requirements for computer systems, review software capabilities, plan integration between applications, and test system changes with users to resolve processing problems.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "ce54f55511650c69a684de62d8d588bd46bd92b72f3fa411a7fb0cc830617a72",
+            "lexical": "823082382c737c6d01f5bb06791fee3fa3baac3813b8646b6065c82d3a29af7a",
+            "title": "823082382c737c6d01f5bb06791fee3fa3baac3813b8646b6065c82d3a29af7a"
+          },
+          {
+            "limit": 2,
+            "hybrid": "eab928fe6ce88bcead8da39308207efecd19d7bef6658a40158348e29f60e9e7",
+            "lexical": "14810d79b65080cc6cc3d112c3d49ec7111cea63205d4cc21bad76794a0cb68b",
+            "title": "14810d79b65080cc6cc3d112c3d49ec7111cea63205d4cc21bad76794a0cb68b"
+          },
+          {
+            "limit": 3,
+            "hybrid": "eab928fe6ce88bcead8da39308207efecd19d7bef6658a40158348e29f60e9e7",
+            "lexical": "14810d79b65080cc6cc3d112c3d49ec7111cea63205d4cc21bad76794a0cb68b",
+            "title": "14810d79b65080cc6cc3d112c3d49ec7111cea63205d4cc21bad76794a0cb68b"
+          },
+          {
+            "limit": 4,
+            "hybrid": "eab928fe6ce88bcead8da39308207efecd19d7bef6658a40158348e29f60e9e7",
+            "lexical": "14810d79b65080cc6cc3d112c3d49ec7111cea63205d4cc21bad76794a0cb68b",
+            "title": "14810d79b65080cc6cc3d112c3d49ec7111cea63205d4cc21bad76794a0cb68b"
+          },
+          {
+            "limit": 5,
+            "hybrid": "eab928fe6ce88bcead8da39308207efecd19d7bef6658a40158348e29f60e9e7",
+            "lexical": "14810d79b65080cc6cc3d112c3d49ec7111cea63205d4cc21bad76794a0cb68b",
+            "title": "14810d79b65080cc6cc3d112c3d49ec7111cea63205d4cc21bad76794a0cb68b"
+          },
+          {
+            "limit": 6,
+            "hybrid": "eab928fe6ce88bcead8da39308207efecd19d7bef6658a40158348e29f60e9e7",
+            "lexical": "14810d79b65080cc6cc3d112c3d49ec7111cea63205d4cc21bad76794a0cb68b",
+            "title": "14810d79b65080cc6cc3d112c3d49ec7111cea63205d4cc21bad76794a0cb68b"
+          },
+          {
+            "limit": 7,
+            "hybrid": "eab928fe6ce88bcead8da39308207efecd19d7bef6658a40158348e29f60e9e7",
+            "lexical": "14810d79b65080cc6cc3d112c3d49ec7111cea63205d4cc21bad76794a0cb68b",
+            "title": "14810d79b65080cc6cc3d112c3d49ec7111cea63205d4cc21bad76794a0cb68b"
+          },
+          {
+            "limit": 8,
+            "hybrid": "eab928fe6ce88bcead8da39308207efecd19d7bef6658a40158348e29f60e9e7",
+            "lexical": "14810d79b65080cc6cc3d112c3d49ec7111cea63205d4cc21bad76794a0cb68b",
+            "title": "14810d79b65080cc6cc3d112c3d49ec7111cea63205d4cc21bad76794a0cb68b"
+          },
+          {
+            "limit": 9,
+            "hybrid": "eab928fe6ce88bcead8da39308207efecd19d7bef6658a40158348e29f60e9e7",
+            "lexical": "14810d79b65080cc6cc3d112c3d49ec7111cea63205d4cc21bad76794a0cb68b",
+            "title": "14810d79b65080cc6cc3d112c3d49ec7111cea63205d4cc21bad76794a0cb68b"
+          },
+          {
+            "limit": 10,
+            "hybrid": "eab928fe6ce88bcead8da39308207efecd19d7bef6658a40158348e29f60e9e7",
+            "lexical": "14810d79b65080cc6cc3d112c3d49ec7111cea63205d4cc21bad76794a0cb68b",
+            "title": "14810d79b65080cc6cc3d112c3d49ec7111cea63205d4cc21bad76794a0cb68b"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-semantic-evidence.json",
+        "id": "V06",
+        "input": "I analyze search queries and website traffic, improve content for search engine visibility, and optimize online marketing campaigns to increase visitor engagement.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          },
+          {
+            "limit": 2,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          },
+          {
+            "limit": 3,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          },
+          {
+            "limit": 4,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          },
+          {
+            "limit": 5,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          },
+          {
+            "limit": 6,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          },
+          {
+            "limit": 7,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          },
+          {
+            "limit": 8,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          },
+          {
+            "limit": 9,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          },
+          {
+            "limit": 10,
+            "hybrid": "a8c4adf9b036140a2bba253e6fe6bad07b0d953f91081f9fd8a7a6bf91532002",
+            "lexical": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8",
+            "title": "f76988b3d597cfc9558128eb852ba72abf9142863ff36fc8c51910d4f90c58d8"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-semantic-evidence.json",
+        "id": "V07",
+        "input": "I design questionnaires, test question wording, choose survey samples, and analyze survey responses with statistical software. I prepare tables and explain the results and limitations to clients.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "lexical": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "title": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c"
+          },
+          {
+            "limit": 2,
+            "hybrid": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "lexical": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "title": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c"
+          },
+          {
+            "limit": 3,
+            "hybrid": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "lexical": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "title": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c"
+          },
+          {
+            "limit": 4,
+            "hybrid": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "lexical": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "title": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c"
+          },
+          {
+            "limit": 5,
+            "hybrid": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "lexical": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "title": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c"
+          },
+          {
+            "limit": 6,
+            "hybrid": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "lexical": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "title": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c"
+          },
+          {
+            "limit": 7,
+            "hybrid": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "lexical": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "title": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c"
+          },
+          {
+            "limit": 8,
+            "hybrid": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "lexical": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "title": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c"
+          },
+          {
+            "limit": 9,
+            "hybrid": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "lexical": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "title": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c"
+          },
+          {
+            "limit": 10,
+            "hybrid": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "lexical": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c",
+            "title": "84c6c37d136ea74a5781e43f65ee3c7ca1c9d9784e161e04a5a17ac5164f789c"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-semantic-evidence.json",
+        "id": "V08",
+        "input": "I work with people, attend meetings, answer emails, and help solve problems.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "lexical": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "title": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c"
+          },
+          {
+            "limit": 2,
+            "hybrid": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "lexical": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "title": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c"
+          },
+          {
+            "limit": 3,
+            "hybrid": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "lexical": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "title": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c"
+          },
+          {
+            "limit": 4,
+            "hybrid": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "lexical": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "title": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c"
+          },
+          {
+            "limit": 5,
+            "hybrid": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "lexical": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "title": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c"
+          },
+          {
+            "limit": 6,
+            "hybrid": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "lexical": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "title": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c"
+          },
+          {
+            "limit": 7,
+            "hybrid": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "lexical": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "title": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c"
+          },
+          {
+            "limit": 8,
+            "hybrid": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "lexical": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "title": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c"
+          },
+          {
+            "limit": 9,
+            "hybrid": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "lexical": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "title": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c"
+          },
+          {
+            "limit": 10,
+            "hybrid": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "lexical": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+            "title": "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-semantic-evidence.json",
+        "id": "E01",
+        "input": "I install and repair electrical wiring and circuit breakers in buildings.",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "lexical": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "title": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426"
+          },
+          {
+            "limit": 2,
+            "hybrid": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "lexical": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "title": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426"
+          },
+          {
+            "limit": 3,
+            "hybrid": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "lexical": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "title": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426"
+          },
+          {
+            "limit": 4,
+            "hybrid": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "lexical": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "title": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426"
+          },
+          {
+            "limit": 5,
+            "hybrid": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "lexical": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "title": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426"
+          },
+          {
+            "limit": 6,
+            "hybrid": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "lexical": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "title": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426"
+          },
+          {
+            "limit": 7,
+            "hybrid": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "lexical": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "title": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426"
+          },
+          {
+            "limit": 8,
+            "hybrid": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "lexical": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "title": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426"
+          },
+          {
+            "limit": 9,
+            "hybrid": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "lexical": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "title": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426"
+          },
+          {
+            "limit": 10,
+            "hybrid": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "lexical": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426",
+            "title": "7945f199014d0474c5491965264584e4a4173aea6446f3f0b6c278c04cb30426"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-semantic-evidence.json",
+        "id": "N01",
+        "input": "qzxv blorpt 739",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 2,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 3,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 4,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 5,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 6,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 7,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 8,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 9,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 10,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          }
+        ]
+      },
+      {
+        "fixture": "tests/fixtures/description-semantic-evidence.json",
+        "id": "N02",
+        "input": "What is the weather tomorrow?",
+        "outputs": [
+          {
+            "limit": 1,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 2,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 3,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 4,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 5,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 6,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 7,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 8,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 9,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          },
+          {
+            "limit": 10,
+            "hybrid": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "lexical": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+            "title": "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+          }
+        ]
+      }
+    ],
+    "titleRows": [
+      {
+        "input": "people analytics",
+        "outputs": [
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+        ]
+      },
+      {
+        "input": "people analytics analyst",
+        "outputs": [
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+        ]
+      },
+      {
+        "input": "workforce analytics",
+        "outputs": [
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+        ]
+      },
+      {
+        "input": "HR Business Partner",
+        "outputs": [
+          "779d0be7d852207e219f76ed2d94b86f9d61a84db0dfebd42ef6abffff3fbc06",
+          "779d0be7d852207e219f76ed2d94b86f9d61a84db0dfebd42ef6abffff3fbc06",
+          "779d0be7d852207e219f76ed2d94b86f9d61a84db0dfebd42ef6abffff3fbc06",
+          "779d0be7d852207e219f76ed2d94b86f9d61a84db0dfebd42ef6abffff3fbc06",
+          "779d0be7d852207e219f76ed2d94b86f9d61a84db0dfebd42ef6abffff3fbc06",
+          "779d0be7d852207e219f76ed2d94b86f9d61a84db0dfebd42ef6abffff3fbc06",
+          "779d0be7d852207e219f76ed2d94b86f9d61a84db0dfebd42ef6abffff3fbc06",
+          "779d0be7d852207e219f76ed2d94b86f9d61a84db0dfebd42ef6abffff3fbc06",
+          "779d0be7d852207e219f76ed2d94b86f9d61a84db0dfebd42ef6abffff3fbc06",
+          "779d0be7d852207e219f76ed2d94b86f9d61a84db0dfebd42ef6abffff3fbc06"
+        ]
+      },
+      {
+        "input": "PA",
+        "outputs": [
+          "0eabee52c8d32964e75cc50d53a9da1bdac1bc2e67ae934cd1fa402ecdec07a1",
+          "0eabee52c8d32964e75cc50d53a9da1bdac1bc2e67ae934cd1fa402ecdec07a1",
+          "0eabee52c8d32964e75cc50d53a9da1bdac1bc2e67ae934cd1fa402ecdec07a1",
+          "0eabee52c8d32964e75cc50d53a9da1bdac1bc2e67ae934cd1fa402ecdec07a1",
+          "0eabee52c8d32964e75cc50d53a9da1bdac1bc2e67ae934cd1fa402ecdec07a1",
+          "0eabee52c8d32964e75cc50d53a9da1bdac1bc2e67ae934cd1fa402ecdec07a1",
+          "0eabee52c8d32964e75cc50d53a9da1bdac1bc2e67ae934cd1fa402ecdec07a1",
+          "0eabee52c8d32964e75cc50d53a9da1bdac1bc2e67ae934cd1fa402ecdec07a1",
+          "0eabee52c8d32964e75cc50d53a9da1bdac1bc2e67ae934cd1fa402ecdec07a1",
+          "0eabee52c8d32964e75cc50d53a9da1bdac1bc2e67ae934cd1fa402ecdec07a1"
+        ]
+      },
+      {
+        "input": "Registered Nurse",
+        "outputs": [
+          "07f7210bcb0226ce15fa88b227706cb8a350558c86ef0c3863023b1fe5ebf5ea",
+          "07f7210bcb0226ce15fa88b227706cb8a350558c86ef0c3863023b1fe5ebf5ea",
+          "07f7210bcb0226ce15fa88b227706cb8a350558c86ef0c3863023b1fe5ebf5ea",
+          "07f7210bcb0226ce15fa88b227706cb8a350558c86ef0c3863023b1fe5ebf5ea",
+          "07f7210bcb0226ce15fa88b227706cb8a350558c86ef0c3863023b1fe5ebf5ea",
+          "07f7210bcb0226ce15fa88b227706cb8a350558c86ef0c3863023b1fe5ebf5ea",
+          "07f7210bcb0226ce15fa88b227706cb8a350558c86ef0c3863023b1fe5ebf5ea",
+          "07f7210bcb0226ce15fa88b227706cb8a350558c86ef0c3863023b1fe5ebf5ea",
+          "07f7210bcb0226ce15fa88b227706cb8a350558c86ef0c3863023b1fe5ebf5ea",
+          "07f7210bcb0226ce15fa88b227706cb8a350558c86ef0c3863023b1fe5ebf5ea"
+        ]
+      },
+      {
+        "input": "Data Scientist",
+        "outputs": [
+          "e3b8b0c065a6fe1cf9eec73b954481913268ddd1b053b2307531e8ba5d73c747",
+          "e3b8b0c065a6fe1cf9eec73b954481913268ddd1b053b2307531e8ba5d73c747",
+          "e3b8b0c065a6fe1cf9eec73b954481913268ddd1b053b2307531e8ba5d73c747",
+          "e3b8b0c065a6fe1cf9eec73b954481913268ddd1b053b2307531e8ba5d73c747",
+          "e3b8b0c065a6fe1cf9eec73b954481913268ddd1b053b2307531e8ba5d73c747",
+          "e3b8b0c065a6fe1cf9eec73b954481913268ddd1b053b2307531e8ba5d73c747",
+          "e3b8b0c065a6fe1cf9eec73b954481913268ddd1b053b2307531e8ba5d73c747",
+          "e3b8b0c065a6fe1cf9eec73b954481913268ddd1b053b2307531e8ba5d73c747",
+          "e3b8b0c065a6fe1cf9eec73b954481913268ddd1b053b2307531e8ba5d73c747",
+          "e3b8b0c065a6fe1cf9eec73b954481913268ddd1b053b2307531e8ba5d73c747"
+        ]
+      },
+      {
+        "input": "BI Analyst",
+        "outputs": [
+          "e8859728bb0c2dd0b257e2b25a0cd6b15e3d1492487f4f7c9498826d3c24e464",
+          "e8859728bb0c2dd0b257e2b25a0cd6b15e3d1492487f4f7c9498826d3c24e464",
+          "e8859728bb0c2dd0b257e2b25a0cd6b15e3d1492487f4f7c9498826d3c24e464",
+          "e8859728bb0c2dd0b257e2b25a0cd6b15e3d1492487f4f7c9498826d3c24e464",
+          "e8859728bb0c2dd0b257e2b25a0cd6b15e3d1492487f4f7c9498826d3c24e464",
+          "e8859728bb0c2dd0b257e2b25a0cd6b15e3d1492487f4f7c9498826d3c24e464",
+          "e8859728bb0c2dd0b257e2b25a0cd6b15e3d1492487f4f7c9498826d3c24e464",
+          "e8859728bb0c2dd0b257e2b25a0cd6b15e3d1492487f4f7c9498826d3c24e464",
+          "e8859728bb0c2dd0b257e2b25a0cd6b15e3d1492487f4f7c9498826d3c24e464",
+          "e8859728bb0c2dd0b257e2b25a0cd6b15e3d1492487f4f7c9498826d3c24e464"
+        ]
+      },
+      {
+        "input": "DevOps Engineer",
+        "outputs": [
+          "3b1f03594eeb40ffd4a0681f71f380b03717742fabe1646c7fbee63abe0a6473",
+          "3b1f03594eeb40ffd4a0681f71f380b03717742fabe1646c7fbee63abe0a6473",
+          "3b1f03594eeb40ffd4a0681f71f380b03717742fabe1646c7fbee63abe0a6473",
+          "3b1f03594eeb40ffd4a0681f71f380b03717742fabe1646c7fbee63abe0a6473",
+          "3b1f03594eeb40ffd4a0681f71f380b03717742fabe1646c7fbee63abe0a6473",
+          "3b1f03594eeb40ffd4a0681f71f380b03717742fabe1646c7fbee63abe0a6473",
+          "3b1f03594eeb40ffd4a0681f71f380b03717742fabe1646c7fbee63abe0a6473",
+          "3b1f03594eeb40ffd4a0681f71f380b03717742fabe1646c7fbee63abe0a6473",
+          "3b1f03594eeb40ffd4a0681f71f380b03717742fabe1646c7fbee63abe0a6473",
+          "3b1f03594eeb40ffd4a0681f71f380b03717742fabe1646c7fbee63abe0a6473"
+        ]
+      },
+      {
+        "input": "x",
+        "outputs": [
+          "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+          "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+          "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+          "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+          "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+          "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+          "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+          "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+          "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c",
+          "7e0423691593291a3d6cdf4ae565b2b0430de06f4ac02414ee12b7151442ba6c"
+        ]
+      },
+      {
+        "input": "",
+        "outputs": [
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183",
+          "5ffed14c0c3010ef8c2825bbdd694dc0b58696b5c849feca14af51a257eab183"
+        ]
+      }
+    ]
+  },
+  "oracleFreeze": {
+    "generatorSha256": "e927c56a6951ebb4b5757aac5f0a39b509ca9f8c3d5f29d2c706dd63854a352f",
+    "baselineEngineSha256": "85472be7f2fb7da1ca7fa8045a488b94478f9bbd97003b08a3cd7b090d8b9d64",
+    "oracleSha256": "54d2e8e431cca4faaf84004267fc6110b7387974cd4ee78650553ddbe5bb728f",
+    "fixtures": {
+      "tests/fixtures/description-audit-regression-evidence.json": "9815f79beed9414aa1992ae5244db2951aaa02feb218d1854d51526d369bf5bf",
+      "tests/fixtures/description-exposed-regression-evidence.json": "3b241332ca7d930eaa235ae0ab3161b10bc59725ab726d2fc5a560673b2e0930",
+      "tests/fixtures/description-replacement-regression-evidence.json": "b7d9efbc3c2f5c4c7b9bc26b95c6334f1ed871dea20f8436d59ad8fbe1b7d354",
+      "tests/fixtures/description-semantic-evidence.json": "f32062ee4f61b61ad332120a815f33e56551005b780bfb5be58319acff5561fa"
+    }
+  }
+}

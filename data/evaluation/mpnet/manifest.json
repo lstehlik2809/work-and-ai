@@ -1,0 +1,46 @@
+{
+  "commit": "e905c008ac8e85c3d0f687817ec0989372958007",
+  "classification": "Unpublished MPNet experiment; original evidence preserved separately from production.",
+  "files": {
+    "src/semantic/config.json": {
+      "path": "data/evaluation/mpnet/src/semantic/config.json",
+      "sha256": "c28cbac0a7de614c07382e7af05419f12d505f317fadb9dd7371f20e874858b4"
+    },
+    "public/semantic/metadata.json": {
+      "path": "data/evaluation/mpnet/public/semantic/metadata.json",
+      "sha256": "28787673751efe8163ca901abad846c1fe00a74d74853db8319eae7b5ef12c73"
+    },
+    "public/semantic/vectors.bin": {
+      "path": "data/evaluation/mpnet/public/semantic/vectors.bin",
+      "sha256": "857783f49d327e683bb8e97ea5cd154e09a2e1fb385faee7c716d15305f30b34"
+    },
+    "public/semantic/assets.json": {
+      "path": "data/evaluation/mpnet/public/semantic/assets.json",
+      "sha256": "480e7d73a360036ed42f6d0f1202334095003a2edfe8acfb52b18de961338278"
+    },
+    "data/evaluation/primary-vectors.bin": {
+      "path": "data/evaluation/mpnet/data/evaluation/primary-vectors.bin",
+      "sha256": "4638dd39747e47059552203565b9b8b85f9024f955d14a5a36901ccd900d641c"
+    },
+    "data/semantic-reproduction.json": {
+      "path": "data/evaluation/mpnet/data/semantic-reproduction.json",
+      "sha256": "a1aebb0fd55378a7e9caef074f42058715038d04f2425454b4b9be1dc174383b"
+    },
+    "public/models/e086c5e0b3a57b0ce46dd6d9c0662948860b35f3/mpnet/config.json": {
+      "path": "data/evaluation/mpnet/model/config.json",
+      "sha256": "a783505a4e839b61700aa61d249d381d00addfb9cf3221359e2d30a6da6c6499"
+    },
+    "public/models/e086c5e0b3a57b0ce46dd6d9c0662948860b35f3/mpnet/tokenizer.json": {
+      "path": "data/evaluation/mpnet/model/tokenizer.json",
+      "sha256": "d00dad6f80b7eab804479a58634a58a50966366627f847e47848bac52873995d"
+    },
+    "public/models/e086c5e0b3a57b0ce46dd6d9c0662948860b35f3/mpnet/tokenizer_config.json": {
+      "path": "data/evaluation/mpnet/model/tokenizer_config.json",
+      "sha256": "3ea32220c2e21af4f0be95e2a43bdc8ac693f8c35c2255127ef680689b469461"
+    },
+    "public/models/e086c5e0b3a57b0ce46dd6d9c0662948860b35f3/mpnet/special_tokens_map.json": {
+      "path": "data/evaluation/mpnet/model/special_tokens_map.json",
+      "sha256": "15a9b70f6a5defe4feac823a82e6412e5d5bfd8eab09d8dbcf5ac241f14a7756"
+    }
+  }
+}

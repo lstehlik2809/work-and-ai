@@ -1,0 +1,17 @@
+{
+  "model": "Xenova/all-mpnet-base-v2",
+  "revision": "e086c5e0b3a57b0ce46dd6d9c0662948860b35f3",
+  "localName": "mpnet",
+  "transformers": "4.2.0",
+  "browserRuntime": "1.29.0",
+  "buildRuntime": "1.24.3",
+  "dtype": "q8",
+  "pooling": "mean",
+  "normalize": true,
+  "dimensions": 768,
+  "maxTokens": 384,
+  "preprocessing": "frozen-sourced-passages-v2",
+  "maxPassages": 3,
+  "mappingVersion": "BLS-NEM-ONET-2026-08-27",
+  "corpusSha256": "6e9a2b431c56e29312b8a025fb47f1d4f8d2ff035123357d875c41dfa1dab028"
+}

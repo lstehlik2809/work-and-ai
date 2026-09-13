@@ -33,7 +33,7 @@
     "browser:ai-context": "node scripts/ai-context-browser-check.mjs",
     "browser:map": "node scripts/occupation-map-browser-check.mjs",
     "semantic:fetch": "node scripts/semantic/assets.mjs --fetch",
-    "browser:mpnet": "node scripts/mpnet-browser-check.mjs",
+    "browser:semantic": "node scripts/semantic-browser-check.mjs",
     "prebuild": "node scripts/semantic/assets.mjs"
   },
   "dependencies": {

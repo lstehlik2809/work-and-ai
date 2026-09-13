@@ -57,9 +57,9 @@ test('analytical CSV allpubliccontrol combinations agrees with projected counts 
  const [head,...rows]=parseCsv(skillPatternsCsv(artifact,skills,'High','rest',3,'difference',true));assert.equal(rows.length,35*27);assert.equal(new Set(rows.map(r=>r[head.indexOf('Variant')])).size,27);
  const malicious={...skills,skills:skills.skills.map((s,i)=>i===0?{...s,name:'=SUM(1,2)\n"quoted"'}:s)};assert(skillPatternsCsv(artifact,malicious,'High','rest',3).includes("'=SUM"));
 });
-test('editorial discovery is separate, ambiguous and source-valid; official aliases remain exact',()=>{
+test('deferred editorial proposal remains source-valid; live official aliases remain exact',()=>{
  const engine=new SearchEngine(snapshot,read('public/data/lexicon.json'));
- for(const entry of editorial){assert.equal(entry.classification,'editorial');assert.equal(entry.release,snapshot.release.id);for(const code of entry.candidateRoleCodes)assert(snapshot.occupations.some(o=>o.roles.some(r=>r.code===code)));const result=engine.title(entry.term,10);assert.equal(result.exact,false);assert(result.candidates.length>=2);assert(result.candidates.every(c=>c.editorial));}
+ for(const entry of editorial){assert.equal(entry.classification,'editorial');assert.equal(entry.release,snapshot.release.id);for(const code of entry.candidateRoleCodes)assert(snapshot.occupations.some(o=>o.roles.some(r=>r.code===code)));assert(engine.title(entry.term,10).candidates.every(c=>!c.editorial));}
  assert.equal(engine.title('HR Business Partner',10).exact,true);assert.equal(engine.title('PA',10).state,'clarify');
 });
 test('public reading brief preserves nulls and broader scope without numerical exposure or private fields',()=>{

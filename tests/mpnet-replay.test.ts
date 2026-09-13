@@ -5,12 +5,13 @@ import {createHash} from 'node:crypto';
 import {SearchEngine} from '../src/search/engine';
 const read=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
 const report=read('data/evaluation/mpnet-application.json'),cases=read('data/evaluation/embedding-exposed-cases.json').cases;
+const archive=read('data/evaluation/mpnet/manifest.json');
 const engine=new SearchEngine(read('public/data/occupations.json'),read('public/data/lexicon.json'));
-test('MPNet replay is bound to the actual encoder/index/source and unchanged exposed labels',()=>{
- for(const p of ['src/semantic/config.json','public/semantic/metadata.json','public/semantic/vectors.bin','public/data/occupations.json','public/data/lexicon.json','data/evaluation/embedding-exposed-cases.json'])assert.equal(createHash('sha256').update(readFileSync(p)).digest('hex'),report.freeze.files[p],p);
+test('historical MPNet replay is bound to archived encoder/index and unchanged source/labels',()=>{
+ for(const p of ['src/semantic/config.json','public/semantic/metadata.json','public/semantic/vectors.bin','public/data/occupations.json','public/data/lexicon.json','data/evaluation/embedding-exposed-cases.json'])assert.equal(createHash('sha256').update(readFileSync(archive.files[p]?.path||p)).digest('hex'),report.freeze.files[p],p);
  assert.equal(report.rows.length,48);assert.equal(report.config.model,'Xenova/all-mpnet-base-v2');
 });
-test('actual MPNet scores replay the application results and preserve every requested prefix',()=>{
+test('historical MPNet scores replay the recorded application results and preserve every requested prefix',()=>{
  for(const row of report.rows){
   const evidence=Object.entries(row.scores).map(([code,score])=>({code,score:Number(score)}));
   const run=(n:number)=>row.kind==='title'?engine.title(row.input,n):engine.hybrid('',row.input,evidence,n);

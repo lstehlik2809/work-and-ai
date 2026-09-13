@@ -8,6 +8,7 @@ const hash=(p:string)=>createHash('sha256').update(readFileSync(p)).digest('hex'
 const destination=process.argv[2];
 if(!destination?.startsWith('verification/local/'))throw Error('Supply a new report under verification/local/; preserve historical reports.');
 const config=read('src/semantic/config.json'),meta=read('public/semantic/metadata.json');
+assert.equal(config.model,'Xenova/all-mpnet-base-v2','MPNet evaluator requires the archived MPNet candidate, not the production MiniLM release.');
 const fixture=read('data/evaluation/embedding-exposed-cases.json'),facets=read('data/evaluation/embedding-exposed-facets.json');
 const baseline=read('data/evaluation/minilm-exposed-baseline.json');
 const snapshot=read('public/data/occupations.json'),engine=new SearchEngine(snapshot,read('public/data/lexicon.json'));

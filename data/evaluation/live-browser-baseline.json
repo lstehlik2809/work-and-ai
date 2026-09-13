@@ -1,0 +1,27 @@
+{
+  "baseline": "0b165d93b8bf8626b8b0935b4018d5e7d0258f58",
+  "rows": [
+    {
+      "query": "I install and repair electrical wiring and circuit breakers in buildings. WAI_PRIVATE_BROWSER_91",
+      "codes": [
+        "BLS 49-2095 ↗",
+        "BLS 47-2111 ↗",
+        "BLS 49-2022 ↗"
+      ]
+    },
+    {
+      "query": "I dispense prescribed medicines and advise patients about their safe use. WAI_PRIVATE_BROWSER_91",
+      "codes": [
+        "BLS 29-1051 ↗"
+      ]
+    },
+    {
+      "query": "I dispense prescribed medicines and advise patients about their safe use.",
+      "codes": [
+        "BLS 29-1051 ↗"
+      ]
+    }
+  ],
+  "requestedLimit": 5,
+  "completedPhase": "Enhanced matching finished"
+}
