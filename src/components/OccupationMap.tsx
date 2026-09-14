@@ -150,6 +150,8 @@ function OccupationMapView({snapshot, skills, onSelect, model}: Props & {model: 
     || a.occupation.title.localeCompare(b.occupation.title) || a.occupation.code.localeCompare(b.occupation.code)), [visible, matches, term]);
   const drawn = useMemo(() => [...visible].sort((a, b) => Number(matchCodes.has(a.occupation.code)) - Number(matchCodes.has(b.occupation.code))), [visible, matchCodes]);
   const selected = model.nodes.find(node => node.occupation.code === selectedCode) ?? null;
+  const selectedRatings = useMemo(() => selected ? skills.skills.map((skill, index) => ({skill, importance: selected.importance[index]}))
+    .sort((a, b) => (b.importance ?? -1) - (a.importance ?? -1) || a.skill.name.localeCompare(b.skill.name)) : [], [selected, skills]);
   const neighbors = useMemo(() => selected ? nearestContinuousNeighbors(selected, model.nodes) : [], [selected, model]);
   const neighborCodes = new Set(neighbors.map(match => match.node.occupation.code));
   const selectedVisible = !!selected && visibleCodes.has(selected.occupation.code);
@@ -369,7 +371,7 @@ function OccupationMapView({snapshot, skills, onSelect, model}: Props & {model: 
         <p><strong>{selected.occupation.exposure ?? 'Unavailable'} AI exposure.</strong> {selected.importantSkills.length} important skills from {selected.knownSkills} of {skills.skills.length} skills with ratings; {selected.ratedRoles} of {selected.mappedRoles} mapped O*NET roles have ratings.</p>
         {selected.unavailableRatings > 0 && <p className="hint">{selected.unavailableRatings} role–skill ratings are unavailable. Missing evidence is not a low rating; missing ratings never become zero.</p>}
         {!selectedVisible && <p className="hint">This selected occupation is outside the current filters. <button type="button" className="text-button" onClick={() => {clearSearch(); setExposures([]);}}>Show on map</button></p>}
-        <details className="map-skill-details"><summary>Exact skill ratings and coverage</summary><p>Mean available importance across unique mapped roles, on a 1–5 scale.</p><ul>{skills.skills.map((skill,i)=><li key={skill.id}>{skill.name}: {selected.importance[i]===null?'Unavailable':selected.importance[i]!.toFixed(2)+' / 5'}</li>)}</ul></details>
+        <details className="map-skill-details"><summary>Exact skill ratings and coverage</summary><p>Mean available importance across unique mapped roles, on a 1–5 scale. Highest importance first; unavailable ratings last.</p><ul>{selectedRatings.map(({skill, importance})=><li key={skill.id}>{skill.name}: {importance===null?'Unavailable':importance.toFixed(2)+' / 5'}</li>)}</ul></details>
         <div data-testid="map-neighbors" className="map-neighbors"><h4>Closest skill matches across all mapped occupations</h4><p className="hint">Similar ratings mean a closer match. Similarity is 100% minus the average rating difference as a percentage of the four-point scale range, using at least 20 skills rated for both occupations. Up to five matches across the map.</p>
           {neighbors.length ? <ol>{neighbors.map(match => <li key={match.node.occupation.code}>
             <button type="button" className="text-button" onClick={() => choose(match.node, true)}>{match.node.occupation.title}</button>
