@@ -1,3 +1,30 @@
+# Current release — 14 September 2026
+
+The continuous-map and descriptive-comparison release was deployed from [commit `785f3bb`](https://github.com/lstehlik2809/work-and-ai/commit/785f3bb6d4585dc45ab28f50f75267a549a581b9). [GitHub Actions run 34834562201](https://github.com/lstehlik2809/work-and-ai/actions/runs/34834562201) passed its build, verification and Pages deployment jobs. Post-deployment checks passed against the [public app](https://lstehlik2809.github.io/work-and-ai/). The results in this section refer to that application revision; the dated records below describe earlier revisions.
+
+## Released behavior
+
+- Skill patterns use descriptive counts, prevalence ratios and observed percentage-point differences. Bayesian calculations and model metadata have been removed from the application, generated analysis artifact and exports. The five-column table has bounded scrolling, pinned column headings and a pinned skill-name column.
+- The primary comparison uses a fixed importance threshold of 3 / 5. Sensitivity comparisons remain available as an optional download in the methodology disclosure, with coverage and limitations explained there.
+- The occupation map uses continuous importance-rating differences for both UMAP geometry and exact connections. It includes 771 occupations with at least 20 rated skills; each connected pair requires at least 20 jointly rated skills. Search and filters preserve positions. The interface uses **Highlight on map**, with the size and color legend immediately above the chart.
+- Confirmed occupations and comparisons provide direct **Download PDF** actions. The existing live MiniLM search, source data and search ranking are preserved.
+
+See [README.md](README.md) for current usage, [METHODOLOGY.md](METHODOLOGY.md) for interpretation and calculations, and the [continuous projection evaluation](data/continuous-projection-evaluation/README.md) for its reproducible layout evidence.
+
+## Verification of this release
+
+- CI passed all data, semantic, skills, AI-context and skill-pattern validators, TypeScript checking, the production build and **165/165 automated tests**.
+- Application and semantic-search browser suites passed in **Chromium, Firefox and WebKit** on Linux CI. Local projection checks also passed **15/15 Python tests**.
+- Frozen pre-change comparisons confirmed unchanged descriptive results across all 27 variants, all 3,780 variant rows, both comparison baselines, 72 sorted primary projections and eight sensitivity sets. All 144 CSV combinations preserved their descriptive values and ordering after excluding the intentionally changed model/method provenance fields.
+- Post-deployment Chromium and WebKit checks passed seven scenario groups per browser: occupation selection/comparison, reading briefs, actual single-occupation and comparison PDF downloads, sharing, descriptive CSV and sensitivity exports, responsive table behavior, continuous-map connections and isolated failure/retry recovery. No unexpected page errors were recorded.
+- Dedicated public-site pattern checks passed four scenario groups, including all categories, sorting, keyboard navigation, pinned headings and skill names, horizontal and vertical scrolling, and recovery from unavailable or corrupt analysis assets.
+- The served index, all 14 application JavaScript/CSS files and both updated analysis/map artifacts matched the verified local build byte for byte: **17 files** in total. The skill-pattern artifact SHA-256 was `500889fb706734a7c09d3556886f63bfb8a5dae47a32e4997ac11a34717ddd10`; the continuous-map artifact SHA-256 was `3ea198551b4d64ccb4936b1eba150c7eea31c7093ad9b729916e177b7ca626ae`.
+- Independent release-readiness and completion reviews passed for the deployed application tree `37e38bc5a2f339e0ecc76fff0795d75fcffc5537`.
+
+These checks establish implementation and deployment behavior, not a new occupational matching-accuracy study. Physical-phone, screen-reader, representative-user and occupational-expert studies remain unperformed. The Windows Firefox executable could not start because of a local side-by-side configuration error; required Firefox coverage passed in Linux CI.
+
+---
+
 # Scoped improvements release — 13 September 2026
 
 This release preserves the prior live MiniLM search and publishes the verified statistics, comparison, export and usability improvements. See [release verification](verification/live-improvements.md). The [MPNet candidate](verification/mpnet-implementation.md) remains an unpublished experiment; its matching failures and incomplete fresh validation are preserved. The dated records below are historical.
