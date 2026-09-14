@@ -1,5 +1,6 @@
-import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
-import type {KeyboardEvent, PointerEvent} from 'react';
+import {useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react';
+import type {KeyboardEvent, PointerEvent, RefObject} from 'react';
+import TabHeader from './TabHeader';
 import type {Exposure, Snapshot} from '../domain/types';
 import type {SkillsData} from '../search/skills';
 import {EXPOSURE_COLOR, EXPOSURE_LEVELS, EXPOSURE_RADIUS, nearestContinuousNeighbors} from '../domain/occupation-map';
@@ -26,6 +27,64 @@ function frameNodes(nodes: MapOccupation[]) {
   // Padding leaves nearby occupations visible; a single result uses 2.5×.
   const zoom = Math.max(1, Math.min(2.5, WIDTH / (right - left + 140), HEIGHT / (bottom - top + 140)));
   return clampView((left + right) / 2 - WIDTH / zoom / 2, (top + bottom) / 2 - HEIGHT / zoom / 2, zoom);
+}
+
+function SelectedOccupationLabel({selected, nodes, view, svgRef}: {
+  selected: MapOccupation; nodes: MapOccupation[]; view: {x: number; y: number; zoom: number};
+  svgRef: RefObject<SVGSVGElement | null>;
+}) {
+  const labelRef = useRef<HTMLDivElement>(null);
+  const [layout, setLayout] = useState<{x: number; y: number; nodeX: number; nodeY: number; endX: number; endY: number} | null>(null);
+  useLayoutEffect(() => {
+    const svg = svgRef.current, label = labelRef.current, container = svg?.parentElement;
+    if (!svg || !label || !container) return;
+    function positionLabel() {
+      const matrix = svg!.getScreenCTM();
+      if (!matrix) return;
+      const bounds = container!.getBoundingClientRect();
+      const toScreen = (node: MapOccupation) => {
+        const p = point(node);
+        const screen = new DOMPoint(p.x, p.y).matrixTransform(matrix);
+        return {x: screen.x - bounds.left - container!.clientLeft, y: screen.y - bounds.top - container!.clientTop,
+          radius: ((node.occupation.exposure === null ? 4.5 : EXPOSURE_RADIUS[node.occupation.exposure]) + 5) * matrix.a / Math.sqrt(view.zoom)};
+      };
+      const anchor = toScreen(selected), width = container!.clientWidth, height = container!.clientHeight;
+      // A panned-offscreen selection retains its caption, but no floating label.
+      if (anchor.x < 0 || anchor.y < 0 || anchor.x > width || anchor.y > height) {setLayout(null); return;}
+      const w = label!.offsetWidth, h = label!.offsetHeight, gap = anchor.radius + 8, margin = 8;
+      const obstacles = nodes.filter(node => node !== selected).map(toScreen);
+      const candidates = [
+        {x: anchor.x - w / 2, y: anchor.y - gap - h},
+        {x: anchor.x + gap, y: anchor.y - h / 2},
+        {x: anchor.x - w / 2, y: anchor.y + gap},
+        {x: anchor.x - gap - w, y: anchor.y - h / 2},
+        {x: anchor.x + gap, y: anchor.y - gap - h},
+        {x: anchor.x - gap - w, y: anchor.y - gap - h},
+        {x: anchor.x + gap, y: anchor.y + gap},
+        {x: anchor.x - gap - w, y: anchor.y + gap},
+      ].map(candidate => {
+        const x = Math.max(margin, Math.min(width - w - margin, candidate.x));
+        const y = Math.max(margin, Math.min(height - h - margin, candidate.y));
+        const overlap = (p: typeof anchor) => Math.max(0, Math.min(x + w, p.x + p.radius) - Math.max(x, p.x - p.radius))
+          * Math.max(0, Math.min(y + h, p.y + p.radius) - Math.max(y, p.y - p.radius));
+        const endX = Math.max(x, Math.min(x + w, anchor.x)), endY = Math.max(y, Math.min(y + h, anchor.y));
+        return {x, y, endX, endY, score: overlap(anchor) * 1000 + obstacles.reduce((sum, p) => sum + overlap(p), 0)
+          + Math.hypot(endX - anchor.x, endY - anchor.y) * 0.1};
+      });
+      candidates.sort((a, b) => a.score - b.score);
+      setLayout({...candidates[0], nodeX: anchor.x, nodeY: anchor.y});
+    }
+    positionLabel();
+    const observer = new ResizeObserver(positionLabel);
+    observer.observe(svg);
+    observer.observe(label);
+    return () => observer.disconnect();
+  }, [selected, nodes, view, svgRef]);
+  return <div className="map-node-callout" aria-hidden="true">
+    {layout && <svg className="map-node-label-leader"><line x1={layout.nodeX} y1={layout.nodeY} x2={layout.endX} y2={layout.endY}/></svg>}
+    <div ref={labelRef} className="map-node-label" data-testid="map-node-label"
+      style={{left: layout?.x ?? 0, top: layout?.y ?? 0, visibility: layout ? 'visible' : 'hidden'}}>{selected.occupation.title}</div>
+  </div>;
 }
 
 export default function OccupationMap({snapshot, skills, onSelect}: Props) {
@@ -202,11 +261,7 @@ function OccupationMapView({snapshot, skills, onSelect, model}: Props & {model: 
     setView(clampView(drag.current.originX - (event.clientX - drag.current.x) / scale, drag.current.originY - (event.clientY - drag.current.y) / scale, view.zoom));
   }
   return <section className="occupation-map-section" aria-labelledby="occupation-map-heading">
-    <div className="map-heading">
-      <p className="eyebrow">The wider picture</p>
-      <h2 id="occupation-map-heading">Where does AI exposure concentrate?</h2>
-      <p>Explore occupations by how closely their skill importance ratings match. Larger circles mark higher <strong>relative AI exposure</strong>, not predicted job losses.</p>
-    </div>
+    <TabHeader id="occupation-map-heading" eyebrow="The wider picture" title="Where does AI exposure concentrate?">Click a circle to identify an occupation and discover its closest skill matches. Search by occupation or skill, and filter by AI exposure.</TabHeader>
     <div className="map-summary">
       <div><strong>{model.fullCounts['Very high']} <span>/ {model.total}</span></strong><span>occupations in the highest exposure category</span></div>
       <div><strong>{model.nodes.length} <span>/ {model.total}</span></strong><span>occupations with skill evidence on this map</span></div>
@@ -292,6 +347,7 @@ function OccupationMapView({snapshot, skills, onSelect, model}: Props & {model: 
             {matches.map(node => <circle key={node.occupation.code} data-testid="map-highlight" data-code={node.occupation.code} className="map-highlight" cx={point(node).x} cy={point(node).y} r={((node.occupation.exposure === null ? 4.5 : EXPOSURE_RADIUS[node.occupation.exposure]) + 3) / Math.sqrt(view.zoom)} fill="none" stroke="#172f40" strokeWidth={1.8 / Math.sqrt(view.zoom)} pointerEvents="none" aria-hidden="true"/>)}
             {selectedVisible && selected && <g pointerEvents="none" aria-hidden="true"><circle cx={point(selected).x} cy={point(selected).y} r={(EXPOSURE_RADIUS[selected.occupation.exposure ?? 'Moderate'] + 5) / Math.sqrt(view.zoom)} fill="none" stroke="#172f40" strokeWidth={1.5 / view.zoom}/></g>}
           </svg>
+          {selectedVisible && selected && <SelectedOccupationLabel selected={selected} nodes={visible} view={view} svgRef={svgRef}/>}
           {!visible.length && <p className="map-empty">No mapped occupations have the selected exposure {exposures.length === 1 ? 'category' : 'categories'}. Choose another category or All.</p>}
         </div>
         <p id="map-edge-explanation" className="map-edge-explanation"><strong>Lines connect</strong> the selected occupation to up to five closest skill matches, using the same rating similarity as the layout: smaller average differences mean a closer match. They do not indicate equal AI exposure or causality. Only visible endpoints connect; exact counts and skill names are below.</p>

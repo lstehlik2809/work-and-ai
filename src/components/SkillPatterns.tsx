@@ -1,4 +1,5 @@
 import {useEffect, useMemo, useState} from 'react';
+import TabHeader from './TabHeader';
 import type {Exposure, Snapshot} from '../domain/types';
 import type {SkillsData} from '../search/skills';
 import {EXPOSURE_LEVELS, IMPORTANT_SKILL_THRESHOLD} from '../domain/occupation-map';
@@ -41,7 +42,7 @@ function PatternTable({snapshot,skills,artifact}:{snapshot:Snapshot;skills:Skill
   const baselineLabel = baseline === 'overall' ? 'Overall' : 'Rest';
   const baselineDescription = baseline === 'overall' ? 'all eligible occupations (including selected)' : 'all three other known categories combined';
   const [query, setQuery] = useState('');
-  const [sort, setSort] = useState<{column: SortColumn; direction: SortDirection}>({column: 'difference', direction: 'descending'});
+  const [sort, setSort] = useState<{column: SortColumn; direction: SortDirection}>({column: 'ratio', direction: 'descending'});
   const ranked=useMemo(()=>sortPatterns(projectPatterns(artifact,skills,category,baseline,threshold)),[artifact,skills,category,baseline,threshold]);
   const rows = useMemo(() => ranked.filter(row => `${row.skill.name} ${row.skill.description} ${row.skill.group}`.toLowerCase().includes(query.trim().toLowerCase())).sort((a, b) => {
     const left = sortValue(a, sort.column), right = sortValue(b, sort.column);
@@ -66,9 +67,8 @@ function PatternTable({snapshot,skills,artifact}:{snapshot:Snapshot;skills:Skill
   const top = ranked.find(row => row.direction === 'more');
   const least = ranked.find(row => row.direction === 'less');
   return <section className="skill-patterns" aria-labelledby="patterns-heading">
-    <div className="patterns-intro"><div><p className="eyebrow">Skills across occupations</p><h1 id="patterns-heading">Occupational skill profiles.</h1>
-      <p className="lead">Skill profiles of occupations grouped by estimated AI exposure. Explore which skills are more or less often important in occupations with <strong>{category.toLowerCase()} AI exposure</strong>.</p></div>
-      <div className="patterns-category"><label htmlFor="patterns-category">AI exposure category</label><select id="patterns-category" value={category} onChange={event => setCategory(event.target.value as Exposure)}>{EXPOSURE_LEVELS.map(level => <option key={level}>{level}</option>)}</select><label htmlFor="patterns-baseline">Comparison baseline</label><select id="patterns-baseline" value={baseline} onChange={event => setBaseline(event.target.value as SkillBaseline)}><option value="overall">Overall (includes selected)</option><option value="rest">Rest (other categories)</option></select><p>Compared with {baselineDescription}.</p></div></div>
+    <TabHeader id="patterns-heading" eyebrow="Skills across occupations" title="Occupational skill profiles.">Choose an AI exposure category to explore its skill profile. Compare how often each skill is important there versus all occupations or the other categories.</TabHeader>
+    <div className="patterns-category"><div><label htmlFor="patterns-category">AI exposure category</label><select id="patterns-category" value={category} onChange={event => setCategory(event.target.value as Exposure)}>{EXPOSURE_LEVELS.map(level => <option key={level}>{level}</option>)}</select></div><div><label htmlFor="patterns-baseline">Comparison baseline</label><select id="patterns-baseline" value={baseline} onChange={event => setBaseline(event.target.value as SkillBaseline)}><option value="overall">Overall (includes selected)</option><option value="rest">Rest (other categories)</option></select><p>Compared with {baselineDescription}.</p></div></div>
     <p className="hint patterns-caution">These patterns describe skill requirements across AI-exposure groups. Because the exposure measures themselves use related occupational abilities, tasks and work activities, some associations may reflect how exposure was constructed. They do not independently measure the AI exposure of individual skills.</p>
     <p className="patterns-definition"><strong>Important = mean O*NET importance ≥ {threshold} / 5.</strong> Each BLS occupation counts once. Percentages use only occupations with an available rating for that skill, so denominators vary.</p>
     <div className="patterns-highlights" aria-live="polite">
@@ -77,9 +77,9 @@ function PatternTable({snapshot,skills,artifact}:{snapshot:Snapshot;skills:Skill
       <div className="pattern-highlight less"><span className="eyebrow">Largest negative difference</span><strong>{least ? pp(least.difference!) : '—'}</strong><p>{least ? <>{least.skill.name}<small>{least.counts[0]} / {least.selectedKnown} vs {least.baselineImportant} / {least.baselineKnown} occupations</small></> : 'No skill is less common in this category.'}</p></div>
     </div>
     <p className="hint patterns-caution">Large ratios can come from very few occupations. Read the counts and percentage-point difference alongside the ratio. These are patterns in occupational requirements, not the AI exposure of a skill or a person.</p>
-    <div className="patterns-toolbar"><div><h2>Important skills, in context</h2><p id="patterns-order">The default ranks absolute percentage-point differences. Select a column header to sort; select it again to reverse the order. Unavailable or undefined values appear last. Prevalence ratio = selected ÷ {baselineLabel.toLowerCase()} prevalence. Above 1× = more common; below 1× = less common.</p></div><div><label htmlFor="patterns-search">Filter skills</label><input id="patterns-search" type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Name, group or definition"/></div></div>
+    <div className="patterns-toolbar"><div><h2>Important skills, in context</h2><p id="patterns-order">The default shows the highest prevalence ratios first. Select a column header to sort; select it again to reverse the order. Unavailable or undefined values appear last. Prevalence ratio = selected ÷ {baselineLabel.toLowerCase()} prevalence. Above 1× = more common; below 1× = less common.</p></div><div><label htmlFor="patterns-search">Filter skills</label><input id="patterns-search" type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Name, group or definition"/></div></div>
     <p className="hint" role="status">Showing {rows.length} of {ranked.length} skills · {category} exposure · {baselineLabel} baseline · Sorted by {sortLabel}, {orderLabel}</p>
-    <p className="hint">Downloads contain all 35 skills for the selected category and baseline at the fixed importance threshold of 3 / 5, regardless of your private text filter. They use the default absolute-difference ordering.</p>
+    <p className="hint">Downloads contain all 35 skills for the selected category and baseline at the fixed importance threshold of 3 / 5, regardless of your private text filter. They use absolute-difference ordering.</p>
     <div className="actions"><button className="secondary" onClick={()=>downloadText(skillPatternsCsv(artifact,skills,category,baseline,threshold),'work-and-ai-skill-patterns.csv','text/csv;charset=utf-8')}>Download all 35 skills</button></div>
     <p className="hint patterns-table-context">{category} exposure vs {baselineDescription} · importance ≥ {threshold} / 5. Each row shows important / rated and rated / eligible occupations. Scroll within the table to see more skills and compare columns; column headings and skill names stay visible.</p>
     <div className="patterns-table-scroll" tabIndex={0} role="region" aria-label="Skill patterns table; scroll vertically for more skills and horizontally for more columns">

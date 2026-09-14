@@ -24,7 +24,8 @@ try {
   assert.equal(await page.locator('#patterns-category').inputValue(), 'Very high');
   assert.equal(await page.locator('.patterns-table tbody tr').count(), 35);
   assert.equal(await page.getByRole('combobox', {name: 'Comparison baseline', exact: true}).inputValue(), 'overall');
-  assert.match(await page.locator('.patterns-table tbody tr').first().innerText(), /Writing.*185 \/ 192.*466 \/ 772/s);
+  assert.equal(await page.locator('.patterns-table thead th').nth(1).getAttribute('aria-sort'), 'descending');
+  assert.match(await page.locator('.patterns-table tbody tr').filter({has: page.locator('.pattern-skill-name', {hasText: /^Writing$/})}).innerText(), /Writing.*185 \/ 192.*466 \/ 772/s);
   assert.match(await page.locator('.pattern-highlight.coverage').innerText(), /206.*vs.*831/s);
   assert.match(await page.locator('.pattern-highlight.more').innerText(), /Writing.*185 \/ 192 vs 466 \/ 772/s);
   assert.equal(await page.locator('h1:visible').count(), 1);

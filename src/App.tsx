@@ -5,6 +5,7 @@ import type{DiagnosticFault}from'./semantic/client';
 import type{SkillsData,SkillsEngine}from'./search/skills';
 
 import MapBoundary from'./components/MapBoundary';
+import TabHeader from'./components/TabHeader';
 import CandidateList from'./components/CandidateList';
 import ConfirmedOccupation from'./components/ConfirmedOccupation';
 import OccupationComparison from'./components/OccupationComparison';
@@ -53,7 +54,6 @@ export default function App({diagnosticFault='none'}:{diagnosticFault?:Diagnosti
  function brief(rows:Occupation[]){if(data)downloadText(readingBrief(rows,data.release),'work-and-ai-reading-brief.txt');}
  async function share(){if(!data)return;const codes=compare.length?compare:current?[current.code]:[];const hash=shareHash(codes,data.release.id);history.replaceState(null,'',location.pathname+hash);try{await navigator.clipboard.writeText(location.href);setNotice('Link copied. It contains only public occupation codes and the data release.');}catch{setNotice('The address bar now contains your share link. Copy it to share these occupations.');}}
  return <><header className="masthead"><a className="wordmark" href={base}>Work <span>&amp;</span> AI</a><span className="context">U.S. occupational data</span></header><main>
- <section className="intro no-print" hidden={view!=='search'}><p className="eyebrow">An occupational reference</p><h1>Find the occupation.<br/>Explore the evidence.</h1><p className="lead">Explore published AI exposure and employment projections for U.S. occupations.</p></section>
  <div className="view-tabs no-print" role="tablist" aria-label="Explore occupations" onKeyDown={e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const available:View[]=data?['search','map','patterns']:['search'];const index=available.indexOf(view);const next=e.key==='Home'?available[0]:e.key==='End'?available[available.length-1]:available[(index+(e.key==='ArrowRight'?1:-1)+available.length)%available.length];changeView(next);document.getElementById(`view-tab-${next}`)?.focus();}}>
  <button id="view-tab-search" role="tab" aria-selected={view==='search'} aria-controls="search-view" tabIndex={view==='search'?0:-1} onClick={()=>changeView('search')}>Find an occupation</button>
  <button id="view-tab-map" role="tab" aria-selected={view==='map'} aria-controls="map-view" tabIndex={view==='map'?0:-1} disabled={!data} onClick={()=>changeView('map')}>Occupation map</button>
@@ -66,6 +66,7 @@ export default function App({diagnosticFault='none'}:{diagnosticFault?:Diagnosti
  {patternsOpened&&data&&<>{skillsLoading&&<p role="status">Loading skill reference for patterns…</p>}{skillsError&&<div role="alert"><p>Skill patterns needs the skills reference. Please retry. Occupation search remains available.</p><button className="secondary" onClick={()=>void loadSkills()}>Retry patterns reference</button></div>}{skillsData&&<MapBoundary feature="skill patterns" reloadLabel="Reload skill patterns"><Suspense fallback={<p role="status">Preparing skill patterns…</p>}><SkillPatterns snapshot={data} skills={skillsData}/></Suspense></MapBoundary>}</>}
  </div>
  <div id="search-view" role="tabpanel" aria-labelledby="view-tab-search" hidden={view!=='search'}>
+ <div className="no-print"><TabHeader id="search-intro-heading" eyebrow="An occupational reference" title={<>Find the occupation.<br/>Explore the evidence.</>}>Search by job title, skills or a description of your work. Choose a U.S. occupation to explore its AI exposure, key skills and employment outlook.</TabHeader></div>
  <section className="search-section no-print" aria-labelledby="search-heading"><div className="section-controls"><h2 id="search-heading" className="section-label">01 / Find your occupation</h2>{(query||searched||current||busy||skillIds.length||description)&&<button className="text-button" onClick={clearResults}>Clear results</button>}</div><form onSubmit={e=>e.preventDefault()}><label htmlFor="job-title">Job title</label><div className="search-line"><input ref={titleInput} id="job-title" type="search" placeholder="For example, electrical engineer" value={query} onChange={e=>changeTitle(e.target.value)} aria-describedby="title-hint title-status" maxLength={160} disabled={!engine} autoComplete="off"/></div><p id="title-hint" className="hint">Results update as you type. Use an English title. You’ll confirm the occupation before viewing its figures.</p></form>
 
  <div className="search-path"><button ref={skillTrigger} className="text-button" aria-expanded={skillsOpen} aria-controls="skills-panel" onClick={skillsOpen?closeSkills:openSkills} disabled={!engine}>Find by skills</button><p className="hint">Choose skills you use to explore occupations with similar published requirements.</p></div>
