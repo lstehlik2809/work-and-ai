@@ -30,3 +30,7 @@ The [GitHub Actions workflow](https://github.com/lstehlik2809/work-and-ai/action
 Physical-phone, screen-reader, representative-user and occupational-expert studies remain unperformed. Browser viewport checks and authored matching cases do not replace those studies.
 
 If recovery is necessary, revert and redeploy the complete prior bundle, including the matching model, tokenizer, index and metadata cohort. Partial model/index rollback can break compatibility checks.
+
+## Deployment test recovery — 14 September 2026
+
+The first production workflow stalled after logging the Chromium and Firefox check groups and was cancelled at GitHub's six-hour limit; it did not deploy. The log did not identify the exact cleanup or browser operation that stalled. The verification harness now isolates browser processes, bounds route and browser cleanup, releases held cancellation requests on failure, records each stage, and fails nonzero when a process deadline expires. A forced-hang control verifies that failure path. All existing inference, privacy, cancellation, edit, retry, cache, token-boundary and baseline-output checks remain required; no product ranking or source data changed for this correction.
