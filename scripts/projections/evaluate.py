@@ -50,6 +50,9 @@ def select(configurations, baseline):
     return sorted(qualifying or successful, key=lambda c: (-c['score']['mean'], -c['score']['min'], c['order']))[0], bool(qualifying)
 
 def main():
+    active = ROOT / 'public/data/occupation-map-umap.json'
+    if json.loads(active.read_text(encoding='utf-8')).get('schemaVersion') != 1:
+        raise RuntimeError('Historical binary evaluator cannot overwrite the active continuous artifact. Use evaluate-continuous.py; reproduce history in a separate checkout at 1946660c5258b69d465d2ec7d9161f5bdbc50b10.')
     parser = argparse.ArgumentParser()
     parser.add_argument('--recompute', action='store_true', help='Recompute evaluation from saved coordinates without fitting')
     args = parser.parse_args()

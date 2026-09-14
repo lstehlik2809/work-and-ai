@@ -25,8 +25,8 @@ try {
   await page.goto(base);
   await page.getByRole('tab', {name: 'Occupation map', exact: true}).click();
   await page.getByTestId('map-node').first().waitFor();
-  const search = page.getByRole('searchbox', {name: 'Find on map', exact: true});
-  const suggestions = page.getByRole('region', {name: 'Find on map suggestions'});
+  const search = page.getByRole('searchbox', {name: 'Highlight on map', exact: true});
+  const suggestions = page.getByRole('region', {name: 'Highlight on map suggestions'});
   const exposure = page.getByRole('group', {name: 'AI exposure', exact: true});
   const category = label => exposure.getByRole('button', {name: label, exact: true});
   const highlighted = () => page.getByTestId('map-highlight').evaluateAll(nodes => nodes.map(node => node.dataset.code).sort());

@@ -11,10 +11,24 @@ const digest=(value:unknown)=>sha(JSON.stringify(value));
 const pin=read('data/evaluation/live-search-parity.json');
 const engine=new SearchEngine(read('public/data/occupations.json'),read('public/data/lexicon.json'));
 
-test('production search cohort preserves pinned live bytes',()=>{
+test('production search cohort preserves pinned live bytes excluding only the authorized PDF dependency additions',()=>{
  assert.equal(pin.baseline,'0b165d93b8bf8626b8b0935b4018d5e7d0258f58');
  for(const [path,expected] of Object.entries(pin.files) as [string,{bytes:number;sha256:string}][]){
-  const actual=readFileSync(path);assert.equal(actual.length,expected.bytes,path);assert.equal(sha(actual),expected.sha256,path);
+  let actual=readFileSync(path);
+  if(path==='package-lock.json'){
+   // Preserve the historical search dependency contract without repinning it.
+   // The PDF downloads add exactly this isolated package family to the lock.
+   const lock=JSON.parse(actual.toString('utf8'));
+   assert.equal(lock.packages[''].dependencies['pdf-lib'],'1.17.1');
+   assert.equal(lock.packages['node_modules/pdf-lib'].version,'1.17.1');
+   delete lock.packages[''].dependencies['pdf-lib'];
+   for(const added of ['node_modules/@pdf-lib/standard-fonts','node_modules/@pdf-lib/upng','node_modules/pako','node_modules/pdf-lib','node_modules/pdf-lib/node_modules/tslib']){
+    assert(added in lock.packages,`Expected authorized PDF package ${added}`);
+    delete lock.packages[added];
+   }
+   actual=Buffer.from(JSON.stringify(lock,null,2)+'\n');
+  }
+  assert.equal(actual.length,expected.bytes,path);assert.equal(sha(actual),expected.sha256,path);
  }
 });
 

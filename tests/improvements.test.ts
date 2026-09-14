@@ -17,7 +17,7 @@ test('literal counts: unique role means, threshold boundaries, unknown and all-m
  for(const [id,expected]of[['mean-2.5',[2,0,1,1]],['mean-3.5',[0,2,1,1]]]as const)assert.deepEqual(variants.find(v=>v.id===id)!.rows.find(r=>r.category==='High')!.counts,expected);
  assert.deepEqual(variants.find(v=>v.id==='max-3')!.rows.filter(r=>r.category==='High')[1].counts,[1,0,1,1]);
  assert.equal(variants.find(v=>v.id==='omit-11')!.eligible,3);
- const r=buildSkillExposureRow(skills.skills[2],'High',[1,1,0,1],null);assert.equal(r.ratio,1.5);assert(Math.abs(r.difference!-100/6)<1e-12);assert.equal(selectSkillBaseline(r,'rest').ratio,Infinity);
+ const r=buildSkillExposureRow(skills.skills[2],'High',[1,1,0,1]);assert.equal(r.ratio,1.5);assert(Math.abs(r.difference!-100/6)<1e-12);assert.equal(selectSkillBaseline(r,'rest').ratio,Infinity);
 });
 test('coverage restriction includes28 and excludes27 without converting the remaining nulls',()=>{
  const data={...skills,roles:[{code:'a',importance:Array.from({length:35},(_,i)=>i<27?3:null)},{code:'b',importance:Array.from({length:35},(_,i)=>i<28?3:null)}]};
@@ -30,16 +30,24 @@ test('validated source analysis includes831eligible,59unrated and all fixed vari
 });
 test('artifact rejects corrupted bytes and structurally stale or inconsistent references',async()=>{
  await assert.rejects(()=>decodePatternArtifact(raw+' ',snapshot,skills));
- const edits:((a:any)=>void)[]=[a=>a.release='stale',a=>a.sourceHashes.skills='x',a=>a.generationCodeHash='x',a=>a.parameters.draws=2,a=>a.skillIds.reverse(),a=>a.variants.pop(),a=>a.variants[0].rows[0].counts[0]=99999,a=>a.variants[0].rows[0].posterior.probabilityMore=2,a=>a.variants[3].threshold=2.5,a=>a.variants[0].rows[0].selectedEligible--,a=>a.variants[0].rows[0].posterior.interval=[5,-5]];
+ const edits:((a:any)=>void)[]=[
+  a=>a.release='stale',a=>a.sourceHashes.skills='x',a=>a.sourceHashes.occupations='x',a=>a.generationCodeHash='x',
+  a=>a.skillIds.reverse(),a=>a.variants.pop(),a=>a.variants[0].rows.pop(),
+  a=>a.variants[0].rows[0].counts[0]=99999,a=>a.variants[0].rows[0].counts[0]=-1,a=>a.variants[0].rows[0].counts[0]=1.5,
+  a=>a.variants[3].threshold=2.5,a=>a.variants[0].rows[0].selectedEligible--,
+  a=>a.variants[0].rows[1]=structuredClone(a.variants[0].rows[0]),a=>a.variants[0].categoryCounts.High++,
+  a=>a.variants[0].eligible++,a=>a.variants[0].omitted++,a=>a.total++,a=>a.unknownExposure++,
+  a=>a.variants[0].rows[0].counts[2]++,a=>a.variants[4].minimumCoverage=27,
+ ];
  for(const edit of edits){const a=structuredClone(artifact);edit(a);assert.throws(()=>validatePatternArtifact(a,snapshot,skills));}
 });
 test('absolute difference ordering retains sign, stable ties and unavailable last',()=>{
- const base=buildSkillExposureRow(skills.skills[0],'High',[10,20,10,20],null);
+ const base=buildSkillExposureRow(skills.skills[0],'High',[10,20,10,20]);
  const rows=[{...base,skill:{...base.skill,id:'b'},difference:5},{...base,skill:{...base.skill,id:'a'},difference:-5},{...base,skill:{...base.skill,id:'c'},difference:null}];
  assert.deepEqual(sortPatterns(rows).map(r=>r.skill.id),['a','b','c']);assert.equal(sparsePattern(base),false);assert(sparsePattern({...base,counts:[9,21,10,20]}));assert(sparsePattern({...base,selectedKnown:29}));
 });
 test('all sensitivity results project literal counts and contain no posterior inference',()=>{
- for(const baseline of ['overall','rest']as const){const d=patternSensitivity(artifact,skills,'Very high',baseline);assert.equal(d.size,35);for(const item of d.values()){assert.equal(item.values.length,27);for(const v of item.values){assert.equal(v.row.evidence,null);const[a,b,c,e]=v.row.counts;const expected=a+b&&(baseline==='rest'?c+e:a+b+c+e)?100*(a/(a+b)-(baseline==='rest'?c/(c+e):(a+c)/(a+b+c+e))):null;if(expected!==null)assert(Math.abs(v.row.difference!-expected)<1e-10);else assert.equal(v.row.difference,null);}}}
+ for(const baseline of ['overall','rest']as const){const d=patternSensitivity(artifact,skills,'Very high',baseline);assert.equal(d.size,35);for(const item of d.values()){assert.equal(item.values.length,27);for(const v of item.values){assert(!Object.hasOwn(v.row,'evidence'));assert(!Object.hasOwn(v.row,'restEvidence'));assert(!Object.hasOwn(v.row,'posterior'));const[a,b,c,e]=v.row.counts;const expected=a+b&&(baseline==='rest'?c+e:a+b+c+e)?100*(a/(a+b)-(baseline==='rest'?c/(c+e):(a+c)/(a+b+c+e))):null;if(expected!==null)assert(Math.abs(v.row.difference!-expected)<1e-10);else assert.equal(v.row.difference,null);}}}
 });
 test('continuous similarity uses19/20/35joint boundaries, symmetry, extremes and statistics independence',()=>{
  const original=buildOccupationProfiles(snapshot,skills).nodes[0],a={...original,importance:Array(35).fill(1)},b={...original,importance:Array(35).fill(5)};
@@ -78,5 +86,20 @@ test('independent literal sensitivity boundary and unavailable fixtures, includi
  ]as const){const s={...skills,skills:skills.skills.slice(0,1)},a=fixture(counts.map(c=>[[...c]])),r=patternSensitivity(a,s,'High',baseline).values().next().value!;assert.equal(r.directionChanges,direction);assert.equal(r.magnitudeSensitive,magnitude);const[h,row]=parseCsv(skillPatternsCsv(a,s,'High',baseline,3));assert.equal(row[h.indexOf('Direction changes')],String(direction));assert.equal(row[h.indexOf('Magnitude sensitive')],String(magnitude));}
  const s={...skills,skills:skills.skills.slice(0,6).map((x,i)=>({...x,id:`s0${i+1}`}))},a=fixture([[60,59,58,57,56,55],[60,59,58,57,56,57]].map(v=>v.map(n=>[n,100-n,50,50])));a.variants.forEach(v=>v.rows.forEach((r,i)=>r.skillId=s.skills[i].id));assert.deepEqual([...patternSensitivity(a,s,'High','rest')].filter(([,v])=>v.topFiveChanges).map(([id])=>id),['s05','s06']);
  const one={...skills,skills:skills.skills.slice(0,1)};const missing=patternSensitivity(fixture([[[0,0,20,80]],[[0,0,20,80]]]),one,'High','rest').values().next().value!;assert.equal(missing.min,null);assert.equal(missing.max,null);assert.equal(missing.unavailable,2);assert(!missing.directionChanges&&!missing.magnitudeSensitive&&!missing.topFiveChanges);
- for(const c of[[10,19,10,20],[10,20,10,19],[9,21,10,20],[10,20,9,21]])assert(sparsePattern(buildSkillExposureRow(skills.skills[0],'High',c as [number,number,number,number],null)));assert(!sparsePattern(buildSkillExposureRow(skills.skills[0],'High',[10,20,10,20],null)));
+ for(const c of[[10,19,10,20],[10,20,10,19],[9,21,10,20],[10,20,9,21]])assert(sparsePattern(buildSkillExposureRow(skills.skills[0],'High',c as [number,number,number,number])));assert(!sparsePattern(buildSkillExposureRow(skills.skills[0],'High',[10,20,10,20])));
+});
+
+test('schema 2 rejects every legacy inference field even in otherwise valid directly validated artifacts',()=>{
+ assert.equal(artifact.schemaVersion,2);assert.equal(artifact.method,'occupational-skill-patterns-descriptive-v2');
+ assert(!Object.hasOwn(artifact,'model'));assert(!Object.hasOwn(artifact.parameters,'prior'));assert(!Object.hasOwn(artifact.parameters,'draws'));
+ assert(artifact.variants.every(v=>v.rows.every(r=>!Object.hasOwn(r,'posterior'))));
+ const edits:((a:any)=>void)[]=[a=>a.schemaVersion=1,a=>a.method='occupational-skill-patterns-v1',
+  a=>a.model='independent-beta-binomial-v1',a=>a.model=null,a=>a.model=undefined,a=>a.parameters.prior=[1,1],a=>a.parameters.prior=null,
+  a=>a.parameters.prior=undefined,a=>a.parameters.draws=20000,a=>a.parameters.draws=null,a=>a.parameters.draws=undefined,
+  a=>a.variants[0].rows[0].posterior=null,a=>a.variants[0].rows[0].posterior={},a=>a.variants[0].rows[0].posterior=undefined,
+  a=>a.variants[3].rows[0].posterior=null,a=>a.variants[4].rows[0].posterior={},
+ ];
+ // Direct validation deliberately bypasses the byte pin: semantic schema checks must still reject a repinned legacy payload.
+ for(const edit of edits){const a=structuredClone(artifact);edit(a);assert.throws(()=>validatePatternArtifact(a,snapshot,skills));}
+ const [header]=parseCsv(skillPatternsCsv(artifact,skills,'High','rest',3));assert(!header.includes('Model'));assert(header.includes('Method'));
 });

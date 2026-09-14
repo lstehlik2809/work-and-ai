@@ -2,18 +2,20 @@ import type {Snapshot} from './types';
 import type {SkillsData} from '../search/skills';
 import type {OccupationMapData} from './occupation-map';
 import {spaceOccupationMap} from './occupation-map-spacing';
+import {CONTINUOUS_MAP_POLICY, continuousProfilePayload} from './occupation-map-continuous';
 
 export type ProjectionMethod = 'pca' | 'umap';
 type NeighborhoodScores = {'5': number; '10': number; '20': number};
 export interface UmapProjection {
-  schemaVersion: 1;
+  schemaVersion: 2;
+  policy: typeof CONTINUOUS_MAP_POLICY;
   release: string;
   profileSha256: string;
-  defaultProjection: ProjectionMethod;
+  defaultProjection: 'umap';
   method: 'umap';
-  parameters: {n_neighbors: number; min_dist: number; n_components: 2; metric: 'precomputed-jaccard'; random_state: 11; n_epochs: 500};
+  parameters: {n_neighbors: number; min_dist: number; n_components: 2; metric: 'precomputed-continuous'; random_state: 11; n_epochs: 500};
   versions: Record<string, string>;
-  evaluation: {pca: NeighborhoodScores; umap: NeighborhoodScores; summary: string};
+  evaluation: {baseline: NeighborhoodScores; umap: NeighborhoodScores; summary: string};
   nodes: {code: string; x: number; y: number}[];
 }
 
@@ -22,11 +24,7 @@ async function sha256(bytes: ArrayBuffer): Promise<string> {
 }
 
 export async function occupationProfileFingerprint(snapshot: Snapshot, skills: SkillsData, model: OccupationMapData): Promise<string> {
-  const profile = JSON.stringify({
-    release: snapshot.release.id,
-    skills: skills.skills.map(skill => skill.id),
-    occupations: model.nodes.map(node => [node.occupation.code, ...skills.skills.map((_, i) => node.importantSkills.includes(i) ? 1 : 0)]),
-  });
+  const profile = JSON.stringify(continuousProfilePayload(snapshot, skills, model));
   return sha256(new TextEncoder().encode(profile).buffer);
 }
 
@@ -47,17 +45,19 @@ function validateCoordinates(value: unknown, model: OccupationMapData): asserts 
 }
 
 export function validateUmapProjection(value: unknown, snapshot: Snapshot, model: OccupationMapData, profileSha256: string): UmapProjection {
-  if (!record(value) || value.schemaVersion !== 1 || value.release !== snapshot.release.id || value.method !== 'umap'
-    || !['pca', 'umap'].includes(value.defaultProjection as string)
+  if (!record(value) || value.schemaVersion !== 2 || value.release !== snapshot.release.id || value.method !== 'umap'
+    || value.defaultProjection !== 'umap'
+    || !record(value.policy) || Object.keys(value.policy).length !== Object.keys(CONTINUOUS_MAP_POLICY).length
+    || !Object.entries(CONTINUOUS_MAP_POLICY).every(([key, expected]) => (value.policy as Record<string, unknown>)[key] === expected)
     || typeof value.profileSha256 !== 'string' || !/^[a-f0-9]{64}$/.test(value.profileSha256) || value.profileSha256 !== profileSha256) throw Error('UMAP projection metadata or skill profile is incompatible.');
   const parameters = value.parameters;
   if (!record(parameters) || !Number.isInteger(parameters.n_neighbors) || (parameters.n_neighbors as number) < 2 || (parameters.n_neighbors as number) >= model.nodes.length
-    || !boundedNumber(parameters.min_dist) || parameters.n_components !== 2 || parameters.metric !== 'precomputed-jaccard'
+    || !boundedNumber(parameters.min_dist) || parameters.n_components !== 2 || parameters.metric !== 'precomputed-continuous'
     || parameters.random_state !== 11 || parameters.n_epochs !== 500) throw Error('UMAP projection parameters are invalid.');
   if (!record(value.versions) || !Object.keys(value.versions).length || Object.values(value.versions).some(version => typeof version !== 'string' || !version.trim())) throw Error('UMAP version metadata is invalid.');
   const evaluation = value.evaluation;
   if (!record(evaluation) || typeof evaluation.summary !== 'string' || !evaluation.summary.trim()) throw Error('UMAP evaluation metadata is invalid.');
-  for (const method of ['pca', 'umap']) {
+  for (const method of ['baseline', 'umap']) {
     const scores = evaluation[method];
     if (!record(scores) || !['5', '10', '20'].every(k => boundedNumber(scores[k]))) throw Error('UMAP neighborhood metrics are invalid.');
   }

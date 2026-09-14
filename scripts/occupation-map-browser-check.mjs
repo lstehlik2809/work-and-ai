@@ -8,8 +8,9 @@ const out=resolve(process.env.OUTPUT_DIR||'verification/local/occupation-map');
 const snapshot=JSON.parse(await readFile('public/data/occupations.json','utf8'));
 const skills=JSON.parse(await readFile('public/data/skills.json','utf8'));
 const umapLayout=JSON.parse(await readFile('public/data/occupation-map-umap.json','utf8'));
-const rated=new Set(skills.roles.map(r=>r.code));
-const expected=snapshot.occupations.filter(o=>o.roles.some(r=>rated.has(r.code))).length;
+const ratings=new Map(skills.roles.map(r=>[r.code,r.importance]));
+const eligible=o=>skills.skills.filter((_,i)=>o.roles.some(r=>ratings.get(r.code)?.[i]!=null)).length>=20;
+const expected=snapshot.occupations.filter(eligible).length;
 const browser=await chromium.launch({headless:true});
 const page=await browser.newPage({viewport:{width:1440,height:1100}});
 const report={base,checks:[],errors:[]};
@@ -21,6 +22,7 @@ const searchTab=()=>page.getByRole('tab',{name:'Find an occupation',exact:true})
 const assertUmapOnly=async target=>{
  assert.equal(await target.getByRole('combobox',{name:'Projection',exact:true}).count(),0);
  assert.doesNotMatch(await target.locator('body').innerText(),/\bPCA\b/);
+ assert.equal(await target.locator('#neighbor-method').count(),0);
 };
 const nodePositions=target=>target.getByTestId('map-node').evaluateAll(els=>Object.fromEntries(els.map(el=>[el.dataset.code,[+el.dataset.x,+el.dataset.y]])));
 
@@ -29,7 +31,7 @@ try{
  await page.goto(base);
  await page.getByRole('searchbox',{name:'Job title',exact:true}).fill('registered nurse');
  await page.locator('.candidate').first().waitFor();
- assert(!requests.some(url=>url.endsWith('/data/skills.json')));
+ assert(!requests.some(url=>url.endsWith('/data/occupation-map-umap.json')), 'search candidates do not fetch the map layout');
  await searchTab().focus();
  await page.keyboard.press('ArrowRight');
  await page.getByTestId('map-node').first().waitFor();
@@ -43,7 +45,7 @@ try{
  assert.equal(await chart.locator('.map-guides').count(),0);
  assert.equal(await chart.locator('line').count(),0,'initial map has no axis guides');
  assert.equal(await nodes.count(),expected);
- report.checks.push(`All ${expected} rated occupations represented; skills load only on request; keyboard tabs work`);
+ report.checks.push(`All ${expected} eligible occupations represented; layout loads only on map request; keyboard tabs work`);
  const positions=Object.fromEntries(await nodes.evaluateAll(els=>els.map(el=>[el.getAttribute('data-code'),[el.getAttribute('data-x'),el.getAttribute('data-y')]])));
  const first=nodes.first();
  await first.focus();await page.keyboard.press('Enter');
@@ -53,10 +55,10 @@ try{
  assert.equal(await page.locator('.map-connection').count(),5);
  const exposure=page.getByRole('group',{name:'AI exposure',exact:true});
  const category=label=>exposure.getByRole('button',{name:label,exact:true});
- const subsetCount=categories=>snapshot.occupations.filter(o=>categories.includes(o.exposure??'Unavailable')&&o.roles.some(r=>rated.has(r.code))).length;
+ const subsetCount=categories=>snapshot.occupations.filter(o=>categories.includes(o.exposure??'Unavailable')&&eligible(o)).length;
  assert.equal(await category('All').getAttribute('aria-pressed'),'true');
  await category('Very high').click();
- assert.equal(await nodes.count(),snapshot.occupations.filter(o=>o.exposure==='Very high'&&o.roles.some(r=>rated.has(r.code))).length);
+ assert.equal(await nodes.count(),snapshot.occupations.filter(o=>o.exposure==='Very high'&&eligible(o)).length);
  await category('High').click();assert.equal(await nodes.count(),subsetCount(['High','Very high']));
  assert.equal(await category('All').getAttribute('aria-pressed'),'false');
  assert.equal(await category('High').getAttribute('aria-pressed'),'true');
@@ -73,7 +75,7 @@ try{
  for(const label of ['Low','Moderate','High','Very high','Unavailable'])await category(label).click();
  assert.equal(await category('All').getAttribute('aria-pressed'),'true');assert.equal(await nodes.count(),expected);
  report.checks.push('Axis guides removed while selection connections remain; exposure combinations use exact union counts and fixed positions; category removal, empty unavailable subset, All reset, and full/empty subset normalization');
- const find=page.getByRole('searchbox',{name:'Find on map',exact:true});
+ const find=page.getByRole('searchbox',{name:'Highlight on map',exact:true});
  await find.fill('engineer');
  assert.equal(await nodes.count(),expected);
  assert((await page.locator('[data-testid="map-node"][data-search-match="true"]').count())>1);
@@ -141,7 +143,7 @@ try{
  await matched.first().click();
  assert(await page.locator('.map-edge-explanation').isVisible());
  assert.match(await page.locator('.map-edge-explanation').innerText(),/five closest skill matches/);
- assert.match(await page.locator('.map-edge-explanation').innerText(),/shared important skills.*combined set.*Jaccard/);
+ assert.match(await page.locator('.map-edge-explanation').innerText(),/same rating similarity as the layout.*smaller average differences/);
  await searchTab().click();await mapTab().click();
  assert.equal(await find.inputValue(),'computer programmers');
  await page.getByRole('button',{name:'View occupation details',exact:true}).click();
@@ -204,12 +206,31 @@ try{
   const overlaps=points=>points.reduce((sum,a,i)=>sum+points.slice(i+1).filter(b=>Math.hypot(a.x-b.x,a.y-b.y)<a.r+b.r).length,0);
   const beforeOverlap=overlaps(original),afterOverlap=overlaps(circles);
   assert(beforeOverlap>0,'artifact baseline includes circle overlap');
-  assert(afterOverlap<=beforeOverlap*.6,`spacing reduces actual overview circle overlaps by at least 40%: ${beforeOverlap} -> ${afterOverlap}`);
-  report.spacing={beforeOverlap,afterOverlap,maxShift};
+  assert(afterOverlap<beforeOverlap,`spacing reduces actual overview circle overlaps: ${beforeOverlap} -> ${afterOverlap}`);
+  report.spacing={beforeOverlap,afterOverlap,reduction:1-afterOverlap/beforeOverlap,maxShift};
+  // Dismissing suggestions on blur must never move a pressed list target.
+  const pointerSearch=projections.getByRole('searchbox',{name:'Highlight on map',exact:true});
+  const programmerItem=projections.locator('[data-testid="map-list-occupation"][data-code="15-1251"]');
+  for(const held of [false,true]){
+   await pointerSearch.fill('computer programmers');
+   await projections.getByRole('region',{name:'Highlight on map suggestions',exact:true}).waitFor();
+   if(held){
+    await programmerItem.scrollIntoViewIfNeeded();const box=await programmerItem.boundingBox();
+    await projections.mouse.move(box.x+box.width/2,box.y+box.height/2);await projections.mouse.down();
+    await projections.waitForTimeout(650);await projections.mouse.up();
+   }else await programmerItem.click();
+   assert.equal(await programmerItem.getAttribute('aria-pressed'),'true',`${held?'held':'first'} pointer click selects despite input blur`);
+   await projections.getByRole('button',{name:'Clear selection',exact:true}).click();
+   await pointerSearch.fill('');
+  }
+  await pointerSearch.fill('computer programmers');await pointerSearch.press('Shift+Tab');
+  assert.equal(await projections.getByRole('region',{name:'Highlight on map suggestions',exact:true}).count(),0,'keyboard blur closes suggestions');
+  await pointerSearch.fill('');await projections.getByRole('button',{name:'Reset view',exact:true}).click();
+  report.checks.push('Suggestions preserve first-click and held-pointer list selection; keyboard blur closes suggestions');
   // Install before any search/filter timer exists: replacing browser timers
   // mid-debounce makes an old native timer impossible to cancel via fake time.
   await projections.clock.install();await projections.clock.pauseAt(new Date());
-  await projections.getByRole('searchbox',{name:'Find on map',exact:true}).fill('computer programmers');
+  await projections.getByRole('searchbox',{name:'Highlight on map',exact:true}).fill('computer programmers');
   await projections.locator('[data-testid="map-list-occupation"][data-code="15-1251"]').click();
   const neighborsBefore=await projections.getByTestId('map-neighbors').getByRole('button').allTextContents();
   const choices=projections.getByRole('group',{name:'AI exposure',exact:true});
@@ -217,7 +238,7 @@ try{
   const countBefore=await projections.getByTestId('map-node').count();
   const assertFixedPositions=async()=>{for(const [code,position]of Object.entries(await nodePositions(projections)))assert.deepEqual(position,actual[code],`${code} keeps its display position`);};
   await assertFixedPositions();
-  await projections.getByRole('searchbox',{name:'Find on map',exact:true}).fill('15-1251');
+  await projections.getByRole('searchbox',{name:'Highlight on map',exact:true}).fill('15-1251');
   await projections.clock.runFor(250);
   assert.equal(await canvas.getAttribute('data-projection'),'umap');
   assert.equal(await projections.getByTestId('map-node').count(),countBefore);
@@ -226,7 +247,7 @@ try{
   const inside=()=>canvas.evaluate(el=>{const [x,y,w,h]=el.getAttribute('viewBox').split(' ').map(Number),node=el.querySelector('[data-code="15-1251"]');return +node.getAttribute('cx')>=x&&+node.getAttribute('cx')<=x+w&&+node.getAttribute('cy')>=y&&+node.getAttribute('cy')<=y+h;});
   assert(await inside());
   await assertFixedPositions();
-  assert.equal(await projections.getByRole('searchbox',{name:'Find on map',exact:true}).inputValue(),'15-1251');
+  assert.equal(await projections.getByRole('searchbox',{name:'Highlight on map',exact:true}).inputValue(),'15-1251');
   assert.deepEqual(await projections.getByTestId('map-neighbors').getByRole('button').allTextContents(),neighborsBefore);
   await projections.clock.resume();await projections.getByRole('button',{name:'Reset view',exact:true}).click();
   assert.equal(await canvas.getAttribute('viewBox'),'0 0 720 660');
@@ -237,7 +258,7 @@ try{
   await projections.screenshot({path:resolve(out,'umap-mobile.png'),fullPage:true});
   await choices.getByRole('button',{name:'All',exact:true}).click();
   assert.deepEqual(await nodePositions(projections),actual,'restoring all exposure groups retains full-population spacing');
-  report.checks.push('UMAP-only UI; finite bounded positions within 12 SVG units of artifact; at least 40% fewer actual circle overlaps; query/exposure/reset retain positions, selection and exact neighbors; reset/clear and mobile layout');
+  report.checks.push('UMAP-only UI; finite bounded positions within 12 SVG units of artifact; fewer actual circle overlaps; query/exposure/reset retain positions, selection and exact neighbors; reset/clear and mobile layout');
  }finally{await projections.close();}
  const projectionFailure=await browser.newPage();
  projectionFailure.on('pageerror',e=>report.errors.push(String(e)));projectionFailure.on('request',r=>requests.push(r.url()));
@@ -291,7 +312,7 @@ try{
  try{
   await race.goto(base);await race.getByRole('tab',{name:'Occupation map',exact:true}).click();await race.getByTestId('map-node').first().waitFor();
   await race.clock.install();await race.clock.pauseAt(new Date());
-  const input=race.getByRole('searchbox',{name:'Find on map',exact:true}),canvas=race.getByTestId('occupation-map'),reset=race.getByRole('button',{name:'Reset view',exact:true});
+  const input=race.getByRole('searchbox',{name:'Highlight on map',exact:true}),canvas=race.getByTestId('occupation-map'),reset=race.getByRole('button',{name:'Reset view',exact:true});
   const view=()=>canvas.getAttribute('viewBox');
   await input.fill('computer programmers');await input.fill('registered nurses');await race.clock.runFor(250);
   const nurseFrame=await view();

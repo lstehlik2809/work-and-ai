@@ -1,9 +1,7 @@
 import type {Exposure, Snapshot} from './types';
 import type {Skill, SkillsData} from '../search/skills';
 import {buildOccupationProfiles, EXPOSURE_LEVELS, IMPORTANT_SKILL_THRESHOLD} from './occupation-map';
-import {bayesianPrevalence} from './bayesian-prevalence';
-import type {BayesianEvidence, Contingency} from './bayesian-prevalence';
-export type {Contingency} from './bayesian-prevalence';
+export type Contingency = [number, number, number, number]; // selected important/below, rest important/below
 export type SkillBaseline = 'overall' | 'rest';
 export interface SkillExposureRow {
   skill: Skill;
@@ -16,7 +14,6 @@ export interface SkillExposureRow {
   overallKnown: number;
   overallImportant: number;
   overallPrevalence: number | null;
-  restEvidence: BayesianEvidence | null;
   baseline: SkillBaseline;
   baselineKnown: number;
   baselineImportant: number;
@@ -24,11 +21,9 @@ export interface SkillExposureRow {
   ratio: number | null;
   difference: number | null; // percentage points against the active baseline
   direction: 'more' | 'less' | 'equal' | 'unavailable';
-  evidence: BayesianEvidence | null;
 }
 
-// Project from immutable disjoint counts/posteriors; toggles never rerun draws or
-// scale an already-scaled interval. The whole includes the selected occupations.
+// Project directly from disjoint counts. The whole includes the selected occupations.
 export function selectSkillBaseline(row: SkillExposureRow, baseline: SkillBaseline): SkillExposureRow {
   const baselineKnown = baseline === 'overall' ? row.overallKnown : row.otherKnown;
   const baselineImportant = baseline === 'overall' ? row.overallImportant : row.counts[2];
@@ -37,25 +32,21 @@ export function selectSkillBaseline(row: SkillExposureRow, baseline: SkillBaseli
   const ratio = selected === null || baselinePrevalence === null || (selected === 0 && baselinePrevalence === 0)
     ? null : baselinePrevalence === 0 ? Infinity : selected / baselinePrevalence;
   const difference = selected === null || baselinePrevalence === null ? null : 100 * (selected - baselinePrevalence);
-  const scale = baseline === 'overall' ? row.otherKnown / row.overallKnown : 1;
-  const evidence = baseline === 'rest' || row.restEvidence === null ? row.restEvidence : {
-    ...row.restEvidence,
-    meanDifference: scale * row.restEvidence.meanDifference,
-    interval: row.restEvidence.interval.map(value => scale * value) as [number, number],
-  };
-  return {...row, baseline, baselineKnown, baselineImportant, baselinePrevalence, ratio, difference, evidence,
+  return {...row, baseline, baselineKnown, baselineImportant, baselinePrevalence, ratio, difference,
     direction: difference === null ? 'unavailable' : difference > 0 ? 'more' : difference < 0 ? 'less' : 'equal'};
 }
 
-export function buildSkillExposureRow(skill: Skill, category: Exposure, counts: Contingency, restEvidence: BayesianEvidence | null = bayesianPrevalence(counts)): SkillExposureRow {
+export function buildSkillExposureRow(skill: Skill, category: Exposure, counts: Contingency): SkillExposureRow {
+  if (counts.length !== 4 || counts.some(n => !Number.isSafeInteger(n) || n < 0)
+    || !Number.isSafeInteger(counts.reduce((sum, n) => sum + n, 0))) throw Error('Counts and totals must be safe nonnegative integers');
   const selectedKnown = counts[0] + counts[1], otherKnown = counts[2] + counts[3];
   const overallKnown = selectedKnown + otherKnown, overallImportant = counts[0] + counts[2];
   return selectSkillBaseline({skill, category, counts, selectedKnown, otherKnown,
     selectedPrevalence: selectedKnown ? counts[0] / selectedKnown : null,
     otherPrevalence: otherKnown ? counts[2] / otherKnown : null,
     overallKnown, overallImportant, overallPrevalence: overallKnown ? overallImportant / overallKnown : null,
-    restEvidence, baseline: 'overall', baselineKnown: 0, baselineImportant: 0,
-    baselinePrevalence: null, ratio: null, difference: null, direction: 'unavailable', evidence: null}, 'overall');
+    baseline: 'overall', baselineKnown: 0, baselineImportant: 0,
+    baselinePrevalence: null, ratio: null, difference: null, direction: 'unavailable'}, 'overall');
 }
 
 export function rankSkillPatterns(rows: SkillExposureRow[]): SkillExposureRow[] {

@@ -1,0 +1,49 @@
+{
+  "id": "PLAN-CONTINUOUS-rev1-AS-CONTINUOUS-rev1",
+  "writtenBeforeRuns": true,
+  "profileSha256": "4183a4ca9ecea7bf0b2f17492adc09dd69558c1e8f474742ea61d4825d92d8e6",
+  "population": "771 occupations with at least20 known mean ratings;35 numeric or null dimensions",
+  "n_neighbors": [
+    15,
+    30,
+    60
+  ],
+  "min_dist": [
+    0.1,
+    0.3,
+    0.5
+  ],
+  "seeds": [
+    11,
+    29,
+    47
+  ],
+  "fixed": {
+    "n_components": 2,
+    "metric": "precomputed",
+    "n_epochs": 500,
+    "n_jobs": 1,
+    "init": "spectral",
+    "spread": 1.0,
+    "learning_rate": 1.0,
+    "local_connectivity": 1.0,
+    "set_op_mix_ratio": 1.0,
+    "repulsion_strength": 1.0,
+    "negative_sample_rate": 5,
+    "transform_seed": 42,
+    "angular_rp_forest": false,
+    "low_memory": true,
+    "densmap": false,
+    "unique": false
+  },
+  "sourceMetric": "Mean absolute importance difference divided by4 over at least20 jointly rated skills; unsupported pairs absent in CSR, supported zeros and diagonal explicit; no imputation",
+  "tieTolerance": 1E-12,
+  "recall": "For kth source distance t, L={d<t-tolerance}, T={abs(d-t)<=tolerance}, q=k-|L|. E is Euclidean displayed top-k, ties canonical code. R=(|E intersect L|+min(q,|E intersect T|))/k. Mean all rows at k=5,10,20; S is mean of these three recalls.",
+  "display": "Normalize and round raw coordinates8 decimals then exact runtime TS spaceOccupationMap without further rounding. Baseline full historical772 spacing then restrict771 without respacing.",
+  "qualification": "All three seeds successful; mean S >= historical displayed baseline S +0.02; mean recall >= baseline at each k; every seed S > baseline S.",
+  "selection": "Highest qualifying mean S, then highest minimum seed S, then prescribed grid order. Ship seed11. If no configuration qualifies halt promotion; no fallback or tuning.",
+  "stability": "Supplementary exact numeric/null-profile identity overlap among displayed top-k, all within-configuration seed pairs.",
+  "diagnostics": "Unsupported pair count, minimum supported neighbors, distinct profiles and singleton/repeated recall groups; raw recall supplementary.",
+  "reproduction": "One selected seed-11 confirmation rerun, outside selection; save and compare rounded coordinates exactly.",
+  "limits": "In-sample descriptive metric, not external occupational ground truth. Duplicate profiles may separate algorithmically. Global axes and distances are not interpretable. Do not select using appearance. No extra grid phase."
+}

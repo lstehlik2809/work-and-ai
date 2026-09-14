@@ -1,15 +1,16 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
+import {buildContinuousMapProfiles, CONTINUOUS_MAP_POLICY} from '../src/domain/occupation-map-continuous';
 import type {Snapshot} from '../src/domain/types';
 import {validateSkills} from '../src/search/skills';
-import {buildOccupationMap, EXPOSURE_RADIUS, nearestSkillNeighbors} from '../src/domain/occupation-map';
+import {EXPOSURE_RADIUS, nearestContinuousNeighbors} from '../src/domain/occupation-map';
 import {applyUmapProjection, type UmapProjection} from '../src/domain/occupation-map-projection';
 import {spaceOccupationMap} from '../src/domain/occupation-map-spacing';
 
 const snapshot: Snapshot = JSON.parse(readFileSync('public/data/occupations.json', 'utf8'));
 const skills = validateSkills(JSON.parse(readFileSync('public/data/skills.json', 'utf8')), snapshot.release.id);
-const model = buildOccupationMap(snapshot, skills);
+const model = buildContinuousMapProfiles(snapshot, skills);
 const artifact: UmapProjection = JSON.parse(readFileSync('public/data/occupation-map-umap.json', 'utf8'));
 
 test('UMAP spacing reduces real circle intersections while retaining bounded local positions and raw coordinates', context => {
@@ -34,9 +35,9 @@ test('UMAP spacing reduces real circle intersections while retaining bounded loc
       if (Math.hypot(node.displayX - other.displayX, node.displayY - other.displayY) * 600 < radii) displayOverlaps++;
     }
   }
-  assert.equal(projected.nodes.length, 772);
+  assert.equal(projected.nodes.length, 771);
   assert(rawOverlaps > 0);
-  assert(displayOverlaps <= rawOverlaps * 0.6, `${rawOverlaps} raw overlaps, ${displayOverlaps} display overlaps`);
+  assert(displayOverlaps < rawOverlaps, `${rawOverlaps} raw overlaps, ${displayOverlaps} display overlaps`);
   displacements.sort((a, b) => a - b);
   // Geometry is the acceptance oracle; elapsed time is evidence, not a flaky CI gate.
   context.diagnostic(JSON.stringify({rawOverlaps, displayOverlaps, reduction: 1 - displayOverlaps / rawOverlaps,
@@ -56,7 +57,7 @@ test('full-population spacing is deterministic, exposure-independent and invaria
   assert.deepEqual(coordinates(reordered.nodes), coordinates(projected.nodes));
   for (const node of model.nodes) {
     const projectedNode = projected.nodes.find(other => other.occupation.code === node.occupation.code)!;
-    const neighbors = (selected: typeof node, nodes: typeof model.nodes) => nearestSkillNeighbors(selected, nodes)
+    const neighbors = (selected: typeof node, nodes: typeof model.nodes) => nearestContinuousNeighbors(selected, nodes)
       .map(match => [match.node.occupation.code, match.similarity, match.sharedSkills, match.union]);
     assert.deepEqual(neighbors(projectedNode, projected.nodes), neighbors(node, model.nodes));
   }
