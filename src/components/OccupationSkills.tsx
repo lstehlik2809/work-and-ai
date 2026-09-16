@@ -33,7 +33,7 @@ export default function OccupationSkills({role, data, compact = false}: Props) {
       <p className="hint">For {role?.title}. Ranked by O*NET importance (3–5 on a 1–5 scale), not your proficiency or a skill’s AI exposure.</p>
       {important.length ? list(visible) : <p className="hint">{absence}</p>}
       {remaining.length > 0 && <details className="occupation-skills-details"><summary>Show {remaining.length} more important skills</summary>{list(remaining)}</details>}
-      <p className="source-line">{known} of {data.skills.length} skills have ratings. Missing ratings do not mean a skill is unimportant. {role&&<><a href={rolePage(role.code)}>Read the O*NET role</a> (live page may be newer) · <a href={role.source}>Pinned {data.onet} · {role.code}</a></>}.</p>
+      <p className="source-line">{known} of {data.skills.length} skills have ratings. Missing ratings do not mean a skill is unimportant. {role&&<><a href={rolePage(role.code)}>Read the O*NET role</a> (live page may be newer) · <a href={role.source}>Pinned role description · {data.onet} · {role.code}</a></>}. Skill ratings: <a href="https://www.onetcenter.org/dictionary/31.0/excel/essential_skills.html">O*NET essential skills</a> · <a href="https://www.onetcenter.org/dictionary/31.0/excel/transferable_skills.html">O*NET transferable skills</a>.</p>
     </> : <p className="hint">{absence}</p>}
   </section>;
 }
