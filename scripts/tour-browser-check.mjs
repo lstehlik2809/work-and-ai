@@ -9,8 +9,8 @@ const base = process.env.TEST_URL || 'http://127.0.0.1:4185/work-and-ai/';
 const server = process.env.TEST_URL ? null : spawn(process.execPath, ['node_modules/vite/bin/vite.js', 'preview', '--host', '127.0.0.1', '--port', '4185', '--strictPort'], {stdio: 'pipe', windowsHide: true});
 const out = 'verification/local/tour-browser';
 const key = 'work-and-ai:guided-tour:v1';
-const titles = ['Find an occupation', 'Find by skills', 'Describe your work', 'Explore the occupation map', 'Compare skill patterns', 'Read the sources', 'Come back anytime'];
-const productFiles = ['src/App.tsx', 'src/components/GuidedTour.tsx', 'src/components/guided-tour.css'];
+const titles = ['Find an occupation', 'Find by skills', 'Describe your work', 'Explore the occupation map', 'Compare job families', 'Compare skill patterns', 'Read the sources', 'Come back anytime'];
+const productFiles = ['src/App.tsx', 'src/components/GuidedTour.tsx', 'src/components/OccupationMap.tsx', 'src/components/guided-tour.css'];
 const report = {status: 'FAIL', date: new Date().toISOString(), productSha256: Object.fromEntries(await Promise.all(productFiles.map(async file => [file, createHash('sha256').update(await readFile(file)).digest('hex')]))), engines: []};
 await mkdir(out, {recursive: true});
 const dialog = page => page.locator('#guided-tour[open]');
@@ -20,7 +20,7 @@ async function checkStep(page, index) {
   await dialog(page).getByRole('heading', {name: titles[index], exact: true}).waitFor();
   await settled(page);
   assert.equal(await dialog(page).count(), 1);
-  assert.match(await dialog(page).innerText(), new RegExp(`${index + 1}\\s*(of|/)\\s*7`, 'i'));
+  assert.match(await dialog(page).innerText(), new RegExp(`${index + 1}\\s*(of|/)\\s*${titles.length}`, 'i'));
   assert(await page.evaluate(() => document.querySelector('#guided-tour').contains(document.activeElement)), 'focus remains inside modal');
   const target = await page.locator('.tour-spotlight').getAttribute('data-target');
   assert(await page.locator(target).isVisible(), `visible target at step ${index + 1}`);
@@ -48,7 +48,17 @@ async function walk(page, {screenshots, back = false} = {}) {
   for (let i = 0; i < titles.length; i++) {
     await checkStep(page, i);
     if (i === 3) { await page.locator('.map-canvas').waitFor(); await settled(page); }
-    if (i === 4) { await page.locator('.patterns-table tbody tr').first().waitFor(); await settled(page); }
+    if (i === 4) {
+      await page.getByTestId('family-exposure-heatmap').waitFor(); await settled(page);
+      assert.equal(await page.locator('.map-canvas').isVisible(), false);
+      if (back) {
+        await button(page, 'Back').click(); await checkStep(page, 3);
+        assert(await page.locator('.map-canvas').isVisible());
+        await button(page, 'Next').click(); await checkStep(page, 4);
+        assert(await page.getByTestId('family-exposure-heatmap').isVisible());
+      }
+    }
+    if (i === 5) { await page.locator('.patterns-table tbody tr').first().waitFor(); await settled(page); }
     if (screenshots) await page.screenshot({path: `${out}/${screenshots}-${i + 1}.png`});
     if (back && i === 2) { await button(page, 'Back').click(); await checkStep(page, 1); await button(page, 'Next').click(); await checkStep(page, 2); }
     await button(page, i === titles.length - 1 ? 'Finish' : 'Next').click();
@@ -79,7 +89,7 @@ try {
       await page.reload(); await page.waitForFunction(() => document.querySelector('#job-title')?.disabled === false); assert.equal(await dialog(page).count(), 0);
       await start(page); await button(page, 'Skip tour').click(); await page.reload(); await page.waitForFunction(() => document.querySelector('#job-title')?.disabled === false); assert.equal(await dialog(page).count(), 0);
       const firstSkip = await browser.newPage(); await firstSkip.goto(base); await checkStep(firstSkip, 0); await button(firstSkip, 'Skip tour').click(); await firstSkip.reload(); await firstSkip.waitForFunction(() => document.querySelector('#job-title')?.disabled === false); assert.equal(await dialog(firstSkip).count(), 0); await firstSkip.close();
-      result.checks.push('AS-01/02: delayed readiness, first visit, all seven steps, Back, completion, Skip, reload and replay');
+      result.checks.push('AS-01/02: delayed readiness, first visit, all eight steps, map/heatmap Back, completion, Skip, reload and replay');
 
       await start(page);
       for (const press of ['Tab', 'Tab', 'Tab', 'Tab', 'Shift+Tab', 'Shift+Tab', 'Shift+Tab', 'Shift+Tab']) { await page.keyboard.press(press); assert(await page.evaluate(() => document.querySelector('#guided-tour').contains(document.activeElement))); }
@@ -109,6 +119,23 @@ try {
       await page.getByRole('tab', {name: 'Occupation map', exact: true}).click(); await page.getByTestId('map-node').first().click(); await page.locator('#map-search').fill('nurse');
       await page.waitForTimeout(700); const mapBefore = await page.getByTestId('map-selection-caption').innerText(); await start(page); await walk(page);
       assert(await page.locator('#map-view').isVisible()); assert.equal(await page.locator('#map-search').inputValue(), 'nurse'); assert.equal(await page.getByTestId('map-selection-caption').innerText(), mapBefore);
+      const mapViewBefore = await page.getByTestId('occupation-map').getAttribute('viewBox');
+      const viewSwitch = page.getByRole('group', {name: 'Occupation view', exact: true});
+      await viewSwitch.getByRole('button', {name: 'By job family', exact: true}).click();
+      await page.locator('#family-heatmap-sort').selectOption('name');
+      const heatmapBefore = await page.getByTestId('family-exposure-heatmap').innerText();
+      await start(page); await walk(page, {back: true});
+      assert.equal(await viewSwitch.getByRole('button', {name: 'By job family', exact: true}).getAttribute('aria-pressed'), 'true');
+      assert.equal(await page.locator('#family-heatmap-sort').inputValue(), 'name');
+      assert.equal(await page.getByTestId('family-exposure-heatmap').innerText(), heatmapBefore);
+      await viewSwitch.getByRole('button', {name: 'Map', exact: true}).click();
+      await start(page); for (let i = 0; i < 4; i++) await button(page, 'Next').click();
+      await checkStep(page, 4); await escape(page);
+      assert.equal(await viewSwitch.getByRole('button', {name: 'Map', exact: true}).getAttribute('aria-pressed'), 'true');
+      assert.equal(await page.locator('#map-search').inputValue(), 'nurse');
+      assert.equal(await page.getByTestId('map-selection-caption').innerText(), mapBefore);
+      assert.equal(await page.getByTestId('occupation-map').getAttribute('viewBox'), mapViewBefore);
+      result.checks.push('Heatmap has dedicated visible step; replay preserves heatmap sort and chosen view; Escape from heatmap restores original map search/selection/zoom');
       await page.getByRole('tab', {name: 'Skill patterns', exact: true}).click(); await page.locator('#patterns-search').fill('Programming'); await page.locator('#patterns-baseline').selectOption('rest'); await page.locator('.pattern-sort').first().click();
       const patternsBefore = await page.locator('.patterns-table').innerText(); await start(page); await walk(page);
       assert(await page.locator('#patterns-view').isVisible()); assert.equal(await page.locator('#patterns-search').inputValue(), 'Programming'); assert.equal(await page.locator('#patterns-baseline').inputValue(), 'rest'); assert.equal(await page.locator('.patterns-table').innerText(), patternsBefore);
@@ -128,13 +155,13 @@ try {
       const failure = await context.newPage(); await returningVisitor(failure); let fail = true;
       await failure.route('**/data/skills.json', route => fail ? route.fulfill({status: 503, body: 'Unavailable'}) : route.continue());
       await failure.goto(base); await start(failure); for (let i = 0; i < 3; i++) await button(failure, 'Next').click();
-      await failure.getByRole('button', {name: 'Retry map reference'}).waitFor(); await checkStep(failure, 3); await button(failure, 'Next').click(); await checkStep(failure, 4); await escape(failure);
+      await failure.getByRole('button', {name: 'Retry map reference'}).waitFor(); await checkStep(failure, 3); await button(failure, 'Next').click(); await checkStep(failure, 4); await button(failure, 'Next').click(); await checkStep(failure, 5); await escape(failure);
       await failure.getByRole('tab', {name: 'Occupation map', exact: true}).click(); await failure.getByRole('button', {name: 'Retry map reference'}).waitFor(); fail = false; await failure.getByRole('button', {name: 'Retry map reference'}).click(); await failure.getByTestId('map-node').first().waitFor();
       await failure.close();
       const patternsFailure = await context.newPage(); await returningVisitor(patternsFailure); let corrupt = true;
       await patternsFailure.route('**/data/skill-patterns.json', route => corrupt ? route.fulfill({status: 200, contentType: 'application/json', body: '{}'}) : route.continue());
-      await patternsFailure.goto(base); await start(patternsFailure); for (let i = 0; i < 4; i++) await button(patternsFailure, 'Next').click();
-      await patternsFailure.getByRole('button', {name: 'Retry skill analysis'}).waitFor(); await checkStep(patternsFailure, 4); await escape(patternsFailure);
+      await patternsFailure.goto(base); await start(patternsFailure); for (let i = 0; i < 5; i++) await button(patternsFailure, 'Next').click();
+      await patternsFailure.getByRole('button', {name: 'Retry skill analysis'}).waitFor(); await checkStep(patternsFailure, 5); await escape(patternsFailure);
       await patternsFailure.locator('#job-title').fill('nurse'); await patternsFailure.locator('button.candidate').first().waitFor();
       await patternsFailure.getByRole('tab', {name: 'Skill patterns', exact: true}).click(); corrupt = false; await patternsFailure.getByRole('button', {name: 'Retry skill analysis'}).click(); await patternsFailure.locator('.patterns-table tbody tr').first().waitFor(); await patternsFailure.close();
       const focusRace = await context.newPage(); await returningVisitor(focusRace); let releaseFocus; const focusDelayed = new Promise(resolve => releaseFocus = resolve);

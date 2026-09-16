@@ -30,6 +30,17 @@ export function occupationFamilyCode(code: string): string {
   return code.slice(0, 2);
 }
 
+export function occupationFamilyName(code: string): string {
+  return OCCUPATION_FAMILIES.find(family => family.code === occupationFamilyCode(code))?.name ?? 'Unknown job family';
+}
+
+/** One entry per canonical BLS occupation, including occupations without skill ratings. */
+export function familyOccupationMembers<T extends {code: string; title: string}>(occupations: readonly T[], familyCode: string): T[] {
+  return [...new Map(occupations.filter(occupation => occupationFamilyCode(occupation.code) === familyCode)
+    .map(occupation => [occupation.code, occupation])).values()]
+    .sort((a, b) => a.title.localeCompare(b.title) || a.code.localeCompare(b.code));
+}
+
 export function representedOccupationFamilies(occupations: readonly {code: string}[]) {
   const represented = new Set(occupations.map(occupation => occupationFamilyCode(occupation.code)));
   return OCCUPATION_FAMILIES.filter(family => represented.has(family.code));

@@ -1,20 +1,24 @@
 import {useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react';
 import type {KeyboardEvent, PointerEvent, RefObject} from 'react';
 import TabHeader from './TabHeader';
+import FamilyExposureHeatmap from './FamilyExposureHeatmap';
+import {aggregateFamilyExposure} from '../domain/family-exposure';
+import type {FamilyExposure} from '../domain/family-exposure';
 import type {Exposure, Snapshot} from '../domain/types';
 import type {SkillsData} from '../search/skills';
 import {EXPOSURE_COLOR, EXPOSURE_LEVELS, EXPOSURE_RADIUS, nearestContinuousNeighbors} from '../domain/occupation-map';
 import {buildContinuousMapProfiles} from '../domain/occupation-map-continuous';
-import {occupationFamilyCode, representedOccupationFamilies} from '../domain/occupation-families';
+import {occupationFamilyCode, occupationFamilyName, representedOccupationFamilies} from '../domain/occupation-families';
 import type {MapOccupation, OccupationMapData} from '../domain/occupation-map';
 import {applyUmapProjection, loadUmapProjection} from '../domain/occupation-map-projection';
 import umapPin from '../domain/occupation-map-umap-pin.json';
 import './occupation-map.css';
 
-interface Props {snapshot: Snapshot; skills: SkillsData; onSelect: (code: string) => void}
+interface Props {snapshot: Snapshot; skills: SkillsData; onSelect: (code: string) => void; tourView?: 'map' | 'family' | null}
 const WIDTH = 720, HEIGHT = 660;
 const EXPOSURE_CHOICES = [...EXPOSURE_LEVELS, 'Unavailable'] as const;
 type ExposureChoice = typeof EXPOSURE_CHOICES[number];
+interface FamilyDrilldown {familyCode: string; familyName: string; exposure: FamilyExposure; count: number; mappedCount: number; sequence: number}
 const point = (node: MapOccupation) => ({x: 60 + node.displayX * 600, y: 30 + node.displayY * 600});
 const exposureOrder = (exposure: Exposure | null) => exposure === null ? -1 : EXPOSURE_LEVELS.indexOf(exposure);
 const categoryColor = (exposure: Exposure | null) => exposure === null ? '#62665f' : EXPOSURE_COLOR[exposure];
@@ -88,8 +92,13 @@ function SelectedOccupationLabel({selected, nodes, view, svgRef}: {
   </div>;
 }
 
-export default function OccupationMap({snapshot, skills, onSelect}: Props) {
+export default function OccupationMap({snapshot, skills, onSelect, tourView}: Props) {
   const reference = useMemo(() => buildContinuousMapProfiles(snapshot, skills), [snapshot, skills]);
+  const familyRows = useMemo(() => aggregateFamilyExposure(snapshot.occupations), [snapshot]);
+  const [activeView, setActiveView] = useState<'map' | 'family'>('map');
+  const visibleView = tourView ?? activeView;
+  const [drilldown, setDrilldown] = useState<FamilyDrilldown | null>(null);
+  const mapPanelRef = useRef<HTMLDivElement>(null);
   const [load, setLoad] = useState<{status: 'loading' | 'error'} | {status: 'ready'; model: OccupationMapData; basis: typeof reference}>({status: 'loading'});
   const [attempt, setAttempt] = useState(0);
   useEffect(() => {
@@ -102,15 +111,38 @@ export default function OccupationMap({snapshot, skills, onSelect}: Props) {
     });
     return () => controller.abort();
   }, [snapshot, skills, reference, attempt]);
-  if (load.status !== 'ready' || load.basis !== reference) return <section className="occupation-map-section">
-    <h2>Occupation map</h2>
-    {load.status === 'error' ? <p role="status">The UMAP layout could not be loaded or validated. <button type="button" className="text-button" onClick={() => setAttempt(value => value + 1)}>Retry UMAP layout</button></p>
-      : <p role="status">Loading UMAP layout…</p>}
+  useLayoutEffect(() => {
+    if (drilldown) {
+      const destination = mapPanelRef.current?.querySelector<HTMLInputElement>('#map-search') ?? mapPanelRef.current;
+      destination?.focus({preventScroll: true});
+      destination?.scrollIntoView({block: 'center', inline: 'nearest'});
+    }
+  }, [drilldown]);
+  return <section className="occupation-map-section" aria-labelledby="occupation-map-heading">
+    <TabHeader id="occupation-map-heading" eyebrow="The wider picture" title="Where does AI exposure concentrate?">Explore occupations by skill similarity on the map, or compare AI exposure across job families.</TabHeader>
+    <div className="occupation-view-switch" role="group" aria-label="Occupation view">
+      <button type="button" aria-pressed={visibleView === 'map'} onClick={() => setActiveView('map')}>Map</button>
+      <button type="button" aria-pressed={visibleView === 'family'} onClick={() => setActiveView('family')}>By job family</button>
+    </div>
+    <div className="occupation-view-panel" hidden={visibleView !== 'family'}>
+      <FamilyExposureHeatmap rows={familyRows} occupations={snapshot.occupations} onSelect={onSelect} excludedCount={reference.excludedCodes.length} onDrilldown={(row, exposure) => {
+        setDrilldown(previous => ({familyCode: row.code, familyName: row.name, exposure, count: row.counts[exposure],
+          mappedCount: reference.nodes.filter(node => occupationFamilyCode(node.occupation.code) === row.code && (node.occupation.exposure ?? 'Unavailable') === exposure).length,
+          sequence: (previous?.sequence ?? 0) + 1}));
+        setActiveView('map');
+      }}/>
+    </div>
+    <div className="occupation-view-panel" hidden={visibleView !== 'map'} ref={mapPanelRef} tabIndex={-1} role="region" aria-label="Occupation map">
+      {drilldown && <p className="family-drilldown-notice" data-testid="family-drilldown-notice" role="status">Selected heatmap cell: {drilldown.familyName} · {drilldown.exposure}. {drilldown.count} occupations in the full snapshot; {drilldown.mappedCount} map-eligible occupations with at least 20 rated skills. {drilldown.count - drilldown.mappedCount} excluded from the map. {drilldown.mappedCount === 0 && 'No occupations in this cell can be shown on the skill map.'}</p>}
+      {load.status === 'ready' && load.basis === reference
+        ? <OccupationMapView snapshot={snapshot} skills={skills} onSelect={onSelect} model={load.model} active={visibleView === 'map'} drilldown={drilldown}/>
+        : load.status === 'error' ? <p role="status">The UMAP layout could not be loaded or validated. <button type="button" className="text-button" onClick={() => setAttempt(value => value + 1)}>Retry UMAP layout</button></p>
+          : <p role="status">Loading UMAP layout…</p>}
+    </div>
   </section>;
-  return <OccupationMapView snapshot={snapshot} skills={skills} onSelect={onSelect} model={load.model}/>;
 }
 
-function OccupationMapView({snapshot, skills, onSelect, model}: Props & {model: OccupationMapData}) {
+function OccupationMapView({snapshot, skills, onSelect, model, active, drilldown}: Props & {model: OccupationMapData; active: boolean; drilldown: FamilyDrilldown | null}) {
   const noRatings = useMemo(() => {
     const rated = new Set(skills.roles.filter(role => role.importance.some(value => value !== null)).map(role => role.code));
     return snapshot.occupations.filter(occupation => !occupation.roles.some(role => rated.has(role.code))).length;
@@ -136,6 +168,24 @@ function OccupationMapView({snapshot, skills, onSelect, model}: Props & {model: 
     if (searchFocusTimer.current !== null) window.clearTimeout(searchFocusTimer.current);
     searchFocusTimer.current = null;
   }, []);
+  const activeRef = useRef(active);
+  activeRef.current = active;
+  useEffect(() => {
+    if (!active) cancelSearchFocus();
+  }, [active, cancelSearchFocus]);
+  useLayoutEffect(() => {
+    if (!drilldown) return;
+    cancelSearchFocus();
+    setQuery('');
+    setSearchChoice(null);
+    setSuggestionsOpen(false);
+    setSelectedCode(null);
+    setFamilyCode(drilldown.familyCode);
+    setExposures([drilldown.exposure]);
+    setView({x: 0, y: 0, zoom: 1});
+    searchRef.current?.focus({preventScroll: true});
+    searchRef.current?.scrollIntoView({block: 'center', inline: 'nearest'});
+  }, [drilldown, cancelSearchFocus]);
   const term = query.trim().toLowerCase();
   const familyName = families.find(family => family.code === familyCode)?.name;
   const filterScope = (familyName ? ` in ${familyName}` : '') + (exposures.length ? ` within ${exposures.join(' + ')} exposure` : '');
@@ -163,9 +213,9 @@ function OccupationMapView({snapshot, skills, onSelect, model}: Props & {model: 
   const anchorCode = selectedVisible ? selectedCode : visible[0]?.occupation.code;
   useEffect(() => {
     cancelSearchFocus();
-    if (matches.length) searchFocusTimer.current = window.setTimeout(() => {
+    if (activeRef.current && matches.length) searchFocusTimer.current = window.setTimeout(() => {
       searchFocusTimer.current = null;
-      setView(frameNodes(matches));
+      if (activeRef.current) setView(frameNodes(matches));
     }, 200);
     return cancelSearchFocus;
     // Selection events frame themselves; search and filters schedule framing.
@@ -267,8 +317,7 @@ function OccupationMapView({snapshot, skills, onSelect, model}: Props & {model: 
     const scale = Math.min(event.currentTarget.clientWidth / WIDTH, event.currentTarget.clientHeight / HEIGHT) * view.zoom;
     setView(clampView(drag.current.originX - (event.clientX - drag.current.x) / scale, drag.current.originY - (event.clientY - drag.current.y) / scale, view.zoom));
   }
-  return <section className="occupation-map-section" aria-labelledby="occupation-map-heading">
-    <TabHeader id="occupation-map-heading" eyebrow="The wider picture" title="Where does AI exposure concentrate?">Click a circle to identify an occupation and discover its closest skill matches. Search by occupation or skill, and filter by job family and AI exposure.</TabHeader>
+  return <div>
     <div className="map-summary">
       <div><strong>{model.fullCounts['Very high']} <span>/ {model.total}</span></strong><span>occupations in the highest exposure category</span></div>
       <div><strong>{model.nodes.length} <span>/ {model.total}</span></strong><span>occupations with skill evidence on this map</span></div>
@@ -316,7 +365,7 @@ function OccupationMapView({snapshot, skills, onSelect, model}: Props & {model: 
           </div>}
         </div>
 
-        <p className="map-selection-caption" data-testid="map-selection-caption" aria-live="polite">{selected ? <><strong>{selected.occupation.title}</strong><span>{selected.occupation.exposure ?? 'Unavailable'} AI exposure · {selected.occupation.code}{selectedVisible ? '' : ' · outside current filters'}</span><button type="button" className="text-button" onClick={() => {selectionRef.current?.focus({preventScroll: true}); selectionRef.current?.scrollIntoView({block: 'start'});}}>Jump to skill details</button></> : 'Select a circle to identify an occupation and see its skill matches below.'}</p>
+        <p className="map-selection-caption" data-testid="map-selection-caption" aria-live="polite">{selected ? <><strong>{selected.occupation.title}</strong><span>{occupationFamilyName(selected.occupation.code)}</span><span>{selected.occupation.exposure ?? 'Unavailable'} AI exposure · {selected.occupation.code}{selectedVisible ? '' : ' · outside current filters'}</span><button type="button" className="text-button" onClick={() => {selectionRef.current?.focus({preventScroll: true}); selectionRef.current?.scrollIntoView({block: 'start'});}}>Jump to skill details</button></> : 'Select a circle to identify an occupation and see its skill matches below.'}</p>
         <p className="map-caution">Sizes are four ordered categories, not a numeric scale. Each occupation counts once; this is not weighted by employment. Nearby points have approximately similar skill profiles; directions have no standalone meaning.</p>
         <div className="map-legend" aria-label="AI exposure color and size legend">
           {[...EXPOSURE_LEVELS, 'Unavailable' as const].map(level => <span key={level}>
@@ -353,9 +402,9 @@ function OccupationMapView({snapshot, skills, onSelect, model}: Props & {model: 
                 fill={occupation.exposure === null ? '#fffefa' : categoryColor(occupation.exposure)} stroke={active ? '#172f40' : categoryColor(occupation.exposure)}
                 strokeWidth={(active ? 3 : neighborCodes.has(occupation.code) ? 1.8 : 0.7) / Math.sqrt(view.zoom)} strokeDasharray={occupation.exposure === null ? '2 2' : undefined}
                 className={`map-node${active ? ' is-selected' : ''}${term && !matchCodes.has(occupation.code) ? ' is-search-context' : ''}`} role="button" tabIndex={anchorCode === occupation.code ? 0 : -1}
-                aria-label={`${occupation.title}, ${occupation.code}, ${occupation.exposure ?? 'unavailable'} AI exposure, ${node.importantSkills.length} important skills`}
+                aria-label={`${occupation.title}, ${occupation.code}, ${occupationFamilyName(occupation.code)}, ${occupation.exposure ?? 'unavailable'} AI exposure, ${node.importantSkills.length} important skills`}
                 aria-pressed={active} onClick={() => choose(node)} onKeyDown={event => keyboardNode(event, node)}>
-                <title>{occupation.title} · {occupation.exposure ?? 'Unavailable'} exposure · {node.importantSkills.length} important skills</title>
+                <title>{occupation.title} · {occupationFamilyName(occupation.code)} · {occupation.exposure ?? 'Unavailable'} exposure · {node.importantSkills.length} important skills</title>
               </circle>;
             })}
             {matches.map(node => <circle key={node.occupation.code} data-testid="map-highlight" data-code={node.occupation.code} className="map-highlight" cx={point(node).x} cy={point(node).y} r={((node.occupation.exposure === null ? 4.5 : EXPOSURE_RADIUS[node.occupation.exposure]) + 3) / Math.sqrt(view.zoom)} fill="none" stroke="#172f40" strokeWidth={1.8 / Math.sqrt(view.zoom)} pointerEvents="none" aria-hidden="true"/>)}
@@ -380,13 +429,15 @@ function OccupationMapView({snapshot, skills, onSelect, model}: Props & {model: 
     <div className="map-selection" data-testid="map-selection" aria-live="polite" ref={selectionRef} tabIndex={-1} role="region" aria-label="Selected occupation skill details">
       {selected ? <>
         <div className="map-selection-heading"><div><p className="eyebrow">Selected occupation · {selected.occupation.code}</p><h3>{selected.occupation.title}</h3></div><button type="button" className="primary" onClick={() => onSelect(selected.occupation.code)}>View occupation details</button></div>
+        <p data-testid="map-selection-family">Job family: {occupationFamilyName(selected.occupation.code)}</p>
         <p><strong>{selected.occupation.exposure ?? 'Unavailable'} AI exposure.</strong> {selected.importantSkills.length} important skills from {selected.knownSkills} of {skills.skills.length} skills with ratings; {selected.ratedRoles} of {selected.mappedRoles} mapped O*NET roles have ratings.</p>
         {selected.unavailableRatings > 0 && <p className="hint">{selected.unavailableRatings} role–skill ratings are unavailable. Missing evidence is not a low rating; missing ratings never become zero.</p>}
         {!selectedVisible && <p className="hint">This selected occupation is outside the current filters. <button type="button" className="text-button" onClick={() => choose(selected, true)}>Show on map</button></p>}
         <details className="map-skill-details"><summary>Skill ratings and coverage</summary><p>Mean available importance across unique mapped roles, on a 1–5 scale, displayed to two decimal places. Highest importance first; unavailable ratings last. Occupation details show skills for one mapped role, which may differ from these averages.</p><ul>{selectedRatings.map(({skill, importance})=><li key={skill.id}>{skill.name}: {importance===null?'Unavailable':importance.toFixed(2)+' / 5'}</li>)}</ul></details>
         <div data-testid="map-neighbors" className="map-neighbors"><h4>Closest skill matches across all mapped occupations</h4><p className="hint">Similar ratings mean a closer match. Similarity is 100% minus the average rating difference as a percentage of the four-point scale range, using at least 20 skills rated for both occupations. Up to five matches across the map.</p>
-          {neighbors.length ? <ol>{neighbors.map(match => <li key={match.node.occupation.code}>
+          {neighbors.length ? <ol>{neighbors.map(match => <li key={match.node.occupation.code} data-code={match.node.occupation.code}>
             <button type="button" className="text-button" onClick={() => choose(match.node, true)}>{match.node.occupation.title}</button>
+            <p data-testid="map-neighbor-family">Job family: {occupationFamilyName(match.node.occupation.code)}</p>
             <strong>{match.jointlyRated} jointly rated skills · {Math.round(match.similarity * 100)}% similarity</strong>{<details><summary>Paired skill ratings</summary><p>Selected occupation first, matched occupation second. Ratings and absolute differences are displayed to two decimal places; similarity uses unrounded values.</p><ul>{match.differences.map(r=><li key={r.index}>{skills.skills[r.index].name}: {r.left.toFixed(2)} vs {r.right.toFixed(2)} · absolute difference {r.difference.toFixed(2)}</li>)}</ul></details>}
             <p>Important in both: {match.sharedSkills.length ? match.sharedSkills.map(i => skills.skills[i].name).join(' · ') : 'No shared skills meet the importance threshold.'}</p>
           </li>)}</ol> : <p>No other mapped occupation has at least 20 jointly rated skills.</p>}
@@ -403,5 +454,5 @@ function OccupationMapView({snapshot, skills, onSelect, model}: Props & {model: 
       </tbody></table></div>
       <p className="source-line">Sources: BLS {snapshot.release.startYear}–{snapshot.release.endYear} occupational projections and relative AI exposure; {skills.onet} skills. These are descriptive source categories, not estimates of job losses or an AI effect on projected employment.</p>
     </details>
-  </section>;
+  </div>;
 }

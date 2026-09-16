@@ -2,7 +2,7 @@ import {useEffect, useLayoutEffect, useRef, useState} from 'react';
 import './guided-tour.css';
 
 export const TOUR_STORAGE_KEY = 'work-and-ai:guided-tour:v1';
-export type TourView = 'search' | 'map' | 'patterns';
+export type TourView = 'search' | 'map' | 'family' | 'patterns';
 const steps: {title: string; body: string; target: string; preferred?: string; view: TourView}[] = [
   {title: 'Find an occupation', target: '[data-tour="title-search"]', view: 'search',
     body: 'Start with an English job title. Suggestions update as you type. Confirm a source description to see AI exposure, skills and employment outlook, then compare up to three occupations.'},
@@ -11,7 +11,9 @@ const steps: {title: string; body: string; target: string; preferred?: string; v
   {title: 'Describe your work', target: '[data-tour="description-search"]', view: 'search',
     body: 'Describe your responsibilities in English. Find matches runs an optional meaning model on your device; Search wording only needs no model download. Review and confirm each suggestion.'},
   {title: 'Explore the occupation map', target: '#map-view', preferred: '#map-view .map-canvas', view: 'map',
-    body: 'Explore occupations by skill similarity. Color and circle size show relative AI exposure. Search or filter the map, then select a circle to see skill neighbors. Connections describe similar skills, not causation. This view may take a moment to load.'},
+    body: 'Explore occupations by skill similarity. Color and circle size show relative AI exposure. Search or filter by job family and exposure, then select a circle to see its closest skill matches. The map may take a moment to load.'},
+  {title: 'Compare job families', target: '#map-view', preferred: '#map-view .family-heatmap-scroll', view: 'family',
+    body: 'Switch to By job family to compare the exposure mix. Each row is a family; cells show its percentage and count of occupations in each category. Darker blue means a larger share. These are occupation shares, not employment shares. After the tour, choose a family name to browse all its occupations, or a populated cell to open the filtered map; only occupations with enough skill ratings appear there.'},
   {title: 'Compare skill patterns', target: '#patterns-view', preferred: '#patterns-view .patterns-table-scroll', view: 'patterns',
     body: 'Choose an exposure category and comparison baseline, then sort the table to compare skill prevalence. Read counts and coverage alongside ratios. These describe occupations, not the AI exposure of individual skills. The table appears when its reference is ready.'},
   {title: 'Read the sources', target: '[data-tour="sources"]', view: 'search',
