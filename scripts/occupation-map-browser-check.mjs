@@ -308,6 +308,60 @@ try{
   await assertUmapOnly(projectionFailure);
   report.checks.push('Unavailable/corrupt/held UMAP artifacts show error or loading with no map or PCA; title search remains usable; explicit retry recovers failures and delayed layout renders UMAP');
  }finally{releaseProjection?.();await projectionFailure.close();}
+ const familyPage=await browser.newPage({viewport:{width:1440,height:1100}});
+ familyPage.on('pageerror',e=>report.errors.push(String(e)));familyPage.on('request',r=>requests.push(r.url()));
+ try{
+  await returningVisitor(familyPage);await familyPage.goto(base);await familyPage.getByRole('tab',{name:'Occupation map',exact:true}).click();await familyPage.getByTestId('map-node').first().waitFor();
+  const family=familyPage.getByRole('combobox',{name:'Job family',exact:true});
+  const familyNodes=familyPage.getByTestId('map-node'),list=familyPage.getByTestId('map-list-occupation');
+  const input=familyPage.getByRole('searchbox',{name:'Highlight on map',exact:true});
+  const exposureChoices=familyPage.getByRole('group',{name:'AI exposure',exact:true});
+  const chooseExposure=name=>exposureChoices.getByRole('button',{name,exact:true}).click();
+  const allPositions=await nodePositions(familyPage);
+  const options=await family.locator('option').evaluateAll(els=>els.map(el=>({code:el.value,name:el.textContent})));
+  assert.equal(await family.inputValue(),'');assert.deepEqual(options[0],{code:'',name:'All job families'});
+  assert.equal(options.length,23);assert(!options.some(option=>option.code==='55'));
+  assert.deepEqual(options.slice(1).map(option=>option.name),options.slice(1).map(option=>option.name).sort((a,b)=>a.localeCompare(b)));
+  assert.equal(options.find(option=>option.code==='25').name,'Educational Instruction and Library');
+  const codes=locator=>locator.evaluateAll(els=>els.map(el=>el.dataset.code).sort());
+  const expectedFamily=(code,exposures=[])=>snapshot.occupations.filter(o=>eligible(o)&&o.code.startsWith(code+'-')&&(!exposures.length||exposures.includes(o.exposure))).map(o=>o.code).sort();
+  for(const option of options.slice(1)){
+   await family.selectOption(option.code);
+   assert.deepEqual(await codes(familyNodes),expectedFamily(option.code),`${option.name} shows exactly its mapped occupations`);
+   assert.deepEqual(await codes(list),expectedFamily(option.code),`${option.name} list agrees with map`);
+   for(const [code,position]of Object.entries(await nodePositions(familyPage)))assert.deepEqual(position,allPositions[code]);
+  }
+  await family.selectOption('15');await chooseExposure('Very high');await chooseExposure('High');
+  assert.deepEqual(await codes(familyNodes),expectedFamily('15',['Very high','High']),'family intersects the exposure union');
+  await input.fill('computer programmers');
+  assert.equal(await familyPage.getByTestId('map-highlight').count(),1);
+  assert.deepEqual(await codes(list),['15-1251']);
+  await familyPage.getByRole('button',{name:'Reset view',exact:true}).click();
+  assert.equal(await family.inputValue(),'15');assert.equal(await input.inputValue(),'computer programmers');
+  assert.deepEqual(await codes(familyNodes),expectedFamily('15',['Very high','High']));
+  await list.first().click();
+  const neighbors=await familyPage.getByTestId('map-neighbors').getByRole('button').allTextContents();
+  await family.selectOption('29');
+  assert.equal(await familyPage.getByTestId('map-highlight').count(),0);assert.equal(await list.count(),0);
+  assert.match(await familyPage.locator('.map-list-empty').innerText(),/job family/);
+  assert.match(await familyPage.getByTestId('map-selection-caption').innerText(),/Computer programmers.*outside current filters/is);
+  assert.deepEqual(await familyPage.getByTestId('map-neighbors').getByRole('button').allTextContents(),neighbors);
+  await familyPage.getByRole('button',{name:'Show on map',exact:true}).click();
+  assert.equal(await family.inputValue(),'');assert.equal(await input.inputValue(),'');assert.equal(await familyNodes.count(),expected);
+  assert.equal(await familyPage.locator('[data-testid="map-node"][aria-pressed="true"]').getAttribute('data-code'),'15-1251');
+  await family.selectOption('45');await chooseExposure('Unavailable');
+  assert.equal(await familyNodes.count(),0);assert(await familyPage.locator('.map-empty').isVisible());
+  const neighborTitle=await familyPage.getByTestId('map-neighbors').getByRole('button').first().innerText();
+  await familyPage.getByTestId('map-neighbors').getByRole('button').first().click();
+  assert.equal(await family.inputValue(),'');assert.equal(await familyNodes.count(),expected);
+  assert.match(await familyPage.getByTestId('map-selection-caption').innerText(),new RegExp(neighborTitle.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));
+  await family.selectOption('37');await familyPage.setViewportSize({width:390,height:844});
+  assert(await familyPage.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'long family label fits mobile viewport');
+  const familyBounds=await family.boundingBox();assert(familyBounds.width>0&&familyBounds.x>=0&&familyBounds.x+familyBounds.width<=390);
+  await familyPage.screenshot({path:resolve(out,'family-filter-mobile.png'),fullPage:true});
+  await family.selectOption('');assert.deepEqual(await nodePositions(familyPage),allPositions);
+  report.checks.push('22 named civilian families; exact family counts/list/positions; exposure intersection; search and Reset view preserve filters; hidden selection and neighbors survive; reveal and neighbor navigation clear hiding filters; long family label fits 390px');
+ }finally{await familyPage.close();}
  const race=await browser.newPage({viewport:{width:1440,height:1100}});
  race.on('pageerror',e=>report.errors.push(String(e)));race.on('request',r=>requests.push(r.url()));
  try{
