@@ -1,3 +1,4 @@
+import {returningVisitor} from './returning-visitor.mjs';
 import assert from 'node:assert/strict';
 import {mkdir, writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
@@ -13,7 +14,7 @@ try {
   page.on('pageerror', error => report.errors.push(String(error)));
   page.on('request', request => requests.push(request.url()));
   const tab = name => page.getByRole('tab', {name, exact: true});
-  await page.goto(base);
+  await returningVisitor(page);await page.goto(base);
   await page.getByRole('searchbox', {name: 'Job title', exact: true}).fill('registered nurse');
   await page.locator('.candidate').first().waitFor();
   assert(!requests.some(url => /SkillPatterns-/.test(url)), 'Patterns chunk loads on demand');
@@ -146,7 +147,7 @@ try {
   let release; const held = new Promise(resolve => {release = resolve;});
   let attempts = 0;
   await recovery.route('**/data/skills.json', async route => {attempts++; if (attempts === 1) {await held; await route.fulfill({status: 503, body: 'Unavailable'});} else await route.continue();});
-  await recovery.goto(base); await recovery.getByRole('tab', {name: 'Skill patterns', exact: true}).click();
+  await returningVisitor(recovery);await recovery.goto(base); await recovery.getByRole('tab', {name: 'Skill patterns', exact: true}).click();
   await recovery.getByText('Loading skill reference for patterns…').waitFor();
   release(); await recovery.getByRole('button', {name: 'Retry patterns reference', exact: true}).waitFor();
   await recovery.getByRole('tab', {name: 'Find an occupation', exact: true}).click();
@@ -157,7 +158,7 @@ try {
   assert.equal(attempts, 2);
   // A fresh failure independently exercises the visible retry control.
   attempts = 0;
-  await recovery.goto(base); await recovery.getByRole('tab', {name: 'Skill patterns', exact: true}).click();
+  await returningVisitor(recovery);await recovery.goto(base); await recovery.getByRole('tab', {name: 'Skill patterns', exact: true}).click();
   await recovery.getByRole('button', {name: 'Retry patterns reference', exact: true}).click();
   await recovery.locator('.patterns-table tbody tr').first().waitFor();
   assert.equal(attempts, 2);
@@ -166,7 +167,7 @@ try {
 
   const chunk = await browser.newPage();
   await chunk.route(/\/assets\/SkillPatterns-[^/]+\.js/, route => route.abort());
-  await chunk.goto(base); await chunk.getByRole('tab', {name: 'Skill patterns', exact: true}).click();
+  await returningVisitor(chunk);await chunk.goto(base); await chunk.getByRole('tab', {name: 'Skill patterns', exact: true}).click();
   await chunk.getByRole('button', {name: 'Reload skill patterns', exact: true}).waitFor();
   await chunk.getByRole('tab', {name: 'Find an occupation', exact: true}).click();
   await chunk.getByRole('searchbox', {name: 'Job title', exact: true}).fill('registered nurse');

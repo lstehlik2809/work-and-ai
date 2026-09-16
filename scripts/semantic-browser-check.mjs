@@ -1,3 +1,4 @@
+import {returningVisitor} from './returning-visitor.mjs';
 import {writeFileSync} from 'node:fs';
 import assert from 'node:assert/strict';
 import {mkdir,writeFile,readFile} from 'node:fs/promises';
@@ -30,7 +31,7 @@ try{
    checkpoint('cold download and cancellation');
    const context=await browser.newContext({viewport:{width:1280,height:960},acceptDownloads:true}),page=await context.newPage();
    page.on('request',r=>result.requests.push({url:r.url(),body:r.postData()}));page.on('pageerror',e=>result.errors.push(String(e)));
-   await page.goto(base);await page.getByRole('combobox',{name:'Show top',exact:true}).selectOption(String(baseline.requestedLimit));const title=page.getByRole('searchbox',{name:'Job title',exact:true});
+   await returningVisitor(page);await page.goto(base);await page.getByRole('combobox',{name:'Show top',exact:true}).selectOption(String(baseline.requestedLimit));const title=page.getByRole('searchbox',{name:'Job title',exact:true});
    await title.fill('registered nurse');await page.locator('button.candidate').first().click();await page.getByRole('button',{name:'Add to comparison',exact:true}).click();
    assert(!result.requests.some(r=>/\.onnx|\.wasm|vectors\.bin/.test(r.url)));
    await page.getByRole('button',{name:'Find by work description',exact:true}).click();
@@ -63,25 +64,31 @@ try{
    // New cache context: a real missing weight must leave fallback and comparison usable.
    checkpoint('first-load HTTP503 and retry');
    const failureContext=await browser.newContext(),failure=await failureContext.newPage();
-   await failure.route('**/model_quantized.onnx',r=>r.fulfill({status:503,body:'Unavailable'}));await failure.goto(base);await failure.getByRole('button',{name:'Find by work description',exact:true}).click();
+   await failure.route('**/model_quantized.onnx',r=>r.fulfill({status:503,body:'Unavailable'}));await returningVisitor(failure);await failure.goto(base);await failure.getByRole('button',{name:'Find by work description',exact:true}).click();
    await failure.getByRole('textbox',{name:'A few specific responsibilities, in English'}).fill('I dispense prescribed medicines and advise patients about their safe use.');await failure.getByRole('button',{name:'Find matches',exact:true}).click();await failure.getByRole('alert').waitFor({timeout:120000});assert(await failure.locator('[data-method="wording"]').isVisible());
    await bounded(failure.unrouteAll({behavior:'wait'}),name+': failure route cleanup');await failure.getByRole('button',{name:'Retry matching',exact:true}).click();await failure.locator('.refine > [role="status"]').filter({hasText:'Enhanced matching finished'}).waitFor({timeout:120000});assert.deepEqual(await codesOf(failure.locator('[data-method="meaning"]')),expectedCodes(baseline.rows[2]));await close(failureContext,'failure context');
    result.checks.push('actual first-load HTTP503 failure and successful semantic model retry');
    // Editing during a pending download invalidates the old hook request as well as its worker.
    checkpoint('edit during pending download');
    const editContext=await browser.newContext(),editing=await editContext.newPage();
-   await editing.goto(base);await editing.getByRole('searchbox',{name:'Job title',exact:true}).fill('registered nurse');await editing.locator('button.candidate').first().click();await editing.getByRole('button',{name:'Add to comparison',exact:true}).click();
+   await returningVisitor(editing);await editing.goto(base);await editing.getByRole('searchbox',{name:'Job title',exact:true}).fill('registered nurse');await editing.locator('button.candidate').first().click();await editing.getByRole('button',{name:'Add to comparison',exact:true}).click();
    await editing.getByRole('button',{name:'Find by work description',exact:true}).click();const editInput=editing.getByRole('textbox',{name:'A few specific responsibilities, in English'});
    let sawEditWeight,releaseEditWeight;const editSeen=new Promise(r=>sawEditWeight=r),editRelease=new Promise(r=>releaseEditWeight=r);releases.push(()=>releaseEditWeight());
    await editing.route('**/model_quantized.onnx',async route=>{sawEditWeight();await editRelease;await finishCancelledRoute(route,name+': edited model route');});
    await editInput.fill(baseline.rows[0].query);await editing.getByRole('button',{name:'Find matches',exact:true}).click();await Promise.race([editSeen,new Promise((_,reject)=>setTimeout(()=>reject(Error('Edit test weight download did not start')),30000))]);
+   await editing.getByRole('button',{name:'Take a tour',exact:true}).click();
+   for(let step=0;step<4;step++)await editing.locator('#guided-tour').getByRole('button',{name:'Next',exact:true}).click();
+   await editing.keyboard.press('Escape');
+   assert.equal(await editInput.inputValue(),baseline.rows[0].query);
+   assert.equal(await editing.getByRole('button',{name:'Cancel matching',exact:true}).count(),1);
+   result.checks.push('tour navigation and Escape preserve an active real semantic download and its draft');
    await editInput.fill(baseline.rows[1].query);releaseEditWeight();checkpoint('edited route cleanup');await bounded(editing.unrouteAll({behavior:'wait'}),name+': edited route cleanup',20000);assert(!result.routeFailure,result.routeFailure);await editing.waitForTimeout(500);
    assert.equal(await editing.locator('[data-method="meaning"]').count(),0);assert.equal(await editing.locator('.refine > [role="status"]').innerText(),'');assert.equal(await editing.getByRole('alert').count(),0);assert.equal(await editing.locator('[data-method="wording"]').count(),0);
    assert.match(await editing.locator('#occupation-heading').innerText(),/Registered nurses/i);assert.equal(await editing.locator('.comparison thead th').count(),2);
    await editing.getByRole('button',{name:'Find matches',exact:true}).click();await editing.locator('.refine > [role="status"]').filter({hasText:baseline.completedPhase}).waitFor({timeout:120000});assert.deepEqual(await codesOf(editing.locator('[data-method="meaning"]')),expectedCodes(baseline.rows[1]));await close(editContext,'edit context');
    result.checks.push('editing during a pending real download clears old results/status, retains confirmation/comparison and permits a new query');
    checkpoint('worker faults, races and tokenizer boundaries');
-   const diagnostics=await browser.newPage();await diagnostics.goto(base+'diagnostics.html');await diagnostics.getByRole('button',{name:'Run worker verification',exact:true}).click();
+   const diagnostics=await browser.newPage();await returningVisitor(diagnostics);await diagnostics.goto(base+'diagnostics.html');await diagnostics.getByRole('button',{name:'Run worker verification',exact:true}).click();
    await diagnostics.waitForFunction(()=>{try{const r=JSON.parse(document.querySelector('#verification-output').textContent);return Boolean(r.date);}catch{return false;}},{},{timeout:240000});
    result.worker=JSON.parse(await diagnostics.locator('#verification-output').textContent());assert(!result.worker.failure,result.worker.failure);assert.deepEqual(result.worker.race.sort(),['A cancelled','B cancelled','C resolved']);
    for(const f of result.worker.faults)assert.equal(f.result,f.fault==='cache'?'success':'rejected',f.fault);

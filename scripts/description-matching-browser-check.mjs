@@ -1,3 +1,4 @@
+import {returningVisitor} from './returning-visitor.mjs';
 import assert from 'node:assert/strict';
 import {readFile,mkdir,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
@@ -14,7 +15,7 @@ const page=await browser.newPage({viewport:{width:1280,height:1000}});
 const report={base,date:new Date().toISOString(),status:'FAIL',checks:[],errors:[]};
 page.on('pageerror',error=>report.errors.push(String(error)));
 try{
- await page.goto(base);
+ await returningVisitor(page);await page.goto(base);
  await page.getByRole('button',{name:'Find by work description',exact:true}).click();
  for(const id of ['U01','V02','H-M2-01','V06']){
   const fixture=fixtures.cases.find(f=>f.id===id);

@@ -1,3 +1,4 @@
+import {returningVisitor} from './returning-visitor.mjs';
 import assert from 'node:assert/strict';
 import {mkdir,readFile,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
@@ -13,7 +14,7 @@ const limit=page.getByRole('combobox',{name:'Show top'});
 const cards=page.locator('.candidate');
 const codes=()=>cards.locator('.code').allTextContents();
 try{
- await page.goto(base);
+ await returningVisitor(page);await page.goto(base);
  assert.equal(await limit.inputValue(),'5');
  await page.getByRole('searchbox',{name:'Job title'}).fill('electrical');
  await cards.first().waitFor();

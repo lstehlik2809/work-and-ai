@@ -24,6 +24,7 @@
     "validate:skills": "node scripts/data/skills.mjs --check",
     "patterns:prepare": "tsx scripts/data/skill-patterns.ts",
     "validate:patterns": "tsx scripts/data/skill-patterns.ts --check",
+    "browser:tour": "node scripts/tour-browser-check.mjs",
     "browser:improvements": "node scripts/improvements-browser-check.mjs",
     "browser:skills": "node scripts/skills-browser-check.mjs",
     "ai-context:extract": "python scripts/data/extract-ai-context.py",

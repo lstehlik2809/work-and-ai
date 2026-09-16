@@ -4,6 +4,8 @@ Explore published relative AI exposure and employment projections for U.S. occup
 
 Each confirmed result includes an explanation of its exposure category and the dates of the underlying evidence. Optional BLS AI outlook notes retain their industry scope and full source wording; they describe staffing-share projection assumptions, not the cause of the exposure rating or total job losses. A missing note does not establish that AI has no effect.
 
+A guided tour opens once the occupational reference is ready on a first visit. It highlights title, skills and description search, the occupation map, skill patterns and sources. Use **Take a tour** in the top-right header to replay it; Back, Next, Skip tour, Finish and Escape control the tour. Closing restores your original view and scroll position without changing searches, selections or comparisons. The browser records `work-and-ai:guided-tour:v1=seen` when the tour starts, so a skipped tour also stays dismissed on later visits. Clearing site storage resets this preference; if storage is unavailable, the tour still works but can appear again after reload. Touring the map and patterns loads their existing reference files, never the optional description model.
+
 The “Show top” control displays up to 1–10 matching occupations, defaulting to five. It applies to title, skills, and description results and updates existing suggestions immediately. Searches can return fewer than the requested number when fewer candidates meet the matching criteria; the comparison limit remains three occupations.
 
 [Open the app](https://lstehlik2809.github.io/work-and-ai/) · [Methodology](METHODOLOGY.md) · [Data sources](DATA_SOURCES.md) · [Verification](VERIFICATION.md)

@@ -1,3 +1,4 @@
+import {returningVisitor} from './returning-visitor.mjs';
 import assert from 'node:assert/strict';
 import {mkdir,writeFile,readFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
@@ -28,7 +29,7 @@ const nodePositions=target=>target.getByTestId('map-node').evaluateAll(els=>Obje
 
 try{
  await mkdir(out,{recursive:true});
- await page.goto(base);
+ await returningVisitor(page);await page.goto(base);
  await page.getByRole('searchbox',{name:'Job title',exact:true}).fill('registered nurse');
  await page.locator('.candidate').first().waitFor();
  assert(!requests.some(url=>url.endsWith('/data/occupation-map-umap.json')), 'search candidates do not fetch the map layout');
@@ -183,7 +184,7 @@ try{
  const projections=await browser.newPage({viewport:{width:1440,height:1100}});
  projections.on('pageerror',e=>report.errors.push(String(e)));projections.on('request',r=>requests.push(r.url()));
  try{
-  await projections.goto(base);await projections.getByRole('tab',{name:'Occupation map',exact:true}).click();
+  await returningVisitor(projections);await projections.goto(base);await projections.getByRole('tab',{name:'Occupation map',exact:true}).click();
   await projections.getByTestId('map-node').first().waitFor();
   await assertUmapOnly(projections);
   const canvas=projections.getByTestId('occupation-map');
@@ -277,7 +278,7 @@ try{
    await projectionFailure.getByRole('tab',{name:'Occupation map',exact:true}).click();
   };
   let layoutRequests=0;await projectionFailure.route('**/data/occupation-map-umap.json',route=>++layoutRequests===1?route.fulfill({status:503,body:'Unavailable'}):route.continue());
-  await projectionFailure.goto(base);await projectionFailure.getByRole('tab',{name:'Occupation map',exact:true}).click();
+  await returningVisitor(projectionFailure);await projectionFailure.goto(base);await projectionFailure.getByRole('tab',{name:'Occupation map',exact:true}).click();
   await projectionFailure.getByRole('button',{name:'Retry UMAP layout',exact:true}).waitFor();
   await assertNoMap();
   await verifyTitleSearch();
@@ -287,7 +288,7 @@ try{
   assert.equal(await projectionFailure.getByTestId('map-node').count(),expected);
   await projectionFailure.unroute('**/data/occupation-map-umap.json');
   await projectionFailure.route('**/data/occupation-map-umap.json',route=>route.fulfill({contentType:'application/json',body:JSON.stringify({...umapLayout,profileSha256:'0'.repeat(64)})}));
-  await projectionFailure.goto(base);await projectionFailure.getByRole('tab',{name:'Occupation map',exact:true}).click();await projectionFailure.getByRole('button',{name:'Retry UMAP layout',exact:true}).waitFor();
+  await returningVisitor(projectionFailure);await projectionFailure.goto(base);await projectionFailure.getByRole('tab',{name:'Occupation map',exact:true}).click();await projectionFailure.getByRole('button',{name:'Retry UMAP layout',exact:true}).waitFor();
   await assertNoMap();
   await projectionFailure.unroute('**/data/occupation-map-umap.json');
   await projectionFailure.getByRole('button',{name:'Retry UMAP layout',exact:true}).click();
@@ -295,7 +296,7 @@ try{
   assert.equal(await projectionFailure.getByTestId('occupation-map').getAttribute('data-projection'),'umap');
   const held=new Promise(resolve=>releaseProjection=resolve);
   await projectionFailure.route('**/data/occupation-map-umap.json',async route=>{await held;await route.continue();});
-  await projectionFailure.goto(base);await projectionFailure.getByRole('tab',{name:'Occupation map',exact:true}).click();
+  await returningVisitor(projectionFailure);await projectionFailure.goto(base);await projectionFailure.getByRole('tab',{name:'Occupation map',exact:true}).click();
   await projectionFailure.getByText(/Loading UMAP layout/).waitFor();
   await assertNoMap();
   await verifyTitleSearch();
@@ -310,7 +311,7 @@ try{
  const race=await browser.newPage({viewport:{width:1440,height:1100}});
  race.on('pageerror',e=>report.errors.push(String(e)));race.on('request',r=>requests.push(r.url()));
  try{
-  await race.goto(base);await race.getByRole('tab',{name:'Occupation map',exact:true}).click();await race.getByTestId('map-node').first().waitFor();
+  await returningVisitor(race);await race.goto(base);await race.getByRole('tab',{name:'Occupation map',exact:true}).click();await race.getByTestId('map-node').first().waitFor();
   await race.clock.install();await race.clock.pauseAt(new Date());
   const input=race.getByRole('searchbox',{name:'Highlight on map',exact:true}),canvas=race.getByTestId('occupation-map'),reset=race.getByRole('button',{name:'Reset view',exact:true});
   const view=()=>canvas.getAttribute('viewBox');
@@ -348,7 +349,7 @@ try{
  report.checks.push('A pending title debounce resumes correctly after switching through the map');
  let attempts=0;
  await page.route('**/data/skills.json',route=>++attempts===1?route.fulfill({status:503,body:'Unavailable'}):route.continue());
- await page.goto(base);await mapTab().click();
+ await returningVisitor(page);await page.goto(base);await mapTab().click();
  await page.getByRole('button',{name:'Retry map reference',exact:true}).waitFor();
  await searchTab().click();
  await page.getByRole('searchbox',{name:'Job title',exact:true}).fill('registered nurse');
@@ -359,14 +360,14 @@ try{
  // Exercise explicit retry independently of reopening the tab.
  attempts=0;
  await page.route('**/data/skills.json',route=>++attempts===1?route.fulfill({status:503,body:'Unavailable'}):route.continue());
- await page.goto(base);await mapTab().click();
+ await returningVisitor(page);await page.goto(base);await mapTab().click();
  await page.getByRole('button',{name:'Retry map reference',exact:true}).click();
  await nodes.first().waitFor();assert.equal(attempts,2);
  report.checks.push('Failed skill fetch preserves title search; reopening and explicit retry both recover');
  const failedChunk=await browser.newPage();
  try{
   await failedChunk.route(/\/assets\/OccupationMap-[^/]+\.js/,route=>route.abort());
-  await failedChunk.goto(base);
+  await returningVisitor(failedChunk);await failedChunk.goto(base);
   await failedChunk.getByRole('tab',{name:'Occupation map',exact:true}).click();
   await failedChunk.getByRole('button',{name:'Reload map',exact:true}).waitFor();
   await failedChunk.getByRole('tab',{name:'Find an occupation',exact:true}).click();

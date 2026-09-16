@@ -30,6 +30,7 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npx playwright install --with-deps chromium firefox webkit
+      - run: npm run browser:tour
       - run: npm run browser:improvements
       - run: npm run browser:semantic
         timeout-minutes: 19

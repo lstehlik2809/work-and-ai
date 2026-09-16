@@ -1,3 +1,4 @@
+import {returningVisitor} from './returning-visitor.mjs';
 import assert from 'node:assert/strict';
 import {readFile, mkdir} from 'node:fs/promises';
 import {chromium} from 'playwright';
@@ -22,7 +23,7 @@ try {
   const page = await browser.newPage({viewport: {width: 1440, height: 1100}});
   const errors = [];
   page.on('pageerror', error => errors.push(String(error)));
-  await page.goto(base);
+  await returningVisitor(page);await page.goto(base);
   await page.getByRole('tab', {name: 'Occupation map', exact: true}).click();
   await page.getByTestId('map-node').first().waitFor();
   const search = page.getByRole('searchbox', {name: 'Highlight on map', exact: true});
