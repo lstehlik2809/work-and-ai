@@ -24,5 +24,5 @@
 .family-heatmap td button:hover{box-shadow:inset 0 0 0 2px #172f40}
 .family-heatmap td button:focus-visible{outline-offset:-3px;outline-color:#172f40;box-shadow:inset 0 0 0 5px #fff}
 .family-heatmap td strong{font-weight:650;font-size:.95rem}.family-heatmap td small{font-size:.7rem;color:inherit;margin-top:0}
-@media(max-width:700px){.family-heatmap-scroll-hint{display:block}.family-heatmap th:first-child{position:sticky;left:0;z-index:1;background:var(--paper,#f6f4ee);box-shadow:4px 0 0 var(--paper,#f6f4ee)}}
+@media(max-width:700px){.family-heatmap-scroll-hint{display:block}.family-heatmap th:first-child{position:sticky;left:0;z-index:1;background:var(--paper,#f6f4ee);box-shadow:inset -4px 0 0 var(--paper,#f6f4ee)}}
 @media(max-width:480px){.family-heatmap table{min-width:590px}.occupation-view-switch button{padding:8px 12px}}
