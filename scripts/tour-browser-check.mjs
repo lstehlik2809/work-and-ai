@@ -43,11 +43,19 @@ async function checkStep(page, index) {
   });
   assert(bounds.left >= 0 && bounds.right <= bounds.width + 1 && bounds.top >= 0 && bounds.bottom <= bounds.height + 1, `navigation visible: ${JSON.stringify(bounds)}`);
   if (bounds.pageWidth > bounds.width + 1) {
-    const overflow = await page.evaluate(() => [...document.querySelectorAll('body *')]
-      .map(element => ({element: element.tagName.toLowerCase(), className: typeof element.className === 'string' ? element.className : '', right: Math.round(element.getBoundingClientRect().right)}))
-      .filter(item => item.right > innerWidth + 1)
-      .sort((a, b) => b.right - a.right)
-      .slice(0, 8));
+    const overflow = await page.evaluate(() => {
+      const describe = element => {
+        const rect = element.getBoundingClientRect();
+        return {element: element.tagName.toLowerCase(), id: element.id, className: typeof element.className === 'string' ? element.className : '', left: Math.round(rect.left), right: Math.round(rect.right), width: Math.round(rect.width), scrollWidth: element.scrollWidth, clientWidth: element.clientWidth, overflowX: getComputedStyle(element).overflowX};
+      };
+      const table = document.querySelector('.family-heatmap table');
+      const ancestors = [];
+      for (let element = table; element; element = element.parentElement) ancestors.push(describe(element));
+      const nearEdge = [...document.querySelectorAll('body *')]
+        .map(describe).filter(item => item.right > innerWidth + 1 && item.right < innerWidth + 100)
+        .sort((a, b) => a.right - b.right).slice(0, 20);
+      return {ancestors, nearEdge};
+    });
     assert.fail(`page overflow at step ${index + 1} (${titles[index]}): ${JSON.stringify({bounds, overflow})}`);
   }
 }

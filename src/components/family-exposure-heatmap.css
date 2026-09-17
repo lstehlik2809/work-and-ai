@@ -4,7 +4,7 @@
 .occupation-view-switch button:focus-visible,.family-heatmap button:focus-visible,.family-heatmap select:focus-visible,.family-heatmap-scroll:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 .occupation-view-panel[hidden]{display:none}
 .family-drilldown-notice{padding:12px 16px;background:#e7edf0;border-left:3px solid var(--blue);font-size:.82rem;line-height:1.5}
-.family-heatmap{min-width:0;max-width:100%;font-size:.84rem}
+.family-heatmap{min-width:0;max-width:100%;overflow-x:clip;font-size:.84rem}
 .family-heatmap>p{max-width:950px;line-height:1.6}
 .family-heatmap-controls{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin:20px 0}
 .family-heatmap-controls label{font-size:.78rem;display:grid;gap:6px;max-width:100%}
