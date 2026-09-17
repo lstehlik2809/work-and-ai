@@ -42,7 +42,14 @@ async function checkStep(page, index) {
     return {left: next.left, right: next.right, top: next.top, bottom: next.bottom, width: innerWidth, height: innerHeight, pageWidth: document.documentElement.scrollWidth};
   });
   assert(bounds.left >= 0 && bounds.right <= bounds.width + 1 && bounds.top >= 0 && bounds.bottom <= bounds.height + 1, `navigation visible: ${JSON.stringify(bounds)}`);
-  assert(bounds.pageWidth <= bounds.width + 1, 'no page overflow');
+  if (bounds.pageWidth > bounds.width + 1) {
+    const overflow = await page.evaluate(() => [...document.querySelectorAll('body *')]
+      .map(element => ({element: element.tagName.toLowerCase(), className: typeof element.className === 'string' ? element.className : '', right: Math.round(element.getBoundingClientRect().right)}))
+      .filter(item => item.right > innerWidth + 1)
+      .sort((a, b) => b.right - a.right)
+      .slice(0, 8));
+    assert.fail(`page overflow at step ${index + 1} (${titles[index]}): ${JSON.stringify({bounds, overflow})}`);
+  }
 }
 async function walk(page, {screenshots, back = false} = {}) {
   for (let i = 0; i < titles.length; i++) {
